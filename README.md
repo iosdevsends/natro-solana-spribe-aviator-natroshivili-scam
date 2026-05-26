@@ -51,6 +51,8 @@ docker compose exec backend npm run seed
 
 ## Deploying alongside an existing Strapi project on the same AWS host
 
+**Production domain:** `natro.meme` (Cloudflare-proxied, verified in Google Search Console via DNS).
+
 The compose file uses an isolated network and project name (`natro`). On the same EC2 instance running another Strapi project (`photovideo.ae`):
 
 1. Run **this** stack with the bundled compose file. It binds:

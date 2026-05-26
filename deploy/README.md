@@ -1,5 +1,9 @@
 # Deploying alongside an existing Strapi instance on the same EC2 host
 
+**Production domain:** `natro.meme`
+**DNS / proxy:** Cloudflare (orange-cloud / proxied)
+**Search Console:** verified at the `sc-domain:natro.meme` property level via Cloudflare DNS TXT record. Sitemap to submit once live: `https://natro.meme/sitemap.xml`.
+
 Assumes: the EC2 instance is already running another Strapi project (e.g. `photovideo.ae`), Nginx is the front-side reverse proxy, and SSL is via Let's Encrypt. We add the NATRO site as a **second** vhost without touching the first.
 
 ---
@@ -61,7 +65,6 @@ Wait for "Strapi started successfully" and "Ready" from Next.js.
 ```sh
 sudo cp deploy/nginx/natro.conf /etc/nginx/sites-available/natro.conf
 # (or /etc/nginx/conf.d/natro.conf on Amazon Linux)
-sudo sed -i "s/natro.example.com/$YOUR_DOMAIN/g" /etc/nginx/sites-available/natro.conf
 sudo ln -s /etc/nginx/sites-available/natro.conf /etc/nginx/sites-enabled/  # Ubuntu
 sudo nginx -t
 sudo systemctl reload nginx
@@ -69,9 +72,24 @@ sudo systemctl reload nginx
 
 ## 5. TLS
 
+Cloudflare proxying is on (orange cloud). For the origin server, use a
+Cloudflare Origin Certificate (15-year, free) or Let's Encrypt; either works.
+
+Let's Encrypt path:
 ```sh
-sudo certbot --nginx -d $YOUR_DOMAIN --redirect --agree-tos -m moykin.e@gmail.com
+sudo certbot --nginx -d natro.meme --redirect --agree-tos -m moykin.e@gmail.com
 ```
+
+Cloudflare dashboard → SSL/TLS → set **Full (strict)**.
+
+## 5a. Submit sitemap to Google Search Console
+
+The property `sc-domain:natro.meme` is already verified (Cloudflare DNS).
+Once the site responds on `https://natro.meme`:
+
+1. https://search.google.com/search-console → property `natro.meme` → **Sitemaps** → add `https://natro.meme/sitemap.xml`
+2. **URL inspection** → enter `https://natro.meme/` → **Request indexing**. Repeat for `/ru`, `/ka`, `/fr`, `/de`, `/es`, `/stories`, `/privacy` to speed up first crawl.
+3. First useful data appears after ~24–48h.
 
 ## 6. Create the Strapi admin account
 
