@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+.cache/
+.turbo/
+
+# Strapi
+backend/.strapi/
+backend/.tmp/
+backend/.cache/
+backend/build/
+backend/dist/
+backend/exports/
+backend/database/*.db*
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep
+backend/src/admin/.cache/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development.local
+*.pem
+*.key
+!ssh_known_hosts
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Large legacy media (kept locally for reference, not in repo)
+legacy/images/
+legacy/*.mp4
+
+# Test coverage
+coverage/
+*.lcov
+
+# TS incremental build artifacts
+*.tsbuildinfo
+**/tsconfig.tsbuildinfo
+
+# Local DB volumes
+.volumes/
+postgres-data/

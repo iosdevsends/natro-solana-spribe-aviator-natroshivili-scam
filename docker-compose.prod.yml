@@ -1,0 +1,30 @@
+name: natro
+
+services:
+  postgres:
+    ports: !reset []   # do not expose Postgres on host in prod
+    restart: always
+
+  backend:
+    image: ghcr.io/iosdevsends/natro-solana-spribe-aviator-natroshivili-scam/backend:latest
+    build: !reset null
+    volumes:
+      - backend_uploads:/app/public/uploads
+    environment:
+      NODE_ENV: production
+    restart: always
+
+  frontend:
+    image: ghcr.io/iosdevsends/natro-solana-spribe-aviator-natroshivili-scam/frontend:latest
+    build: !reset null
+    volumes: !reset []
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_STRAPI_URL: ${PUBLIC_STRAPI_URL}
+      STRAPI_INTERNAL_URL: http://backend:1337
+      STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
+      NEXT_PUBLIC_SITE_URL: ${PUBLIC_FRONTEND_URL}
+    restart: always
+
+volumes:
+  backend_uploads:

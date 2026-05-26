@@ -1,0 +1,128 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_stories",
+  "info": {
+    "singularName": "user-story",
+    "pluralName": "user-stories",
+    "displayName": "User Story",
+    "description": "A reader-submitted account of a similar reputation-based token launch or scam they were affected by. Goes through moderation before publication."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 8,
+      "maxLength": 220,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "summary": {
+      "type": "text",
+      "maxLength": 600,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "body": {
+      "type": "richtext",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "tokenSymbol": {
+      "type": "string",
+      "description": "e.g. NATRO, ROUGE — used for grouping",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "tokenChain": {
+      "type": "enumeration",
+      "enum": ["solana", "ethereum", "base", "bsc", "ton", "tron", "other", "non-crypto"],
+      "default": "solana",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "lossUsd": {
+      "type": "decimal",
+      "description": "Self-reported loss in USD (unverified — display as 'self-reported')",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "incidentDate": {
+      "type": "date",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "namedParties": {
+      "type": "json",
+      "description": "Array of {name, role, handles}. Authors warned that defamatory accusations may be rejected.",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "evidenceLinks": {
+      "type": "json",
+      "description": "Array of {label, url} — on-chain links, archives, press, etc.",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "videos", "files"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "authorDisplayName": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "isAnonymous": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "contactConsent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Author allows the editor to follow up via account email",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "verificationStatus": {
+      "type": "enumeration",
+      "enum": ["unverified", "partial", "verified", "rejected"],
+      "default": "unverified",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "moderationStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "needs-edits", "approved", "rejected"],
+      "default": "pending",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "moderationNotes": {
+      "type": "text",
+      "description": "Internal editor notes — never shown to readers",
+      "private": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "submittedAt": {
+      "type": "datetime",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "approvedAt": {
+      "type": "datetime",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "stories",
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
+  }
+}

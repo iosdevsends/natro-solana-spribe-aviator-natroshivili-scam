@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "evidence_rows",
+  "info": {
+    "singularName": "evidence-row",
+    "pluralName": "evidence-rows",
+    "displayName": "Evidence Row",
+    "description": "Row in §VI Source Documentation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "type": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "linkText": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "linkUrl": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "isOnRequest": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
+  }
+}

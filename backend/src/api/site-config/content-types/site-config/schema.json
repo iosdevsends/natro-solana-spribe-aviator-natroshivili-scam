@@ -1,0 +1,76 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_configs",
+  "info": {
+    "singularName": "site-config",
+    "pluralName": "site-configs",
+    "displayName": "Site Config",
+    "description": "Global metadata: masthead, dateline, footer, executive summary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "siteTitle": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "tagline": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "mastheadMeta": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "kicker": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "headline": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "deck": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "dateline": {
+      "type": "json",
+      "description": "Array of {label, value} (FILED, SUBJECT, STATUS, JURISDICTION)",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "byline": {
+      "type": "json",
+      "description": "Array of {label, value}",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "executiveSummary": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "rightOfReply": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "contactBlock": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "colophon": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "uiStrings": {
+      "type": "json",
+      "description": "All UI labels for this locale (key/value map)",
+      "pluginOptions": { "i18n": { "localized": true } }
+    }
+  }
+}

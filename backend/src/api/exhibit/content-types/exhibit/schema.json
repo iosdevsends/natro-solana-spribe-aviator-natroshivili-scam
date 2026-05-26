@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exhibits",
+  "info": {
+    "singularName": "exhibit",
+    "pluralName": "exhibits",
+    "displayName": "Exhibit",
+    "description": "A piece of evidence (screenshot, video, document). Captions are localized; the media file is shared across locales."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "exhibitNumber": {
+      "type": "string",
+      "description": "Display number, e.g. 'Exhibit 1'",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "fileNumber": {
+      "type": "integer",
+      "description": "Filename collection order (1..20)",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "displayOrder": {
+      "type": "integer",
+      "description": "Gallery display order",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "caption": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "mediaType": {
+      "type": "enumeration",
+      "enum": ["image", "video"],
+      "default": "image",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "videos"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "source": {
+      "type": "string",
+      "description": "Where it was captured (e.g. 'NATRO Foyer Telegram')",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "capturedAt": {
+      "type": "datetime",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "whyItMatters": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "highlighted": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
+  }
+}

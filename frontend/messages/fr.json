@@ -1,0 +1,42 @@
+{
+  "common": {
+    "siteName": "The NATRO File",
+    "skipToContent": "Skip to content",
+    "openExhibit": "Open exhibit",
+    "submittedAt": "Submitted",
+    "verified": "Verified",
+    "selfReported": "Self-reported, unverified"
+  },
+  "nav": {
+    "promise": "Promise",
+    "reality": "Reality",
+    "scrub": "Scrub",
+    "voices": "Voices",
+    "people": "People",
+    "evidence": "Sources",
+    "gallery": "Gallery",
+    "stories": "Reader stories",
+    "submit": "Submit a story"
+  },
+  "stories": {
+    "pageTitle": "Reader-submitted accounts",
+    "pageLead": "If you were affected by a similar reputation-based token launch or scam, submit your own documented account. Submissions go through editorial review before publication.",
+    "empty": "No reader accounts have been published yet.",
+    "submitTitle": "Submit your account",
+    "fieldTitle": "Title",
+    "fieldSummary": "One-paragraph summary",
+    "fieldBody": "Full account",
+    "fieldToken": "Token symbol (if applicable)",
+    "fieldChain": "Chain",
+    "fieldLoss": "Self-reported loss (USD)",
+    "fieldIncidentDate": "When did the incident occur?",
+    "fieldEvidenceLinks": "On-chain links / archives (one per line)",
+    "fieldAnonymous": "Publish anonymously",
+    "fieldContactConsent": "Allow the editor to contact me via my account email",
+    "submitButton": "Submit for review",
+    "moderation": "All submissions are reviewed for defamation risk and factual accuracy before publication. You will receive an email when your story is approved, edited, or rejected.",
+    "registerFirst": "You need an account to submit a story.",
+    "registerCta": "Create account",
+    "loginCta": "Sign in"
+  }
+}

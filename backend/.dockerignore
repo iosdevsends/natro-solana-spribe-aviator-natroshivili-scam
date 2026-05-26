@@ -1,0 +1,15 @@
+node_modules
+.tmp
+.cache
+build
+dist
+.strapi
+.env
+.env.*
+!.env.example
+public/uploads/*
+!public/uploads/.gitkeep
+*.log
+.git
+.gitignore
+README.md

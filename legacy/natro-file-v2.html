@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The NATRO File — A Case Study in Reputation Pricing</title>
+<meta name="description" content="A documented case file of the $NATRO Solana token launch (21 May 2026): what was promised, what was delivered, and what was scrubbed afterwards. Compiled from primary sources." />
+<meta property="og:title" content="The NATRO File — A Case Study in Reputation Pricing" />
+<meta property="og:description" content="A documented case file of the $NATRO Solana token launch. Primary sources, archived." />
+<meta property="og:type" content="article" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #0a0a08;
+  --paper: #f5f1e8;
+  --paper-warm: #ede7d8;
+  --rule: #c4b896;
+  --rule-soft: #d8cfb7;
+  --accent: #8b2c1e;        /* oxblood red — investigation flag */
+  --accent-soft: #b04937;
+  --gold: #806012;          /* dark editorial gold */
+  --ink-soft: #3a342a;
+  --ink-faint: #6b6452;
+  --damning: #5a1e10;
+  --highlight: #e8d896;     /* archival highlight */
+
+  --serif: 'Fraunces', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--serif);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* === LANGUAGE TOGGLE === */
+[data-lang] { display: none; }
+body.en [data-lang="en"] { display: revert; }
+body.ru [data-lang="ru"] { display: revert; }
+body.ka [data-lang="ka"] { display: revert; }
+body.en [data-lang="en"].inline { display: inline; }
+body.ru [data-lang="ru"].inline { display: inline; }
+body.ka [data-lang="ka"].inline { display: inline; }
+
+/* === GRAIN OVERLAY === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* === MASTHEAD === */
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding: 16px 32px;
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.masthead-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+
+.masthead-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.lang-switch {
+  display: inline-flex;
+  gap: 1px;
+  background: var(--ink);
+  padding: 1px;
+}
+
+.lang-switch button {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 6px 10px;
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+
+.lang-switch button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.lang-switch button:hover:not(.active) {
+  background: var(--paper-warm);
+}
+
+/* === DATELINE STRIP === */
+.dateline-strip {
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 12px 32px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  background: var(--paper-warm);
+}
+
+.dateline-strip strong { color: var(--accent); font-weight: 600; }
+
+/* === HERO / LEDE === */
+.lede {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 40px 80px;
+  position: relative;
+}
+
+.lede-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lede-kicker::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.lede-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 6.5vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: 40px;
+  color: var(--ink);
+}
+
+.lede-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.lede-deck {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.4;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: 780px;
+  margin-bottom: 56px;
+  padding-left: 24px;
+  border-left: 2px solid var(--rule);
+}
+
+.lede-byline {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.lede-byline strong { color: var(--ink); font-weight: 500; }
+
+/* === EXECUTIVE SUMMARY BOX === */
+.summary-box {
+  max-width: 980px;
+  margin: 40px auto 100px;
+  padding: 48px 56px;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  position: relative;
+}
+
+.summary-box::before {
+  content: 'SUMMARY';
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  background: var(--paper);
+  padding: 0 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.summary-box p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.summary-box p:last-child { margin-bottom: 0; }
+
+.summary-box strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === SECTION === */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  border-top: 1px solid var(--rule);
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.section-num .num {
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 56px;
+  max-width: 920px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* === BODY TEXT === */
+.body-text {
+  max-width: 720px;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.body-text p { margin-bottom: 22px; color: var(--ink); }
+
+.body-text p.lead {
+  font-size: 22px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.body-text p.lead::first-letter {
+  font-family: var(--serif);
+  font-size: 64px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.85;
+  padding: 8px 12px 0 0;
+  color: var(--accent);
+}
+
+.body-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* === PULL QUOTE BLOCK === */
+.pullquote {
+  max-width: 920px;
+  margin: 56px 0;
+  padding: 40px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.pullquote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.pullquote-attr {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.pullquote-attr strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === PROMISE VS REALITY GRID === */
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 56px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.promise-grid-header {
+  padding: 14px 24px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid var(--ink);
+}
+
+.promise-grid-header.left {
+  background: var(--paper-warm);
+  border-right: 1px solid var(--ink);
+  color: var(--ink-faint);
+}
+
+.promise-grid-header.right {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.promise-row {
+  display: contents;
+}
+
+.promise-cell {
+  padding: 28px 24px;
+  font-size: 16.5px;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.promise-cell.promise {
+  background: var(--paper-warm);
+  border-right: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.promise-cell.reality {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.promise-row:last-child .promise-cell {
+  border-bottom: none;
+}
+
+.promise-cell .label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+  font-style: normal;
+}
+
+.promise-cell.reality strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === TIER LADDER === */
+.tier-ladder {
+  margin: 56px 0;
+  max-width: 1020px;
+}
+
+.tier-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 280px 140px;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.tier-row.you {
+  background: linear-gradient(to right, rgba(139, 44, 30, 0.06), transparent);
+  margin-left: -16px;
+  padding-left: 16px;
+  margin-right: -16px;
+  padding-right: 16px;
+  border-bottom: 1px solid var(--accent);
+  border-top: 1px solid var(--accent);
+}
+
+.tier-num {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.tier-info h4 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.tier-info .threshold {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tier-promise {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.tier-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: right;
+  padding: 8px 12px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(139, 44, 30, 0.05);
+}
+
+.tier-row.you .tier-status {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* === TIMELINE === */
+.timeline {
+  margin: 40px 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 132px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: var(--rule);
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  position: relative;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.event::before {
+  content: '';
+  position: absolute;
+  left: 128px;
+  top: 38px;
+  width: 9px;
+  height: 9px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.event.damning::before {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.event-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 4px;
+  text-align: right;
+  padding-right: 36px;
+}
+
+.event.damning .event-date {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.event-body h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.event-body p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+
+.event-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.tag.evidence {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.tag.damning {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(139, 44, 30, 0.05);
+}
+
+/* === QUOTES SECTION === */
+.quotes-list {
+  display: grid;
+  gap: 32px;
+  margin-top: 40px;
+  max-width: 920px;
+}
+
+.quote {
+  padding: 32px 36px;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  position: relative;
+}
+
+.quote.damning {
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(to right, rgba(139, 44, 30, 0.04), var(--paper-warm));
+}
+
+.quote.headline {
+  padding: 48px;
+  text-align: center;
+}
+
+.quote.headline .quote-text {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  font-style: normal;
+  font-family: var(--serif);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.quote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 18px;
+  letter-spacing: -0.005em;
+}
+
+.quote-attr {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quote-attr strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.quote-attr .source {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* === EVIDENCE TABLE === */
+.evidence-table {
+  margin: 40px 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.evidence-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 180px;
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+
+.evidence-row:last-child { border-bottom: none; }
+
+.evidence-type {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+.evidence-desc {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.evidence-desc strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.evidence-desc code {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  background: var(--paper-warm);
+  padding: 2px 6px;
+  border: 1px solid var(--rule);
+  color: var(--accent);
+  word-break: break-all;
+  font-weight: 500;
+}
+
+.evidence-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent);
+  padding-bottom: 2px;
+  display: inline-block;
+  align-self: start;
+  text-align: right;
+}
+
+.evidence-link:hover {
+  background: var(--accent);
+  color: var(--paper);
+  border-bottom-color: var(--accent);
+}
+
+/* === PEOPLE GRID === */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin: 40px 0;
+}
+
+.person {
+  padding: 28px;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.person-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.person-name {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.person-handle {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.person-desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.person-statement {
+  padding: 12px 14px;
+  background: var(--paper);
+  border-left: 2px solid var(--accent);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.person-statement .label {
+  display: block;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* === DATA SNAPSHOT === */
+.snapshot {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  margin: 40px 0;
+}
+
+.snapshot-cell {
+  background: var(--paper);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.snapshot-value {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.snapshot-value.bad {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.snapshot-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* === FOOTNOTES / RIGHT OF REPLY === */
+.footer-section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 40px;
+  margin-top: 80px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+
+.footer-block h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--rule);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-block p {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--paper-warm);
+  margin-bottom: 14px;
+}
+
+.footer-block a {
+  color: var(--highlight);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--highlight);
+}
+
+.footer-block a:hover {
+  background: var(--highlight);
+  color: var(--ink);
+}
+
+.colophon {
+  max-width: 1100px;
+  margin: 56px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid rgba(245, 241, 232, 0.2);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+/* === INLINE ARCHIVE LINK === */
+.archive-ref {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+  font-weight: 500;
+}
+
+.archive-ref:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .masthead { padding: 14px 20px; gap: 12px; }
+  .masthead-title { font-size: 18px; }
+  .masthead-meta { font-size: 9px; gap: 12px; }
+  .dateline-strip { padding: 10px 20px; gap: 16px; font-size: 9.5px; }
+  .lede { padding: 60px 24px 50px; }
+  .lede-deck { padding-left: 16px; }
+  .summary-box { padding: 32px 28px; margin: 20px 24px 60px; }
+  .section { padding: 56px 24px; }
+  .body-text { font-size: 17px; }
+  .body-text p.lead { font-size: 19px; }
+  .promise-grid { grid-template-columns: 1fr; }
+  .promise-cell.promise { border-right: none; border-bottom: 1px solid var(--rule); }
+  .tier-row { grid-template-columns: 50px 1fr; }
+  .tier-promise, .tier-status { grid-column: 2; }
+  .timeline::before { left: 6px; }
+  .event { grid-template-columns: 1fr; gap: 8px; padding: 20px 0 20px 28px; }
+  .event::before { left: 2px; top: 24px; }
+  .event-date { text-align: left; padding-right: 0; }
+  .quote.headline { padding: 32px 24px; }
+  .quote { padding: 24px; }
+  .quote-text { font-size: 19px; }
+  .evidence-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
+  .footer-section { padding: 56px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media print {
+  body::before { display: none; }
+  .masthead, .lang-switch { position: static; }
+  .footer-section { background: white; color: black; }
+  .lightbox { display: none !important; }
+}
+
+/* === EXHIBIT THUMBNAILS === */
+.exhibits {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.exhibit-thumb {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.2s;
+  display: block;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.exhibit-thumb:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.exhibit-thumb img,
+.exhibit-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exhibit-thumb .exhibit-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(10,10,8,0.92), transparent);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 6px 6px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.exhibit-thumb.video::before {
+  content: '▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: rgba(245,241,232,0.95);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding-left: 2px;
+  z-index: 2;
+  border: 1px solid var(--ink);
+}
+
+/* === LIGHTBOX MODAL === */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 8, 0.96);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 60px;
+  flex-direction: column;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 1200px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.lightbox-media {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: var(--paper);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-caption {
+  max-width: 760px;
+  text-align: center;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.lightbox-caption .exhibit-num {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--highlight);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  background: rgba(245, 241, 232, 0.1);
+  color: var(--paper);
+  border: 1px solid rgba(245, 241, 232, 0.2);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 300;
+  transition: all 0.15s;
+  z-index: 1001;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  background: rgba(245, 241, 232, 0.2);
+  border-color: var(--paper);
+}
+
+.lightbox-close {
+  top: 24px;
+  right: 24px;
+}
+
+.lightbox-nav.prev { left: 24px; top: 50%; transform: translateY(-50%); }
+.lightbox-nav.next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-counter {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: rgba(10, 10, 8, 0.6);
+  padding: 14px 18px;
+  border: 1px solid rgba(245, 241, 232, 0.2);
+}
+
+@media (max-width: 768px) {
+  .exhibit-thumb { width: 72px; height: 72px; }
+  .lightbox { padding: 20px 10px; }
+  .lightbox-close, .lightbox-nav { width: 36px; height: 36px; font-size: 18px; }
+  .lightbox-close { top: 12px; right: 12px; }
+  .lightbox-nav.prev { left: 8px; }
+  .lightbox-nav.next { right: 8px; }
+}
+</style>
+</head>
+<body class="en">
+
+<!-- ============================================================ -->
+<!--  MASTHEAD                                                    -->
+<!-- ============================================================ -->
+<header class="masthead">
+  <div class="masthead-title">The NATRO File</div>
+  <div class="masthead-meta">
+    <span data-lang="en">Case study · Compiled from primary sources</span>
+    <span data-lang="ru">Кейс-стади · Составлено из первичных источников</span>
+    <span data-lang="ka">საქმის შესწავლა · შედგენილია პირველადი წყაროებიდან</span>
+    <div class="lang-switch">
+      <button data-lang-btn="en" class="active">EN</button>
+      <button data-lang-btn="ru">RU</button>
+      <button data-lang-btn="ka">KA</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!--  DATELINE                                                    -->
+<!-- ============================================================ -->
+<div class="dateline-strip">
+  <span><strong>FILED:</strong> 26 May 2026</span>
+  <span><strong>SUBJECT:</strong> $NATRO · Solana token launch</span>
+  <span><strong>STATUS:</strong> <span data-lang="en">Public record</span><span data-lang="ru">Публичная запись</span><span data-lang="ka">საჯარო ჩანაწერი</span></span>
+  <span><strong>JURISDICTION:</strong> <span data-lang="en">Cross-border (Monaco / Georgia / Ukraine)</span><span data-lang="ru">Трансграничная (Монако / Грузия / Украина)</span><span data-lang="ka">საერთაშორისო</span></span>
+</div>
+
+<!-- ============================================================ -->
+<!--  LEDE                                                        -->
+<!-- ============================================================ -->
+<section class="lede">
+  <div class="lede-kicker">
+    <span data-lang="en">A documented case in reputation pricing</span>
+    <span data-lang="ru">Документированный случай ценообразования репутации</span>
+    <span data-lang="ka">დოკუმენტირებული ფასების შემთხვევა რეპუტაციაში</span>
+  </div>
+
+  <h1 class="lede-headline">
+    <span data-lang="en">A token sold on a <em>family name</em>. A 98% collapse. <em>A scrub.</em></span>
+    <span data-lang="ru">Токен, проданный <em>фамилией</em>. Обвал на 98%. <em>Зачистка.</em></span>
+    <span data-lang="ka">ტოკენი გაყიდულია <em>გვარზე</em>. 98% კოლაფსი. <em>დაფარვა.</em></span>
+  </h1>
+
+  <p class="lede-deck">
+    <span data-lang="en">On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex Natroshvili — son of David Natroshvili, founder and CEO of Spribe, the studio behind the global gambling product Aviator. The pitch was the family name. Within seventy-two hours of refunds being refused, the website, the promotional video, and the social-bio links had all been scrubbed. The blockchain trail, the archived website, and the chat logs were not.</span>
+    <span data-lang="ru">21 мая 2026 года на Solana через Pump.fun был запущен memecoin $NATRO под руководством Алекса Натрошвили — сына Давида Натрошвили, основателя и CEO Spribe, студии за глобальным гемблинг-продуктом Aviator. Главным аргументом было имя семьи. В течение 72 часов после отказа от возвратов сайт, промо-видео и ссылки в био были удалены. Блокчейн-след, архив сайта и логи чатов — нет.</span>
+    <span data-lang="ka">2026 წლის 21 მაისს, Solana-ზე Pump.fun-ის მეშვეობით გაიშვა $NATRO memecoin Alex Natroshvili-ის მიერ — David Natroshvili-ის შვილი (Spribe-ის დამფუძნებელი და CEO). მთავარი არგუმენტი იყო ოჯახის სახელი. 72 საათში, აღდგენაზე უარის შემდეგ, საიტი, პრომო-ვიდეო და სოციალური ბმულები წაიშალა. ბლოკჩეინის კვალი, საიტის არქივი და ჩატის ლოგები — არა.</span>
+  </p>
+
+  <div class="lede-byline">
+    <span><strong>FILE COMPILED BY:</strong> <span data-lang="en">An affected early holder</span><span data-lang="ru">Пострадавший ранний холдер</span><span data-lang="ka">დაზარალებული მფლობელი</span></span>
+    <span><strong>POSITION:</strong> 220,000,000 NATRO <span data-lang="en">(approx. 22% of retail-held supply)</span><span data-lang="ru">(≈22% retail-supply)</span><span data-lang="ka">(≈22% retail-supply)</span></span>
+    <span><strong>METHOD:</strong> <span data-lang="en">Primary sources only · all linked &amp; archived</span><span data-lang="ru">Только первичные источники · всё в архиве</span><span data-lang="ka">მხოლოდ პირველადი წყაროები</span></span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  EXECUTIVE SUMMARY                                           -->
+<!-- ============================================================ -->
+<div class="summary-box">
+  <p data-lang="en">$NATRO was marketed as a "networking coin" promising tier-gated access to private chats with high-net-worth individuals and industry insiders. The pitch leaned explicitly on the Natroshvili family name and the Spribe / Aviator association as the trust signal.</p>
+  <p data-lang="en">The website's own FAQ — captured in full on the Wayback Machine before deletion — addressed the rug-pull question directly: <strong>"The reputation hit lasts forever; the cash from a rug doesn't."</strong> The founder's 30,000,000-token bag was publicly committed never to move, with the line: "If that bag ever moves, you have permission to roast us publicly."</p>
+  <p data-lang="en">Within days, the price collapsed approximately 98%. Refund requests from affected holders were refused. The team admin's response to a structured proposal: <strong>"Nothing to say."</strong> The founder's personal Telegram reply, when contacted directly: <strong>"stfu."</strong> Within the same 72-hour window, the official website was taken offline, the NATRO link was removed from the founder's Instagram bio, and the paid promotional video by KOL @jrcryptex was deleted from Instagram.</p>
+  <p data-lang="en">This file documents what was promised, what was delivered, and what was removed afterwards.</p>
+
+  <p data-lang="ru">$NATRO продвигался как «networking-токен», обещавший tier-доступ к приватным чатам с состоятельными людьми и инсайдерами индустрии. Главным аргументом было имя семьи Натрошвили и связь со Spribe / Aviator как trust signal.</p>
+  <p data-lang="ru">FAQ их собственного сайта — полностью зафиксирован Wayback Machine до удаления — прямо обращался к вопросу о rug pull: <strong>«Удар по репутации длится вечно; деньги с rug — нет».</strong> 30-миллионный bag фаундера был публично закреплён неподвижным, со словами: «Если этот bag когда-либо сдвинется, у вас есть разрешение публично нас осмеять».</p>
+  <p data-lang="ru">За несколько дней цена обвалилась примерно на 98%. Запросы на возврат от пострадавших холдеров были отклонены. Ответ админа на структурированное предложение: <strong>«Нечего сказать».</strong> Личный ответ фаундера в Telegram при прямом обращении: <strong>«stfu».</strong> В то же 72-часовое окно официальный сайт был удалён, ссылка NATRO исчезла из bio Instagram фаундера, а оплаченное промо KOL @jrcryptex было удалено из Instagram.</p>
+  <p data-lang="ru">Этот файл документирует что было обещано, что было доставлено, и что было удалено после.</p>
+
+  <p data-lang="ka">$NATRO რეკლამდებოდა როგორც „networking-ტოკენი" tier-დაშვებით პრივატულ ჩატებში მაღალი დონის ადამიანებთან. მთავარი არგუმენტი იყო Natroshvili-ის გვარი და Spribe / Aviator კავშირი.</p>
+  <p data-lang="ka">საიტის FAQ — სრულად ფიქსირებული Wayback Machine-ით წაშლამდე — პირდაპირ ეხებოდა rug pull-ის საკითხს: <strong>„რეპუტაციის დარტყმა სამარადისოა; sქამიდან ფული — არა."</strong></p>
+  <p data-lang="ka">რამდენიმე დღეში ფასი დაეცა ~98%-ით. დაბრუნების მოთხოვნებზე უარი თქვეს. ადმინის პასუხი: <strong>„Nothing to say."</strong> დამფუძნებლის პირადი Telegram-ის პასუხი: <strong>„stfu."</strong> იმავე 72 საათში წაიშალა საიტი, NATRO ბმული Instagram bio-დან და ფასიანი პრომო-ვიდეო.</p>
+  <p data-lang="ka">ეს ფაილი დოკუმენტირებს, რა იყო დაპირებული, რა მიწოდდა და რა წაიშალა.</p>
+</div>
+
+<!-- ============================================================ -->
+<!--  SECTION I — THE PROMISE                                     -->
+<!-- ============================================================ -->
+<section class="section" id="promise">
+  <div class="section-num"><span class="num">§ I</span><span data-lang="en">The promise</span><span data-lang="ru">Обещание</span><span data-lang="ka">დაპირება</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">A token sold not on a product, but on <em>a name</em>.</span>
+    <span data-lang="ru">Токен, проданный не на продукте, а на <em>имени</em>.</span>
+    <span data-lang="ka">ტოკენი, გაყიდული არა პროდუქტზე, არამედ <em>სახელზე</em>.</span>
+  </h2>
+
+  <div class="body-text">
+    <p class="lead" data-lang="en">NATRO's marketing was not subtle about its central asset. From the website's hero page: "It's not about what you make. It's who picks up when you call." Below that, the founder section opened with the line: "Most coin founders are anonymous. Alex isn't. His name is on the project, his face is on TikTok and Instagram, and his family is well-known globally."</p>
+
+    <p data-lang="en">The pitch — preserved in the Wayback Machine archive of <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="archive-ref">natrocoin.net</a> — was explicit. $NATRO was sold as a "networking coin" with a tier-gated bot that, in exchange for holding the token, would admit buyers to private Telegram rooms with "people you wouldn't normally get to talk to." The marketing copy framed it as access economics: <em>"The salary helps. The title helps. None of it is the thing. The thing is who you can actually reach when you need something… The real chats have no door you can knock on."</em></p>
+
+    <p data-lang="en">Four tiers were defined, with token thresholds and named rooms — The Foyer, The Floor, The Lounge, The Salon. The top room (Tier IV · Inner Circle · 20,000,000 NATRO) was described as: "The top chat. Names you'd recognize, real money behind them, people who can actually open doors." A holder reaching this threshold would, on the team's account, be granted introductions worth the entry price many times over.</p>
+
+    <p data-lang="en">The founder's father, David Natroshvili, is publicly known as the founder and CEO of Spribe — the studio behind Aviator, a globally distributed crash-style gambling product licensed in multiple jurisdictions. In a recent video interview David described Spribe as "one of the biggest companies in the world." The family standing, then, was both real and high-value. The website's pitch leaned directly on that valuation.</p>
+
+    <p class="lead" data-lang="ru">Маркетинг NATRO не был тонок насчёт своего главного актива. С главной страницы сайта: «Это не о том, что ты делаешь. Это о том, кто берёт трубку, когда ты звонишь.» Ниже секция founder открывалась строкой: «Большинство фаундеров монет анонимны. Alex — нет. Его имя — на проекте, его лицо — в TikTok и Instagram, а его семья известна во всём мире.»</p>
+
+    <p data-lang="ru">Pitch — сохранённый в архиве Wayback Machine для <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="archive-ref">natrocoin.net</a> — был эксплицитным. $NATRO продавался как «networking-токен» с tier-bot, который в обмен на холдинг токена допускал бы покупателей в приватные Telegram-комнаты с «людьми, с которыми обычно не получится поговорить». Маркетинг описывал это как «экономику доступа».</p>
+
+    <p data-lang="ru">Было определено четыре tier с числовыми порогами и именованными комнатами — The Foyer, The Floor, The Lounge, The Salon. Высшая комната (Tier IV · Inner Circle · 20,000,000 NATRO) описывалась как: «Топ-чат. Имена, которые вы узнаете, реальные деньги за ними, люди, которые реально могут открыть двери.» Холдер, достигающий этого порога, согласно описанию команды, получал бы intro, многократно покрывающие цену входа.</p>
+
+    <p data-lang="ru">Отец founder'а, Давид Натрошвили, публично известен как основатель и CEO Spribe — студии за продуктом Aviator, глобально дистрибутируемой crash-style гемблинг-игрой, лицензированной в множестве юрисдикций. В недавнем видео-интервью Давид описал Spribe как «одну из крупнейших компаний в мире». Standing семьи, таким образом, был реален и высокоценен. Pitch сайта прямо опирался на эту valuation.</p>
+
+    <p class="lead" data-lang="ka">NATRO-ს მარკეტინგი არ იყო ფარული თავის მთავარ აქტივში. საიტის მთავარი გვერდიდან: „ეს არ ეხება იმას, რასაც აკეთებ. ეს ეხება იმას, ვინც პასუხობს, როცა დარეკავ."</p>
+
+    <p data-lang="ka">$NATRO გაიყიდა, როგორც „networking-ტოკენი" tier-bot-ით, რომელიც ტოკენის ფლობის სანაცვლოდ მფლობელებს უშვებდა პრივატულ Telegram-ის ოთახებში „ხალხთან, ვისთანაც ჩვეულებრივ ვერ ისაუბრებდი".</p>
+
+    <p data-lang="ka">დამფუძნებლის მამა, David Natroshvili, საჯაროდ ცნობილია, როგორც Spribe-ის CEO — Aviator-ის სტუდია. ბოლო ვიდეო-ინტერვიუში David-მა Spribe აღწერა, როგორც „მსოფლიოს ერთ-ერთი უდიდესი კომპანია."</p>
+  </div>
+
+  <!-- The FAQ Smoking Gun -->
+  <div class="pullquote">
+    <p class="pullquote-text" data-lang="en">"Two things, in order of importance: it isn't worth it. A wildly successful exit on something like this would be a rounding error against what the Natroshvili name is actually worth. <strong style="font-weight:600;color:var(--accent);">The reputation hit lasts forever; the cash from a rug doesn't.</strong>"</p>
+    <p class="pullquote-text" data-lang="ru">«Две вещи, в порядке важности: это не стоит того. Дико успешный exit на чём-то подобном был бы погрешностью против того, чего на самом деле стоит фамилия Natroshvili. <strong style="font-weight:600;color:var(--accent);">Удар по репутации длится вечно; деньги с rug — нет.</strong>»</p>
+    <p class="pullquote-text" data-lang="ka">„ორი რამ, მნიშვნელობის მიხედვით: ეს არ ღირს. <strong style="font-weight:600;color:var(--accent);">რეპუტაციის დარტყმა სამარადისოა; sქამიდან ფული — არა.</strong>"</p>
+    <p class="pullquote-attr">
+      <span data-lang="en">— $NATRO website, FAQ section, "What stops you from rugging?" · <strong>Captured by Wayback Machine before deletion</strong> · <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="archive-ref">view archive</a></span>
+      <span data-lang="ru">— сайт $NATRO, FAQ, «Что мешает вам сделать rug?» · <strong>Зафиксировано Wayback Machine</strong> · <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="archive-ref">архив</a></span>
+      <span data-lang="ka">— $NATRO საიტი, FAQ · <strong>Wayback Machine-ით ფიქსირებული</strong></span>
+    </p>
+  </div>
+
+  <!-- Tier Ladder -->
+  <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 500; margin-top: 80px; margin-bottom: 20px; letter-spacing: -0.02em;">
+    <span data-lang="en">The promised tier ladder</span>
+    <span data-lang="ru">Обещанная tier-лестница</span>
+    <span data-lang="ka">დაპირებული tier-კიბე</span>
+  </h3>
+  <p style="font-family: var(--serif); font-style: italic; color: var(--ink-faint); margin-bottom: 32px; max-width: 720px;">
+    <span data-lang="en">From natrocoin.net, archived 21 May 2026. The rooms were created, but at the sizes documented below. After the chats opened, one of the admins voluntarily left the groups.</span>
+    <span data-lang="ru">С natrocoin.net, архив от 21 мая 2026. Комнаты были созданы, но в размерах, документированных ниже. После открытия чатов один из админов добровольно покинул группы.</span>
+    <span data-lang="ka">natrocoin.net-დან, არქივი 21 მაისი 2026. ოთახები შეიქმნა, მაგრამ ქვემოთ მითითებული ზომით. ჩატების გახსნის შემდეგ ერთ-ერთმა ადმინმა ნებაყოფლობით დატოვა ჯგუფები.</span>
+  </p>
+
+  <div class="tier-ladder">
+    <div class="tier-row">
+      <div class="tier-num">I</div>
+      <div class="tier-info">
+        <h4 data-lang="en">The Foyer · Entry</h4>
+        <h4 data-lang="ru">The Foyer · Вход</h4>
+        <h4 data-lang="ka">The Foyer · შესასვლელი</h4>
+        <div class="threshold">1,000,000 NATRO</div>
+      </div>
+      <div class="tier-promise">
+        <span data-lang="en">"The big group chat. A few thousand holders, lots of chatter, announcements."</span>
+        <span data-lang="ru">«Большой групповой чат. Несколько тысяч холдеров, много общения, анонсы.»</span>
+        <span data-lang="ka">„დიდი ჯგუფური ჩატი."</span>
+      </div>
+      <div class="tier-status" data-lang="en">Delivered: 13 members</div>
+      <div class="tier-status" data-lang="ru">Доставлено: 13 человек</div>
+      <div class="tier-status" data-lang="ka">მიწოდდა: 13 წევრი</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-num">II</div>
+      <div class="tier-info">
+        <h4 data-lang="en">The Floor · Members</h4>
+        <h4 data-lang="ru">The Floor · Участники</h4>
+        <h4 data-lang="ka">The Floor · წევრები</h4>
+        <div class="threshold">5,000,000 NATRO</div>
+      </div>
+      <div class="tier-promise">
+        <span data-lang="en">"Smaller and more active. AMAs, intros, day-to-day useful conversation."</span>
+        <span data-lang="ru">«Меньше и активнее. AMA, intros, полезные ежедневные беседы.»</span>
+        <span data-lang="ka">„უფრო პატარა და აქტიური."</span>
+      </div>
+      <div class="tier-status" data-lang="en">Delivered: 10 members</div>
+      <div class="tier-status" data-lang="ru">Доставлено: 10 человек</div>
+      <div class="tier-status" data-lang="ka">მიწოდდა: 10 წევრი</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-num">III</div>
+      <div class="tier-info">
+        <h4 data-lang="en">The Lounge · Premium</h4>
+        <h4 data-lang="ru">The Lounge · Премиум</h4>
+        <h4 data-lang="ka">The Lounge · პრემიუმი</h4>
+        <div class="threshold">10,000,000 NATRO</div>
+      </div>
+      <div class="tier-promise">
+        <span data-lang="en">"Bag size starts mattering. Founders, HNW holders, creators whose audiences you'd recognize."</span>
+        <span data-lang="ru">«Размер bag начинает иметь значение. Founders, HNW холдеры, креаторы.»</span>
+        <span data-lang="ka">„Bag-ის ზომა იწყებს მნიშვნელობას."</span>
+      </div>
+      <div class="tier-status" data-lang="en">Delivered: 2 holders + 3 admins</div>
+      <div class="tier-status" data-lang="ru">Доставлено: 2 холдера + 3 админа</div>
+      <div class="tier-status" data-lang="ka">მიწოდდა: 2 + 3 ადმინი</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-num">IV</div>
+      <div class="tier-info">
+        <h4 data-lang="en">The Salon · Inner Circle</h4>
+        <h4 data-lang="ru">The Salon · Inner Circle</h4>
+        <h4 data-lang="ka">The Salon · Inner Circle</h4>
+        <div class="threshold">20,000,000 NATRO</div>
+      </div>
+      <div class="tier-promise">
+        <span data-lang="en">"The top chat. Names you'd recognize, real money behind them, people who can actually open doors."</span>
+        <span data-lang="ru">«Топ-чат. Имена, которые вы узнаете, реальные деньги за ними, люди, которые реально могут открыть двери.»</span>
+        <span data-lang="ka">„ტოპ ჩატი."</span>
+      </div>
+      <div class="tier-status" data-lang="en">Never created</div>
+      <div class="tier-status" data-lang="ru">Никогда не создан</div>
+      <div class="tier-status" data-lang="ka">არ შექმნილა</div>
+    </div>
+    <div class="tier-row you">
+      <div class="tier-num" style="color: var(--accent);">↗</div>
+      <div class="tier-info">
+        <h4 data-lang="en">The compiler of this file</h4>
+        <h4 data-lang="ru">Составитель этого файла</h4>
+        <h4 data-lang="ka">ფაილის შემდგენელი</h4>
+        <div class="threshold">220,000,000 NATRO</div>
+      </div>
+      <div class="tier-promise">
+        <span data-lang="en">11× above the highest defined tier. Per the marketing, the highest possible access. Admitted to the Lounge (3 admins + 2 other holders). The Salon (Inner Circle, 20M threshold) was never created. After the chats opened, one admin voluntarily left the groups.</span>
+        <span data-lang="ru">В 11 раз выше высшего tier. По маркетингу — высший возможный доступ. Допущен в Lounge (3 админа + 2 других холдера). The Salon (Inner Circle, 20M порог) — никогда не был создан. После открытия чатов один из админов добровольно покинул группы.</span>
+        <span data-lang="ka">11-ჯერ მაღლა უმაღლეს tier-ზე. Lounge-ში დაშვებული (3 ადმინი + 2 სხვა). The Salon არასოდეს შექმნილა. ერთმა ადმინმა დატოვა ჯგუფი.</span>
+      </div>
+      <div class="tier-status" data-lang="en">No real access</div>
+      <div class="tier-status" data-lang="ru">Реального доступа нет</div>
+      <div class="tier-status" data-lang="ka">წვდომა არ მიწოდდა</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!--  SECTION II — THE REALITY                                    -->
+<!-- ============================================================ -->
+<section class="section" id="reality">
+  <div class="section-num"><span class="num">§ II</span><span data-lang="en">The reality</span><span data-lang="ru">Реальность</span><span data-lang="ka">რეალობა</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">What was delivered, in <em>numbers</em>.</span>
+    <span data-lang="ru">Что было доставлено, в <em>цифрах</em>.</span>
+    <span data-lang="ka">რა მიწოდდა, <em>რიცხვებში</em>.</span>
+  </h2>
+
+  <div class="body-text">
+    <p class="lead" data-lang="en">The launch occurred on 21 May 2026 at 20:11 UTC via Pump.fun. Within hours of trading opening, the price had spiked and then begun a steep descent. By 23 May, holders in the project's own Telegram channel were openly discussing losses. By 24 May, the team began removing public traces of the project from their channels — while the official NATRO Telegram channel, with 5,964 subscribers, continued to publish recruitment messages aimed at new buyers.</p>
+
+    <p class="lead" data-lang="ru">Запуск состоялся 21 мая 2026 года в 20:11 UTC через Pump.fun. В течение часов после открытия торгов цена пошла резко вверх и затем резко вниз. К 23 мая холдеры в собственном Telegram-канале проекта открыто обсуждали потери. К 24 мая команда начала удалять публичные следы проекта со своих каналов — в то время как официальный Telegram-канал NATRO, с 5,964 подписчиками, продолжал публиковать сообщения для привлечения новых покупателей.</p>
+
+    <p class="lead" data-lang="ka">გაშვება მოხდა 2026 წლის 21 მაისს, 20:11 UTC-ზე, Pump.fun-ის მეშვეობით. 23 მაისისთვის მფლობელები საკუთარ Telegram არხში ღიად განიხილავდნენ ზარალს. 24 მაისისთვის გუნდმა დაიწყო პროექტის საჯარო კვალის წაშლა.</p>
+  </div>
+
+  <div class="snapshot">
+    <div class="snapshot-cell">
+      <div class="snapshot-value bad">~98%</div>
+      <div class="snapshot-label" data-lang="en">Price collapse</div>
+      <div class="snapshot-label" data-lang="ru">Обвал цены</div>
+      <div class="snapshot-label" data-lang="ka">ფასის კოლაფსი</div>
+    </div>
+    <div class="snapshot-cell">
+      <div class="snapshot-value">352</div>
+      <div class="snapshot-label" data-lang="en">Holders remaining</div>
+      <div class="snapshot-label" data-lang="ru">Холдеров осталось</div>
+      <div class="snapshot-label" data-lang="ka">დარჩენილი მფლობელი</div>
+    </div>
+    <div class="snapshot-cell">
+      <div class="snapshot-value bad">$6.7K</div>
+      <div class="snapshot-label" data-lang="en">Market cap (latest)</div>
+      <div class="snapshot-label" data-lang="ru">Кап (последний)</div>
+      <div class="snapshot-label" data-lang="ka">MC (უახლესი)</div>
+    </div>
+    <div class="snapshot-cell">
+      <div class="snapshot-value">$200K+</div>
+      <div class="snapshot-label" data-lang="en">"Committed at launch"</div>
+      <div class="snapshot-label" data-lang="ru">«Привлечено на launch»</div>
+      <div class="snapshot-label" data-lang="ka">„მოზიდული launch-ზე"</div>
+    </div>
+    <div class="snapshot-cell">
+      <div class="snapshot-value bad">13 / 10 / 5</div>
+      <div class="snapshot-label" data-lang="en">Foyer / Floor / Lounge members</div>
+      <div class="snapshot-label" data-lang="ru">Foyer / Floor / Lounge чел.</div>
+      <div class="snapshot-label" data-lang="ka">Foyer / Floor / Lounge</div>
+    </div>
+    <div class="snapshot-cell">
+      <div class="snapshot-value">5,964</div>
+      <div class="snapshot-label" data-lang="en">Channel subscribers still being marketed to</div>
+      <div class="snapshot-label" data-lang="ru">Подписчиков канала, ещё в маркетинге</div>
+      <div class="snapshot-label" data-lang="ka">გამომწერი, ჯერ კიდევ რეკლამდება</div>
+    </div>
+  </div>
+
+  <!-- Promise vs Reality grid -->
+  <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 500; margin-top: 80px; margin-bottom: 8px; letter-spacing: -0.02em;">
+    <span data-lang="en">Stated &amp; delivered, side by side</span>
+    <span data-lang="ru">Заявлено и доставлено, рядом</span>
+    <span data-lang="ka">გაცხადებული და მიწოდებული</span>
+  </h3>
+
+  <div class="promise-grid">
+    <div class="promise-grid-header left">
+      <span data-lang="en">What was stated</span>
+      <span data-lang="ru">Что было заявлено</span>
+      <span data-lang="ka">რა გაცხადდა</span>
+    </div>
+    <div class="promise-grid-header right">
+      <span data-lang="en">What was delivered</span>
+      <span data-lang="ru">Что было доставлено</span>
+      <span data-lang="ka">რა მიწოდდა</span>
+    </div>
+
+    <div class="promise-row">
+      <div class="promise-cell promise">
+        <span class="label" data-lang="en">Networking access</span>
+        <span class="label" data-lang="ru">Networking-доступ</span>
+        <span class="label" data-lang="ka">Networking წვდომა</span>
+        <span data-lang="en">"Hold the coin, the bot checks your wallet, and you end up in a private chat with people you wouldn't have run into otherwise."</span>
+        <span data-lang="ru">«Холдь монету, бот проверит твой кошелёк, и ты окажешься в приватном чате с людьми, с которыми иначе бы не встретился.»</span>
+        <span data-lang="ka">„გქონდე ტოკენი, ბოტი ამოწმებს შენს ვალეტს, ხვდები პრივატულ ჩატში."</span>
+      </div>
+      <div class="promise-cell reality">
+        <span class="label" data-lang="en">Verified</span>
+        <span class="label" data-lang="ru">Подтверждено</span>
+        <span class="label" data-lang="ka">დადასტურებული</span>
+        <span data-lang="en"><strong>Rooms created at unviable sizes.</strong> Foyer (entry tier): 13 members. Floor: 10 members. Lounge (premium, 10M threshold): 2 holders and 3 admins. Salon (Inner Circle, 20M threshold): <strong>never created</strong>. After the chats opened, one of the admins voluntarily left the groups. None of the "few thousand holders" or "names you'd recognize" promised by the marketing materialized.</span>
+        <span data-lang="ru"><strong>Комнаты созданы в нежизнеспособных размерах.</strong> Foyer (entry tier): 13 человек. Floor: 10 человек. Lounge (premium, порог 10M): 2 холдера и 3 админа. Salon (Inner Circle, порог 20M): <strong>никогда не создан</strong>. После открытия чатов один из админов добровольно покинул группы. Ни «несколько тысяч холдеров», ни «имена, которые вы узнаете», обещанные маркетингом, не материализовались.</span>
+        <span data-lang="ka"><strong>ოთახები შეიქმნა არასიცოცხლისუნარიანი ზომით.</strong> Foyer: 13 წევრი. Floor: 10. Lounge: 2 მფლობელი + 3 ადმინი. Salon: <strong>არასოდეს შექმნილა</strong>. ჩატების გახსნის შემდეგ ერთმა ადმინმა დატოვა ჯგუფი.</span>
+      </div>
+    </div>
+
+    <div class="promise-row">
+      <div class="promise-cell promise">
+        <span class="label" data-lang="en">Founder bag</span>
+        <span class="label" data-lang="ru">Bag фаундера</span>
+        <span class="label" data-lang="ka">დამფუძნებლის Bag</span>
+        <span data-lang="en">"Alex's 3% bag is publicly committed to never moving." Public wallet address. On-chain verifiable at any time.</span>
+        <span data-lang="ru">«3% bag Alex'а публично закреплён неподвижным.» Публичный адрес кошелька.</span>
+        <span data-lang="ka">„Alex-ის 3% bag საჯაროდ ფიქსირებულია უძრავად."</span>
+      </div>
+      <div class="promise-cell reality">
+        <span class="label" data-lang="en">Pending verification</span>
+        <span class="label" data-lang="ru">К проверке</span>
+        <span class="label" data-lang="ka">გადასამოწმებელი</span>
+        <span data-lang="en"><strong>On-chain audit in progress.</strong> The creator wallet shows continuing swap and liquidity activity post-launch. Whether this corresponds to the named 30M founder bag, or to a separate team allocation, requires further on-chain forensics.</span>
+        <span data-lang="ru"><strong>On-chain аудит в процессе.</strong> Кошелёк creator'а показывает продолжающуюся swap и liquidity активность.</span>
+        <span data-lang="ka"><strong>On-chain აუდიტი მიმდინარეობს.</strong></span>
+      </div>
+    </div>
+
+    <div class="promise-row">
+      <div class="promise-cell promise">
+        <span class="label" data-lang="en">$200K committed at launch</span>
+        <span class="label" data-lang="ru">$200K привлечено на launch</span>
+        <span class="label" data-lang="ka">$200K launch-ზე</span>
+        <span data-lang="en">"$200k+ committed at launch · 5,500+ pre-launch members &amp; counting."</span>
+        <span data-lang="ru">«$200K+ привлечено на launch · 5,500+ pre-launch участников и растёт.»</span>
+        <span data-lang="ka">„$200K+ launch-ზე · 5,500+ pre-launch წევრი."</span>
+      </div>
+      <div class="promise-cell reality">
+        <span class="label" data-lang="en">Verified collapse</span>
+        <span class="label" data-lang="ru">Подтверждённый обвал</span>
+        <span class="label" data-lang="ka">დადასტურებული კოლაფსი</span>
+        <span data-lang="en">Current MC <strong>~$6,700</strong> — a 97%+ drawdown from the stated launch valuation. 352 wallets remain.</span>
+        <span data-lang="ru">Текущий MC <strong>~$6,700</strong> — падение на 97%+ от заявленной launch valuation. Осталось 352 кошелька.</span>
+        <span data-lang="ka">მიმდინარე MC <strong>~$6,700</strong>.</span>
+      </div>
+    </div>
+
+    <div class="promise-row">
+      <div class="promise-cell promise">
+        <span class="label" data-lang="en">Reputation cost</span>
+        <span class="label" data-lang="ru">Цена репутации</span>
+        <span class="label" data-lang="ka">რეპუტაციის ფასი</span>
+        <span data-lang="en">"A wildly successful exit on something like this would be a rounding error against what the Natroshvili name is actually worth."</span>
+        <span data-lang="ru">«Дико успешный exit на чём-то подобном был бы погрешностью против того, чего на самом деле стоит фамилия Natroshvili.»</span>
+        <span data-lang="ka">„წარმატებული გასვლა იქნებოდა მცირე ცდომილება Natroshvili-ის სახელის ღირებულებასთან."</span>
+      </div>
+      <div class="promise-cell reality">
+        <span class="label" data-lang="en">Logically inverted</span>
+        <span class="label" data-lang="ru">Логически инвертировано</span>
+        <span class="label" data-lang="ka">ლოგიკურად შებრუნებული</span>
+        <span data-lang="en">By the same logic, a refund covering affected holders — estimated at <strong>$30,000–$50,000 total</strong> — would also be a rounding error against the family standing. <strong>The team chose not to pay it.</strong> That choice is itself an answer about the actual valuation.</span>
+        <span data-lang="ru">По той же логике, refund для пострадавших холдеров — оценено в <strong>$30,000–$50,000</strong> — был бы тоже погрешностью. <strong>Команда выбрала не платить.</strong> Этот выбор сам по себе — ответ о реальной valuation.</span>
+        <span data-lang="ka">იმავე ლოგიკით, აღდგენა იქნებოდა მცირე ცდომილება. <strong>გუნდმა აირჩია არ გადაიხადოს.</strong></span>
+      </div>
+    </div>
+
+    <div class="promise-row">
+      <div class="promise-cell promise">
+        <span class="label" data-lang="en">"Daily promotions"</span>
+        <span class="label" data-lang="ru">«Ежедневные промо»</span>
+        <span class="label" data-lang="ka">„ყოველდღიური პრომო"</span>
+        <span data-lang="en">Official NATRO Telegram channel post, 24 May 2026: "Daily promotions rolling out on every platform. Don't miss out."</span>
+        <span data-lang="ru">Пост официального канала NATRO в Telegram, 24 мая 2026: «Daily promotions rolling out on every platform. Don't miss out.»</span>
+        <span data-lang="ka">ოფიციალური NATRO Telegram არხის პოსტი, 24 მაისი 2026.</span>
+      </div>
+      <div class="promise-cell reality">
+        <span class="label" data-lang="en">Marketing continues</span>
+        <span class="label" data-lang="ru">Маркетинг продолжается</span>
+        <span class="label" data-lang="ka">მარკეტინგი გრძელდება</span>
+        <span data-lang="en"><strong>New retail buyers were being actively recruited to the same channel of 5,964 subscribers while existing affected holders were being told "Nothing to say" and "stfu" by team admin and founder respectively.</strong></span>
+        <span data-lang="ru"><strong>Новых retail-покупателей активно привлекали в тот же канал из 5,964 подписчиков, в то время как существующих пострадавших холдеров админ и фаундер информировали словами «Nothing to say» и «stfu».</strong></span>
+        <span data-lang="ka"><strong>ახალი მყიდველები აქტიურად მოიწვევენ, ხოლო არსებულ მფლობელებს ეუბნებიან „Nothing to say" და „stfu."</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  SECTION III — THE COVER-UP                                  -->
+<!-- ============================================================ -->
+<section class="section" id="coverup">
+  <div class="section-num"><span class="num">§ III</span><span data-lang="en">The scrub</span><span data-lang="ru">Зачистка</span><span data-lang="ka">დაფარვა</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">Seventy-two hours of <em>quiet removals</em>.</span>
+    <span data-lang="ru">Семьдесят два часа <em>тихих удалений</em>.</span>
+    <span data-lang="ka">სამოცდათორმეტი საათი <em>ჩუმი წაშლის</em>.</span>
+  </h2>
+
+  <div class="body-text">
+    <p class="lead" data-lang="en">A pattern of evidence removal began roughly forty-eight hours after launch and continued in parallel with the team's refusal to engage with refund requests. What follows is a chronological reconstruction, compiled from screenshots taken before each removal, Wayback Machine captures, and Telegram channel logs.</p>
+
+    <p class="lead" data-lang="ru">Паттерн удаления доказательств начался примерно через 48 часов после launch'а и продолжался параллельно отказу команды реагировать на запросы возвратов. Ниже — хронологическая реконструкция, составленная из скриншотов, сделанных до каждого удаления, snapshot'ов Wayback Machine, и логов Telegram-каналов.</p>
+
+    <p class="lead" data-lang="ka">დოკუმენტების წაშლის ნიმუში დაიწყო launch-დან დაახლოებით 48 საათში და გრძელდებოდა გუნდის უარის პარალელურად. ქვემოთ — ქრონოლოგიური რეკონსტრუქცია.</p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="event">
+      <div class="event-date">21 MAY · 20:11 UTC</div>
+      <div class="event-body">
+        <h3 data-lang="en">Launch</h3>
+        <h3 data-lang="ru">Запуск</h3>
+        <h3 data-lang="ka">გაშვება</h3>
+        <p data-lang="en">$NATRO is launched on Pump.fun. Marketing is rolled out across the founder's verified Instagram (@natroalex, 54.1K followers), amplified by his father's verified account (@davidnatro1), and supported by a paid promotional video from crypto KOL @jrcryptex (114K followers).</p>
+        <p data-lang="ru">$NATRO запущен на Pump.fun. Маркетинг разворачивается через верифицированный Instagram founder'а (@natroalex, 54.1K подписчиков), усиливается верифицированным аккаунтом отца (@davidnatro1), и поддерживается оплаченным промо-видео от crypto KOL @jrcryptex (114K подписчиков).</p>
+        <p data-lang="ka">$NATRO გაიშვა Pump.fun-ზე.</p>
+        <div class="event-tags"><span class="tag evidence">on-chain</span><span class="tag evidence">screenshot</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb video" data-exhibit="ex-video-03-jrcryptex-promo">
+            <video src="images/exhibits/ex-video-03-jrcryptex-promo.mp4" muted preload="metadata"></video>
+            <span class="exhibit-label">Ex. 1 · KOL promo</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex01-jrcryptex-promo-reshared-by-david">
+            <img src="images/exhibits/ex01-jrcryptex-promo-reshared-by-david.jpg" alt="David Natroshvili reshares jrcryptex NATRO promo">
+            <span class="exhibit-label">Ex. 2 · David reshare</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex14-natroalex-instagram-bio">
+            <img src="images/exhibits/ex14-natroalex-instagram-bio.png" alt="@natroalex Instagram profile">
+            <span class="exhibit-label">Ex. 3 · @natroalex</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex04-david-linkedin-spribe-interview">
+            <img src="images/exhibits/ex04-david-linkedin-spribe-interview.png" alt="David Natroshvili LinkedIn Spribe interview">
+            <span class="exhibit-label">Ex. 4 · D. LinkedIn</span>
+          </a>
+          <a href="#" class="exhibit-thumb video" data-exhibit="ex-video-01-natro-tagline">
+            <video src="images/exhibits/ex-video-01-natro-tagline.mp4" muted preload="metadata"></video>
+            <span class="exhibit-label">Ex. 5 · Tagline</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-date">22–23 MAY</div>
+      <div class="event-body">
+        <h3 data-lang="en">Price collapses; holders raise the alarm internally</h3>
+        <h3 data-lang="ru">Цена падает; холдеры внутри проекта поднимают тревогу</h3>
+        <h3 data-lang="ka">ფასი ეცემა</h3>
+        <p data-lang="en">Inside the project's own Telegram channels — "NATRO Foyer" and "NATRO Lounge" — holders begin documenting losses. Messages include: "I lost 2K," "I lost 6K," "It's over," "Fucking shit coin." A team admin responds with "We are working on it." No remediation follows.</p>
+        <p data-lang="ru">Внутри Telegram-каналов проекта — «NATRO Foyer» и «NATRO Lounge» — холдеры начинают фиксировать потери. Сообщения включают: «Я потерял 2K», «Я потерял 6K», «Всё кончено», «Fucking shit coin». Админ команды отвечает «We are working on it». Никаких действий не следует.</p>
+        <p data-lang="ka">გუნდი პასუხობს „We are working on it." არანაირი ქმედება არ მოჰყვება.</p>
+        <div class="event-tags"><span class="tag evidence">Telegram logs</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb" data-exhibit="ex12-foyer-price-collapse-reactions">
+            <img src="images/exhibits/ex12-foyer-price-collapse-reactions.png" alt="NATRO Foyer holders reacting to collapse">
+            <span class="exhibit-label">Ex. 6 · Holder reactions</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex08-telegram-foyer-discussion">
+            <img src="images/exhibits/ex08-telegram-foyer-discussion.png" alt="Foyer discussion screenshot">
+            <span class="exhibit-label">Ex. 7 · "Fix it"</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex05-foyer-chat-early">
+            <img src="images/exhibits/ex05-foyer-chat-early.png" alt="Early Foyer chat">
+            <span class="exhibit-label">Ex. 8 · Foyer early</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event damning">
+      <div class="event-date">23 MAY · 13:50</div>
+      <div class="event-body">
+        <h3 data-lang="en">One of the admins voluntarily leaves the tier chats</h3>
+        <h3 data-lang="ru">Один из админов добровольно покидает tier-чаты</h3>
+        <h3 data-lang="ka">ერთ-ერთი ადმინი ნებაყოფლობით ტოვებს tier-ჩატებს</h3>
+        <p data-lang="en">In the Foyer (the entry-tier room marketed as "a few thousand holders, lots of chatter"), the room is at 13 members. Holders are openly using the words "Natro scam" and "Fucking scam." An admin (handle: OC) leaves the group. A Telegram system message marks the moment: "OC left the group." A subsequent system message notes that admin "A A" will become the new owner in 7 days unless OC returns. Holders react with laughing emoji: "The admin left the chat 😂😂😂😂."</p>
+        <p data-lang="ru">В Foyer (entry-tier room, маркетинговое описание: «несколько тысяч холдеров, много общения»), в комнате 13 человек. Холдеры открыто используют слова «Natro scam» и «Fucking scam». Один из админов (handle: OC) выходит из группы. Системное сообщение Telegram фиксирует момент: «OC покинул группу». Последующее системное сообщение уведомляет, что админ «A A» станет новым владельцем через 7 дней, если OC не вернётся. Холдеры реагируют смеющимся эмодзи: «The admin left the chat 😂😂😂😂».</p>
+        <p data-lang="ka">Foyer-ში (entry-tier ოთახი, რომელიც რეკლამდებოდა, როგორც „რამდენიმე ათასი მფლობელი"), ოთახში 13 წევრია. ერთ-ერთი ადმინი (OC) ტოვებს ჯგუფს. სისტემური შეტყობინება ფიქსირებს: „OC დატოვა ჯგუფი."</p>
+        <div class="event-tags"><span class="tag evidence">system-message screenshot</span><span class="tag damning">team withdrawal</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb" data-exhibit="ex07-admin-left-chat">
+            <img src="images/exhibits/ex07-admin-left-chat.png" alt="Admin left chat system message">
+            <span class="exhibit-label">Ex. 12 · Admin left</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-date">23 MAY</div>
+      <div class="event-body">
+        <h3 data-lang="en">Refunds requested through proper channels; refused</h3>
+        <h3 data-lang="ru">Возвраты запрошены через надлежащие каналы; отклонены</h3>
+        <h3 data-lang="ka">აღდგენაზე უარი თქვეს</h3>
+        <p data-lang="en">A structured refund proposal is presented to the team admin via the project's own Telegram. Methodology: verify wallets, reference fair launch-window market cap, compensate affected early holders accordingly. Estimated total cost: $30,000–$50,000. The team admin's eventual reply: <strong>"Nothing to say."</strong></p>
+        <p data-lang="ru">Структурированное предложение о refund представлено админу команды через собственный Telegram проекта. Методология: верифицировать кошельки, использовать справедливый launch-window MC, компенсировать пострадавших ранних холдеров соответственно. Оценочная стоимость: $30,000–$50,000. Финальный ответ админа: <strong>«Nothing to say».</strong></p>
+        <p data-lang="ka">სტრუქტურირებული შეთავაზება წარდგინდა. ადმინის პასუხი: <strong>„Nothing to say."</strong></p>
+        <div class="event-tags"><span class="tag evidence">screenshot</span><span class="tag damning">on-record refusal</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb" data-exhibit="ex09-telegram-nothing-to-say">
+            <img src="images/exhibits/ex09-telegram-nothing-to-say.png" alt="Nothing to say screenshot">
+            <span class="exhibit-label">Ex. 9 · "Nothing to say"</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex10-telegram-aa-admin">
+            <img src="images/exhibits/ex10-telegram-aa-admin.png" alt="A A admin response">
+            <span class="exhibit-label">Ex. 10 · A A admin</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex11-telegram-lounge-private-dm">
+            <img src="images/exhibits/ex11-telegram-lounge-private-dm.png" alt="Lounge private DM request">
+            <span class="exhibit-label">Ex. 11 · Lounge DM</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex07-admin-left-chat">
+            <img src="images/exhibits/ex07-admin-left-chat.png" alt="Admin left chat">
+            <span class="exhibit-label">Ex. 12 · Admin left</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event damning">
+      <div class="event-date">24 MAY</div>
+      <div class="event-body">
+        <h3 data-lang="en">NATRO link removed from founder's Instagram bio</h3>
+        <h3 data-lang="ru">Ссылка NATRO удалена из bio Instagram founder'а</h3>
+        <h3 data-lang="ka">NATRO ბმული წაიშალა Instagram bio-დან</h3>
+        <p data-lang="en">The "natrocoin.net" link disappears from @natroalex's verified Instagram bio. The bio previously featured "natrocoin.net" as the project's official destination; after this change, the project link is no longer publicly associated with the founder's primary social presence.</p>
+        <p data-lang="ru">Ссылка «natrocoin.net» исчезает из верифицированного Instagram bio @natroalex. Bio ранее содержало «natrocoin.net» как официальное направление проекта; после этого изменения ссылка на проект больше не связана публично с основным социальным присутствием founder'а.</p>
+        <p data-lang="ka">„natrocoin.net" ბმული ქრება @natroalex-ის ვერიფიცირებული Instagram bio-დან.</p>
+        <div class="event-tags"><span class="tag evidence">before/after screenshots</span><span class="tag damning">cover-up</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb" data-exhibit="ex14-natroalex-instagram-bio">
+            <img src="images/exhibits/ex14-natroalex-instagram-bio.png" alt="@natroalex bio with NATRO link (before)">
+            <span class="exhibit-label">Ex. 13 · Bio (before)</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex02-natroalex-instagram-profile">
+            <img src="images/exhibits/ex02-natroalex-instagram-profile.png" alt="@natroalex profile after link removal">
+            <span class="exhibit-label">Ex. 14 · Profile (after)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event damning">
+      <div class="event-date">24 MAY</div>
+      <div class="event-body">
+        <h3 data-lang="en">natrocoin.net is taken offline</h3>
+        <h3 data-lang="ru">natrocoin.net выводится из сети</h3>
+        <h3 data-lang="ka">natrocoin.net იხურება</h3>
+        <p data-lang="en">The project's official website returns a 404 / "Site not found" page from its Netlify host. The marketing copy, the tier descriptions, the founder section, and the FAQ — including the now-significant "What stops you from rugging?" answer — are no longer publicly accessible at the canonical URL.</p>
+        <p data-lang="ru">Официальный сайт проекта возвращает 404 / «Site not found» от своего хоста Netlify. Маркетинговая копия, описания tier, секция founder, и FAQ — включая теперь значимый ответ «Что мешает вам сделать rug?» — больше не доступны публично по каноническому URL.</p>
+        <p data-lang="ka">პროექტის ოფიციალური საიტი დააბრუნებს 404 / „Site not found".</p>
+        <p data-lang="en"><strong>Wayback Machine captured a complete snapshot before deletion:</strong> <a class="archive-ref" href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener">web.archive.org/.../natrocoin.net</a></p>
+        <p data-lang="ru"><strong>Wayback Machine зафиксировал полный snapshot до удаления:</strong> <a class="archive-ref" href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener">web.archive.org/.../natrocoin.net</a></p>
+        <p data-lang="ka"><strong>Wayback Machine-ით სრულად ფიქსირებული:</strong> <a class="archive-ref" href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener">web.archive.org/.../natrocoin.net</a></p>
+        <div class="event-tags"><span class="tag evidence">Wayback archive</span><span class="tag damning">cover-up</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb" data-exhibit="ex03-natrocoin-source-view">
+            <img src="images/exhibits/ex03-natrocoin-source-view.png" alt="natrocoin.net source view before takedown">
+            <span class="exhibit-label">Ex. 15 · Source HTML</span>
+          </a>
+          <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="exhibit-thumb" style="background: var(--ink); display: flex; align-items: center; justify-content: center; text-decoration: none;">
+            <span style="color: var(--highlight); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; padding: 8px;">Wayback<br/>Archive →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event damning">
+      <div class="event-date">24 MAY</div>
+      <div class="event-body">
+        <h3 data-lang="en">@jrcryptex deletes the paid promotional video</h3>
+        <h3 data-lang="ru">@jrcryptex удаляет оплаченное промо-видео</h3>
+        <h3 data-lang="ka">@jrcryptex შლის ფასიან პრომო-ვიდეოს</h3>
+        <p data-lang="en">The 35-second video that opened with "It's called NATRO" and ended with "Launching 21st May — www.natrocoin.net" is removed from the @jrcryptex Instagram feed. The post had previously been liked and re-shared via Instagram Stories by both @natroalex and @davidnatro1.</p>
+        <p data-lang="ru">35-секундное видео, открывшееся «It's called NATRO» и закончившееся «Launching 21st May — www.natrocoin.net», удаляется из feed'a Instagram @jrcryptex. Пост ранее был лайкнут и пере-расшарен через Instagram Stories @natroalex и @davidnatro1.</p>
+        <p data-lang="ka">35-წამიანი ვიდეო წაიშლება @jrcryptex Instagram feed-დან.</p>
+        <div class="event-tags"><span class="tag evidence">pre-deletion screenshots</span><span class="tag damning">third-party scrub</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb video" data-exhibit="ex-video-03-jrcryptex-promo">
+            <video src="images/exhibits/ex-video-03-jrcryptex-promo.mp4" muted preload="metadata"></video>
+            <span class="exhibit-label">Ex. 16 · Promo (preserved)</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex01-jrcryptex-promo-reshared-by-david">
+            <img src="images/exhibits/ex01-jrcryptex-promo-reshared-by-david.jpg" alt="David Natroshvili story reshare">
+            <span class="exhibit-label">Ex. 17 · D. story repost</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-date">24 MAY</div>
+      <div class="event-body">
+        <h3 data-lang="en">Official NATRO Telegram channel keeps recruiting new buyers</h3>
+        <h3 data-lang="ru">Официальный Telegram-канал NATRO продолжает привлекать новых покупателей</h3>
+        <h3 data-lang="ka">ოფიციალური NATRO Telegram არხი აგრძელებს მოწვევას</h3>
+        <p data-lang="en">On the same day the website is taken offline, the project's official Telegram channel (pinned to @natroalex1's profile, 5,964 subscribers) posts: <strong>"Daily promotions rolling out on every platform. Don't miss out."</strong> The team is actively pursuing new retail entrants in the same window in which it refuses dialogue with affected existing holders.</p>
+        <p data-lang="ru">В тот же день, когда сайт удалён, официальный Telegram-канал проекта (закреплён в профиле @natroalex1, 5,964 подписчиков) постит: <strong>«Daily promotions rolling out on every platform. Don't miss out.»</strong> Команда активно ищет новых retail-входящих в то же окно, в котором она отказывается от диалога с существующими пострадавшими холдерами.</p>
+        <p data-lang="ka">იმავე დღეს ოფიციალური NATRO Telegram არხი აქვეყნებს: <strong>„Daily promotions rolling out on every platform."</strong></p>
+        <div class="event-tags"><span class="tag evidence">screenshot</span><span class="tag damning">dual-track conduct</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb video" data-exhibit="ex-video-02-natro-maison">
+            <video src="images/exhibits/ex-video-02-natro-maison.mp4" muted preload="metadata"></video>
+            <span class="exhibit-label">Ex. 18 · "Maison" promo</span>
+          </a>
+          <a href="#" class="exhibit-thumb" data-exhibit="ex06-foyer-chat-before-delete">
+            <img src="images/exhibits/ex06-foyer-chat-before-delete.png" alt="Foyer chat before admin deletions">
+            <span class="exhibit-label">Ex. 19 · Pre-deletion</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event damning">
+      <div class="event-date">25 MAY · 10:11</div>
+      <div class="event-body">
+        <h3 data-lang="en">Founder's personal Telegram reply: "stfu"</h3>
+        <h3 data-lang="ru">Личный ответ founder'а в Telegram: «stfu»</h3>
+        <h3 data-lang="ka">დამფუძნებლის პასუხი: „stfu"</h3>
+        <p data-lang="en">After hours of structured proposals offering a clean off-ramp — refund affected early holders, the matter closes, no publication, no further messages — the founder Alex Natroshvili replies personally from his verified Telegram account <strong>@natroalex1</strong>. The reply is two letters: <strong>"stfu."</strong> No prior dialogue. No explanation. No counter-offer.</p>
+        <p data-lang="ru">После часов структурированных предложений, предлагающих clean off-ramp — refund пострадавших ранних холдеров, дело закрыто, никакой публикации, никаких дальнейших сообщений — founder Alex Natroshvili отвечает лично со своего верифицированного Telegram-аккаунта <strong>@natroalex1</strong>. Ответ — две буквы: <strong>«stfu».</strong> Без предыдущего диалога. Без объяснения. Без встречного предложения.</p>
+        <p data-lang="ka">დამფუძნებელი Alex Natroshvili პასუხობს პირადად: <strong>„stfu."</strong></p>
+        <div class="event-tags"><span class="tag evidence">screenshot, verified account</span><span class="tag damning">principal-level refusal</span></div>
+        <div class="exhibits">
+          <a href="#" class="exhibit-thumb" data-exhibit="ex13-stfu-from-alex">
+            <img src="images/exhibits/ex13-stfu-from-alex.png" alt="stfu reply from Alex Natroshvili verified Telegram">
+            <span class="exhibit-label">Ex. 20 · "stfu"</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-date">25 MAY · 12:24</div>
+      <div class="event-body">
+        <h3 data-lang="en">Formal letter delivered to Spribe legal channels</h3>
+        <h3 data-lang="ru">Формальное письмо доставлено в legal-каналы Spribe</h3>
+        <h3 data-lang="ka">ფორმალური წერილი მიეწოდა Spribe-ის legal-არხებს</h3>
+        <p data-lang="en">A holder addresses a formal letter to Spribe corporate (info@spribe.co, legal@spribe.co, and two named executive addresses). The letter sets out the facts, attaches the Wayback Machine archive, and proposes a clean private resolution path: refund the affected early holders, no publication. A 72-hour window for considered response is stated explicitly.</p>
+        <p data-lang="ru">Холдер адресует формальное письмо в corporate Spribe (info@spribe.co, legal@spribe.co, и два именованных executive-адреса). Письмо излагает факты, прилагает Wayback Machine archive, и предлагает чистый частный путь решения: refund пострадавшим ранним холдерам, без публикации. 72-часовое окно для обдуманного ответа явно указано.</p>
+        <p data-lang="ka">მფლობელი მიმართავს ფორმალურ წერილს Spribe-ის კორპორაციას. 72-საათიანი ფანჯარა მითითებულია.</p>
+        <div class="event-tags"><span class="tag evidence">email paper-trail</span></div>
+      </div>
+    </div>
+
+    <div class="event damning">
+      <div class="event-date">25 MAY · 13:06</div>
+      <div class="event-body">
+        <h3 data-lang="en">Founder makes contact 42 minutes after Spribe email</h3>
+        <h3 data-lang="ru">Founder выходит на связь через 42 минуты после email в Spribe</h3>
+        <h3 data-lang="ka">დამფუძნებელი დაუკავშირდა 42 წუთში</h3>
+        <p data-lang="en">Forty-two minutes after the formal email is sent to Spribe corporate addresses, Alex Natroshvili initiates direct contact via Instagram DM. Over the next two hours the tone shifts repeatedly — from invitation ("If u have problems tell me like a man") to co-victim framing ("I understand u lost i did too / I lost 38k / I swear to god i lost 30k plus") to instruction ("Delete this comments your just making a fool out of yourself") to dismissal ("do what you want you are wasting your time") to ridicule ("Spribe legal is not responding to you 😅 / Who do u think u are") to silence (the holder is blocked).</p>
+        <p data-lang="ru">Через 42 минуты после отправки формального email на corporate-адреса Spribe Alex Natroshvili инициирует прямой контакт через Instagram DM. За следующие два часа тон меняется неоднократно — от приглашения («Если у тебя проблемы, скажи мне как мужчина») до co-victim framing («Я понимаю что ты потерял, я тоже / Я потерял 38k / Клянусь Богом, потерял 30k+») до команды («Удали эти комментарии, ты выставляешь себя дураком») до dismissal («Делай что хочешь, ты тратишь своё время») до насмешки («Spribe legal не отвечает тебе 😅 / Кто ты вообще такой») до тишины (холдера блокируют).</p>
+        <p data-lang="ka">42 წუთში Alex Natroshvili დაიწყო პირდაპირი კონტაქტი Instagram DM-ით.</p>
+        <div class="event-tags"><span class="tag evidence">screenshot sequence</span><span class="tag damning">tone-shift pattern</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  SECTION IV — VOICES                                         -->
+<!-- ============================================================ -->
+<section class="section" id="voices">
+  <div class="section-num"><span class="num">§ IV</span><span data-lang="en">On the record</span><span data-lang="ru">Под запись</span><span data-lang="ka">ჩაწერილი</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">What the team said, <em>in their own words</em>.</span>
+    <span data-lang="ru">Что сказала команда, <em>их собственными словами</em>.</span>
+    <span data-lang="ka">რა თქვა გუნდმა, <em>თავიანთი სიტყვებით</em>.</span>
+  </h2>
+
+  <div class="body-text">
+    <p data-lang="en">The following quotes are reproduced from screenshots of verified accounts and project channels. Every quote is timestamped and was preserved before any subsequent deletion or block.</p>
+    <p data-lang="ru">Следующие цитаты воспроизведены со скриншотов верифицированных аккаунтов и каналов проекта. Каждая цитата имеет timestamp и была сохранена до любого последующего удаления или блокировки.</p>
+    <p data-lang="ka">შემდეგი ციტატები რეპროდუცირებულია ვერიფიცირებული ანგარიშების სკრინშოტებიდან.</p>
+  </div>
+
+  <div class="quotes-list">
+
+    <div class="quote headline damning">
+      <p class="quote-text" data-lang="en">stfu.</p>
+      <p class="quote-text" data-lang="ru">stfu.</p>
+      <p class="quote-text" data-lang="ka">stfu.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Alex Natroshvili — founder</strong>
+        <strong data-lang="ru">Alex Natroshvili — founder</strong>
+        <strong data-lang="ka">Alex Natroshvili — დამფუძნებელი</strong>
+        <span data-lang="en">Personal direct-message reply from verified Telegram @natroalex1, sent to an affected holder who had presented a structured refund-or-publication proposal · 25 May 2026, 10:11</span>
+        <span data-lang="ru">Личный DM-ответ с верифицированного Telegram @natroalex1, отправлен пострадавшему холдеру, представившему структурированное предложение «refund или публикация» · 25 мая 2026, 10:11</span>
+        <span data-lang="ka">პირადი DM ვერიფიცირებული Telegram-დან @natroalex1 · 25 მაისი 2026, 10:11</span>
+      </div>
+    </div>
+
+    <div class="quote damning">
+      <p class="quote-text" data-lang="en">Nothing to say.</p>
+      <p class="quote-text" data-lang="ru">Нечего сказать.</p>
+      <p class="quote-text" data-lang="ka">სათქმელი არაფერი მაქვს.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Team admin "A A" (@arifazii)</strong>
+        <strong data-lang="ru">Админ команды «A A» (@arifazii)</strong>
+        <strong data-lang="ka">გუნდის ადმინი „A A"</strong>
+        <span class="source" data-lang="en">Final response to a structured refund-or-publication offer from an affected holder · NATRO Lounge Telegram, 24 May 2026</span>
+        <span class="source" data-lang="ru">Финальный ответ на структурированное предложение от пострадавшего холдера · NATRO Lounge Telegram, 24 мая 2026</span>
+        <span class="source" data-lang="ka">საბოლოო პასუხი · NATRO Lounge Telegram, 24 მაისი 2026</span>
+      </div>
+    </div>
+
+    <div class="quote damning">
+      <p class="quote-text" data-lang="en">Delete this comments your just making a fool out of yourself.</p>
+      <p class="quote-text" data-lang="ru">Удали эти комментарии, ты просто выставляешь себя дураком.</p>
+      <p class="quote-text" data-lang="ka">წაშალე ეს კომენტარები.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Alex Natroshvili — founder</strong>
+        <span class="source" data-lang="en">Instagram DM to an affected holder publicly documenting the situation · 25 May 2026</span>
+        <span class="source" data-lang="ru">Instagram DM пострадавшему холдеру, публично документирующему ситуацию · 25 мая 2026</span>
+        <span class="source" data-lang="ka">Instagram DM · 25 მაისი 2026</span>
+      </div>
+    </div>
+
+    <div class="quote damning">
+      <p class="quote-text" data-lang="en">Spribe legal is not responding to you 😅 / Who do u think u are.</p>
+      <p class="quote-text" data-lang="ru">Spribe legal тебе не отвечает 😅 / Кто ты вообще такой.</p>
+      <p class="quote-text" data-lang="ka">Spribe legal არ გპასუხობს 😅 / შენ ვინა ხარ.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Alex Natroshvili — founder</strong>
+        <span class="source" data-lang="en">Instagram DM, after the holder reiterates that substantive discussion goes through the Spribe legal channel · 25 May 2026</span>
+        <span class="source" data-lang="ru">Instagram DM, после того как холдер подтверждает, что substantive-обсуждение идёт через Spribe legal · 25 мая 2026</span>
+        <span class="source" data-lang="ka">Instagram DM · 25 მაისი 2026</span>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p class="quote-text" data-lang="en">We are working on it. […] The NATRO team is working on everything to ensure credibility.</p>
+      <p class="quote-text" data-lang="ru">Мы работаем над этим. […] Команда NATRO работает над всем для обеспечения credibility.</p>
+      <p class="quote-text" data-lang="ka">ჩვენ ვმუშაობთ ამაზე.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Team admin "A A"</strong>
+        <span class="source" data-lang="en">NATRO Foyer Telegram, in response to holder concerns about the price collapse · 23 May 2026, 13:57</span>
+        <span class="source" data-lang="ru">NATRO Foyer Telegram, в ответ на обеспокоенность холдеров по поводу обвала цены · 23 мая 2026, 13:57</span>
+        <span class="source" data-lang="ka">NATRO Foyer Telegram · 23 მაისი 2026, 13:57</span>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p class="quote-text" data-lang="en">No one scammed anyone. […] No one explicitly forced you to buy the coin.</p>
+      <p class="quote-text" data-lang="ru">Никто никого не скаммил. […] Никто эксплицитно не заставлял тебя покупать монету.</p>
+      <p class="quote-text" data-lang="ka">არავინ არავის გაატყუა.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Team admin "A A"</strong>
+        <span class="source" data-lang="en">NATRO Lounge Telegram, in response to holder request for accountability · 24 May 2026</span>
+        <span class="source" data-lang="ru">NATRO Lounge Telegram, в ответ на запрос холдера об ответственности · 24 мая 2026</span>
+        <span class="source" data-lang="ka">NATRO Lounge Telegram · 24 მაისი 2026</span>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p class="quote-text" data-lang="en">I lost 38k. I swear to god i lost 30k plus.</p>
+      <p class="quote-text" data-lang="ru">Я потерял 38k. Клянусь Богом, я потерял 30k plus.</p>
+      <p class="quote-text" data-lang="ka">38k დავკარგე.</p>
+      <div class="quote-attr">
+        <strong data-lang="en">Alex Natroshvili — founder</strong>
+        <span class="source" data-lang="en">Instagram DM. The stated figure shifts within the same message thread. The site's own tokenomics state Alex's 30M founder bag is "publicly committed to never moving" — an unrealized paper loss on a non-moving allocation is not equivalent to realized cash loss by retail holders. · 25 May 2026</span>
+        <span class="source" data-lang="ru">Instagram DM. Заявленная цифра меняется внутри одного thread'а. Tokenomics сайта утверждают, что 30M-bag Alex'а «публично закреплён неподвижным» — нереализованная paper loss на неподвижной аллокации не эквивалентна реализованной cash-потере retail-холдеров. · 25 мая 2026</span>
+        <span class="source" data-lang="ka">Instagram DM · 25 მაისი 2026</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  SECTION V — THE PEOPLE                                      -->
+<!-- ============================================================ -->
+<section class="section" id="people">
+  <div class="section-num"><span class="num">§ V</span><span data-lang="en">Named parties</span><span data-lang="ru">Названные стороны</span><span data-lang="ka">დასახელებული მხარეები</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">The principals — <em>self-doxxed</em> by the launch.</span>
+    <span data-lang="ru">Принципалы — <em>сами раскрылись</em> launch'ем.</span>
+    <span data-lang="ka">პრინციპალები — <em>თვითონ გამოაცხადეს</em>.</span>
+  </h2>
+
+  <div class="body-text">
+    <p data-lang="en">Each of the named parties below was identified as a participant in the NATRO launch by the project's own public marketing materials, captured in full by Wayback Machine and screenshot prior to any deletion. None of them is anonymous; each has a verified public account that was used to promote the token.</p>
+    <p data-lang="ru">Каждая из названных ниже сторон была идентифицирована как участник launch'а NATRO через собственные публичные маркетинг-материалы проекта, полностью зафиксированные Wayback Machine и скриншотами до любого удаления. Ни один из них не анонимен; у каждого есть верифицированный публичный аккаунт, который был использован для продвижения токена.</p>
+    <p data-lang="ka">თითოეული მხარე იდენტიფიცირებულია პროექტის საჯარო მარკეტინგ-მასალებით.</p>
+  </div>
+
+  <div class="people-grid">
+    <div class="person">
+      <div class="person-role" data-lang="en">Founder · subject</div>
+      <div class="person-role" data-lang="ru">Founder · субъект</div>
+      <div class="person-role" data-lang="ka">დამფუძნებელი</div>
+      <h3 class="person-name">Alex Natroshvili</h3>
+      <p class="person-handle">@natroalex · @natroalex1 (Telegram) · 54.1K followers</p>
+      <p class="person-desc" data-lang="en">Identified by the project's website as the founder. The website's founder section opened with: "Most coin founders are anonymous. Alex isn't. His name is on the project, his face is on TikTok and Instagram, and his family is well-known globally." Profile listed as "Boxer 🇩🇰 · Car Collector 🚗 · Watch Collector ⌚".</p>
+      <p class="person-desc" data-lang="ru">Идентифицирован сайтом проекта как founder. Секция founder открывалась словами: «Большинство founders монет анонимны. Alex — нет. Его имя на проекте, его лицо в TikTok и Instagram, и его семья известна глобально.» Профиль указан как «Boxer 🇩🇰 · Car Collector 🚗 · Watch Collector ⌚».</p>
+      <p class="person-desc" data-lang="ka">იდენტიფიცირებული, როგორც დამფუძნებელი.</p>
+      <div class="person-statement">
+        <span class="label">On-record</span>
+        <span data-lang="en">"stfu" — personal DM reply to refund proposal, 25 May 2026</span>
+        <span data-lang="ru">«stfu» — личный DM-ответ на refund proposal, 25 мая 2026</span>
+        <span data-lang="ka">„stfu" — პირადი პასუხი</span>
+      </div>
+    </div>
+
+    <div class="person">
+      <div class="person-role" data-lang="en">Family principal · amplifier</div>
+      <div class="person-role" data-lang="ru">Family principal · усилитель</div>
+      <div class="person-role" data-lang="ka">ოჯახის პრინციპალი</div>
+      <h3 class="person-name">David Natroshvili</h3>
+      <p class="person-handle">@davidnatro1 · @davi.natroshvili · founder &amp; CEO, Spribe</p>
+      <p class="person-desc" data-lang="en">Father of the founder. Founder &amp; CEO of Spribe, the studio behind the global gambling product Aviator. In a recent video interview described Spribe as "one of the biggest companies in the world." Liked and re-shared the paid promotional video for NATRO via Instagram Stories.</p>
+      <p class="person-desc" data-lang="ru">Отец founder'а. Основатель и CEO Spribe, студии за гемблинг-продуктом Aviator. В недавнем видео-интервью описал Spribe как «одну из крупнейших компаний в мире». Лайкнул и пере-расшарил оплаченное промо-видео для NATRO через Instagram Stories.</p>
+      <p class="person-desc" data-lang="ka">დამფუძნებლის მამა. Spribe-ის CEO.</p>
+      <div class="person-statement">
+        <span class="label" data-lang="en">Public role in the launch</span>
+        <span class="label" data-lang="ru">Публичная роль в launch'е</span>
+        <span class="label" data-lang="ka">საჯარო როლი</span>
+        <span data-lang="en">The website's pitch relied directly on the Natroshvili name; the family standing was the project's stated collateral.</span>
+        <span data-lang="ru">Pitch сайта прямо опирался на имя Natroshvili; standing семьи был заявленным collateral'ом проекта.</span>
+        <span data-lang="ka">პროექტი ეფუძნება Natroshvili-ის სახელს.</span>
+      </div>
+    </div>
+
+    <div class="person">
+      <div class="person-role" data-lang="en">Paid KOL · scrubbed</div>
+      <div class="person-role" data-lang="ru">Оплаченный KOL · scrubbed</div>
+      <div class="person-role" data-lang="ka">ფასიანი KOL</div>
+      <h3 class="person-name">JR Cryptex</h3>
+      <p class="person-handle">@jrcryptex · 114K followers · "Crypto Trader · Market Analyst · YouTuber"</p>
+      <p class="person-desc" data-lang="en">Cryptocurrency influencer whose 35-second video promoting NATRO ("It's called NATRO… Launching 21st May — www.natrocoin.net") was liked and re-shared via Instagram Stories by both @natroalex and @davidnatro1. The video was deleted from the @jrcryptex Instagram feed on 24 May, in the same 72-hour window as the website takedown.</p>
+      <p class="person-desc" data-lang="ru">Cryptocurrency-инфлюенсер, чьё 35-секундное видео, продвигающее NATRO («It's called NATRO… Launching 21st May — www.natrocoin.net»), было лайкнуто и пере-расшарено через Instagram Stories @natroalex и @davidnatro1. Видео было удалено из feed'a Instagram @jrcryptex 24 мая, в то же 72-часовое окно, что и website takedown.</p>
+      <p class="person-desc" data-lang="ka">35-წამიანი ვიდეო წაშლილია.</p>
+      <div class="person-statement">
+        <span class="label" data-lang="en">Conduct</span>
+        <span class="label" data-lang="ru">Поведение</span>
+        <span class="label" data-lang="ka">ქცევა</span>
+        <span data-lang="en">Deletion of paid promotional content while the underlying project remains live and is still recruiting new buyers.</span>
+        <span data-lang="ru">Удаление оплаченного промо-контента, в то время как лежащий в основе проект остаётся живым и продолжает привлекать новых покупателей.</span>
+        <span data-lang="ka">ფასიანი კონტენტის წაშლა.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  SECTION VI — DOCUMENTATION                                  -->
+<!-- ============================================================ -->
+<section class="section" id="evidence">
+  <div class="section-num"><span class="num">§ VI</span><span data-lang="en">Source documentation</span><span data-lang="ru">Документация источников</span><span data-lang="ka">წყაროები</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">Primary sources, <em>indexed</em>.</span>
+    <span data-lang="ru">Первичные источники, <em>проиндексированные</em>.</span>
+    <span data-lang="ka">პირველადი წყაროები.</span>
+  </h2>
+
+  <div class="evidence-table">
+    <div class="evidence-row">
+      <div class="evidence-type" data-lang="en">Archive</div>
+      <div class="evidence-type" data-lang="ru">Архив</div>
+      <div class="evidence-type" data-lang="ka">არქივი</div>
+      <div class="evidence-desc">
+        <strong data-lang="en">natrocoin.net — full website snapshot</strong>
+        <strong data-lang="ru">natrocoin.net — полный snapshot сайта</strong>
+        <strong data-lang="ka">natrocoin.net — სრული საიტი</strong>
+        <p data-lang="en">Captured by Wayback Machine before the site was taken offline. Includes the hero pitch, the tier table, the founder section, tokenomics, and the full FAQ — including "What stops you from rugging?".</p>
+        <p data-lang="ru">Зафиксировано Wayback Machine до удаления сайта. Включает hero pitch, tier-таблицу, секцию founder, tokenomics, и полный FAQ — включая «Что мешает вам сделать rug?».</p>
+        <p data-lang="ka">Wayback Machine-ით ფიქსირებული.</p>
+      </div>
+      <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="evidence-link" data-lang="en">View archive →</a>
+      <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="evidence-link" data-lang="ru">Смотреть архив →</a>
+      <a href="https://web.archive.org/web/20260521213245/https://natrocoin.net/" target="_blank" rel="noopener" class="evidence-link" data-lang="ka">არქივი →</a>
+    </div>
+
+    <div class="evidence-row">
+      <div class="evidence-type" data-lang="en">On-chain · contract</div>
+      <div class="evidence-type" data-lang="ru">On-chain · контракт</div>
+      <div class="evidence-type" data-lang="ka">On-chain · კონტრაქტი</div>
+      <div class="evidence-desc">
+        <strong data-lang="en">$NATRO Solana token contract</strong>
+        <strong data-lang="ru">Контракт $NATRO на Solana</strong>
+        <strong data-lang="ka">$NATRO Solana კონტრაქტი</strong>
+        <p><code>9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF</code></p>
+        <p data-lang="en">Token-2022, Solana mainnet. Total supply 1,000,000,000. Launched via Pump.fun bonding curve.</p>
+        <p data-lang="ru">Token-2022, Solana mainnet. Total supply 1,000,000,000. Launched через Pump.fun bonding curve.</p>
+        <p data-lang="ka">Token-2022, Solana mainnet.</p>
+      </div>
+      <a href="https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF" target="_blank" rel="noopener" class="evidence-link">Solscan →</a>
+    </div>
+
+    <div class="evidence-row">
+      <div class="evidence-type" data-lang="en">On-chain · creator wallet</div>
+      <div class="evidence-type" data-lang="ru">On-chain · creator wallet</div>
+      <div class="evidence-type" data-lang="ka">On-chain · creator wallet</div>
+      <div class="evidence-desc">
+        <strong data-lang="en">Token creator wallet</strong>
+        <strong data-lang="ru">Кошелёк создателя токена</strong>
+        <strong data-lang="ka">ტოკენის შემქმნელის ვალეტი</strong>
+        <p><code>76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx</code></p>
+        <p data-lang="en">The wallet that created the $NATRO mint. Continued swap and liquidity activity is observable post-launch. Relation to the publicly-stated "Alex's 3% bag" allocation pending further on-chain forensics.</p>
+        <p data-lang="ru">Кошелёк, создавший mint $NATRO. Продолжающаяся swap и liquidity-активность наблюдаема post-launch. Связь с публично заявленной аллокацией «Alex's 3% bag» — к дальнейшей on-chain forensics.</p>
+        <p data-lang="ka">$NATRO mint-ის შემქმნელი ვალეტი.</p>
+      </div>
+      <a href="https://solscan.io/account/76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx" target="_blank" rel="noopener" class="evidence-link">Solscan →</a>
+    </div>
+
+    <div class="evidence-row">
+      <div class="evidence-type" data-lang="en">Wallet · holder</div>
+      <div class="evidence-type" data-lang="ru">Кошелёк · холдер</div>
+      <div class="evidence-type" data-lang="ka">ვალეტი · მფლობელი</div>
+      <div class="evidence-desc">
+        <strong data-lang="en">Compiler's wallet (verifiable position)</strong>
+        <strong data-lang="ru">Кошелёк составителя (верифицируемая позиция)</strong>
+        <strong data-lang="ka">შემდგენელის ვალეტი</strong>
+        <p><code>GsCKRFsTYbU4CuTDYP9NLDDMvsVVWSnpdVDst3nKb6JJ</code></p>
+        <p data-lang="en">Holds approximately 220,000,000 NATRO. Independently verifiable on Solana.</p>
+        <p data-lang="ru">Содержит примерно 220,000,000 NATRO. Независимо верифицируемо на Solana.</p>
+        <p data-lang="ka">~220,000,000 NATRO.</p>
+      </div>
+      <a href="https://solscan.io/account/GsCKRFsTYbU4CuTDYP9NLDDMvsVVWSnpdVDst3nKb6JJ" target="_blank" rel="noopener" class="evidence-link">Solscan →</a>
+    </div>
+
+    <div class="evidence-row">
+      <div class="evidence-type" data-lang="en">Screenshots</div>
+      <div class="evidence-type" data-lang="ru">Скриншоты</div>
+      <div class="evidence-type" data-lang="ka">სკრინშოტები</div>
+      <div class="evidence-desc">
+        <strong data-lang="en">Telegram channel and DM logs</strong>
+        <strong data-lang="ru">Логи Telegram-каналов и DM</strong>
+        <strong data-lang="ka">Telegram ჩატის ლოგები</strong>
+        <p data-lang="en">Complete screenshot archive of NATRO Foyer, NATRO Lounge, and direct messages with the team admin (@arifazii) and the founder (@natroalex1). Includes the "Nothing to say," "stfu," "Delete this comments," "Who do u think u are," and the founder's claimed loss figures. Available on request to journalists and counsel.</p>
+        <p data-lang="ru">Полный архив скриншотов NATRO Foyer, NATRO Lounge, и DM с админом команды (@arifazii) и founder'ом (@natroalex1). Доступен по запросу журналистам и юристам.</p>
+        <p data-lang="ka">სრული სკრინშოტების არქივი.</p>
+      </div>
+      <span class="evidence-link" style="color: var(--ink-faint); border-bottom-style: dotted;" data-lang="en">On request</span>
+      <span class="evidence-link" style="color: var(--ink-faint); border-bottom-style: dotted;" data-lang="ru">По запросу</span>
+      <span class="evidence-link" style="color: var(--ink-faint); border-bottom-style: dotted;" data-lang="ka">მოთხოვნით</span>
+    </div>
+
+    <div class="evidence-row">
+      <div class="evidence-type" data-lang="en">Email paper-trail</div>
+      <div class="evidence-type" data-lang="ru">Email-переписка</div>
+      <div class="evidence-type" data-lang="ka">Email მიმოწერა</div>
+      <div class="evidence-desc">
+        <strong data-lang="en">Formal letter to Spribe legal &amp; corporate</strong>
+        <strong data-lang="ru">Формальное письмо в Spribe legal &amp; corporate</strong>
+        <strong data-lang="ka">ფორმალური წერილი Spribe-ში</strong>
+        <p data-lang="en">Sent 25 May 2026, 12:24 UTC to: <code>gsamkharadze@spribe.co</code>, <code>shalva@spribe.co</code>, <code>info@spribe.co</code>, <code>legal@spribe.co</code>. Subject: "Time-sensitive: NATRO token launch — public record preparation." Available on request.</p>
+        <p data-lang="ru">Отправлено 25 мая 2026, 12:24 UTC на: <code>gsamkharadze@spribe.co</code>, <code>shalva@spribe.co</code>, <code>info@spribe.co</code>, <code>legal@spribe.co</code>. Тема: «Time-sensitive: NATRO token launch — public record preparation». Доступно по запросу.</p>
+        <p data-lang="ka">გაგზავნილია 25 მაისს, 12:24 UTC.</p>
+      </div>
+      <span class="evidence-link" style="color: var(--ink-faint); border-bottom-style: dotted;" data-lang="en">On request</span>
+      <span class="evidence-link" style="color: var(--ink-faint); border-bottom-style: dotted;" data-lang="ru">По запросу</span>
+      <span class="evidence-link" style="color: var(--ink-faint); border-bottom-style: dotted;" data-lang="ka">მოთხოვნით</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  SECTION VII — EVIDENCE GALLERY                              -->
+<!-- ============================================================ -->
+<section class="section" id="gallery">
+  <div class="section-num"><span class="num">§ VII</span><span data-lang="en">Evidence gallery</span><span data-lang="ru">Галерея доказательств</span><span data-lang="ka">მტკიცებულებების გალერია</span></div>
+  <h2 class="section-title">
+    <span data-lang="en">Every exhibit, <em>indexed and viewable</em>.</span>
+    <span data-lang="ru">Каждый exhibit, <em>проиндексирован и доступен</em>.</span>
+    <span data-lang="ka">თითოეული მტკიცებულება, <em>ხელმისაწვდომი</em>.</span>
+  </h2>
+
+  <div class="body-text">
+    <p data-lang="en">Every screenshot and video below was captured before the corresponding deletion, scrub, or block. Click any exhibit to view full size. The complete uncompressed archive is available to journalists, counsel, and regulators on request.</p>
+    <p data-lang="ru">Каждый screenshot и видео ниже зафиксированы до соответствующего удаления, scrub'а, или блокировки. Кликните на любой exhibit, чтобы открыть в полном размере. Полный несжатый архив доступен журналистам, юристам и регуляторам по запросу.</p>
+    <p data-lang="ka">თითოეული სკრინშოტი და ვიდეო ფიქსირებულია წაშლამდე. დააწკაპუნეთ exhibit-ზე სრული ზომისთვის.</p>
+  </div>
+
+  <div class="exhibits" style="gap: 16px; margin-top: 40px;">
+    <a href="#" class="exhibit-thumb video" style="width: 144px; height: 144px;" data-exhibit="ex-video-03-jrcryptex-promo">
+      <video src="images/exhibits/ex-video-03-jrcryptex-promo.mp4" muted preload="metadata"></video>
+      <span class="exhibit-label">Ex. 1 · KOL promo video</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex01-jrcryptex-promo-reshared-by-david">
+      <img src="images/exhibits/ex01-jrcryptex-promo-reshared-by-david.jpg" alt="">
+      <span class="exhibit-label">Ex. 2 · David reshare</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex14-natroalex-instagram-bio">
+      <img src="images/exhibits/ex14-natroalex-instagram-bio.png" alt="">
+      <span class="exhibit-label">Ex. 3 · @natroalex bio</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex04-david-linkedin-spribe-interview">
+      <img src="images/exhibits/ex04-david-linkedin-spribe-interview.png" alt="">
+      <span class="exhibit-label">Ex. 4 · D. LinkedIn</span>
+    </a>
+    <a href="#" class="exhibit-thumb video" style="width: 144px; height: 144px;" data-exhibit="ex-video-01-natro-tagline">
+      <video src="images/exhibits/ex-video-01-natro-tagline.mp4" muted preload="metadata"></video>
+      <span class="exhibit-label">Ex. 5 · Tagline video</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex12-foyer-price-collapse-reactions">
+      <img src="images/exhibits/ex12-foyer-price-collapse-reactions.png" alt="">
+      <span class="exhibit-label">Ex. 6 · Holder reactions</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex08-telegram-foyer-discussion">
+      <img src="images/exhibits/ex08-telegram-foyer-discussion.png" alt="">
+      <span class="exhibit-label">Ex. 7 · "Fix it"</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex05-foyer-chat-early">
+      <img src="images/exhibits/ex05-foyer-chat-early.png" alt="">
+      <span class="exhibit-label">Ex. 8 · Foyer early</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex09-telegram-nothing-to-say">
+      <img src="images/exhibits/ex09-telegram-nothing-to-say.png" alt="">
+      <span class="exhibit-label">Ex. 9 · "Nothing to say"</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex10-telegram-aa-admin">
+      <img src="images/exhibits/ex10-telegram-aa-admin.png" alt="">
+      <span class="exhibit-label">Ex. 10 · A A admin</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex11-telegram-lounge-private-dm">
+      <img src="images/exhibits/ex11-telegram-lounge-private-dm.png" alt="">
+      <span class="exhibit-label">Ex. 11 · Lounge DM</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex07-admin-left-chat">
+      <img src="images/exhibits/ex07-admin-left-chat.png" alt="">
+      <span class="exhibit-label">Ex. 12 · Admin left</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex02-natroalex-instagram-profile">
+      <img src="images/exhibits/ex02-natroalex-instagram-profile.png" alt="">
+      <span class="exhibit-label">Ex. 14 · Profile (after)</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex03-natrocoin-source-view">
+      <img src="images/exhibits/ex03-natrocoin-source-view.png" alt="">
+      <span class="exhibit-label">Ex. 15 · Source HTML</span>
+    </a>
+    <a href="#" class="exhibit-thumb video" style="width: 144px; height: 144px;" data-exhibit="ex-video-02-natro-maison">
+      <video src="images/exhibits/ex-video-02-natro-maison.mp4" muted preload="metadata"></video>
+      <span class="exhibit-label">Ex. 18 · "Maison"</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px;" data-exhibit="ex06-foyer-chat-before-delete">
+      <img src="images/exhibits/ex06-foyer-chat-before-delete.png" alt="">
+      <span class="exhibit-label">Ex. 19 · Pre-deletion</span>
+    </a>
+    <a href="#" class="exhibit-thumb" style="width: 144px; height: 144px; border-color: var(--accent); border-width: 2px;" data-exhibit="ex13-stfu-from-alex">
+      <img src="images/exhibits/ex13-stfu-from-alex.png" alt="">
+      <span class="exhibit-label" style="background: linear-gradient(to top, var(--accent), transparent);">Ex. 20 · "stfu"</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  LIGHTBOX MODAL                                              -->
+<!-- ============================================================ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Evidence viewer">
+  <div class="lightbox-counter" id="lightboxCounter">1 / 20</div>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous">‹</button>
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Next">›</button>
+  <div class="lightbox-content">
+    <div id="lightboxMediaWrap"></div>
+    <div class="lightbox-caption" id="lightboxCaption">
+      <span class="exhibit-num" id="lightboxNum"></span>
+      <span id="lightboxText"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  FOOTER — RIGHT OF REPLY                                     -->
+<!-- ============================================================ -->
+<section class="footer-section">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <h3 data-lang="en">Right of reply</h3>
+      <h3 data-lang="ru">Право на ответ</h3>
+      <h3 data-lang="ka">პასუხის უფლება</h3>
+      <p data-lang="en">If any party named in this file disputes any factual claim, contests an attribution, or wishes to add context, that response will be appended to this record verbatim and dated.</p>
+      <p data-lang="en">If an error of fact is identified, this file will be corrected promptly. The Wayback Machine archive of natrocoin.net, the on-chain trail, and the timestamped screenshots are independent of this compiler and remain available for any third-party review.</p>
+      <p data-lang="ru">Если какая-либо из названных в этом файле сторон оспаривает фактическое утверждение, опровергает атрибуцию, или желает добавить контекст, эта реакция будет приложена к этой записи дословно с указанием даты.</p>
+      <p data-lang="ru">Если выявлена фактическая ошибка, этот файл будет оперативно исправлен. Wayback Machine archive natrocoin.net, on-chain trail, и timestamped-скриншоты независимы от составителя и остаются доступными для third-party-проверки.</p>
+      <p data-lang="ka">თუ რომელიმე მხარე ეჭვქვეშ აყენებს ფაქტობრივ ცნობას, ეს პასუხი დაერთება ჩანაწერს სიტყვა-სიტყვით.</p>
+    </div>
+
+    <div class="footer-block">
+      <h3 data-lang="en">Contact</h3>
+      <h3 data-lang="ru">Контакт</h3>
+      <h3 data-lang="ka">კონტაქტი</h3>
+      <p data-lang="en">For inquiries from journalists, counsel, regulators, or affected holders with corroborating information: please include identification and the nature of the inquiry.</p>
+      <p data-lang="en">For affected holders who wish to submit their own documented account: please be prepared to verify your position on-chain.</p>
+      <p data-lang="ru">Для запросов от журналистов, юристов, регуляторов, или пострадавших холдеров с подтверждающей информацией: пожалуйста, укажите идентификацию и характер запроса.</p>
+      <p data-lang="ru">Для пострадавших холдеров, желающих представить собственный документированный аккаунт: пожалуйста, будьте готовы верифицировать свою позицию on-chain.</p>
+      <p data-lang="ka">ჟურნალისტებისთვის, იურისტებისთვის, რეგულატორებისთვის — გთხოვთ მიუთითოთ იდენტიფიკაცია.</p>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span data-lang="en">© 2026 · Compiled from primary sources · Not affiliated with $NATRO, the Natroshvili family, or Spribe</span>
+    <span data-lang="ru">© 2026 · Составлено из первичных источников · Не аффилировано с $NATRO, семьёй Natroshvili или Spribe</span>
+    <span data-lang="ka">© 2026 · შედგენილია პირველადი წყაროებიდან</span>
+    <span data-lang="en">Wayback Machine · Solscan · Telegram · Instagram</span>
+    <span data-lang="ru">Wayback Machine · Solscan · Telegram · Instagram</span>
+    <span data-lang="ka">Wayback Machine · Solscan · Telegram · Instagram</span>
+  </div>
+</section>
+
+<script>
+// === LANGUAGE SWITCHER ===
+const langButtons = document.querySelectorAll('[data-lang-btn]');
+langButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.getAttribute('data-lang-btn');
+    document.body.className = lang;
+    langButtons.forEach(b => b.classList.toggle('active', b === btn));
+    localStorage.setItem('natro-file-lang', lang);
+  });
+});
+
+// Restore saved language
+const savedLang = localStorage.getItem('natro-file-lang');
+if (savedLang && ['en', 'ru', 'ka'].includes(savedLang)) {
+  document.body.className = savedLang;
+  langButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-lang-btn') === savedLang));
+}
+
+// === LIGHTBOX ===
+const exhibits = {
+  'ex-video-03-jrcryptex-promo': {
+    type: 'video',
+    src: 'images/exhibits/ex-video-03-jrcryptex-promo.mp4',
+    num: 'Exhibit 1',
+    caption: 'KOL @jrcryptex paid promotional video (0:35). "It\'s called NATRO… Launching 21st May — www.natrocoin.net." Deleted from @jrcryptex Instagram on 24 May 2026. Preserved by this file.'
+  },
+  'ex01-jrcryptex-promo-reshared-by-david': {
+    type: 'image',
+    src: 'images/exhibits/ex01-jrcryptex-promo-reshared-by-david.jpg',
+    num: 'Exhibit 2',
+    caption: 'David Natroshvili (@davidnatro1, verified, Spribe founder & CEO) reshares the @jrcryptex NATRO promo to his Instagram Stories. Family principal endorsement of the launch.'
+  },
+  'ex14-natroalex-instagram-bio': {
+    type: 'image',
+    src: 'images/exhibits/ex14-natroalex-instagram-bio.png',
+    num: 'Exhibit 3',
+    caption: '@natroalex Instagram profile (verified, 54.1K followers). Bio originally featured natrocoin.net as the project\'s official link. Link removed 24 May 2026.'
+  },
+  'ex04-david-linkedin-spribe-interview': {
+    type: 'image',
+    src: 'images/exhibits/ex04-david-linkedin-spribe-interview.png',
+    num: 'Exhibit 4',
+    caption: 'David Natroshvili — LinkedIn / Spribe official channel. Video interview in which he describes Spribe as "one of the biggest companies in the world." Industry standing referenced in the NATRO pitch.'
+  },
+  'ex-video-01-natro-tagline': {
+    type: 'video',
+    src: 'images/exhibits/ex-video-01-natro-tagline.mp4',
+    num: 'Exhibit 5',
+    caption: 'NATRO website tagline video: "It\'s not about what you make. It\'s who picks up when you call." Core marketing message anchoring the networking pitch.'
+  },
+  'ex12-foyer-price-collapse-reactions': {
+    type: 'image',
+    src: 'images/exhibits/ex12-foyer-price-collapse-reactions.png',
+    num: 'Exhibit 6',
+    caption: 'NATRO Foyer Telegram (14 members) reacting to the price collapse: "-90% is crazy," "It\'s over," "I lost 2K," "Fucking shit coin," "I lost 6k…" — 23 May 2026.'
+  },
+  'ex08-telegram-foyer-discussion': {
+    type: 'image',
+    src: 'images/exhibits/ex08-telegram-foyer-discussion.png',
+    num: 'Exhibit 7',
+    caption: 'NATRO Foyer chat: "This needs a big fix… otherwise in 2 days no one would be interested." Team admin A A: "We are working on it." (23 May, 13:57.) No remediation followed.'
+  },
+  'ex05-foyer-chat-early': {
+    type: 'image',
+    src: 'images/exhibits/ex05-foyer-chat-early.png',
+    num: 'Exhibit 8',
+    caption: 'Early NATRO Foyer discussion. Holders begin asking pointed questions about the price action and team plan.'
+  },
+  'ex09-telegram-nothing-to-say': {
+    type: 'image',
+    src: 'images/exhibits/ex09-telegram-nothing-to-say.png',
+    num: 'Exhibit 9',
+    caption: 'Team admin "A A" final reply to a structured refund-or-publication proposal: "Nothing to say." (Telegram, 24 May 2026.) Verifiable on-chain wallet position and proposed clean private resolution preceded this response.'
+  },
+  'ex10-telegram-aa-admin': {
+    type: 'image',
+    src: 'images/exhibits/ex10-telegram-aa-admin.png',
+    num: 'Exhibit 10',
+    caption: 'Team admin A A: "No one scammed anyone… No one explicitly forced you to buy the coin." Response to a refund accountability request.'
+  },
+  'ex11-telegram-lounge-private-dm': {
+    type: 'image',
+    src: 'images/exhibits/ex11-telegram-lounge-private-dm.png',
+    num: 'Exhibit 11',
+    caption: 'NATRO Lounge holder Max Elistratov (verified) presents a measured request to Alex Natroshvili. Team response: "Dm me privately." Subsequent DM was met with refusal and the request for retraction.'
+  },
+  'ex07-admin-left-chat': {
+    type: 'image',
+    src: 'images/exhibits/ex07-admin-left-chat.png',
+    num: 'Exhibit 12',
+    caption: 'Team admin leaves the chat. Holders: "Probably they will close group as well." A A: "We wont." The chat was kept open while substantive responses were withheld.'
+  },
+  'ex02-natroalex-instagram-profile': {
+    type: 'image',
+    src: 'images/exhibits/ex02-natroalex-instagram-profile.png',
+    num: 'Exhibit 14',
+    caption: '@natroalex Instagram profile after natrocoin.net link removed from bio. The "NATRO" Instagram Story highlights remain, but the operational link is gone. (Captured 25 May 2026.)'
+  },
+  'ex03-natrocoin-source-view': {
+    type: 'image',
+    src: 'images/exhibits/ex03-natrocoin-source-view.png',
+    num: 'Exhibit 15',
+    caption: 'natrocoin.net HTML source view captured 23 May 2026, before takedown. Confirms the canonical domain (natrocoin.com/natrocoin.net), the title "$NATRO. It\'s who picks up when you call.", and the OpenGraph metadata used in social previews.'
+  },
+  'ex-video-02-natro-maison': {
+    type: 'video',
+    src: 'images/exhibits/ex-video-02-natro-maison.mp4',
+    num: 'Exhibit 18',
+    caption: 'NATRO "Maison" promotional video. Lifestyle marketing emphasizing luxury access — distinct from the on-chain reality experienced by holders within 48 hours.'
+  },
+  'ex06-foyer-chat-before-delete': {
+    type: 'image',
+    src: 'images/exhibits/ex06-foyer-chat-before-delete.png',
+    num: 'Exhibit 19',
+    caption: 'NATRO Foyer chat preserved before potential admin deletions. Full holder dialogue including the explicit "Natro scam" / "Fucking scam" assessments at 13:53 on 23 May.'
+  },
+  'ex13-stfu-from-alex': {
+    type: 'image',
+    src: 'images/exhibits/ex13-stfu-from-alex.png',
+    num: 'Exhibit 20',
+    caption: 'Alex Natroshvili — verified Telegram @natroalex1 (display name "Alex Natro"). Personal direct-message reply to a structured refund-or-publication proposal, after on-chain data summary and the proposed clean off-ramp. Two letters: "stfu." (25 May 2026, 10:11.)'
+  }
+};
+
+const exhibitOrder = [
+  'ex-video-03-jrcryptex-promo',
+  'ex01-jrcryptex-promo-reshared-by-david',
+  'ex14-natroalex-instagram-bio',
+  'ex04-david-linkedin-spribe-interview',
+  'ex-video-01-natro-tagline',
+  'ex12-foyer-price-collapse-reactions',
+  'ex08-telegram-foyer-discussion',
+  'ex05-foyer-chat-early',
+  'ex09-telegram-nothing-to-say',
+  'ex10-telegram-aa-admin',
+  'ex11-telegram-lounge-private-dm',
+  'ex07-admin-left-chat',
+  'ex02-natroalex-instagram-profile',
+  'ex03-natrocoin-source-view',
+  'ex-video-02-natro-maison',
+  'ex06-foyer-chat-before-delete',
+  'ex13-stfu-from-alex'
+];
+
+const lightbox = document.getElementById('lightbox');
+const lightboxMediaWrap = document.getElementById('lightboxMediaWrap');
+const lightboxNum = document.getElementById('lightboxNum');
+const lightboxText = document.getElementById('lightboxText');
+const lightboxCounter = document.getElementById('lightboxCounter');
+let currentIndex = 0;
+
+function openLightbox(exhibitId) {
+  currentIndex = exhibitOrder.indexOf(exhibitId);
+  if (currentIndex === -1) currentIndex = 0;
+  renderLightbox();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lightboxMediaWrap.innerHTML = '';
+}
+
+function renderLightbox() {
+  const id = exhibitOrder[currentIndex];
+  const ex = exhibits[id];
+  if (!ex) return;
+
+  if (ex.type === 'video') {
+    lightboxMediaWrap.innerHTML = `<video class="lightbox-media" src="${ex.src}" controls autoplay></video>`;
+  } else {
+    lightboxMediaWrap.innerHTML = `<img class="lightbox-media" src="${ex.src}" alt="${ex.num}">`;
+  }
+  lightboxNum.textContent = ex.num;
+  lightboxText.textContent = ex.caption;
+  lightboxCounter.textContent = `${currentIndex + 1} / ${exhibitOrder.length}`;
+}
+
+function navigateLightbox(direction) {
+  currentIndex = (currentIndex + direction + exhibitOrder.length) % exhibitOrder.length;
+  renderLightbox();
+}
+
+// Attach click handlers to all exhibit thumbs (except external Wayback link)
+document.querySelectorAll('.exhibit-thumb[data-exhibit]').forEach(thumb => {
+  thumb.addEventListener('click', (e) => {
+    e.preventDefault();
+    const exhibitId = thumb.getAttribute('data-exhibit');
+    openLightbox(exhibitId);
+  });
+});
+
+// Close handlers
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => navigateLightbox(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => navigateLightbox(1));
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  else if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  else if (e.key === 'ArrowRight') navigateLightbox(1);
+});
+</script>
+
+</body>
+</html>

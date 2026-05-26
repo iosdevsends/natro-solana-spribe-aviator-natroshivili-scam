@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "timeline_events",
+  "info": {
+    "singularName": "timeline-event",
+    "pluralName": "timeline-events",
+    "displayName": "Timeline Event",
+    "description": "A dated event in the §III Scrub timeline"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "occurredAt": {
+      "type": "datetime",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "displayDate": {
+      "type": "string",
+      "description": "Human-formatted date (e.g. '21 May 2026, 20:11 UTC')",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "body": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "isDamning": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "tags": {
+      "type": "json",
+      "description": "Array of short tag strings (on-chain, screenshot, Telegram logs…)",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "exhibits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exhibit.exhibit",
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
+  }
+}

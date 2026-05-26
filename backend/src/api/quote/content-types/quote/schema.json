@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quotes",
+  "info": {
+    "singularName": "quote",
+    "pluralName": "quotes",
+    "displayName": "Quote",
+    "description": "A direct quotation from a holder, admin, founder, or KOL (§IV On the Record)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "shortLabel",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "shortLabel": {
+      "type": "string",
+      "required": true,
+      "description": "Internal label, e.g. 'stfu-from-alex'",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "order": {
+      "type": "integer",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "text": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "originalText": {
+      "type": "text",
+      "description": "Original-language verbatim, never translated",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "attribution": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "source": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "sourceDate": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "isHeadline": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "isDamning": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "exhibits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exhibit.exhibit",
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
+  }
+}

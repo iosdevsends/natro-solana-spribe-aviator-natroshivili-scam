@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tier_rows",
+  "info": {
+    "singularName": "tier-row",
+    "pluralName": "tier-rows",
+    "displayName": "Tier Row",
+    "description": "Row in §I tier-ladder table (Foyer / Floor / Lounge / Salon + compiler position)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "tierName",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "tierId": {
+      "type": "string",
+      "description": "e.g. 'I', 'II', 'III', 'IV', 'compiler'",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "tierName": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "threshold": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "delivered": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "isCompilerRow": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_sections",
+  "info": {
+    "singularName": "case-section",
+    "pluralName": "case-sections",
+    "displayName": "Case Section",
+    "description": "A top-level section of the case file (Promise / Reality / Scrub / Voices / People / Sources / Gallery)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "heading",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "anchor": {
+      "type": "string",
+      "required": true,
+      "description": "URL hash anchor (e.g. 'promise', 'reality')",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "numeral": {
+      "type": "string",
+      "description": "Roman numeral display (I, II, III…)",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "kicker": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "heading": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "lead": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "body": {
+      "type": "richtext",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "pullquoteText": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "pullquoteAttribution": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "pullquoteSource": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    }
+  }
+}
