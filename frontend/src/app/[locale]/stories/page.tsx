@@ -1,12 +1,42 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { Masthead } from '@/components/Masthead';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
 import { loadCaseFile } from '@/lib/case-file';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
 import type { UserStoryDTO } from '@/lib/types';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!locales.includes(locale as Locale)) return {};
+  const loc = locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'stories' });
+  const title = `${t('pageTitle')} — The NATRO File`;
+  const description = t('pageLead');
+  return {
+    title,
+    description,
+    alternates: buildAlternates(loc, '/stories'),
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: absoluteUrl(loc, '/stories'),
+      siteName: 'The NATRO File',
+      locale: ogLocale(loc),
+      alternateLocale: ogLocaleAlternates(loc),
+    },
+    twitter: { card: 'summary_large_image', title, description },
+  };
+}
 
 async function listStories(locale: Locale): Promise<UserStoryDTO[]> {
   try {

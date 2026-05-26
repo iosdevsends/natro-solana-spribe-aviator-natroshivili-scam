@@ -138,6 +138,7 @@ export interface SiteConfigDTO {
   siteTitle: string;
   tagline?: string;
   mastheadMeta?: string;
+  seoDescription?: string;
   kicker?: string;
   headline?: string;
   deck?: string;

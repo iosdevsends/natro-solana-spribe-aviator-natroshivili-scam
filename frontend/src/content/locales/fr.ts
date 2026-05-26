@@ -11,6 +11,7 @@ export const fr = () =>
       siteTitle: 'Le Dossier NATRO — Une étude de cas sur le prix de la réputation',
       tagline: 'Un cas documenté de tarification de la réputation',
       mastheadMeta: 'Étude de cas · Compilée à partir de sources primaires',
+      seoDescription: 'Un dossier documenté : le lancement du token $NATRO Solana (21 mai 2026), sa chute de 98 % et l\'effacement des preuves. Sources primaires uniquement.',
       kicker: 'Un cas documenté de tarification de la réputation',
       headline: 'Un jeton vendu sur un nom de famille. Une chute de 98 %. Un effacement.',
       deck: 'Le 21 mai 2026, un memecoin Solana nommé $NATRO a été lancé sur Pump.fun par Alex Natroshvili — fils de David Natroshvili, fondateur et CEO de Spribe, le studio derrière le produit de jeu d\'argent mondial Aviator. L\'argumentaire reposait sur le nom de famille. Soixante-douze heures après le refus des remboursements, le site, la vidéo promotionnelle et les liens dans les bios des réseaux sociaux avaient tous été effacés. La trace blockchain, le site archivé et les journaux de chat — non.',

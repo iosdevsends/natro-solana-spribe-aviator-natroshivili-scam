@@ -1,12 +1,45 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { Masthead } from '@/components/Masthead';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
 import { loadCaseFile } from '@/lib/case-file';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
 import type { UserStoryDTO } from '@/lib/types';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!locales.includes(locale as Locale)) return {};
+  const loc = locale as Locale;
+  const story = await findStoryBySlug(loc, slug);
+  if (!story) return {};
+  const title = `${story.title} — Reader account`;
+  const description = (story.summary || '').slice(0, 200);
+  return {
+    title,
+    description,
+    alternates: buildAlternates(loc, `/stories/${slug}`),
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url: absoluteUrl(loc, `/stories/${slug}`),
+      siteName: 'The NATRO File',
+      locale: ogLocale(loc),
+      alternateLocale: ogLocaleAlternates(loc),
+      publishedTime: story.approvedAt,
+      modifiedTime: story.approvedAt,
+    },
+    twitter: { card: 'summary_large_image', title, description },
+  };
+}
 
 async function findStoryBySlug(locale: Locale, slug: string): Promise<UserStoryDTO | null> {
   try {

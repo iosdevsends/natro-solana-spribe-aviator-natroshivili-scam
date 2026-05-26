@@ -1,12 +1,39 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { Masthead } from '@/components/Masthead';
 import { loadCaseFile } from '@/lib/case-file';
 import { getCurrentUser } from '@/lib/auth';
 import { SubmitStoryForm } from '@/components/SubmitStoryForm';
+import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!locales.includes(locale as Locale)) return {};
+  const loc = locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'stories' });
+  return {
+    title: `${t('submitTitle')} — The NATRO File`,
+    description: t('moderation'),
+    alternates: buildAlternates(loc, '/stories/submit'),
+    // Submission form is not for indexing — keep noindex
+    robots: { index: false, follow: false },
+    openGraph: {
+      title: t('submitTitle'),
+      type: 'website',
+      url: absoluteUrl(loc, '/stories/submit'),
+      siteName: 'The NATRO File',
+      locale: ogLocale(loc),
+    },
+  };
+}
 
 export default async function SubmitStoryPage({
   params,

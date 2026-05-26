@@ -5,6 +5,7 @@ import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 
 import { locales, type Locale } from '@/i18n/routing';
+import { Analytics } from '@/components/Analytics';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

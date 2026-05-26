@@ -9,6 +9,7 @@ export const es = () =>
       siteTitle: 'El Expediente NATRO — Un estudio de caso sobre el precio de la reputación',
       tagline: 'Un caso documentado de fijación de precios sobre la reputación',
       mastheadMeta: 'Estudio de caso · Compilado a partir de fuentes primarias',
+      seoDescription: 'Un expediente documentado: el lanzamiento del token $NATRO en Solana (21 mayo 2026), su caída del 98% y el borrado de pruebas. Solo fuentes primarias.',
       kicker: 'Un caso documentado de fijación de precios sobre la reputación',
       headline: 'Un token vendido sobre un apellido. Una caída del 98 %. Un borrado.',
       deck: 'El 21 de mayo de 2026, un memecoin de Solana llamado $NATRO fue lanzado en Pump.fun por Alex Natroshvili — hijo de David Natroshvili, fundador y CEO de Spribe, el estudio detrás del producto global de apuestas Aviator. La propuesta era el apellido. Setenta y dos horas después de negar los reembolsos, el sitio web, el vídeo promocional y los enlaces en biografías habían sido borrados. El rastro en blockchain, el sitio archivado y los registros de chat — no.',

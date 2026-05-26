@@ -6,6 +6,7 @@ export const en = (): CaseFileBundle => ({
     siteTitle: 'The NATRO File — A Case Study in Reputation Pricing',
     tagline: 'A documented case in reputation pricing',
     mastheadMeta: 'Case study · Compiled from primary sources',
+    seoDescription: 'A documented case file: the $NATRO Solana token launch (21 May 2026), its 98% collapse, and the post-refund evidence-removal pattern. Primary sources only.',
     kicker: 'A documented case in reputation pricing',
     headline: 'A token sold on a family name. A 98% collapse. A scrub.',
     deck: 'On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex Natroshvili — son of David Natroshvili, founder and CEO of Spribe, the studio behind the global gambling product Aviator. The pitch was the family name. Within seventy-two hours of refunds being refused, the website, the promotional video, and the social-bio links had all been scrubbed. The blockchain trail, the archived website, and the chat logs were not.',

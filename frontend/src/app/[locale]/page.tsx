@@ -9,7 +9,11 @@ import { Masthead } from '@/components/Masthead';
 import { Prose } from '@/components/Prose';
 import { Lightbox } from '@/components/Lightbox';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
+
+const PUBLICATION_DATE = '2026-05-26T00:00:00Z';
+const MODIFIED_DATE = '2026-05-27T00:00:00Z';
 
 export async function generateMetadata({
   params,
@@ -18,14 +22,46 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) return {};
-  const bundle = await loadCaseFile(locale as Locale);
+  const loc = locale as Locale;
+  const bundle = await loadCaseFile(loc);
+  const description =
+    bundle.config.seoDescription ||
+    bundle.config.deck?.slice(0, 160) ||
+    bundle.config.tagline ||
+    bundle.config.siteTitle;
+  const url = absoluteUrl(loc);
+
   return {
     title: bundle.config.siteTitle,
-    description: bundle.config.deck?.slice(0, 200),
+    description,
+    alternates: buildAlternates(loc),
     openGraph: {
       title: bundle.config.siteTitle,
-      description: bundle.config.deck?.slice(0, 300),
+      description,
       type: 'article',
+      url,
+      siteName: 'The NATRO File',
+      locale: ogLocale(loc),
+      alternateLocale: ogLocaleAlternates(loc),
+      publishedTime: PUBLICATION_DATE,
+      modifiedTime: MODIFIED_DATE,
+      authors: ['An affected early holder (@btc3050)'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: bundle.config.siteTitle,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-snippet': -1,
+        'max-image-preview': 'large',
+        'max-video-preview': -1,
+      },
     },
   };
 }
@@ -39,21 +75,65 @@ export default async function CaseFilePage({
   if (!locales.includes(locale as Locale)) notFound();
   setRequestLocale(locale);
 
-  const bundle = await loadCaseFile(locale as Locale);
+  const loc = locale as Locale;
+  const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
 
   const sectionsBySlug = Object.fromEntries(
     bundle.sections.map((s) => [s.slug, s]),
   );
 
+  const pageUrl = absoluteUrl(loc);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: bundle.config.headline || bundle.config.siteTitle,
+    name: bundle.config.siteTitle,
+    description:
+      bundle.config.seoDescription || bundle.config.deck?.slice(0, 200),
+    inLanguage: loc,
+    isAccessibleForFree: true,
+    datePublished: PUBLICATION_DATE,
+    dateModified: MODIFIED_DATE,
+    url: pageUrl,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    author: {
+      '@type': 'Person',
+      name: 'An affected early holder',
+      alternateName: '@btc3050',
+      url: 'https://t.me/btc3050',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The NATRO File',
+      url: absoluteUrl(loc, ''),
+    },
+    about: [
+      { '@type': 'Thing', name: '$NATRO Solana token launch' },
+      { '@type': 'Person', name: 'Alex Natroshvili' },
+      { '@type': 'Person', name: 'David Natroshvili' },
+      { '@type': 'Organization', name: 'Spribe' },
+    ],
+    citation: [
+      'https://web.archive.org/web/20260521213245/https://natrocoin.net/',
+      'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
+      'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-[var(--color-paper)] focus:p-2">
         Skip to content
       </a>
 
       <Masthead
-        locale={locale as Locale}
+        locale={loc}
         title={bundle.config.siteTitle}
         meta={bundle.config.mastheadMeta}
         uiStrings={ui}
