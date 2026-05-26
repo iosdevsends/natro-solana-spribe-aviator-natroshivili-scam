@@ -8,11 +8,26 @@ import { Fragment } from 'react';
  * conventions used in the seed.
  */
 
-const INLINE_PATTERN = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
+const INLINE_PATTERN = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
+const LINK_PATTERN = /^\[([^\]]+)\]\(([^)]+)\)$/;
 
 function renderInline(text: string) {
   const parts = text.split(INLINE_PATTERN).filter(Boolean);
   return parts.map((part, i) => {
+    const linkMatch = part.match(LINK_PATTERN);
+    if (linkMatch) {
+      const [, label, url] = linkMatch;
+      return (
+        <a
+          key={i}
+          href={url}
+          target={url.startsWith('http') ? '_blank' : undefined}
+          rel={url.startsWith('http') ? 'noreferrer noopener' : undefined}
+        >
+          {label}
+        </a>
+      );
+    }
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
         <strong key={i} className="font-semibold text-[var(--color-damning)]">

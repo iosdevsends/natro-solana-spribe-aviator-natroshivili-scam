@@ -25,6 +25,16 @@ export const fr = () =>
         { label: 'POSITION', value: '220 000 000 NATRO (≈22 % de l\'offre retail)' },
         { label: 'MÉTHODE', value: 'Sources primaires uniquement · liées et archivées' },
       ],
+      archiveCallout: {
+        kicker: 'Dans leurs propres mots',
+        headline: 'Voyez ce qui était vendu.',
+        body: 'Avant que le site ne soit mis hors ligne, la Wayback Machine a capturé la version archivée complète de **natrocoin.net** — l\'argumentaire d\'accueil, l\'échelle à quatre niveaux, la section fondateur qui nommait la famille, la page tokenomics et la FAQ complète (y compris la réponse à *« Qu\'est-ce qui vous empêche de rug ? »*).\n\nC\'est la source la plus solide du dossier. Le texte marketing sous le titre de cette page en est reconstitué.',
+        linkText: 'Ouvrir l\'archive de natrocoin.net →',
+        linkUrl: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/',
+        urlLabel: 'Wayback Machine · capturé le 21 mai 2026, 21:32 UTC',
+      },
+      contactBlock: 'Pour les demandes des journalistes, avocats, régulateurs ou détenteurs affectés disposant d\'informations corroborantes : veuillez inclure votre identité et la nature de la demande.\n\nPour les détenteurs affectés souhaitant soumettre leur propre récit documenté : préparez-vous à vérifier votre position on-chain.\n\n**Telegram (compilateur) :** [@btc3050](https://t.me/btc3050)',
+      compilerAddendum: 'Addendum personnel déposé par **@btc3050**, 27 mai 2026.\n\nLe compilateur tenait publiquement David Natroshvili en haute estime et considérait l\'histoire Spribe / Aviator comme une réalisation entrepreneuriale sérieuse construite au fil des années. Cette opinion a changé lorsque @davidnatro1 a amplifié le lancement depuis son propre compte vérifié, puis est resté silencieux pendant le refus de remboursement des détenteurs.\n\nCet addendum est délibérément séparé du fichier principal — le fichier principal reste un compte rendu à la troisième personne compilé à partir de sources primaires. Ce paragraphe est la propre voix du compilateur.',
       uiStrings: {
         'nav.promise': '§ I · Promesse',
         'nav.reality': '§ II · Réalité',

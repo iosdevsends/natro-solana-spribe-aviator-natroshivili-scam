@@ -8,6 +8,7 @@ import { strapiPublicUrl, mediaUrl } from '@/lib/strapi';
 import { Masthead } from '@/components/Masthead';
 import { Prose } from '@/components/Prose';
 import { Lightbox } from '@/components/Lightbox';
+import { ArchiveCallout } from '@/components/ArchiveCallout';
 import type { ExhibitDTO } from '@/lib/types';
 
 export async function generateMetadata({
@@ -76,6 +77,11 @@ export default async function CaseFilePage({
           <BylineStrip byline={bundle.config.byline} />
         </section>
 
+        {/* Wayback archive callout — single strongest source, surfaced before exec summary */}
+        {bundle.config.archiveCallout && (
+          <ArchiveCallout {...bundle.config.archiveCallout} />
+        )}
+
         {/* Executive summary */}
         <section className="border-y border-[var(--color-ink)] py-8 mb-16">
           <div className="kicker mb-3">Executive summary</div>
@@ -122,6 +128,12 @@ export default async function CaseFilePage({
         <footer className="mt-24 pt-12 border-t-2 border-[var(--color-ink)] space-y-10">
           <FooterBlock title={ui['ui.right_of_reply'] || 'Right of reply'} text={bundle.config.rightOfReply} />
           <FooterBlock title={ui['ui.contact'] || 'Contact'} text={bundle.config.contactBlock} />
+          {bundle.config.compilerAddendum && (
+            <div className="border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 p-6">
+              <div className="kicker mb-3">Compiler&rsquo;s addendum · separate from the main file</div>
+              <Prose text={bundle.config.compilerAddendum} className="text-base italic" />
+            </div>
+          )}
           {bundle.config.colophon && (
             <div className="sans text-xs text-[var(--color-ink-faint)] pt-6 border-t border-[var(--color-rule)]">
               {bundle.config.colophon}

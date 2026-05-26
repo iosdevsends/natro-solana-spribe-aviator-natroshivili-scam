@@ -144,8 +144,17 @@ export interface SiteConfigDTO {
   dateline?: DatelineEntry[];
   byline?: DatelineEntry[];
   executiveSummary?: string;
+  archiveCallout?: {
+    kicker?: string;
+    headline?: string;
+    body?: string;
+    linkText?: string;
+    linkUrl?: string;
+    urlLabel?: string;
+  };
   rightOfReply?: string;
   contactBlock?: string;
+  compilerAddendum?: string;
   colophon?: string;
   uiStrings?: Record<string, string>;
 }
