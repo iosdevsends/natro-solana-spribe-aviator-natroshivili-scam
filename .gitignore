@@ -64,3 +64,6 @@ coverage/
 # Local DB volumes
 .volumes/
 postgres-data/
+
+# Deploy notes are internal — kept locally, not tracked
+deploy/

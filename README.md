@@ -79,23 +79,6 @@ docker compose exec backend npm run seed
 
 ---
 
-## Deploying alongside an existing Strapi project on the same AWS host
-
-**Production domain:** `natro.meme` (Cloudflare-proxied, verified in Google Search Console via DNS).
-
-The compose file uses an isolated network and project name (`natro`). On the same EC2 instance running another Strapi project (`photovideo.ae`):
-
-1. Run **this** stack with the bundled compose file. It binds:
-   - host `1337` → backend (change in `docker-compose.yml` if `photovideo.ae` already owns that port)
-   - host `3000` → frontend
-   - host `5433` → its own Postgres
-2. Front-side reverse proxy (Nginx) terminates SSL and routes `<your-natro-host>` → `127.0.0.1:3000` and (optionally) `<your-natro-host>/admin` → `127.0.0.1:1337`.
-3. Production overrides: see `docker-compose.prod.yml` (build the `prod` Dockerfile targets, drop the source-mount volumes, pin a real `STRAPI_API_TOKEN`).
-
-A starter Nginx vhost is in `deploy/nginx/natro.conf`.
-
----
-
 ## Reader-submitted stories
 
 `/<locale>/stories` lists approved accounts. `/<locale>/stories/submit` accepts new accounts from signed-in readers; submissions land in Strapi with `moderationStatus = pending` and are invisible until an editor approves them in the Strapi admin.
@@ -137,7 +120,6 @@ natro-platform/
 │   └── src/lib/              # Strapi client, types, auth, case-file loader
 ├── legacy/                   # Original natro-file-v2.html + exhibits
 ├── docs/                     # EVIDENCE.md, EDITORIAL.md
-├── deploy/                   # nginx vhost, deploy scripts
 ├── .github/workflows/        # CI/CD pipelines
 └── docker-compose.yml        # Local dev stack (Postgres + Strapi + Next.js)
 ```
