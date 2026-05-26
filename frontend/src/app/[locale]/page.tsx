@@ -140,18 +140,18 @@ export default async function CaseFilePage({
         uiStrings={ui}
       />
 
-      <main id="main" className="relative z-[2] mx-auto" style={{ maxWidth: '900px', padding: 'clamp(24px, 4vw, 60px) clamp(20px, 5vw, 56px) 120px' }}>
+      <main id="main" className="relative z-[2] mx-auto" style={{ maxWidth: '900px', padding: 'clamp(20px, 4vw, 60px) clamp(16px, 5vw, 56px) 120px' }}>
         {/* Dateline */}
         <DatelineStrip dateline={bundle.config.dateline} />
 
         {/* Lede */}
-        <section className="mt-10 mb-16">
-          {bundle.config.kicker && <div className="kicker mb-4">{bundle.config.kicker}</div>}
-          <h1 className="serif text-3xl md:text-5xl leading-[1.08] font-medium tracking-tight">
+        <section className="mt-8 md:mt-10 mb-12 md:mb-16">
+          {bundle.config.kicker && <div className="kicker mb-3 md:mb-4">{bundle.config.kicker}</div>}
+          <h1 className="serif text-[28px] sm:text-3xl md:text-5xl leading-[1.1] md:leading-[1.08] font-medium tracking-tight">
             {bundle.config.headline}
           </h1>
           {bundle.config.deck && (
-            <p className="serif italic text-xl md:text-2xl text-[var(--color-ink-soft)] mt-6 leading-snug">
+            <p className="serif italic text-lg md:text-2xl text-[var(--color-ink-soft)] mt-5 md:mt-6 leading-snug">
               {bundle.config.deck}
             </p>
           )}
@@ -277,7 +277,7 @@ function SectionBlock({
         {section.numeral && <span className="section-numeral text-3xl">§ {section.numeral}</span>}
         {section.kicker && <span>{section.kicker}</span>}
       </div>
-      <h2 className="serif text-2xl md:text-4xl leading-tight mb-6 font-medium">
+      <h2 className="serif text-[22px] sm:text-2xl md:text-4xl leading-tight mb-5 md:mb-6 font-medium">
         {section.heading}
       </h2>
       {section.lead && <Prose text={section.lead} className="text-lg leading-relaxed" />}
@@ -311,30 +311,54 @@ function FooterBlock({ title, text }: { title: string; text?: string }) {
 function TierTable({ rows, ui }: { rows: import('@/lib/types').TierRowDTO[]; ui: Record<string, string> }) {
   if (!rows.length) return null;
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm">
-        <thead>
-          <tr className="border-y-2 border-[var(--color-ink)] text-left">
-            <th className="label-strap py-2 pr-3">{ui['ui.tier'] || 'Tier'}</th>
-            <th className="label-strap py-2 pr-3">{ui['ui.threshold'] || 'Threshold'}</th>
-            <th className="label-strap py-2 pr-3">{ui['ui.what_promised'] || 'What was promised'}</th>
-            <th className="label-strap py-2">{ui['ui.what_delivered'] || 'What was delivered'}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.id} className={`align-top border-b border-[var(--color-rule)] ${row.isCompilerRow ? 'bg-[var(--color-paper-warm)]' : ''}`}>
-              <td className="py-3 pr-3 serif">
-                <span className="font-medium">{row.tierId} · {row.tierName}</span>
-              </td>
-              <td className="py-3 pr-3 mono text-xs">{row.threshold}</td>
-              <td className="py-3 pr-3 text-[var(--color-ink-soft)]">{row.description}</td>
-              <td className="py-3 font-medium text-[var(--color-damning)]">{row.delivered}</td>
+    <>
+      {/* Mobile: stacked cards */}
+      <div className="md:hidden divide-y-2 divide-[var(--color-ink)] border-y-2 border-[var(--color-ink)]">
+        {rows.map((row) => (
+          <div key={row.id} className={`py-4 ${row.isCompilerRow ? 'bg-[var(--color-paper-warm)] -mx-2 px-2' : ''}`}>
+            <div className="serif font-medium text-base mb-1">
+              {row.tierId} · {row.tierName}
+            </div>
+            <div className="mono text-xs text-[var(--color-ink-faint)] mb-3 break-all">{row.threshold}</div>
+            <div className="grid grid-cols-1 gap-2 text-sm">
+              <div>
+                <div className="label-strap mb-1">{ui['ui.what_promised'] || 'Promised'}</div>
+                <div className="text-[var(--color-ink-soft)]">{row.description}</div>
+              </div>
+              <div>
+                <div className="label-strap mb-1">{ui['ui.what_delivered'] || 'Delivered'}</div>
+                <div className="font-medium text-[var(--color-damning)]">{row.delivered}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Desktop / tablet: full table */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="border-y-2 border-[var(--color-ink)] text-left">
+              <th className="label-strap py-2 pr-3">{ui['ui.tier'] || 'Tier'}</th>
+              <th className="label-strap py-2 pr-3">{ui['ui.threshold'] || 'Threshold'}</th>
+              <th className="label-strap py-2 pr-3">{ui['ui.what_promised'] || 'What was promised'}</th>
+              <th className="label-strap py-2">{ui['ui.what_delivered'] || 'What was delivered'}</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.id} className={`align-top border-b border-[var(--color-rule)] ${row.isCompilerRow ? 'bg-[var(--color-paper-warm)]' : ''}`}>
+                <td className="py-3 pr-3 serif">
+                  <span className="font-medium">{row.tierId} · {row.tierName}</span>
+                </td>
+                <td className="py-3 pr-3 mono text-xs">{row.threshold}</td>
+                <td className="py-3 pr-3 text-[var(--color-ink-soft)]">{row.description}</td>
+                <td className="py-3 font-medium text-[var(--color-damning)]">{row.delivered}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
@@ -360,16 +384,22 @@ function PromiseRealityTable({ rows, ui }: { rows: import('@/lib/types').Promise
   if (!rows.length) return null;
   return (
     <div className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
-      <div className="grid grid-cols-1 md:grid-cols-[180px_1fr_1fr] gap-6 py-3">
+      <div className="hidden md:grid md:grid-cols-[180px_1fr_1fr] gap-6 py-3">
         <div className="label-strap"> </div>
         <div className="label-strap">{ui['ui.what_promised'] || 'What was promised'}</div>
         <div className="label-strap">{ui['ui.what_delivered'] || 'What was delivered'}</div>
       </div>
       {rows.map((row) => (
-        <div key={row.id} className="grid grid-cols-1 md:grid-cols-[180px_1fr_1fr] gap-6 py-5">
-          <div className="serif font-medium">{row.categoryLabel}</div>
-          <Prose text={row.promiseText} className="text-sm" />
-          <Prose text={row.realityText} className="text-sm" />
+        <div key={row.id} className="grid grid-cols-1 md:grid-cols-[180px_1fr_1fr] gap-4 md:gap-6 py-5">
+          <div className="serif font-medium text-base">{row.categoryLabel}</div>
+          <div>
+            <div className="md:hidden label-strap mb-1">{ui['ui.what_promised'] || 'Promised'}</div>
+            <Prose text={row.promiseText} className="text-sm" />
+          </div>
+          <div>
+            <div className="md:hidden label-strap mb-1">{ui['ui.what_delivered'] || 'Delivered'}</div>
+            <Prose text={row.realityText} className="text-sm" />
+          </div>
         </div>
       ))}
     </div>
@@ -463,13 +493,13 @@ function Evidence({ rows }: { rows: import('@/lib/types').EvidenceRowDTO[] }) {
   return (
     <div className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
       {rows.map((row) => (
-        <div key={row.id} className="grid grid-cols-1 md:grid-cols-[140px_1fr_140px] gap-4 py-5 items-start">
+        <div key={row.id} className="grid grid-cols-1 md:grid-cols-[140px_1fr_140px] gap-3 md:gap-4 py-5 items-start">
           <div className="label-strap">{row.type}</div>
-          <div>
-            <h4 className="serif text-lg font-medium mb-1">{row.title}</h4>
+          <div className="min-w-0">
+            <h4 className="serif text-lg font-medium mb-1 break-words">{row.title}</h4>
             <Prose text={row.description} className="text-sm" />
           </div>
-          <div>
+          <div className="md:text-right">
             {row.isOnRequest ? (
               <span className="sans text-xs text-[var(--color-ink-faint)] uppercase tracking-widest">
                 {row.linkText || 'On request'}
@@ -479,7 +509,7 @@ function Evidence({ rows }: { rows: import('@/lib/types').EvidenceRowDTO[] }) {
                 href={row.linkUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="sans text-xs uppercase tracking-widest"
+                className="sans text-xs uppercase tracking-widest break-all"
               >
                 {row.linkText || row.linkUrl}
               </a>

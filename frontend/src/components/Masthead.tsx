@@ -25,11 +25,11 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
       className="sticky top-0 z-40 border-b-2 border-[var(--color-ink)] bg-[var(--color-paper)]/95 backdrop-blur"
       style={{ paddingInline: 'clamp(16px, 4vw, 32px)' }}
     >
-      <div className="flex flex-wrap items-baseline justify-between gap-3 py-3">
-        <Link href="/" className="serif text-lg font-medium tracking-tight">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 md:gap-3 py-2 md:py-3">
+        <Link href="/" className="serif text-sm md:text-lg font-medium tracking-tight leading-tight max-w-[60%] sm:max-w-[70%] md:max-w-none">
           {title}
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4 shrink-0">
           <nav className="hidden md:flex items-center gap-4 sans text-[12px] uppercase tracking-widest text-[var(--color-ink-faint)]">
             {navItems.map((item) => (
               <a key={item.key} href={item.href} className="hover:text-[var(--color-accent)]">

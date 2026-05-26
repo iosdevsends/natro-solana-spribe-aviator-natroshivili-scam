@@ -33,6 +33,16 @@ body {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Prevent horizontal scroll on mobile when any inline content (long URLs,
+     hashes, etc.) extends past viewport. Block-level Prose and code chunks
+     still set their own break-word/break-all where appropriate. */
+  overflow-x: hidden;
+}
+
+/* Long crypto addresses and URLs should always wrap, never push layout */
+.mono, code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Grain overlay reused from the original case file */
