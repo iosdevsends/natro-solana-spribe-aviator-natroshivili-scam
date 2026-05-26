@@ -49,6 +49,7 @@ export function buildAlternates(
 const OG_LOCALES: Record<Locale, string> = {
   en: 'en_US',
   ru: 'ru_RU',
+  uk: 'uk_UA',
   ka: 'ka_GE',
   fr: 'fr_FR',
   de: 'de_DE',

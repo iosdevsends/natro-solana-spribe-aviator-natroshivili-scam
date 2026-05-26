@@ -13,6 +13,7 @@ import { exhibits } from './exhibits';
 
 import { en } from './locales/en';
 import { ru } from './locales/ru';
+import { uk } from './locales/uk';
 import { ka } from './locales/ka';
 import { fr } from './locales/fr';
 import { de } from './locales/de';
@@ -21,6 +22,7 @@ import { es } from './locales/es';
 const overlays: Record<Locale, () => CaseFileBundle> = {
   en,
   ru,
+  uk,
   ka,
   fr,
   de,
