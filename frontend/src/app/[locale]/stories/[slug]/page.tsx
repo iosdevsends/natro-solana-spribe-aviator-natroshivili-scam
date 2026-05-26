@@ -1,8 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import type { Metadata } from 'next';
 
+import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { Masthead } from '@/components/Masthead';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
@@ -69,13 +69,12 @@ export default async function StoryPage({
   if (!story) notFound();
 
   const bundle = await loadCaseFile(locale as Locale);
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   return (
     <>
       <Masthead locale={locale as Locale} title={bundle.config.siteTitle} meta={bundle.config.mastheadMeta} uiStrings={bundle.config.uiStrings} />
       <main className="relative z-[2] mx-auto" style={{ maxWidth: '760px', padding: 'clamp(24px, 4vw, 60px) clamp(20px, 5vw, 56px) 120px' }}>
-        <Link href={`${localePrefix}/stories`} className="sans text-xs uppercase tracking-widest">← Reader stories</Link>
+        <Link href="/stories" className="sans text-xs uppercase tracking-widest">← Reader stories</Link>
         <h1 className="serif text-3xl md:text-4xl mt-4 font-medium">{story.title}</h1>
         <div className="mt-3 sans text-xs text-[var(--color-ink-faint)] flex flex-wrap gap-x-3">
           {story.isAnonymous ? <span>Anonymous</span> : story.authorDisplayName ? <span>{story.authorDisplayName}</span> : null}

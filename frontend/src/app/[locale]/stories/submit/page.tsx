@@ -1,8 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import type { Metadata } from 'next';
 
+import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { Masthead } from '@/components/Masthead';
 import { loadCaseFile } from '@/lib/case-file';
@@ -47,7 +47,6 @@ export default async function SubmitStoryPage({
   const t = await getTranslations('stories');
   const bundle = await loadCaseFile(locale as Locale);
   const user = await getCurrentUser();
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
 
   return (
     <>
@@ -70,13 +69,13 @@ export default async function SubmitStoryPage({
             <p className="serif text-lg mb-4">{t('registerFirst')}</p>
             <div className="flex gap-3 flex-wrap">
               <Link
-                href={`${localePrefix}/auth/register?next=${encodeURIComponent(`${localePrefix}/stories/submit`)}`}
+                href="/auth/register?next=%2Fstories%2Fsubmit"
                 className="sans border border-[var(--color-accent)] text-[var(--color-accent)] px-4 py-2 uppercase tracking-widest text-xs hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition"
               >
                 {t('registerCta')}
               </Link>
               <Link
-                href={`${localePrefix}/auth/login?next=${encodeURIComponent(`${localePrefix}/stories/submit`)}`}
+                href="/auth/login?next=%2Fstories%2Fsubmit"
                 className="sans border border-[var(--color-rule)] text-[var(--color-ink)] px-4 py-2 uppercase tracking-widest text-xs hover:border-[var(--color-ink)]"
               >
                 {t('loginCta')}

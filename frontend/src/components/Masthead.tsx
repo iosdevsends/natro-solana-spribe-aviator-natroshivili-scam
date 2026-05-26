@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import type { Locale } from '@/i18n/routing';
 
@@ -26,7 +26,7 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
       style={{ paddingInline: 'clamp(16px, 4vw, 32px)' }}
     >
       <div className="flex flex-wrap items-baseline justify-between gap-3 py-3">
-        <Link href={`/${locale === 'en' ? '' : locale}`} className="serif text-lg font-medium tracking-tight">
+        <Link href="/" className="serif text-lg font-medium tracking-tight">
           {title}
         </Link>
         <div className="flex items-center gap-4">
@@ -36,10 +36,7 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
                 {item.label}
               </a>
             ))}
-            <Link
-              href={`/${locale === 'en' ? '' : locale + '/'}stories`}
-              className="text-[var(--color-accent)] hover:underline"
-            >
+            <Link href="/stories" className="text-[var(--color-accent)] hover:underline">
               {uiStrings?.['nav.stories'] || 'Reader stories'}
             </Link>
           </nav>

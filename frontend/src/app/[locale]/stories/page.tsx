@@ -1,8 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import type { Metadata } from 'next';
 
+import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { Masthead } from '@/components/Masthead';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
@@ -67,8 +67,6 @@ export default async function StoriesPage({
   const stories = await listStories(locale as Locale);
   const bundle = await loadCaseFile(locale as Locale);
 
-  const localePrefix = locale === 'en' ? '' : `/${locale}`;
-
   return (
     <>
       <Masthead
@@ -84,7 +82,7 @@ export default async function StoriesPage({
 
         <div className="mt-8 mb-12">
           <Link
-            href={`${localePrefix}/stories/submit`}
+            href="/stories/submit"
             className="sans inline-block border-2 border-[var(--color-accent)] text-[var(--color-accent)] px-5 py-2 uppercase tracking-widest text-xs hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition"
           >
             {t('submitTitle')} →
@@ -100,7 +98,7 @@ export default async function StoriesPage({
             {stories.map((story) => (
               <li key={story.id} className="py-8">
                 <h2 className="serif text-2xl font-medium">
-                  <Link href={`${localePrefix}/stories/${story.slug}`} className="text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)]">
+                  <Link href={`/stories/${story.slug}`} className="text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)]">
                     {story.title}
                   </Link>
                 </h2>

@@ -32,7 +32,11 @@ const nextConfig: NextConfig = {
       pathname: '/uploads/**',
     })),
   },
-  typedRoutes: true,
+  // typedRoutes off — next-intl typed routing already provides type safety for
+  // locale-prefixed paths, and Next.js typedRoutes flags any dynamic href as
+  // an error (including ones we know are valid). Re-enable once next-intl
+  // generates a compatible RouteImpl.
+  typedRoutes: false,
 };
 
 export default withNextIntl(nextConfig);
