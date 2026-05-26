@@ -28,25 +28,17 @@ jobs:
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          ssh -i ~/.ssh/id_deploy "${DEPLOY_USER}@${DEPLOY_HOST}" bash -se <<'REMOTE'
-            set -euo pipefail
-            cd "$DEPLOY_PATH"
-            git fetch --all --prune
-            git reset --hard origin/main
-            # Build & restart only the natro stack (won't touch photovideo)
-            docker compose --env-file .env \
-              -f docker-compose.yml -f docker-compose.prod.yml \
-              build --pull
-            docker compose --env-file .env \
-              -f docker-compose.yml -f docker-compose.prod.yml \
-              up -d --remove-orphans
-            # Wait for healthchecks
-            sleep 5
-            docker compose --env-file .env \
-              -f docker-compose.yml -f docker-compose.prod.yml ps
-            # Prune dangling images only (keeps photovideo intact)
-            docker image prune -f
-          REMOTE
+          ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=accept-new \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            "set -euo pipefail
+             cd $DEPLOY_PATH
+             git fetch --all --prune
+             git reset --hard origin/main
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml build --pull
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
+             sleep 5
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml ps
+             docker image prune -f"
 
       - name: Smoke test
         env:
