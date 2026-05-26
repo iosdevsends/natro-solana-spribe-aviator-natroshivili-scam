@@ -20,6 +20,9 @@ COPY package.json package-lock.json* ./
 RUN npm install --legacy-peer-deps
 COPY . .
 ENV NODE_ENV=production
+# Strapi 5's admin panel build is heavy; t3.small (2 GB RAM + 2 GB swap)
+# needs an explicit heap bump or v8 will OOM near 1.7 GB default.
+ENV NODE_OPTIONS=--max-old-space-size=2560
 RUN npm run build
 
 # ─── Production runner ──────────────────────────────────────────────────────
