@@ -177,6 +177,9 @@ export default async function CaseFilePage({
         {/* § II Reality */}
         <SectionBlock section={sectionsBySlug.reality}>
           <SnapshotGrid cells={bundle.snapshotCells} />
+          {bundle.config.graduationBlock && (
+            <GraduationNote {...bundle.config.graduationBlock} />
+          )}
           <PromiseRealityTable rows={bundle.promiseRealityRows} ui={ui} />
         </SectionBlock>
 
@@ -359,6 +362,47 @@ function TierTable({ rows, ui }: { rows: import('@/lib/types').TierRowDTO[]; ui:
         </table>
       </div>
     </>
+  );
+}
+
+function GraduationNote({
+  kicker,
+  headline,
+  body,
+  linkText,
+  linkUrl,
+}: {
+  kicker?: string;
+  headline?: string;
+  body?: string;
+  linkText?: string;
+  linkUrl?: string;
+}) {
+  if (!body) return null;
+  return (
+    <aside className="border-l-4 border-[var(--color-gold)] bg-[var(--color-paper-warm)]/40 p-5 md:p-6 overflow-hidden">
+      {kicker && (
+        <div className="kicker mb-2" style={{ color: 'var(--color-gold)' }}>
+          {kicker}
+        </div>
+      )}
+      {headline && (
+        <h3 className="serif text-lg md:text-2xl font-medium mb-3 leading-snug">
+          {headline}
+        </h3>
+      )}
+      <Prose text={body} className="text-base" />
+      {linkUrl && (
+        <a
+          href={linkUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mt-4 inline-block sans text-xs uppercase tracking-widest"
+        >
+          {linkText || 'View source'} →
+        </a>
+      )}
+    </aside>
   );
 }
 

@@ -21,6 +21,13 @@ export const en = (): CaseFileBundle => ({
       { label: 'POSITION', value: '220,000,000 NATRO (approx. 22% of retail-held supply)' },
       { label: 'METHOD', value: 'Primary sources only · all linked & archived' },
     ],
+    graduationBlock: {
+      kicker: 'On-chain · graduation',
+      headline: 'The launch reached the Pump.fun graduation threshold.',
+      body: 'Pump.fun\'s public mint state for the NATRO token records `complete: true` — the bonding curve filled to the graduation threshold (≈85 SOL of accumulated inflow, ≈$65K–$85K at the SOL price at launch). On reaching the threshold, the bonding-curve liquidity was migrated to an open AMM pool (`pump_swap_pool: 7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS`) and the LP tokens of that pool were burned by the protocol — at which point the team no longer has the technical ability to drain the pool itself.\n\nThe subsequent collapse to a market cap of approximately **$36** (per Pump.fun\'s API at the time of this filing) was therefore driven by holders selling in an open AMM, not by a contract-level rug-pull. The team\'s own FAQ answer — *"The reputation hit lasts forever; the cash from a rug doesn\'t"* — anticipated the rug case specifically. The mechanism made that case impossible after graduation.\n\nThis makes the team\'s refusal to engage with affected early holders harder, not easier, to explain. The launch had reached the threshold of legitimacy that Pump.fun\'s mechanism enforces; the team then chose **not to engage** with the holders who had taken them at their word on the family-name pitch.',
+      linkText: 'View Pump.fun mint state',
+      linkUrl: 'https://pump.fun/coin/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
+    },
     archiveCallout: {
       kicker: 'Read it in their own words',
       headline: 'See what was sold.',

@@ -153,6 +153,13 @@ export interface SiteConfigDTO {
     linkUrl?: string;
     urlLabel?: string;
   };
+  graduationBlock?: {
+    kicker?: string;
+    headline?: string;
+    body?: string;
+    linkText?: string;
+    linkUrl?: string;
+  };
   rightOfReply?: string;
   contactBlock?: string;
   compilerAddendum?: string;
