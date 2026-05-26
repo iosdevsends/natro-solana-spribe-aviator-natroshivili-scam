@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { Analytics } from '@/components/Analytics';
+import { ConsentBanner } from '@/components/ConsentBanner';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
+          {process.env.NEXT_PUBLIC_GA_ID && <ConsentBanner />}
         </NextIntlClientProvider>
         <Analytics />
       </body>

@@ -38,5 +38,26 @@
     "registerFirst": "You need an account to submit a story.",
     "registerCta": "Create account",
     "loginCta": "Sign in"
+  },
+  "consent": {
+    "title": "Analyse-Cookies",
+    "body": "Wir verwenden Google Analytics, um zu verstehen, welche Abschnitte dieser Akte Traffic erhalten und woher. Keine Werbe- oder Marketing-Cookies. Ihre Wahl wird auf diesem Gerät gespeichert.",
+    "learnMore": "Was wir erfassen",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  },
+  "privacy": {
+    "title": "Datenschutz und Cookies",
+    "lead": "Diese Seite beschreibt, welche Daten die Akte erfasst, warum und wie Sie widersprechen können.",
+    "section_what": "Was wir erfassen",
+    "what_p1": "Wenn Sie der Analyse zustimmen, erfasst Google Analytics 4 aggregierte, anonymisierte Nutzungsdaten: besuchte Seiten, Verweildauer, ungefähres Land, Gerätetyp. Wir übergeben anonymize_ip=true an Google, sodass Ihre IP vor der Speicherung gekürzt wird.",
+    "what_p2": "Wenn Sie ablehnen, werden keine Analyse-Cookies geschrieben. Consent Mode v2 hält die Google-Skripte geladen, aber im Status „verweigert“ — an die Server von Google werden keine Daten gesendet.",
+    "section_no": "Was wir nicht erfassen",
+    "no_p1": "Keine Werbe-, Marketing- oder Personalisierungs-Cookies. Keine Drittanbieter-Tracker außer Google Analytics. Kein Cross-Site-Profiling.",
+    "section_user": "Leser-Beiträge",
+    "user_p1": "Wenn Sie ein Konto anlegen, um Ihre Geschichte einzureichen, speichern wir Ihre E-Mail, Ihren Benutzernamen, einen optionalen Anzeigenamen und Ihre Einreichung. Diese Daten liegen in unserer eigenen Datenbank, werden nie verkauft oder geteilt. Löschung jederzeit auf Anfrage beim Editor.",
+    "section_change": "Meinung geändert?",
+    "change_p1": "Löschen Sie die Daten dieser Site in Ihrem Browser, um das Consent-Banner erneut zu sehen. Oder kontaktieren Sie den Editor.",
+    "contact": "Kontakt"
   }
 }

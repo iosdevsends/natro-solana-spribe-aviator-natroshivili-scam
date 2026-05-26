@@ -38,5 +38,26 @@
     "registerFirst": "You need an account to submit a story.",
     "registerCta": "Create account",
     "loginCta": "Sign in"
+  },
+  "consent": {
+    "title": "Cookies de análisis",
+    "body": "Usamos Google Analytics para entender qué secciones del expediente reciben tráfico y desde dónde. Sin cookies publicitarias ni de marketing. Su elección se recuerda en este dispositivo.",
+    "learnMore": "Qué recogemos",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
+  },
+  "privacy": {
+    "title": "Privacidad y cookies",
+    "lead": "Esta página describe qué datos recopila el expediente, por qué y cómo rechazarlos.",
+    "section_what": "Qué recogemos",
+    "what_p1": "Si acepta la analítica, Google Analytics 4 registra datos de uso agregados y anonimizados: páginas visitadas, tiempo en página, país aproximado, tipo de dispositivo. Pasamos anonymize_ip=true a Google, su IP se trunca antes del almacenamiento.",
+    "what_p2": "Si rechaza, no se escriben cookies de análisis. Consent Mode v2 mantiene los scripts de Google cargados pero en estado denegado — nada se envía a los servidores de Google.",
+    "section_no": "Qué no recogemos",
+    "no_p1": "Sin cookies publicitarias, de marketing o de personalización. Sin rastreadores de terceros más allá de Google Analytics. Sin perfilado entre sitios.",
+    "section_user": "Relatos enviados por lectores",
+    "user_p1": "Si crea una cuenta para enviar su relato, almacenamos su correo, nombre de usuario, nombre opcional para mostrar y su envío. Estos datos están en nuestra propia base, nunca se venden ni comparten. Solicite la eliminación al editor en cualquier momento.",
+    "section_change": "¿Cambió de opinión?",
+    "change_p1": "Borre los datos de este sitio en su navegador para volver a ver el banner. O contacte con el editor.",
+    "contact": "Contacto"
   }
 }

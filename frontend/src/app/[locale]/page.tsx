@@ -215,8 +215,14 @@ export default async function CaseFilePage({
             </div>
           )}
           {bundle.config.colophon && (
-            <div className="sans text-xs text-[var(--color-ink-faint)] pt-6 border-t border-[var(--color-rule)]">
-              {bundle.config.colophon}
+            <div className="sans text-xs text-[var(--color-ink-faint)] pt-6 border-t border-[var(--color-rule)] flex flex-wrap items-center justify-between gap-3">
+              <span>{bundle.config.colophon}</span>
+              <a
+                href={loc === 'en' ? '/privacy' : `/${loc}/privacy`}
+                className="uppercase tracking-widest text-[10px]"
+              >
+                Privacy & cookies
+              </a>
             </div>
           )}
         </footer>

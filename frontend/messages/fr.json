@@ -38,5 +38,26 @@
     "registerFirst": "You need an account to submit a story.",
     "registerCta": "Create account",
     "loginCta": "Sign in"
+  },
+  "consent": {
+    "title": "Cookies d'analyse",
+    "body": "Nous utilisons Google Analytics pour comprendre quelles sections du dossier reçoivent du trafic, et d'où. Aucun cookie publicitaire ou marketing. Votre choix est conservé sur cet appareil.",
+    "learnMore": "Ce que nous collectons",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  },
+  "privacy": {
+    "title": "Confidentialité et cookies",
+    "lead": "Cette page décrit quelles données le dossier collecte, pourquoi, et comment refuser.",
+    "section_what": "Ce que nous collectons",
+    "what_p1": "Si vous acceptez l'analyse, Google Analytics 4 enregistre des données d'utilisation agrégées et anonymisées : pages visitées, temps passé, pays approximatif, type d'appareil. Nous passons anonymize_ip=true à Google, votre IP est tronquée avant stockage.",
+    "what_p2": "Si vous refusez, aucun cookie d'analyse n'est écrit. Consent Mode v2 maintient les scripts de Google chargés mais en état refusé — rien n'est transmis aux serveurs de Google.",
+    "section_no": "Ce que nous ne collectons pas",
+    "no_p1": "Aucun cookie publicitaire, marketing ou de personnalisation. Aucun traceur tiers en dehors de Google Analytics. Aucun profilage inter-sites.",
+    "section_user": "Récits soumis par les lecteurs",
+    "user_p1": "Si vous créez un compte pour soumettre votre récit, nous stockons votre e-mail, votre nom d'utilisateur, votre nom d'affichage facultatif et votre soumission. Ces données sont dans notre propre base, jamais vendues ni partagées. Demandez la suppression à tout moment auprès de l'éditeur.",
+    "section_change": "Changer d'avis ?",
+    "change_p1": "Effacez les données de ce site dans votre navigateur pour revoir la bannière de consentement. Ou contactez l'éditeur.",
+    "contact": "Contact"
   }
 }
