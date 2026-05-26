@@ -1,22 +1,38 @@
 name: natro
 
+# Production overrides for shared-host deployment alongside photovideo.ae.
+# Host ports remapped to avoid collisions with the existing project:
+#   3001 → frontend (photovideo uses 3000)
+#   1338 → strapi   (photovideo uses 1337)
+#   5434 → postgres (photovideo postgres is internal-only on 5432; we expose
+#                    a different host port for occasional psql sessions)
+
 services:
   postgres:
-    ports: !reset []   # do not expose Postgres on host in prod
+    ports:
+      - "127.0.0.1:5434:5432"   # localhost-only, no public exposure
     restart: always
 
   backend:
-    image: ghcr.io/iosdevsends/natro-solana-spribe-aviator-natroshivili-scam/backend:latest
-    build: !reset null
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: prod
+    image: natro-backend:local
     volumes:
       - backend_uploads:/app/public/uploads
     environment:
       NODE_ENV: production
+    ports:
+      - "127.0.0.1:1338:1337"
     restart: always
 
   frontend:
-    image: ghcr.io/iosdevsends/natro-solana-spribe-aviator-natroshivili-scam/frontend:latest
-    build: !reset null
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: prod
+    image: natro-frontend:local
     volumes: !reset []
     environment:
       NODE_ENV: production
@@ -24,6 +40,10 @@ services:
       STRAPI_INTERNAL_URL: http://backend:1337
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
       NEXT_PUBLIC_SITE_URL: ${PUBLIC_FRONTEND_URL}
+      NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
+      NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION:-}
+    ports:
+      - "127.0.0.1:3001:3000"
     restart: always
 
 volumes:

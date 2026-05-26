@@ -1,6 +1,36 @@
 # The NATRO File — Case file platform
 
+**Production:** [natro.meme](https://natro.meme) · **Compiler:** [@btc3050](https://t.me/btc3050) · **Wayback archive:** [natrocoin.net (21 May 2026 capture)](https://web.archive.org/web/20260521213245/https://natrocoin.net/)
+
 A multilingual, document-led case file investigating the launch and collapse of the `$NATRO` Solana memecoin (21 May 2026). Designed to read like an editorial investigation, not a personal grievance site. Public-record artefact for journalists, regulators, and affected holders.
+
+---
+
+## 🇬🇧 English
+
+A documented case file: the `$NATRO` Solana token launch on 21 May 2026, its 98% price collapse, the team's refusal to refund affected early holders, and the post-refund evidence-removal pattern (website taken offline, founder's Instagram bio link removed, paid promotional video deleted from KOL feed) — all preserved on the Wayback Machine, on-chain, and in timestamped screenshots. Primary sources only.
+
+## 🇷🇺 Русский
+
+Документированный кейс: запуск токена `$NATRO` на Solana 21 мая 2026 года, обвал цены на 98%, отказ команды возвращать средства ранним держателям и последующее удаление улик (сайт отключён, ссылка из Instagram-биографии основателя убрана, оплаченное промо-видео KOL удалено) — всё сохранено в Wayback Machine, on-chain и на датированных скриншотах. Только первичные источники.
+
+## 🇬🇪 ქართული
+
+დოკუმენტირებული საქმე: `$NATRO` Solana ტოკენის გაშვება 2026 წლის 21 მაისს, 98% ფასის ვარდნა, გუნდის უარი ადრეული მფლობელებისთვის თანხის დაბრუნებაზე და მტკიცებულებების შემდგომი წაშლა (საიტი გათიშული, დამფუძნებლის Instagram-ის ბმული მოშორებული, ფასიანი რეკლამა წაშლილი) — ყველაფერი შენახული Wayback Machine-ში, on-chain-ში და დროით აღნიშნულ სქრინშოტებში. მხოლოდ პირველადი წყაროები.
+
+## 🇫🇷 Français
+
+Un dossier documenté : le lancement du token `$NATRO` sur Solana le 21 mai 2026, sa chute de 98 %, le refus de l'équipe de rembourser les premiers détenteurs affectés, et l'effacement systématique des preuves qui a suivi (site mis hors ligne, lien dans la bio Instagram du fondateur supprimé, vidéo promotionnelle payante effacée du compte KOL) — tout conservé sur Wayback Machine, on-chain et dans des captures d'écran horodatées. Sources primaires uniquement.
+
+## 🇩🇪 Deutsch
+
+Eine dokumentierte Fallakte: der Launch des `$NATRO`-Solana-Tokens am 21. Mai 2026, sein 98-prozentiger Kursabsturz, die Weigerung des Teams, frühe betroffene Inhaber zu entschädigen, und das anschließende Löschmuster der Beweise (Website offline genommen, Link in der Instagram-Bio des Gründers entfernt, bezahltes Werbevideo aus dem KOL-Feed gelöscht) — alles auf der Wayback Machine, on-chain und in mit Zeitstempeln versehenen Screenshots erhalten. Nur Primärquellen.
+
+## 🇪🇸 Español
+
+Un expediente documentado: el lanzamiento del token `$NATRO` en Solana el 21 de mayo de 2026, su caída del 98 % en el precio, la negativa del equipo a reembolsar a los holders tempranos afectados y el patrón posterior de borrado de pruebas (sitio web retirado, enlace de la biografía de Instagram del fundador eliminado, vídeo promocional pagado borrado de la cuenta del KOL) — todo preservado en Wayback Machine, on-chain y en capturas con marca de tiempo. Solo fuentes primarias.
+
+---
 
 This repository is the **platform** that powers the file:
 
