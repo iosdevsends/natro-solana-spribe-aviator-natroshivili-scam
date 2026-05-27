@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { loadCaseFile } from '@/lib/case-file';
@@ -10,7 +11,7 @@ import { Masthead } from '@/components/Masthead';
 import { Prose } from '@/components/Prose';
 import { Lightbox } from '@/components/Lightbox';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
 
 const PUBLICATION_DATE = '2026-05-26T00:00:00Z';
@@ -85,6 +86,20 @@ export default async function CaseFilePage({
   );
 
   const pageUrl = absoluteUrl(loc);
+  const exhibitImageObjects = bundle.exhibits
+    .filter((ex) => ex.mediaType === 'image' && ex.legacySrc)
+    .map((ex) => ({
+      '@type': 'ImageObject',
+      contentUrl: `${siteUrl}${ex.legacySrc}`,
+      url: `${siteUrl}${ex.legacySrc}`,
+      name: ex.title,
+      caption: ex.caption || ex.title,
+      description: [ex.title, ex.source, ex.whyItMatters].filter(Boolean).join(' — '),
+      ...(ex.legacyWidth && ex.legacyHeight ? { width: ex.legacyWidth, height: ex.legacyHeight } : {}),
+      creditText: ex.source || undefined,
+      isAccessibleForFree: true,
+    }));
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -98,6 +113,7 @@ export default async function CaseFilePage({
     dateModified: MODIFIED_DATE,
     url: pageUrl,
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    image: exhibitImageObjects.length ? exhibitImageObjects : undefined,
     author: {
       '@type': 'Person',
       name: 'An affected early holder',
@@ -365,6 +381,12 @@ function TierTable({ rows, ui }: { rows: import('@/lib/types').TierRowDTO[]; ui:
   );
 }
 
+function composeAlt(exhibit: ExhibitDTO): string {
+  const parts = [exhibit.title];
+  if (exhibit.source) parts.push(exhibit.source);
+  return parts.filter(Boolean).join(' — ');
+}
+
 function GraduationNote({
   kicker,
   headline,
@@ -568,20 +590,21 @@ function Evidence({ rows }: { rows: import('@/lib/types').EvidenceRowDTO[] }) {
 function Gallery({ exhibits }: { exhibits: ExhibitDTO[] }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      {exhibits.map((ex) => (
-        <ExhibitThumb key={ex.slug} exhibit={ex} />
+      {exhibits.map((ex, idx) => (
+        <ExhibitThumb key={ex.slug} exhibit={ex} eager={idx < 5} />
       ))}
     </div>
   );
 }
 
-function ExhibitThumb({ exhibit, small = false }: { exhibit: ExhibitDTO; small?: boolean }) {
+function ExhibitThumb({ exhibit, small = false, eager = false }: { exhibit: ExhibitDTO; small?: boolean; eager?: boolean }) {
   const src =
     mediaUrl(exhibit.thumbnail) ||
     mediaUrl(exhibit.media, 'small') ||
     mediaUrl(exhibit.media) ||
     exhibit.legacySrc ||
     '';
+  const altText = composeAlt(exhibit);
   return (
     <button
       type="button"
@@ -594,8 +617,15 @@ function ExhibitThumb({ exhibit, small = false }: { exhibit: ExhibitDTO; small?:
       {exhibit.mediaType === 'video' ? (
         <span className="absolute inset-0 grid place-items-center bg-black/50 text-white">▶</span>
       ) : src ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={exhibit.title} className="absolute inset-0 w-full h-full object-cover" />
+        <Image
+          src={src}
+          alt={altText}
+          fill
+          sizes={small ? '120px' : '(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 180px'}
+          className="object-cover"
+          loading={eager ? 'eager' : 'lazy'}
+          priority={eager}
+        />
       ) : (
         <span className="absolute inset-0 grid place-items-center text-[var(--color-ink-faint)] sans text-xs">{exhibit.exhibitNumber}</span>
       )}

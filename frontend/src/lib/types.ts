@@ -19,6 +19,9 @@ export interface ExhibitDTO {
   highlighted?: boolean;
   /** Legacy filesystem path used by the fallback seed. */
   legacySrc?: string;
+  /** Intrinsic dimensions of the legacy file (helps next/image avoid CLS). */
+  legacyWidth?: number;
+  legacyHeight?: number;
 }
 
 export interface CaseSectionDTO {

@@ -3,8 +3,9 @@ import { locales, defaultLocale } from '@/i18n/routing';
 import { siteUrl, absoluteUrl } from '@/lib/seo';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
 import type { UserStoryDTO } from '@/lib/types';
+import { exhibits } from '@/content/exhibits';
 
-const STATIC_PATHS = ['', '/stories'];
+const STATIC_PATHS = ['', '/stories', '/privacy'];
 
 async function listApprovedStories(): Promise<UserStoryDTO[]> {
   try {
@@ -23,11 +24,18 @@ async function listApprovedStories(): Promise<UserStoryDTO[]> {
   }
 }
 
+function exhibitImageUrls(): string[] {
+  return exhibits
+    .filter((ex) => ex.mediaType === 'image' && ex.legacySrc)
+    .map((ex) => `${siteUrl}${ex.legacySrc}`);
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [];
 
-  // Static pages × locales
+  const images = exhibitImageUrls();
+
   for (const path of STATIC_PATHS) {
     entries.push({
       url: absoluteUrl(defaultLocale, path),
@@ -39,6 +47,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           locales.map((l) => [l, absoluteUrl(l, path)]),
         ),
       },
+      // Image sitemap entries — attached to the homepage so Google Image Search
+      // discovers every exhibit. Mirrored to all locale variants via hreflang.
+      images: path === '' ? images : undefined,
     });
   }
 

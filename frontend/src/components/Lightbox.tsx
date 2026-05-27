@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import type { ExhibitDTO } from '@/lib/types';
 
 type Props = {
@@ -99,8 +100,15 @@ export function Lightbox({ exhibits, publicStrapiUrl, uiStrings }: Props) {
               className="max-h-[70vh] max-w-full"
             />
           ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={src} alt={ex.title} className="max-h-[70vh] max-w-full object-contain" />
+            <Image
+              src={src}
+              alt={[ex.title, ex.source].filter(Boolean).join(' — ')}
+              width={ex.legacyWidth ?? 1600}
+              height={ex.legacyHeight ?? 1200}
+              sizes="(max-width: 768px) 100vw, 1100px"
+              priority
+              className="max-h-[70vh] max-w-full w-auto h-auto object-contain"
+            />
           )}
         </div>
         {(ex.title || ex.caption || ex.source) && (
