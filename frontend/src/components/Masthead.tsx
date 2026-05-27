@@ -22,15 +22,18 @@ function shortLabel(raw: string | undefined, fallback: string): string {
 }
 
 export function Masthead({ locale, title, meta, uiStrings }: Props) {
-  const sectionNav: Array<{ key: string; href: string; label: string }> = [
-    { key: 'promise', href: '#promise', label: shortLabel(uiStrings?.['nav.promise'], 'Promise') },
-    { key: 'reality', href: '#reality', label: shortLabel(uiStrings?.['nav.reality'], 'Reality') },
-    { key: 'scrub', href: '#coverup', label: shortLabel(uiStrings?.['nav.scrub'], 'Scrub') },
-    { key: 'voices', href: '#voices', label: shortLabel(uiStrings?.['nav.voices'], 'Voices') },
-    { key: 'people', href: '#people', label: shortLabel(uiStrings?.['nav.people'], 'People') },
-    { key: 'evidence', href: '#evidence', label: shortLabel(uiStrings?.['nav.evidence'], 'Sources') },
-    { key: 'gallery', href: '#gallery', label: shortLabel(uiStrings?.['nav.gallery'], 'Gallery') },
-    { key: 'faq', href: '#faq', label: shortLabel(uiStrings?.['nav.faq'], 'FAQ') },
+  // Section anchors live on the homepage (/<locale>/). To make them work from
+  // any other page (e.g. /on-chain, /faq, /stories), each entry is a
+  // locale-aware Link to "/" with a hash — next-intl handles the locale prefix.
+  const sectionNav: Array<{ key: string; hash: string; label: string }> = [
+    { key: 'promise', hash: 'promise', label: shortLabel(uiStrings?.['nav.promise'], 'Promise') },
+    { key: 'reality', hash: 'reality', label: shortLabel(uiStrings?.['nav.reality'], 'Reality') },
+    { key: 'scrub', hash: 'coverup', label: shortLabel(uiStrings?.['nav.scrub'], 'Scrub') },
+    { key: 'voices', hash: 'voices', label: shortLabel(uiStrings?.['nav.voices'], 'Voices') },
+    { key: 'people', hash: 'people', label: shortLabel(uiStrings?.['nav.people'], 'People') },
+    { key: 'evidence', hash: 'evidence', label: shortLabel(uiStrings?.['nav.evidence'], 'Sources') },
+    { key: 'gallery', hash: 'gallery', label: shortLabel(uiStrings?.['nav.gallery'], 'Gallery') },
+    { key: 'faq', hash: 'faq', label: shortLabel(uiStrings?.['nav.faq'], 'FAQ') },
   ];
 
   return (
@@ -52,13 +55,13 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
             aria-label="Sections"
           >
             {sectionNav.map((item) => (
-              <a
+              <Link
                 key={item.key}
-                href={item.href}
+                href={{ pathname: '/', hash: item.hash }}
                 className="hover:text-[var(--color-accent)] transition-colors whitespace-nowrap"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <span className="w-px h-4 bg-[var(--color-rule)]" aria-hidden="true" />
             <Link

@@ -119,7 +119,9 @@ def fetch_pumpfun() -> dict | None:
         "name": d.get("name"),
         "symbol": d.get("symbol"),
         "complete": bool(d.get("complete")),
-        "marketCapUsd": d.get("market_cap"),
+        # Pump.fun returns market_cap in SOL and usd_market_cap in USD;
+        # we want USD for the displayed/stored value.
+        "marketCapUsd": d.get("usd_market_cap"),
         "realSolReserves": d.get("real_sol_reserves"),
         "realTokenReserves": d.get("real_token_reserves"),
         "pumpSwapPool": d.get("pump_swap_pool"),

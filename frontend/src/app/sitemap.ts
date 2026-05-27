@@ -44,9 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: path === '' ? 'weekly' : 'daily',
       priority: path === '' ? 1.0 : 0.7,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, absoluteUrl(l, path)]),
-        ),
+        languages: {
+          ...Object.fromEntries(
+            locales.map((l) => [l, absoluteUrl(l, path)]),
+          ),
+          'x-default': absoluteUrl(defaultLocale, path),
+        },
       },
       // Image sitemap entries — attached to the homepage so Google Image Search
       // discovers every exhibit. Mirrored to all locale variants via hreflang.
@@ -62,14 +65,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.6,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [
-            l,
-            l === defaultLocale
-              ? `${siteUrl}/faq/${entry.slug}`
-              : `${siteUrl}/${l}/faq/${entry.slug}`,
-          ]),
-        ),
+        languages: {
+          ...Object.fromEntries(
+            locales.map((l) => [
+              l,
+              l === defaultLocale
+                ? `${siteUrl}/faq/${entry.slug}`
+                : `${siteUrl}/${l}/faq/${entry.slug}`,
+            ]),
+          ),
+          'x-default': `${siteUrl}/faq/${entry.slug}`,
+        },
       },
     });
   }
@@ -83,14 +89,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.5,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [
-            l,
-            l === defaultLocale
-              ? `${siteUrl}/stories/${story.slug}`
-              : `${siteUrl}/${l}/stories/${story.slug}`,
-          ]),
-        ),
+        languages: {
+          ...Object.fromEntries(
+            locales.map((l) => [
+              l,
+              l === defaultLocale
+                ? `${siteUrl}/stories/${story.slug}`
+                : `${siteUrl}/${l}/stories/${story.slug}`,
+            ]),
+          ),
+          'x-default': `${siteUrl}/stories/${story.slug}`,
+        },
       },
     });
   }

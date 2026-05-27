@@ -169,7 +169,8 @@ export async function fetchPumpFunState(): Promise<PumpFunState | null> {
       name?: string;
       symbol?: string;
       complete?: boolean;
-      market_cap?: number;
+      market_cap?: number;        // denominated in SOL
+      usd_market_cap?: number;    // denominated in USD
       virtual_sol_reserves?: number;
       virtual_token_reserves?: number | string;
       real_sol_reserves?: number;
@@ -186,7 +187,7 @@ export async function fetchPumpFunState(): Promise<PumpFunState | null> {
       name: d.name || 'NatroCoin',
       symbol: d.symbol || 'NATRO',
       complete: !!d.complete,
-      marketCapUsd: typeof d.market_cap === 'number' ? d.market_cap : null,
+      marketCapUsd: typeof d.usd_market_cap === 'number' ? d.usd_market_cap : null,
       virtualSolReserves: d.virtual_sol_reserves ?? null,
       virtualTokenReserves:
         d.virtual_token_reserves !== undefined ? String(d.virtual_token_reserves) : null,
