@@ -25,6 +25,22 @@ export const localeFullNames: Record<Locale, string> = {
   es: 'Español',
 };
 
+/**
+ * Country/region emoji flag per locale. UK flag stands in for "English";
+ * Georgia for `ka`; etc. Renders inline before the locale code in the
+ * language switcher so readers immediately see "this is a translation,
+ * not just an abbreviation."
+ */
+export const localeFlags: Record<Locale, string> = {
+  en: '🇬🇧',
+  ru: '🇷🇺',
+  uk: '🇺🇦',
+  ka: '🇬🇪',
+  fr: '🇫🇷',
+  de: '🇩🇪',
+  es: '🇪🇸',
+};
+
 export const routing = defineRouting({
   locales,
   defaultLocale,
