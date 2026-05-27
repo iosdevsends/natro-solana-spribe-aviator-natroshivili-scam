@@ -1,6 +1,6 @@
 # The NATRO File — Case file platform
 
-**Production:** [natro.meme](https://natro.meme) · **Compiler:** [@btc3050](https://t.me/btc3050) · **Wayback archive:** [natrocoin.net (21 May 2026 capture)](https://web.archive.org/web/20260521213245/https://natrocoin.net/)
+**Production:** [natro.meme](https://natro.meme) · **Compiler:** [@btc3050](https://t.me/btc3050) · **Channel:** [@natroscam](https://t.me/natroscam) · **Wayback archive:** [natrocoin.net (21 May 2026 capture)](https://web.archive.org/web/20260521213245/https://natrocoin.net/)
 
 A multilingual, document-led case file investigating the launch and collapse of the `$NATRO` Solana memecoin (21 May 2026). Designed to read like an editorial investigation, not a personal grievance site. Public-record artefact for journalists, regulators, and affected holders.
 
