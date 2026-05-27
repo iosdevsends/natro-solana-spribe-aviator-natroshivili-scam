@@ -28,7 +28,11 @@ jobs:
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=accept-new \
+          ssh -i ~/.ssh/id_deploy \
+            -o StrictHostKeyChecking=accept-new \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=20 \
+            -o TCPKeepAlive=yes \
             "$DEPLOY_USER@$DEPLOY_HOST" \
             "set -euo pipefail
              cd $DEPLOY_PATH
