@@ -49,6 +49,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Local-only docs are listed in .git/info/exclude (per-clone, never committed)
+
 # Large legacy media (kept locally for reference, not in repo)
 legacy/images/
 legacy/*.mp4
