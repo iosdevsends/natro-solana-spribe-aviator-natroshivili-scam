@@ -103,5 +103,6 @@ export async function loadCaseFile(locale: Locale): Promise<CaseFileBundle> {
     snapshotCells: snapshotCells.length ? snapshotCells : seed.snapshotCells,
     evidenceRows: evidenceRows.length ? evidenceRows : seed.evidenceRows,
     exhibits: exhibits.length ? exhibits : seed.exhibits,
+    faq: seed.faq, // FAQ is editor-authored in the seed; not yet mirrored to Strapi
   };
 }

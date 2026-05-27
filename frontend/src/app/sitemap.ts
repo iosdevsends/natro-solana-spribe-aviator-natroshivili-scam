@@ -4,8 +4,9 @@ import { siteUrl, absoluteUrl } from '@/lib/seo';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
 import type { UserStoryDTO } from '@/lib/types';
 import { exhibits } from '@/content/exhibits';
+import { getFaq } from '@/content/faq';
 
-const STATIC_PATHS = ['', '/stories', '/privacy'];
+const STATIC_PATHS = ['', '/stories', '/privacy', '/faq'];
 
 async function listApprovedStories(): Promise<UserStoryDTO[]> {
   try {
@@ -50,6 +51,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // Image sitemap entries — attached to the homepage so Google Image Search
       // discovers every exhibit. Mirrored to all locale variants via hreflang.
       images: path === '' ? images : undefined,
+    });
+  }
+
+  // FAQ entry pages — one URL per slug, with hreflang alternates per locale.
+  for (const entry of getFaq(defaultLocale)) {
+    entries.push({
+      url: `${siteUrl}/faq/${entry.slug}`,
+      lastModified: entry.lastReviewedAt ? new Date(entry.lastReviewedAt) : now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [
+            l,
+            l === defaultLocale
+              ? `${siteUrl}/faq/${entry.slug}`
+              : `${siteUrl}/${l}/faq/${entry.slug}`,
+          ]),
+        ),
+      },
     });
   }
 

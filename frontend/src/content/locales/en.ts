@@ -49,7 +49,14 @@ export const en = (): CaseFileBundle => ({
       'nav.people': '§ V · People',
       'nav.evidence': '§ VI · Sources',
       'nav.gallery': '§ VII · Gallery',
+      'nav.faq': '§ VIII · FAQ',
       'nav.stories': 'Reader stories',
+      'faq.pageTitle': 'Frequently asked questions',
+      'faq.pageLead': 'Short, sourced answers to the questions readers most often ask about $NATRO. Each entry links to a longer article with the full citation chain.',
+      'faq.headline': 'Short, sourced answers.',
+      'faq.readMore': 'Read the full answer',
+      'faq.citations': 'Citations',
+      'faq.other': 'Other questions',
       'ui.what_promised': 'What was promised',
       'ui.what_delivered': 'What was delivered',
       'ui.tier': 'Tier',
@@ -132,4 +139,5 @@ export const en = (): CaseFileBundle => ({
     { id: 7, slug: 'kutztown-sbdc', order: 7, type: 'Institutional · standing', title: 'David Natroshvili SBDC Suite — Kutztown University Foundation', description: 'Kutztown University Foundation\'s own announcement of the alumnus return and dedication ceremony on 2 September 2025. Confirms: David Natroshvili — founder & CEO, Spribe — MBA Kutztown 2001; gift made in Spring 2025 with his wife Nina; renovation of the Pennsylvania SBDC lead office in the deFrancesco Building; suite named in his honor.\n\nCited here as a primary source documenting the standing the NATRO marketing referenced.', linkText: 'kuf.org →', linkUrl: 'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/' },
   ],
   exhibits,
+  faq: [], // populated by getSeed() via getFaq(locale)
 });

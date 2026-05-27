@@ -18,6 +18,7 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
     { key: 'people', href: '#people', label: uiStrings?.['nav.people'] || '§ V' },
     { key: 'evidence', href: '#evidence', label: uiStrings?.['nav.evidence'] || '§ VI' },
     { key: 'gallery', href: '#gallery', label: uiStrings?.['nav.gallery'] || '§ VII' },
+    { key: 'faq', href: '#faq', label: uiStrings?.['nav.faq'] || 'FAQ' },
   ];
 
   return (

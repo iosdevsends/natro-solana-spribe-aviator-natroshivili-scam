@@ -19,6 +19,7 @@ export function extendEn(partial: DeepPartial<CaseFileBundle>): CaseFileBundle {
     snapshotCells: mergeArrayBySlug(base.snapshotCells, partial.snapshotCells),
     evidenceRows: mergeArrayBySlug(base.evidenceRows, partial.evidenceRows),
     exhibits: mergeArrayBySlug(base.exhibits, partial.exhibits),
+    faq: base.faq, // populated centrally by getSeed() via getFaq(locale)
   };
 }
 

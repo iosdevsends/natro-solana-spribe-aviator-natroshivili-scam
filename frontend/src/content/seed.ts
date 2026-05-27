@@ -10,6 +10,7 @@
 import type { Locale } from '@/i18n/routing';
 import type { CaseFileBundle } from '@/lib/types';
 import { exhibits } from './exhibits';
+import { getFaq } from './faq';
 
 import { en } from './locales/en';
 import { ru } from './locales/ru';
@@ -37,6 +38,7 @@ export function getSeed(locale: Locale): CaseFileBundle {
   return {
     ...bundle,
     exhibits: bundle.exhibits.length ? bundle.exhibits : exhibits,
+    faq: getFaq(locale),
   };
 }
 

@@ -224,6 +224,9 @@ export default async function CaseFilePage({
           <Gallery exhibits={bundle.exhibits} />
         </SectionBlock>
 
+        {/* FAQ — short Q+A snippets with FAQPage JSON-LD for Google rich snippets */}
+        <FaqBlock faq={bundle.faq} ui={ui} />
+
         {/* Footer */}
         <footer className="mt-24 pt-12 border-t-2 border-[var(--color-ink)] space-y-10">
           <FooterBlock title={ui['ui.right_of_reply'] || 'Right of reply'} text={bundle.config.rightOfReply} />
@@ -378,6 +381,59 @@ function TierTable({ rows, ui }: { rows: import('@/lib/types').TierRowDTO[]; ui:
         </table>
       </div>
     </>
+  );
+}
+
+function FaqBlock({ faq, ui }: { faq: import('@/lib/types').FaqEntryDTO[]; ui: Record<string, string> }) {
+  if (!faq.length) return null;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((entry) => ({
+      '@type': 'Question',
+      name: entry.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: entry.shortAnswer,
+      },
+    })),
+  };
+  return (
+    <section id="faq" className="mb-20 scroll-mt-24">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="kicker mb-3 flex items-baseline gap-3">
+        <span className="section-numeral text-3xl">§ VIII</span>
+        <span>{ui['nav.faq'] || 'Frequently asked'}</span>
+      </div>
+      <h2 className="serif text-[22px] sm:text-2xl md:text-4xl leading-tight mb-5 md:mb-6 font-medium">
+        {ui['faq.headline'] || 'Short, sourced answers.'}
+      </h2>
+      <div className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+        {faq.map((entry) => (
+          <article key={entry.slug} className="py-6">
+            <h3 className="serif text-lg md:text-xl font-medium leading-snug">
+              <a
+                href={`/faq/${entry.slug}`}
+                className="text-[var(--color-ink)] no-underline hover:text-[var(--color-accent)]"
+              >
+                {entry.question}
+              </a>
+            </h3>
+            <Prose text={entry.shortAnswer} className="mt-2 text-sm md:text-base" />
+            <a
+              href={`/faq/${entry.slug}`}
+              className="inline-block mt-2 sans text-xs uppercase tracking-widest"
+            >
+              {ui['faq.readMore'] || 'Read the full answer'} →
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 

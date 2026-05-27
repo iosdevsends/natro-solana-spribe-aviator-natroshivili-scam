@@ -192,6 +192,20 @@ export interface UserStoryDTO {
   publishedAt?: string;
 }
 
+export interface FaqEntryDTO {
+  id: number;
+  slug: string;
+  order: number;
+  question: string;
+  shortAnswer: string;
+  /** Markdown / rich body shown on /faq/[slug]. Should NOT include the question itself. */
+  extendedBody: string;
+  /** Optional list of citation URLs that back the answer. */
+  citations?: Array<{ label: string; url: string }>;
+  /** ISO date of last review (used for dateModified in Article schema). */
+  lastReviewedAt?: string;
+}
+
 export interface CaseFileBundle {
   config: SiteConfigDTO;
   sections: CaseSectionDTO[];
@@ -203,4 +217,5 @@ export interface CaseFileBundle {
   snapshotCells: SnapshotCellDTO[];
   evidenceRows: EvidenceRowDTO[];
   exhibits: ExhibitDTO[];
+  faq: FaqEntryDTO[];
 }
