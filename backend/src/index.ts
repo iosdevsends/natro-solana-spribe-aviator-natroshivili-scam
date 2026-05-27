@@ -3,11 +3,40 @@ import type { Core } from '@strapi/strapi';
 const SUPPORTED_LOCALES: Array<{ code: string; name: string; isDefault?: boolean }> = [
   { code: 'en', name: 'English (en)', isDefault: true },
   { code: 'ru', name: 'Русский (ru)' },
+  { code: 'uk', name: 'Українська (uk)' },
   { code: 'ka', name: 'ქართული (ka)' },
   { code: 'fr', name: 'Français (fr)' },
   { code: 'de', name: 'Deutsch (de)' },
   { code: 'es', name: 'Español (es)' },
 ];
+
+async function syncUsersPermissionsAdvanced(strapi: Core.Strapi) {
+  const wantConfirmation =
+    String(process.env.EMAIL_CONFIRMATION_REQUIRED || '').toLowerCase() === 'true' &&
+    !!process.env.SMTP_PASSWORD;
+
+  try {
+    const pluginStore = strapi.store({
+      type: 'plugin',
+      name: 'users-permissions',
+    });
+    const current = ((await pluginStore.get({ key: 'advanced' })) as Record<string, unknown>) || {};
+    const next = {
+      ...current,
+      email_confirmation: wantConfirmation,
+      email_confirmation_redirection:
+        process.env.PUBLIC_FRONTEND_URL || 'https://natro.meme',
+      allow_register: true,
+      unique_email: true,
+    };
+    await pluginStore.set({ key: 'advanced', value: next });
+    strapi.log.info(
+      `[bootstrap] users-permissions advanced: email_confirmation=${wantConfirmation}`,
+    );
+  } catch (err) {
+    strapi.log.warn('[bootstrap] could not sync users-permissions advanced: ' + (err as Error).message);
+  }
+}
 
 // Public-readable collection types. The user-story controller already filters by approved.
 const PUBLIC_READ_CONTENT_TYPES = [
@@ -96,6 +125,7 @@ export default {
       await ensureLocales(strapi);
       await setRolePermissions(strapi, 'public');
       await setRolePermissions(strapi, 'authenticated');
+      await syncUsersPermissionsAdvanced(strapi);
     } catch (err) {
       strapi.log.error('[bootstrap] failed: ' + (err as Error).message);
     }

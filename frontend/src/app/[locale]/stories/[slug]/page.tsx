@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import DOMPurify from 'isomorphic-dompurify';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
@@ -88,7 +89,13 @@ export default async function StoryPage({
         {/* Render the editor-approved body. Sanitization happened at submit time. */}
         <article
           className="prose-like leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: story.body }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(story.body, {
+              ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'a', 'ul', 'ol', 'li', 'blockquote', 'h2', 'h3', 'code'],
+              ALLOWED_ATTR: ['href', 'rel', 'target'],
+              ADD_ATTR: ['rel'],
+            }),
+          }}
         />
         {story.evidenceLinks && story.evidenceLinks.length > 0 && (
           <section className="mt-12 border-t border-[var(--color-rule)] pt-6">

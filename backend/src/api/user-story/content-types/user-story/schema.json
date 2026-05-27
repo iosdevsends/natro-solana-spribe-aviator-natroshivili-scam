@@ -96,6 +96,19 @@
       "default": "unverified",
       "pluginOptions": { "i18n": { "localized": false } }
     },
+    "termsAccepted": {
+      "type": "boolean",
+      "default": false,
+      "required": true,
+      "description": "Author confirmed: statements are true to their knowledge, they accept responsibility, they grant publication license.",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "editorialChecklist": {
+      "type": "json",
+      "private": true,
+      "description": "Internal review state — only editors. Fields: defamationReviewed, factsVerifiable, onChainEvidenceChecked, toneAppropriate (all boolean), plus reviewer + reviewedAt.",
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
     "moderationStatus": {
       "type": "enumeration",
       "enum": ["pending", "needs-edits", "approved", "rejected"],

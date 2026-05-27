@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import type { Locale } from '@/i18n/routing';
+import { TurnstileWidget } from './TurnstileWidget';
 
 export function SubmitStoryForm({ locale }: { locale: Locale }) {
   const t = useTranslations('stories');
   const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const captchaEnabled = !!process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY;
 
   async function onSubmit(form: HTMLFormElement) {
     setStatus('submitting');
@@ -25,6 +28,17 @@ export function SubmitStoryForm({ locale }: { locale: Locale }) {
         if (url) return { label: label.trim(), url: url.trim() };
         return { label: line, url: line };
       });
+    const termsAccepted = fd.get('termsAccepted') === 'on';
+    if (!termsAccepted) {
+      setStatus('error');
+      setErrorMessage(t('errorTermsRequired'));
+      return;
+    }
+    if (captchaEnabled && !turnstileToken) {
+      setStatus('error');
+      setErrorMessage(t('errorCaptchaRequired'));
+      return;
+    }
     const payload = {
       title: (fd.get('title') as string)?.trim(),
       summary: (fd.get('summary') as string)?.trim() || undefined,
@@ -35,8 +49,10 @@ export function SubmitStoryForm({ locale }: { locale: Locale }) {
       incidentDate: (fd.get('incidentDate') as string) || undefined,
       isAnonymous: fd.get('isAnonymous') === 'on',
       contactConsent: fd.get('contactConsent') === 'on',
+      termsAccepted: true as const,
       evidenceLinks,
       locale,
+      turnstileToken,
     };
     try {
       const res = await fetch('/api/stories', {
@@ -102,10 +118,22 @@ export function SubmitStoryForm({ locale }: { locale: Locale }) {
         <Checkbox name="contactConsent" label={t('fieldContactConsent')} />
       </div>
 
+      <div className="border-l-4 border-[var(--color-accent)] bg-[var(--color-paper-warm)]/40 p-4 space-y-3">
+        <p className="text-sm leading-relaxed">{t('termsDisclaimer')}</p>
+        <Checkbox name="termsAccepted" label={t('fieldTermsAccepted')} />
+      </div>
+
+      {captchaEnabled && (
+        <TurnstileWidget
+          onToken={setTurnstileToken}
+          onExpired={() => setTurnstileToken(null)}
+        />
+      )}
+
       <div className="flex gap-3 items-center flex-wrap">
         <button
           type="submit"
-          disabled={status === 'submitting'}
+          disabled={status === 'submitting' || (captchaEnabled && !turnstileToken)}
           className="border-2 border-[var(--color-accent)] text-[var(--color-accent)] px-5 py-2 uppercase tracking-widest text-xs hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition disabled:opacity-50"
         >
           {status === 'submitting' ? '…' : t('submitButton')}

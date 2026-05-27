@@ -2,11 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { TurnstileWidget } from './TurnstileWidget';
 
 export function AuthForm({ mode, nextUrl }: { mode: 'login' | 'register'; nextUrl: string }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const captchaEnabled = !!process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY;
 
   async function onSubmit(form: HTMLFormElement) {
     setError(null);
@@ -17,13 +20,20 @@ export function AuthForm({ mode, nextUrl }: { mode: 'login' | 'register'; nextUr
         ? {
             identifier: (fd.get('identifier') as string)?.trim(),
             password: fd.get('password') as string,
+            turnstileToken,
           }
         : {
             username: (fd.get('username') as string)?.trim(),
             email: (fd.get('email') as string)?.trim(),
             password: fd.get('password') as string,
             displayName: (fd.get('displayName') as string)?.trim() || undefined,
+            turnstileToken,
           };
+    if (captchaEnabled && !turnstileToken) {
+      setError('Please complete the CAPTCHA.');
+      setBusy(false);
+      return;
+    }
     try {
       const res = await fetch(`/api/auth/${mode}`, {
         method: 'POST',
@@ -56,14 +66,13 @@ export function AuthForm({ mode, nextUrl }: { mode: 'login' | 'register'; nextUr
           <Field name="displayName" label="Display name (optional, shown on your stories)" />
         </>
       )}
-      {mode === 'login' && (
-        <Field name="identifier" label="Email or username" required />
-      )}
+      {mode === 'login' && <Field name="identifier" label="Email or username" required />}
       <Field name="password" label="Password" type="password" required minLength={6} />
+      {captchaEnabled && <TurnstileWidget onToken={setTurnstileToken} onExpired={() => setTurnstileToken(null)} />}
       <div className="flex items-center gap-3 flex-wrap">
         <button
           type="submit"
-          disabled={busy}
+          disabled={busy || (captchaEnabled && !turnstileToken)}
           className="border-2 border-[var(--color-accent)] text-[var(--color-accent)] px-5 py-2 uppercase tracking-widest text-xs hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition disabled:opacity-50"
         >
           {busy ? '…' : mode === 'login' ? 'Sign in' : 'Create account'}
