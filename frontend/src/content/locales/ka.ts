@@ -102,7 +102,6 @@ export const ka = () =>
       { slug: 'nothing-to-say', text: 'Nothing to say.', attribution: 'გუნდის ადმინი „A A“ (@arifazii)', source: 'საბოლოო პასუხი სტრუქტურირებულ შეთავაზებაზე · NATRO Lounge Telegram', sourceDate: '24 მაისი 2026' },
       { slug: 'delete-comments', text: 'Delete this comments your just making a fool out of yourself.', attribution: 'ალექს ნატროშვილი — დამფუძნებელი', source: 'Instagram DM', sourceDate: '25 მაისი 2026' },
       { slug: 'who-do-you-think', text: 'Spribe legal is not responding to you / Who do u think u are.', attribution: 'ალექს ნატროშვილი — დამფუძნებელი', source: 'Instagram DM', sourceDate: '25 მაისი 2026' },
-      { slug: 'working-on-it', text: 'We are working on it. The NATRO team is working on everything to ensure credibility.', attribution: 'გუნდის ადმინი „A A“', source: 'NATRO Foyer Telegram', sourceDate: '23 მაისი 2026, 13:57' },
     ],
     people: [
       { slug: 'alex-natroshvili', role: 'დამფუძნებელი · სუბიექტი', description: 'პროექტის საიტმა იდენტიფიცირა როგორც დამფუძნებელი. დამფუძნებლის სექცია იხსნებოდა სიტყვებით: „კოინების უმეტესობის დამფუძნებლები ანონიმურები არიან. ალექსი არ არის. მისი სახელი პროექტზეა, მისი სახე TikTok-სა და Instagram-ზე, ოჯახი გლობალურად ცნობილია.“', statement: '„stfu“ — პირადი DM პასუხი დაბრუნების შეთავაზებაზე, 25 მაისი 2026', statementLabel: 'ჩანაწერზე' },

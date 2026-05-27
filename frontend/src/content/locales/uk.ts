@@ -103,7 +103,6 @@ export const uk = () =>
       { slug: 'nothing-to-say', text: 'Nothing to say.', attribution: 'Адмін команди «A A» (@arifazii)', source: 'Фінальна відповідь на структуроване пропонування «повернення або публікація» · NATRO Lounge Telegram', sourceDate: '24 травня 2026' },
       { slug: 'delete-comments', text: 'Delete this comments your just making a fool out of yourself.', attribution: 'Алекс Натрошвілі — засновник', source: 'Instagram DM', sourceDate: '25 травня 2026' },
       { slug: 'who-do-you-think', text: 'Spribe legal is not responding to you / Who do u think u are.', attribution: 'Алекс Натрошвілі — засновник', source: 'Instagram DM', sourceDate: '25 травня 2026' },
-      { slug: 'working-on-it', text: 'We are working on it. The NATRO team is working on everything to ensure credibility.', attribution: 'Адмін команди «A A»', source: 'NATRO Foyer Telegram', sourceDate: '23 травня 2026, 13:57' },
     ],
     people: [
       { slug: 'alex-natroshvili', role: 'Засновник · суб\'єкт', description: 'Ідентифікований сайтом проекту як засновник. Розділ про засновника відкривався рядком: «Більшість засновників монет — анонімні. Алекс — ні. Його ім\'я на проекті, його обличчя у TikTok та Instagram, його родина відома глобально». У профілі — «Боксер / Колекціонер автомобілів / Колекціонер годинників».', statement: '«stfu» — особиста DM-відповідь на пропонування повернення, 25 травня 2026', statementLabel: 'На записі' },
