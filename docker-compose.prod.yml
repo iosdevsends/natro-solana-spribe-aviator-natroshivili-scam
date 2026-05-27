@@ -32,6 +32,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       target: prod
+      args:
+        NEXT_PUBLIC_STRAPI_URL: ${PUBLIC_STRAPI_URL:-https://natro.meme}
+        NEXT_PUBLIC_SITE_URL: ${PUBLIC_FRONTEND_URL:-https://natro.meme}
+        NEXT_PUBLIC_DEFAULT_LOCALE: ${NEXT_PUBLIC_DEFAULT_LOCALE:-en}
+        NEXT_PUBLIC_LOCALES: ${NEXT_PUBLIC_LOCALES:-en,ru,uk,ka,fr,de,es}
+        NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
+        NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION:-}
+        NEXT_PUBLIC_TURNSTILE_SITEKEY: ${NEXT_PUBLIC_TURNSTILE_SITEKEY:-}
     image: natro-frontend:local
     volumes: !reset []
     environment:
