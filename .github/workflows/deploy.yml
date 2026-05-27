@@ -38,7 +38,10 @@ jobs:
              cd $DEPLOY_PATH
              git fetch --all --prune
              git reset --hard origin/main
-             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml build --pull
+             # Build services SEQUENTIALLY to avoid OOM on t3.small.
+             # Backend (Strapi admin) is the memory-heavy one — go first.
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml build --pull backend
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml build --pull frontend
              docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
              sleep 5
              docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml ps
