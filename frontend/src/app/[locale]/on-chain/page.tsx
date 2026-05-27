@@ -128,7 +128,7 @@ export default async function OnChainPage({
 
         <section className="mb-10">
           <h2 className="kicker mb-3">§ {copy.sectionChart}</h2>
-          <DexScreenerEmbed pairAddress={ONCHAIN_CONSTANTS.mint} />
+          <DexScreenerEmbed pairAddress={ONCHAIN_CONSTANTS.pumpSwapPool} />
         </section>
 
         <section className="mt-12 border-t border-[var(--color-rule)] pt-6">
