@@ -22,7 +22,10 @@ jobs:
           node-version: '22'
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - run: npm ci --no-audit --no-fund
+      # npm install (not ci) tolerates the peer-dep mismatch in @swc/helpers
+      # (Next 16 + tailwind v4 want >=0.5.17, registry resolves 0.5.15 elsewhere).
+      # Same approach as the backend job below.
+      - run: npm install --no-audit --no-fund --legacy-peer-deps
       - name: Type-check
         run: npx tsc --noEmit
       - name: Lint
