@@ -9,6 +9,7 @@ import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
 import { getFaq } from '@/content/faq';
+import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 
 export function generateStaticParams() {
   // Pre-render every (locale, slug) combination so each FAQ entry ships as a
@@ -132,6 +133,14 @@ export default async function FaqEntryPage({
         <hr className="rule-divider-strong" />
 
         <Prose text={entry.extendedBody} className="text-base leading-relaxed" />
+
+        {/* For the "still trading" entry, embed the live on-chain state block so
+            readers can verify the market-cap / graduation claims right here. */}
+        {slug === 'is-natro-token-still-trading' && (
+          <div className="mt-8">
+            <OnChainStateBlock />
+          </div>
+        )}
 
         {entry.citations && entry.citations.length > 0 && (
           <section className="mt-12 border-t border-[var(--color-rule)] pt-6">

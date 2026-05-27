@@ -11,6 +11,7 @@ import { Masthead } from '@/components/Masthead';
 import { Prose } from '@/components/Prose';
 import { Lightbox } from '@/components/Lightbox';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
+import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
 
@@ -193,6 +194,25 @@ export default async function CaseFilePage({
         {/* § II Reality */}
         <SectionBlock section={sectionsBySlug.reality}>
           <SnapshotGrid cells={bundle.snapshotCells} />
+          <OnChainStateBlock
+            labels={{
+              title: ui['onchain.title'] || 'On-chain state · live',
+              subtitle: ui['onchain.subtitle'],
+              tokenMint: ui['onchain.tokenMint'],
+              mintAuthority: ui['onchain.mintAuthority'],
+              freezeAuthority: ui['onchain.freezeAuthority'],
+              totalSupply: ui['onchain.totalSupply'],
+              pumpStatus: ui['onchain.pumpStatus'],
+              pumpSwapPool: ui['onchain.pumpSwapPool'],
+              marketCap: ui['onchain.marketCap'],
+              lastTrade: ui['onchain.lastTrade'],
+              fetched: ui['onchain.fetched'],
+              renounced: ui['onchain.renounced'],
+              graduated: ui['onchain.graduated'],
+              notGraduated: ui['onchain.notGraduated'],
+              verify: ui['onchain.verify'],
+            }}
+          />
           {bundle.config.graduationBlock && (
             <GraduationNote {...bundle.config.graduationBlock} />
           )}

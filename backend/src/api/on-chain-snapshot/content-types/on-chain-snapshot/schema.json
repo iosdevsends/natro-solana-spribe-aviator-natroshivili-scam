@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "on_chain_snapshots",
+  "info": {
+    "singularName": "on-chain-snapshot",
+    "pluralName": "on-chain-snapshots",
+    "displayName": "On-chain Snapshot",
+    "description": "Hourly verification snapshot of on-chain state for the $NATRO mint. Written by the host-side cron job; never edited by humans."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": { "localized": false }
+  },
+  "attributes": {
+    "capturedAt": {
+      "type": "datetime",
+      "required": true,
+      "unique": true
+    },
+    "marketCapUsd": {
+      "type": "decimal"
+    },
+    "lastTradeAt": {
+      "type": "datetime"
+    },
+    "bondingCurveComplete": {
+      "type": "boolean"
+    },
+    "mintAuthorityRenounced": {
+      "type": "boolean"
+    },
+    "freezeAuthorityRenounced": {
+      "type": "boolean"
+    },
+    "topHolderCount": {
+      "type": "integer"
+    },
+    "topConcentrationPct": {
+      "type": "decimal"
+    },
+    "creatorRecentTxCount": {
+      "type": "integer"
+    },
+    "creatorLatestTxAt": {
+      "type": "datetime"
+    },
+    "diffFromPrevious": {
+      "type": "json",
+      "description": "Structured diff vs previous snapshot. Editor reviews high-signal entries."
+    },
+    "raw": {
+      "type": "json",
+      "description": "Full raw payload from each API for forensic replay."
+    },
+    "editorReviewStatus": {
+      "type": "enumeration",
+      "enum": ["new", "reviewed", "flagged", "ignored"],
+      "default": "new"
+    },
+    "editorNotes": {
+      "type": "text",
+      "private": true
+    }
+  }
+}

@@ -37,6 +37,9 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
                 {item.label}
               </a>
             ))}
+            <Link href="/on-chain" className="hover:text-[var(--color-accent)]">
+              {uiStrings?.['nav.onchain'] || 'On-chain'}
+            </Link>
             <Link href="/stories" className="text-[var(--color-accent)] hover:underline">
               {uiStrings?.['nav.stories'] || 'Reader stories'}
             </Link>

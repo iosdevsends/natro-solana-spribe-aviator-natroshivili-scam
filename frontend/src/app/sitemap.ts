@@ -6,7 +6,7 @@ import type { UserStoryDTO } from '@/lib/types';
 import { exhibits } from '@/content/exhibits';
 import { getFaq } from '@/content/faq';
 
-const STATIC_PATHS = ['', '/stories', '/privacy', '/faq'];
+const STATIC_PATHS = ['', '/stories', '/privacy', '/faq', '/on-chain'];
 
 async function listApprovedStories(): Promise<UserStoryDTO[]> {
   try {
