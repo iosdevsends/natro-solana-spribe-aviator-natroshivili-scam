@@ -260,9 +260,18 @@ export default async function CaseFilePage({
           {bundle.config.colophon && (
             <div className="sans text-xs text-[var(--color-ink-faint)] pt-6 border-t border-[var(--color-rule)] flex flex-wrap items-center justify-between gap-3">
               <span>{bundle.config.colophon}</span>
-              <Link href="/privacy" className="uppercase tracking-widest text-[10px]">
-                Privacy & cookies
-              </Link>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 uppercase tracking-widest text-[10px]">
+                <a
+                  href="https://github.com/iosdevsends/natro-solana-spribe-aviator-natroshivili-scam"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Source · GitHub ↗
+                </a>
+                <Link href="/privacy">
+                  Privacy &amp; cookies
+                </Link>
+              </div>
             </div>
           )}
         </footer>
