@@ -63,6 +63,10 @@ coverage/
 *.tsbuildinfo
 **/tsconfig.tsbuildinfo
 
+# Strapi auto-generated content-type typings — always regenerated on build.
+# Committing them causes stale-types errors when new content types are added.
+backend/types/generated/
+
 # Local DB volumes
 .volumes/
 postgres-data/

@@ -4,6 +4,7 @@ node_modules
 build
 dist
 .strapi
+types/generated/
 .env
 .env.*
 !.env.example
