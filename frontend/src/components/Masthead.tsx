@@ -44,7 +44,7 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
       <div className="flex flex-wrap items-baseline justify-between gap-2 md:gap-3 py-2 md:py-3">
         <Link
           href="/"
-          className="serif text-sm md:text-lg font-medium tracking-tight leading-tight max-w-[60%] sm:max-w-[70%] md:max-w-[40%] lg:max-w-[32%] truncate"
+          className="serif text-[13px] md:text-lg font-medium tracking-tight leading-snug max-w-[55%] sm:max-w-[60%] md:max-w-[40%] lg:max-w-[32%] line-clamp-2 md:line-clamp-none md:truncate"
           title={title}
         >
           {title}
