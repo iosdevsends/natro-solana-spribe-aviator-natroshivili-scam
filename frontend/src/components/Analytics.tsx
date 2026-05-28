@@ -6,8 +6,12 @@ import Script from 'next/script';
  * Order matters:
  *   1. gtag-consent-default sets all storage to denied BEFORE gtag.js loads.
  *      Without this, the consent banner is decorative — GA fires anyway.
- *   2. gtag-init schedules config (no data flows until consent is granted).
- *   3. gtag.js itself loads afterInteractive.
+ *   2. gtag.js itself loads lazyOnload — *after* the page has fully loaded
+ *      and the browser is idle. This keeps the 150KB+ gtag payload out of
+ *      the LCP / TBT critical path. The trade-off is that page-view events
+ *      fire a few seconds later than they would with afterInteractive — for
+ *      a static case-file site this is acceptable.
+ *   3. gtag-init schedules config (no data flows until consent is granted).
  *   4. ConsentBanner (client component) decides if it shows, and on accept
  *      calls gtag('consent','update', { analytics_storage: 'granted', ... }).
  *
@@ -46,9 +50,9 @@ export function Analytics() {
       </Script>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="gtag-init" strategy="afterInteractive">
+      <Script id="gtag-init" strategy="lazyOnload">
         {`
           gtag('js', new Date());
           gtag('config', '${gaId}', { anonymize_ip: true });
