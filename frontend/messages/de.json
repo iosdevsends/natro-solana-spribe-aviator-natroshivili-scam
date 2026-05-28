@@ -43,6 +43,16 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "scamCta": {
+    "kicker": "Scam-Kurzfassung · 30 Sekunden",
+    "headline": "Wie sie Leute abgezockt haben — auf einer Seite.",
+    "body": "Der Vater leitet <b>Aviator</b> (Spribe). Der Sohn brachte <b>$NATRO</b> heraus, gestützt auf den Familiennamen. Rückerstattungen verweigert, der Gründer antwortete <i>„stfu“</i>, die Website wurde innerhalb von <b>72 Stunden</b> abgeschaltet. Halter verloren <b>~98 %</b>.",
+    "statsReceipts": "Belege",
+    "statsWayback": "Wayback-Archiv",
+    "statsLanguages": "Sprachen",
+    "cta": "Beweise ansehen",
+    "aria": "Wie sie Leute abgezockt haben — $NATRO-Scam-Kurzfassung öffnen"
+  },
   "consent": {
     "title": "Analyse-Cookies",
     "body": "Wir verwenden Google Analytics, um zu verstehen, welche Abschnitte dieser Akte Traffic erhalten und woher. Keine Werbe- oder Marketing-Cookies. Ihre Wahl wird auf diesem Gerät gespeichert.",

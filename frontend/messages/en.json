@@ -43,6 +43,16 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "scamCta": {
+    "kicker": "Scam brief · 30 seconds",
+    "headline": "How they scammed people, in one page.",
+    "body": "Father runs <b>Aviator</b> (Spribe). Son launched <b>$NATRO</b> on the family name. Refunds refused, founder said <i>\"stfu\"</i>, site wiped within <b>72 hours</b>. Holders lost <b>~98%</b>.",
+    "statsReceipts": "receipts",
+    "statsWayback": "Wayback archive",
+    "statsLanguages": "languages",
+    "cta": "See the proof",
+    "aria": "How they scammed people — open the $NATRO scam one-pager"
+  },
   "consent": {
     "title": "Analytics cookies",
     "body": "We use Google Analytics to understand which sections of this case file get traffic, and from where. No advertising or marketing cookies. Your choice is remembered on this device.",

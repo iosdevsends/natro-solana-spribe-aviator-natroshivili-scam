@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -161,6 +161,7 @@ export default async function CaseFilePage({
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
+  const tCta = await getTranslations('scamCta');
 
   const sectionsBySlug = Object.fromEntries(
     bundle.sections.map((s) => [s.slug, s]),
@@ -280,7 +281,7 @@ export default async function CaseFilePage({
               fix is the inline color. Same reason for the divider rule. */}
           <Link
             href="/scam-one-pager"
-            aria-label="How they scammed people — open the $NATRO scam one-pager"
+            aria-label={tCta('aria')}
             className="group block w-full mt-5 mb-2 no-underline transition-colors shadow-[0_10px_30px_-18px_rgba(10,10,8,0.55)] hover:bg-[var(--color-damning)]"
             style={{ background: 'var(--color-accent)', color: 'var(--color-paper)' }}
           >
@@ -297,22 +298,22 @@ export default async function CaseFilePage({
                     animation: 'natro-pulse 1.8s ease-in-out infinite',
                   }}
                 />
-                <span>Scam brief · 30 seconds</span>
+                <span>{tCta('kicker')}</span>
               </div>
               <h2
                 className="serif text-2xl sm:text-[28px] md:text-[32px] font-medium leading-tight"
                 style={{ color: 'var(--color-paper)' }}
               >
-                How they scammed people, in one page.
+                {tCta('headline')}
               </h2>
               <p
                 className="mt-3 sans text-base sm:text-lg leading-snug"
                 style={{ color: 'var(--color-paper)' }}
               >
-                Father runs <b>Aviator</b> (Spribe). Son launched{' '}
-                <b>$NATRO</b> on the family name. Refunds refused, founder
-                said <i>&ldquo;stfu&rdquo;</i>, site wiped within{' '}
-                <b>72 hours</b>. Holders lost <b>~98%</b>.
+                {tCta.rich('body', {
+                  b: (chunks) => <b>{chunks}</b>,
+                  i: (chunks) => <i>{chunks}</i>,
+                })}
               </p>
               <div
                 className="mt-5 pt-4 flex items-center justify-between flex-wrap gap-x-4 gap-y-2"
@@ -323,20 +324,20 @@ export default async function CaseFilePage({
                   style={{ color: 'var(--color-paper)' }}
                 >
                   <span>
-                    <b>4</b> receipts
+                    <b>4</b> {tCta('statsReceipts')}
                   </span>
                   <span aria-hidden="true">·</span>
-                  <span>Wayback archive</span>
+                  <span>{tCta('statsWayback')}</span>
                   <span aria-hidden="true">·</span>
                   <span>
-                    <b>8</b> languages
+                    <b>8</b> {tCta('statsLanguages')}
                   </span>
                 </div>
                 <span
                   className="sans text-xs sm:text-sm uppercase tracking-widest font-semibold flex items-center gap-2 shrink-0"
                   style={{ color: 'var(--color-paper)' }}
                 >
-                  See the proof
+                  {tCta('cta')}
                   <span
                     aria-hidden="true"
                     className="text-base inline-block transition-transform group-hover:translate-x-1"

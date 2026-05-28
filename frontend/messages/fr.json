@@ -43,6 +43,16 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "scamCta": {
+    "kicker": "Brief arnaque · 30 secondes",
+    "headline": "Comment ils ont arnaqué les gens, en une page.",
+    "body": "Le père dirige <b>Aviator</b> (Spribe). Le fils a lancé <b>$NATRO</b> sur le nom de famille. Remboursements refusés, le fondateur a répondu <i>« stfu »</i>, site effacé en <b>72 heures</b>. Les détenteurs ont perdu <b>~98 %</b>.",
+    "statsReceipts": "captures",
+    "statsWayback": "Archive Wayback",
+    "statsLanguages": "langues",
+    "cta": "Voir les preuves",
+    "aria": "Comment ils ont arnaqué les gens — ouvrir le résumé arnaque $NATRO"
+  },
   "consent": {
     "title": "Cookies d'analyse",
     "body": "Nous utilisons Google Analytics pour comprendre quelles sections du dossier reçoivent du trafic, et d'où. Aucun cookie publicitaire ou marketing. Votre choix est conservé sur cet appareil.",
