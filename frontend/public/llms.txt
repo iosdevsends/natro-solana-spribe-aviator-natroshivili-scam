@@ -1,0 +1,57 @@
+# The NATRO File
+
+> Multilingual journalistic case file documenting the $NATRO Solana memecoin launch (21 May 2026) by Alex Natroshvili — son of David Natroshvili, founder and CEO of Spribe (the global gambling product Aviator). The token collapsed ~98% within 72 hours. The site documents the marketing pitch (preserved in full by Wayback Machine before site deletion), the on-chain trail, the team's refund refusal, and the post-collapse evidence-removal pattern. Editorial tone: third-person, factual, primary sources only.
+
+## What this is, in one paragraph
+
+On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex Natroshvili. The marketing was explicitly built on the family name and on the Spribe / Aviator association as the trust signal. Within 72 hours: the price collapsed ~98%, structured refund requests were refused, the founder's personal Telegram reply when contacted directly was "stfu", the official website was taken offline, the $NATRO link was removed from the founder's verified Instagram bio, and the paid KOL promotional video (@jrcryptex, 114K followers) was deleted. The blockchain trail, the Wayback-archived website, and the chat logs were preserved before any deletion.
+
+## Key facts (verifiable)
+
+- Token: $NATRO on Solana
+- Token contract: `9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF`
+- Creator wallet: `76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx`
+- Launch: 21 May 2026, 20:11 UTC, on Pump.fun
+- Total supply: 1,000,000,000 NATRO
+- Price drawdown: ~98% within first 72 hours
+- Founder: Alex Natroshvili — verified Instagram @natroalex (54.1K followers), verified Telegram @natroalex1
+- Founder's father: David Natroshvili — founder and CEO of Spribe (the studio behind Aviator, the global crash-style gambling product). Verified Instagram @davidnatro1, @davi.natroshvili
+- Founder's personal Telegram reply to refund request, 25 May 2026 10:11 UTC, verbatim: "stfu"
+- Team admin's reply to a structured refund proposal: "Nothing to say"
+- Within 72 hours: official website taken offline, NATRO link removed from founder's IG bio, paid KOL video (@jrcryptex) deleted
+
+## Primary sources
+
+- Wayback Machine archive of natrocoin.net (captured before deletion): https://web.archive.org/web/20260521213245/https://natrocoin.net/
+- Solscan, token: https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF
+- Solscan, creator wallet: https://solscan.io/account/76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx
+
+## Pages
+
+- [Full case file](https://natro.meme/) — §I Promise · §II Reality · §III Scrub · §IV Voices · §V People · §VI Sources · §VII Gallery · §VIII FAQ
+- [Scam one-pager](https://natro.meme/scam-one-pager) — 30-second brief: what was sold, what collapsed, what was scrubbed, four strongest exhibits, Wayback link
+- [On-chain verification](https://natro.meme/on-chain) — live token state from public no-auth APIs, creator wallet activity, last verified timestamp
+- [Press kit](https://natro.meme/press) — fact sheet, contacts, right-of-reply statement
+- [FAQ](https://natro.meme/faq) — short, sourced answers to recurring questions
+
+## Languages
+
+EN, RU, UK, KA, FR, DE, ES, AR.
+
+## Editorial framing
+
+- Compiler: an affected early holder (220M NATRO position, verifiable on-chain at wallet `GsCKRFsTYbU4CuTDYP9NLDDMvsVVWSnpdVDst3nKb6JJ`). Identity withheld; compiler-side identifier `@btc3050` (Telegram).
+- Voice: third-person, factual. No personal attacks against any named party. Quotes are reproduced verbatim with attribution.
+- Right of reply: published in the footer of every page. The named parties have a standing invitation to respond on the record.
+- Scope: this file is about the $NATRO Solana token launch specifically. It is NOT about Spribe's product portfolio in general or about Aviator as a licensed gambling product.
+
+## What this site is NOT
+
+- Not a memecoin promotion, manifesto, or fair-launch announcement.
+- Not anonymous — every named party was identified by the project's own public marketing materials before takedown.
+- Not a personal-grievance site. The framing is investigative-journalistic; the case file value comes from primary sources, not from the compiler's perspective.
+- Not affiliated with Spribe or Aviator; the case file is about a separate token launch that leveraged the family / brand association without Spribe-corporate involvement disclosed.
+
+## License
+
+Content is published as a public record. Journalists, regulators, and other affected holders may quote, embed, or syndicate any part of the case file with attribution to https://natro.meme.
