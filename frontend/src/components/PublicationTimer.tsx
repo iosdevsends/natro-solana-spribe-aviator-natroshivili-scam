@@ -51,8 +51,8 @@ export function PublicationTimer({ label }: { label: string }) {
     >
       <span>{label}</span>
       <span
-        className="mono text-[var(--color-ink)] tabular-nums"
-        style={{ fontVariantNumeric: 'tabular-nums' }}
+        className="mono tabular-nums"
+        style={{ fontVariantNumeric: 'tabular-nums', color: 'currentColor' }}
       >
         {text}
       </span>
