@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 
-import { locales, type Locale } from '@/i18n/routing';
+import { locales, isRtlLocale, type Locale } from '@/i18n/routing';
 import { Analytics } from '@/components/Analytics';
 import { ConsentBanner } from '@/components/ConsentBanner';
 
@@ -41,9 +41,12 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const dir = isRtlLocale(locale) ? 'rtl' : 'ltr';
+
   return (
     <html
       lang={locale}
+      dir={dir}
       className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}
     >
       <body>

@@ -127,3 +127,44 @@ a:hover { color: var(--color-accent-soft); }
 @media (max-width: 768px) {
   body { font-size: 16px; }
 }
+
+/* ---------- RTL (Arabic) ---------- */
+/* The page uses a few physical-direction Tailwind utilities (`pr-3`,
+   `border-l-*`, `text-left`, `-left-[34px]`, …). The rules below mirror
+   the most visible of those when the document is in RTL so the Arabic
+   reading order remains correct. Only the structural cases are covered;
+   the rest is handled by `dir="rtl"` flipping flexbox and table cells
+   automatically. */
+[dir="rtl"] {
+  /* Arabic glyphs are not in Fraunces / Inter; the system stack
+     ("Geeza Pro", Tahoma, "Segoe UI", Arial) renders cleanly on every
+     major OS without an extra webfont download. */
+  font-family: "Geeza Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+[dir="rtl"] .serif,
+[dir="rtl"] .sans,
+[dir="rtl"] .pullquote {
+  font-family: "Geeza Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+[dir="rtl"] .mono,
+[dir="rtl"] code {
+  /* Hashes, addresses and URLs stay LTR even inside RTL paragraphs. */
+  direction: ltr;
+  unicode-bidi: embed;
+  text-align: left;
+}
+[dir="rtl"] .pullquote {
+  border-left: 0;
+  border-right: 2px solid var(--color-accent);
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .text-right { text-align: left; }
+[dir="rtl"] .border-l-2 { border-left-width: 0; border-right-width: 2px; }
+[dir="rtl"] .border-l-4 { border-left-width: 0; border-right-width: 4px; }
+[dir="rtl"] .border-r-2 { border-right-width: 0; border-left-width: 2px; }
+[dir="rtl"] .border-r-4 { border-right-width: 0; border-left-width: 4px; }
+[dir="rtl"] .pl-6 { padding-left: 0; padding-right: 1.5rem; }
+[dir="rtl"] .pl-4 { padding-left: 0; padding-right: 1rem; }
+[dir="rtl"] .pr-3 { padding-right: 0; padding-left: 0.75rem; }

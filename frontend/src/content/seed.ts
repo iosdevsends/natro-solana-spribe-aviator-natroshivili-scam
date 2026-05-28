@@ -19,6 +19,7 @@ import { ka } from './locales/ka';
 import { fr } from './locales/fr';
 import { de } from './locales/de';
 import { es } from './locales/es';
+import { ar } from './locales/ar';
 
 const overlays: Record<Locale, () => CaseFileBundle> = {
   en,
@@ -28,6 +29,7 @@ const overlays: Record<Locale, () => CaseFileBundle> = {
   fr,
   de,
   es,
+  ar,
 };
 
 export function getSeed(locale: Locale): CaseFileBundle {

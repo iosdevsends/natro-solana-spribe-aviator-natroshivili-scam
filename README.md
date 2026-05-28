@@ -34,6 +34,14 @@ Eine dokumentierte Fallakte: der Launch des `$NATRO`-Solana-Tokens am 21. Mai 20
 
 Un expediente documentado: el lanzamiento del token `$NATRO` en Solana el 21 de mayo de 2026, su caída del 98 % en el precio, la negativa del equipo a reembolsar a los holders tempranos afectados y el patrón posterior de borrado de pruebas (sitio web retirado, enlace de la biografía de Instagram del fundador eliminado, vídeo promocional pagado borrado de la cuenta del KOL) — todo preservado en Wayback Machine, on-chain y en capturas con marca de tiempo. Solo fuentes primarias.
 
+## 🇸🇦 العربية
+
+<div dir="rtl" align="right">
+
+ملفّ حالة موثَّق: إطلاق توكن `$NATRO` على Solana بتاريخ 21 مايو 2026، انهيار سعره بنسبة 98%، رفض الفريق ردّ الأموال للحاملين الأوائل المتضرّرين، ونمط إزالة الأدلّة الذي تلا ذلك (إغلاق الموقع، إزالة رابطه من السيرة الذاتية للمؤسّس على Instagram، حذف الفيديو الترويجي المدفوع من حساب الـKOL) — وكلّ ذلك محفوظ في Wayback Machine، وعلى السلسلة on-chain، وفي صور مختومة بطابع زمني. مصادر أوّلية فقط.
+
+</div>
+
 ---
 
 This repository is the **platform** that powers the file:
@@ -47,9 +55,9 @@ This repository is the **platform** that powers the file:
 
 ## Languages
 
-EN · RU · KA · FR · DE · ES
+EN · RU · UK · KA · FR · DE · ES · AR
 
-EN and RU are the source-of-truth tones; KA, FR, DE and ES ship with a clearly-marked _translation pending native review_ overlay that falls through to the EN baseline. Translation work happens in the Strapi admin UI per content type once the system is running.
+EN and RU are the source-of-truth tones; UK, KA, FR, DE, ES and AR ship with a clearly-marked _translation pending native review_ overlay that falls through to the EN baseline. Arabic (`ar`) is rendered right-to-left via `<html dir="rtl">`; Western digits, wallet hashes and URLs remain LTR inside Arabic paragraphs. Translation work happens in the Strapi admin UI per content type once the system is running.
 
 ---
 
