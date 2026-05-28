@@ -102,22 +102,46 @@ export default async function ScamOnePagerPage({
             'clamp(20px, 4vw, 56px) clamp(16px, 5vw, 56px) 100px',
         }}
       >
-        <div className="kicker mb-3">Scam one-pager · 30-second brief</div>
+        <div className="kicker mb-3">Scam brief · 30 seconds</div>
         <h1 className="serif text-[30px] sm:text-4xl md:text-5xl leading-[1.05] font-medium tracking-tight">
-          The $NATRO scam, in one page.
+          How they scammed people.
         </h1>
         <p className="mt-3 sans text-sm text-[var(--color-ink-faint)] uppercase tracking-widest">
           {bundle.config.headline}
         </p>
+
+        {/* Plain-talk TL;DR for a reader who has 30 seconds and no
+            crypto background. The longer journalistic deck and the
+            executive summary follow below. */}
+        <div className="mt-6 border-l-4 border-[var(--color-accent)] bg-[var(--color-paper-warm)]/60 p-5 md:p-6">
+          <p className="sans text-base md:text-lg leading-relaxed">
+            Father runs <b>Aviator</b> — the global slot-style gambling
+            product made by <b>Spribe</b>. Son <b>Alex Natroshvili</b>{' '}
+            launched a Solana memecoin called <b>$NATRO</b> on Pump.fun
+            and pitched it on the family name and the Spribe / Aviator
+            reputation. People bought in.{' '}
+            <b>Within 72 hours</b> the price collapsed{' '}
+            <b className="text-[var(--color-damning)]">~98%</b>. Refund
+            requests were refused. The team admin&apos;s reply:{' '}
+            <i>&ldquo;Nothing to say.&rdquo;</i> The founder&apos;s
+            personal Telegram reply when contacted directly:{' '}
+            <i>&ldquo;stfu.&rdquo;</i> Within the same window the
+            website was taken offline, the NATRO link was removed from
+            the founder&apos;s Instagram bio, and the paid KOL video
+            (@jrcryptex, 114K followers) was deleted. The blockchain
+            trail, the archived website, and the chat logs were not.
+          </p>
+        </div>
+
         {bundle.config.deck && (
-          <p className="serif italic text-lg md:text-xl text-[var(--color-ink-soft)] mt-5 md:mt-6 leading-snug">
+          <p className="serif italic text-lg md:text-xl text-[var(--color-ink-soft)] mt-8 leading-snug">
             {bundle.config.deck}
           </p>
         )}
 
         {bundle.config.executiveSummary && (
           <section className="mt-10 border-y border-[var(--color-ink)] py-6">
-            <div className="kicker mb-3">What happened</div>
+            <div className="kicker mb-3">What happened · longer version</div>
             <Prose
               text={bundle.config.executiveSummary}
               className="text-base md:text-lg"

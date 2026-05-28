@@ -272,36 +272,71 @@ export default async function CaseFilePage({
           <h1 className="serif text-[28px] sm:text-3xl md:text-5xl leading-[1.1] md:leading-[1.08] font-medium tracking-tight">
             {bundle.config.headline}
           </h1>
+          {/* Inline `style={{ color: ... }}` on every text node is intentional.
+              The global stylesheet sets `a { color: var(--color-accent) }`,
+              which inherits down through the <Link>'s children — including the
+              h2 — and renders it accent-on-accent. Tailwind utility classes
+              lose to the inline declaration here, so the only bullet-proof
+              fix is the inline color. Same reason for the divider rule. */}
           <Link
             href="/scam-one-pager"
-            aria-label="Open the $NATRO scam one-pager — a 30-second brief"
-            className="group block w-full mt-5 mb-2 bg-[var(--color-accent)] text-[var(--color-paper)] no-underline hover:bg-[var(--color-damning)] transition-colors shadow-[0_10px_30px_-18px_rgba(10,10,8,0.55)]"
+            aria-label="How they scammed people — open the $NATRO scam one-pager"
+            className="group block w-full mt-5 mb-2 no-underline transition-colors shadow-[0_10px_30px_-18px_rgba(10,10,8,0.55)] hover:bg-[var(--color-damning)]"
+            style={{ background: 'var(--color-accent)', color: 'var(--color-paper)' }}
           >
             <div className="px-5 py-5 sm:px-7 sm:py-6">
-              <div className="sans text-[11px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-paper)] mb-3 flex items-center gap-2">
+              <div
+                className="sans text-[11px] sm:text-xs uppercase tracking-[0.2em] font-semibold mb-3 flex items-center gap-2"
+                style={{ color: 'var(--color-paper)' }}
+              >
                 <span
                   aria-hidden="true"
-                  className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-paper)]"
-                  style={{ animation: 'natro-pulse 1.8s ease-in-out infinite' }}
+                  className="inline-block w-1.5 h-1.5 rounded-full"
+                  style={{
+                    background: 'var(--color-paper)',
+                    animation: 'natro-pulse 1.8s ease-in-out infinite',
+                  }}
                 />
-                <span>Scam one-pager · 30-second brief</span>
+                <span>Scam brief · 30 seconds</span>
               </div>
-              <h2 className="serif text-2xl sm:text-[28px] md:text-[32px] font-medium leading-tight">
-                The $NATRO scam, in one page.
+              <h2
+                className="serif text-2xl sm:text-[28px] md:text-[32px] font-medium leading-tight"
+                style={{ color: 'var(--color-paper)' }}
+              >
+                How they scammed people, in one page.
               </h2>
-              <p className="mt-2 serif italic text-base sm:text-lg leading-snug text-[var(--color-paper)]">
-                What was sold, what collapsed, what was scrubbed — with the four strongest scam exhibits and the Wayback link.
+              <p
+                className="mt-3 sans text-base sm:text-lg leading-snug"
+                style={{ color: 'var(--color-paper)' }}
+              >
+                Father runs <b>Aviator</b> (Spribe). Son launched{' '}
+                <b>$NATRO</b> on the family name. Refunds refused, founder
+                said <i>&ldquo;stfu&rdquo;</i>, site wiped within{' '}
+                <b>72 hours</b>. Holders lost <b>~98%</b>.
               </p>
-              <div className="mt-5 pt-4 border-t border-[var(--color-paper)]/30 flex items-center justify-between flex-wrap gap-x-4 gap-y-2">
-                <div className="mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[var(--color-paper)]/85 flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <span><b className="text-[var(--color-paper)]">4</b> scam exhibits</span>
+              <div
+                className="mt-5 pt-4 flex items-center justify-between flex-wrap gap-x-4 gap-y-2"
+                style={{ borderTop: '1px solid rgba(245, 241, 232, 0.30)' }}
+              >
+                <div
+                  className="mono text-[10px] sm:text-[11px] uppercase tracking-widest flex flex-wrap items-center gap-x-3 gap-y-1"
+                  style={{ color: 'var(--color-paper)' }}
+                >
+                  <span>
+                    <b>4</b> receipts
+                  </span>
                   <span aria-hidden="true">·</span>
                   <span>Wayback archive</span>
                   <span aria-hidden="true">·</span>
-                  <span><b className="text-[var(--color-paper)]">8</b> languages</span>
+                  <span>
+                    <b>8</b> languages
+                  </span>
                 </div>
-                <span className="sans text-xs sm:text-sm uppercase tracking-widest font-semibold flex items-center gap-2 shrink-0">
-                  Read the scam brief
+                <span
+                  className="sans text-xs sm:text-sm uppercase tracking-widest font-semibold flex items-center gap-2 shrink-0"
+                  style={{ color: 'var(--color-paper)' }}
+                >
+                  See the proof
                   <span
                     aria-hidden="true"
                     className="text-base inline-block transition-transform group-hover:translate-x-1"
