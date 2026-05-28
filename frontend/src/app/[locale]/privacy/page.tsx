@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
-import { Masthead } from '@/components/Masthead';
+import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
 
@@ -44,11 +44,13 @@ export default async function PrivacyPage({
 
   return (
     <>
-      <Masthead
+      <CeremonialMasthead
         locale={locale as Locale}
-        title={bundle.config.siteTitle}
-        meta={bundle.config.mastheadMeta}
+        tagline={bundle.config.tagline}
         uiStrings={bundle.config.uiStrings}
+        exhibitCount={bundle.exhibits.length}
+        languageCount={locales.length}
+        compact
       />
       <main
         className="relative z-[2] mx-auto"

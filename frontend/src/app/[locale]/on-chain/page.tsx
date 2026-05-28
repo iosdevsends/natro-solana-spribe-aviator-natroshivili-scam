@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
-import { Masthead } from '@/components/Masthead';
+import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 import { HoldersTable } from '@/components/HoldersTable';
 import { CreatorActivityLog } from '@/components/CreatorActivityLog';
@@ -94,11 +94,13 @@ export default async function OnChainPage({
 
   return (
     <>
-      <Masthead
+      <CeremonialMasthead
         locale={loc}
-        title={bundle.config.siteTitle}
-        meta={bundle.config.mastheadMeta}
+        tagline={bundle.config.tagline}
         uiStrings={ui}
+        exhibitCount={bundle.exhibits.length}
+        languageCount={locales.length}
+        compact
       />
       <main
         className="relative z-[2] mx-auto"

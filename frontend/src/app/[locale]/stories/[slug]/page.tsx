@@ -5,7 +5,7 @@ import DOMPurify from 'isomorphic-dompurify';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
-import { Masthead } from '@/components/Masthead';
+import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
@@ -73,7 +73,14 @@ export default async function StoryPage({
 
   return (
     <>
-      <Masthead locale={locale as Locale} title={bundle.config.siteTitle} meta={bundle.config.mastheadMeta} uiStrings={bundle.config.uiStrings} />
+      <CeremonialMasthead
+        locale={locale as Locale}
+        tagline={bundle.config.tagline}
+        uiStrings={bundle.config.uiStrings}
+        exhibitCount={bundle.exhibits.length}
+        languageCount={locales.length}
+        compact
+      />
       <main className="relative z-[2] mx-auto" style={{ maxWidth: '760px', padding: 'clamp(24px, 4vw, 60px) clamp(20px, 5vw, 56px) 120px' }}>
         <Link href="/stories" className="sans text-xs uppercase tracking-widest">← Reader stories</Link>
         <h1 className="serif text-3xl md:text-4xl mt-4 font-medium">{story.title}</h1>

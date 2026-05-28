@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
-import { Masthead } from '@/components/Masthead';
+import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { loadCaseFile } from '@/lib/case-file';
 import { getCurrentUser } from '@/lib/auth';
 import { SubmitStoryForm } from '@/components/SubmitStoryForm';
@@ -50,11 +50,13 @@ export default async function SubmitStoryPage({
 
   return (
     <>
-      <Masthead
+      <CeremonialMasthead
         locale={locale as Locale}
-        title={bundle.config.siteTitle}
-        meta={bundle.config.mastheadMeta}
+        tagline={bundle.config.tagline}
         uiStrings={bundle.config.uiStrings}
+        exhibitCount={bundle.exhibits.length}
+        languageCount={locales.length}
+        compact
       />
       <main className="relative z-[2] mx-auto" style={{ maxWidth: '780px', padding: 'clamp(24px, 4vw, 60px) clamp(20px, 5vw, 56px) 120px' }}>
         <div className="kicker mb-3">§ Reader-submitted</div>

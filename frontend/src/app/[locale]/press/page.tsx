@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
-import { Masthead } from '@/components/Masthead';
+import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
@@ -107,11 +107,13 @@ export default async function PressPage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Masthead
+      <CeremonialMasthead
         locale={loc}
-        title={bundle.config.siteTitle}
-        meta={bundle.config.mastheadMeta}
+        tagline={bundle.config.tagline}
         uiStrings={bundle.config.uiStrings}
+        exhibitCount={bundle.exhibits.length}
+        languageCount={locales.length}
+        compact
       />
       <main
         className="press-release relative z-[2] mx-auto"
