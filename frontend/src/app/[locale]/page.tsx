@@ -254,10 +254,6 @@ export default async function CaseFilePage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-[var(--color-paper)] focus:p-2">
-        Skip to content
-      </a>
-
       <CeremonialMasthead
         locale={loc}
         tagline={bundle.config.tagline}

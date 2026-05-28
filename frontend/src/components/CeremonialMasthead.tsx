@@ -10,31 +10,26 @@ type Props = {
   exhibitCount: number;
   languageCount: number;
   /**
-   * When true, renders a slim sticky version: title + tagline on one
-   * line, smaller, position-sticky at the top so the nav persists as
-   * the reader scrolls. Used on every non-landing page so they get the
-   * same brand identity as the homepage without a 500px hero each
-   * time the user clicks through to /privacy, /faq, /press, etc.
+   * Deprecated. The masthead is now always compact + sticky on every
+   * route. Kept as an accepted prop so existing callers compile without
+   * churn; the value is ignored.
    */
   compact?: boolean;
 };
 
 /**
- * Newspaper-ceremonial masthead used at the top of the landing page.
+ * Newspaper-ceremonial masthead.
  *
- * Layout (from top down):
- *   1. Thin top strap with file ID + language switcher
- *   2. Big serif brand "The NATRO File" centred, accent colour
- *   3. Localised tagline subtitle — same accent so the subtitle reads
- *      as part of the brand mark (the user explicitly asked for it
- *      to be more brightly highlighted than a muted grey would be)
- *   4. Centred nav row in accent uppercase tracking
- *   5. Black status bar — live since-publication timer left, primary
- *      source count + language count right
+ * Always-sticky compact bar used at the top of every route (landing
+ * included). Layout from top down:
+ *   1. Thin top strap — file ID + language switcher
+ *   2. Brand "The NATRO File" + italic tagline on one centred line
+ *      (wraps to two lines on narrow viewports — tagline never hides)
+ *   3. Centred nav row, edge-faded when it overflows horizontally
+ *   4. Black status strap — since-publication timer + counts
  *
- * Not sticky by design — the hero is meant to be a landing moment, the
- * reader scrolls past it into the content. Other routes (privacy, faq,
- * stories, on-chain, press) keep the compact <Masthead /> sticky bar.
+ * Sticks to top with backdrop-blur so the nav stays available as the
+ * reader scrolls through long sections.
  */
 function shortLabel(raw: string | undefined, fallback: string): string {
   if (!raw) return fallback;
@@ -49,7 +44,6 @@ export function CeremonialMasthead({
   uiStrings,
   exhibitCount,
   languageCount,
-  compact = false,
 }: Props) {
   const nav: Array<{ key: string; hash: string; label: string }> = [
     { key: 'promise', hash: 'promise', label: shortLabel(uiStrings?.['nav.promise'], 'Promise') },
@@ -71,9 +65,7 @@ export function CeremonialMasthead({
 
   return (
     <header
-      className={`ceremonial border-b-2 border-[var(--color-ink)] bg-[var(--color-paper-warm)]/35 print:hidden ${
-        compact ? 'sticky top-0 z-40 backdrop-blur' : ''
-      }`}
+      className="ceremonial sticky top-0 z-40 border-b-2 border-[var(--color-ink)] bg-[var(--color-paper-warm)]/85 backdrop-blur print:hidden"
       role="banner"
     >
       {/* 1 — Top strap: file ID + language switcher */}
@@ -87,46 +79,28 @@ export function CeremonialMasthead({
         <LanguageSwitcher current={locale} />
       </div>
 
-      {/* 2 + 3 — Brand + tagline. Two layouts: hero (landing) and
-          compact one-liner (every other page). */}
-      {compact ? (
-        <div className="px-4 sm:px-6 py-3 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 text-center">
-          <Link
-            href="/"
-            className="no-underline"
-            aria-label="The NATRO File — home"
-          >
-            <span className="serif text-xl sm:text-2xl md:text-[26px] leading-tight font-medium tracking-tight text-[var(--color-accent)]">
-              The NATRO File
-            </span>
-          </Link>
-          {tagline && (
-            <>
-              <span aria-hidden="true" className="text-[var(--color-rule)] hidden sm:inline">·</span>
-              <span className="serif italic text-sm sm:text-base md:text-lg leading-snug text-[var(--color-accent)]">
-                {tagline}
-              </span>
-            </>
-          )}
-        </div>
-      ) : (
-        <div className="text-center px-4 py-8 sm:py-10 md:py-14">
-          <Link
-            href="/"
-            className="no-underline inline-block"
-            aria-label="The NATRO File — home"
-          >
-            <h1 className="serif text-[40px] sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] font-medium tracking-tight text-[var(--color-accent)]">
-              The NATRO File
-            </h1>
-          </Link>
-          {tagline && (
-            <p className="mt-4 md:mt-5 serif italic text-lg sm:text-xl md:text-[26px] leading-snug text-[var(--color-accent)]">
+      {/* 2 + 3 — Brand + tagline on one centred line. flex-wrap means
+          on narrow viewports the tagline wraps below the title rather
+          than being clipped — the tagline never hides. */}
+      <div className="px-4 sm:px-6 py-2.5 sm:py-3 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-0.5 text-center">
+        <Link
+          href="/"
+          className="no-underline"
+          aria-label="The NATRO File — home"
+        >
+          <span className="serif text-xl sm:text-2xl md:text-[26px] leading-tight font-medium tracking-tight text-[var(--color-accent)]">
+            The NATRO File
+          </span>
+        </Link>
+        {tagline && (
+          <>
+            <span aria-hidden="true" className="hidden sm:inline text-[var(--color-rule)]">·</span>
+            <span className="basis-full sm:basis-auto serif italic text-[13px] sm:text-base md:text-lg leading-snug text-[var(--color-accent)]">
               {tagline}
-            </p>
-          )}
-        </div>
-      )}
+            </span>
+          </>
+        )}
+      </div>
 
       {/* 4 — Nav row. `ceremonial-nav` adds an edge-fade mask so on mobile
           where the row scrolls horizontally, the cut-off edges fade
