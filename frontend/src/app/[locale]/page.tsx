@@ -9,7 +9,7 @@ import { loadCaseFile } from '@/lib/case-file';
 import { strapiPublicUrl, mediaUrl } from '@/lib/strapi';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
-import { Lightbox } from '@/components/Lightbox';
+import { LightboxLazy } from '@/components/LightboxLazy';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } from '@/lib/seo';
@@ -458,7 +458,7 @@ export default async function CaseFilePage({
         </footer>
       </main>
 
-      <Lightbox
+      <LightboxLazy
         exhibits={bundle.exhibits}
         publicStrapiUrl={strapiPublicUrl}
         uiStrings={ui}

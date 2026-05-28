@@ -8,7 +8,7 @@ import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { Prose } from '@/components/Prose';
-import { Lightbox } from '@/components/Lightbox';
+import { LightboxLazy } from '@/components/LightboxLazy';
 import { loadCaseFile } from '@/lib/case-file';
 import { mediaUrl, strapiPublicUrl } from '@/lib/strapi';
 import {
@@ -170,7 +170,7 @@ export default async function ScamOnePagerPage({
           <ArchiveCallout {...bundle.config.archiveCallout} />
         )}
 
-        <Lightbox
+        <LightboxLazy
           exhibits={bundle.exhibits}
           publicStrapiUrl={strapiPublicUrl}
           uiStrings={ui}

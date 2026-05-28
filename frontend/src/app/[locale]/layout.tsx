@@ -51,11 +51,12 @@ export default async function LocaleLayout({
       dir={dir}
       className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}
     >
-      <head>
-        {/* Preconnect to GTM only when GA is actually configured —
-            saves DNS+TCP+TLS time when Analytics later lazyOnload-s
-            the gtag.js bundle. Skipped on builds without GA_ID so we
-            don't open a TLS connection that nothing uses. */}
+      <body>
+        {/* Preconnect to GTM only when GA is actually configured. React 19
+            hoists <link rel="preconnect"> rendered anywhere in the tree
+            into <head>, so no <head> JSX wrapper (which App Router does
+            not support in a Server Component layout). Skipped on builds
+            without GA_ID so we don't open a TLS connection nothing uses. */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <link
@@ -69,8 +70,6 @@ export default async function LocaleLayout({
             />
           </>
         )}
-      </head>
-      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SkipToContent />
           <ReadingProgress />
