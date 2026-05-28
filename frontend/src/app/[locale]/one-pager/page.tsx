@@ -8,8 +8,9 @@ import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { Prose } from '@/components/Prose';
+import { Lightbox } from '@/components/Lightbox';
 import { loadCaseFile } from '@/lib/case-file';
-import { mediaUrl } from '@/lib/strapi';
+import { mediaUrl, strapiPublicUrl } from '@/lib/strapi';
 import {
   buildAlternates,
   absoluteUrl,
@@ -155,6 +156,12 @@ export default async function OnePagerPage({
         )}
 
         {/* Deep links into the full case file. */}
+        <Lightbox
+          exhibits={bundle.exhibits}
+          publicStrapiUrl={strapiPublicUrl}
+          uiStrings={ui}
+        />
+
         <nav
           aria-label="Where to next"
           className="mt-12 pt-8 border-t-2 border-[var(--color-ink)]"
@@ -205,10 +212,11 @@ function OnePagerExhibit({ exhibit }: { exhibit: ExhibitDTO }) {
     exhibit.legacyHeight / exhibit.legacyWidth > 1.4;
   return (
     <figure className="flex flex-col">
-      <Link
-        href={{ pathname: '/', hash: 'gallery' }}
-        className="aspect-[4/3] w-full relative overflow-hidden border border-[var(--color-rule)] no-underline"
+      <button
+        type="button"
+        data-exhibit={exhibit.slug}
         aria-label={`${exhibit.exhibitNumber || ''} — ${exhibit.title}`}
+        className="exhibit-thumb aspect-[4/3] w-full relative overflow-hidden border border-[var(--color-rule)] text-left cursor-zoom-in"
       >
         {exhibit.mediaType === 'video' ? (
           <span className="absolute inset-0 grid place-items-center bg-black/55 text-white text-3xl">
@@ -229,7 +237,7 @@ function OnePagerExhibit({ exhibit }: { exhibit: ExhibitDTO }) {
             {exhibit.exhibitNumber}
           </span>
         )}
-      </Link>
+      </button>
       <figcaption className="mt-2 flex flex-col gap-0.5">
         {exhibit.exhibitNumber && (
           <span className="label-strap text-[10px]">
