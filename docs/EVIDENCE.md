@@ -248,12 +248,6 @@ These exist in the user's possession but are not currently in the file. Some are
 - Content: "or this is the price of name?" → "you will get what deserve" → "This money will be your curse" → after "stfu" reply, "its only begining" / "you fucking scammer"
 - **Why not integrated as exhibit:** Showing user's own escalation undermines the case file's third-party-reader framing. These messages exist in Alex's screenshot dossier — if Spribe legal counter-files, they will surface there. **Do not add these as exhibits.**
 
-### User's deleted Instagram comments
-- "your mother slut" (Telegram, deleted)
-- "крыса" / "ничтожество" under David's Instagram post (deleted within minutes of posting)
-- "scammer" comment under @davi.natroshvili post (deleted)
-- **Why not integrated:** These were deleted by the user himself, in retrospect. Not adding them honors his decision to retract.
-
 ### Email correspondence with Spribe legal
 - Formal email sent 25 May 12:24 UTC
 - Subject: "Time-sensitive: NATRO token launch — public record preparation"
