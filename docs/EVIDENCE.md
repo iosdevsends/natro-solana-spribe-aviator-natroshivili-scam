@@ -148,6 +148,51 @@ This document is the authoritative reference for every piece of visual evidence 
 - **Timeline event:** Launch (21 May) AND NATRO link removed from bio (24 May) — appears in both as "before" reference.
 - **Caption used in file:** "@natroalex Instagram profile (verified, 54.1K followers). Bio originally featured natrocoin.net as the project's official link. Link removed 24 May 2026."
 
+### ex21-david-story-celebs-on-line.jpg
+- **Display:** Exhibit 21
+- **Captured:** 28 May 2026 (re-archived; original Story posted pre-launch, 20–21 May 2026)
+- **Source:** Instagram Story from @davidnatro1 (verified) with @natroalex tagged underneath the handle
+- **What it shows:** Plain-text Story over black background: *"I have many celebs on the line to post about natro this will be crazy🔥"*.
+- **Why it matters:** Establishes David Natroshvili's **own voice** promising a coordinated celebrity-amplified push around NATRO before launch. Counter-balances any future framing that David was a passive amplifier. The Story stamp shows "1 h" — i.e. this was a fresh, live Story at the time of capture, not a Highlight.
+- **Timeline event:** Pre-launch presale solicitation (20–21 May)
+- **Caption used in file:** "Instagram Story · @davidnatro1 (verified) · @natroalex tagged · pre-launch"
+
+### ex22-david-story-presale-bentley.jpg
+- **Display:** Exhibit 22
+- **Captured:** 28 May 2026 (re-archived; original Story posted pre-launch, 20–21 May 2026)
+- **Source:** Instagram Story from @davidnatro1 (verified), @natroalex tagged, image: interior of a Bentley with NATRO-branded headrests in view.
+- **What it shows:** Caption over the Bentley interior: *"If you want to get involved in the crypto project presale with me & @natroalex / Dm @natroalex1 on telegram / Minimum investment size for presale is 1.5k"* (@natroalex is rendered as a tappable mention).
+- **Why it matters:** This is **direct first-person solicitation** by David from his verified account: he names himself ("with me & @natroalex"), sets a minimum entry size ($1,500), and routes contact to the founder's personal Telegram. This is materially different from a passive reshare and is the strongest single rebuttal to any "I only liked a video" defence.
+- **Timeline event:** Pre-launch presale solicitation (20–21 May)
+- **Caption used in file:** "@davidnatro1 personally solicits presale ($1.5k minimum, DM @natroalex1) — pre-launch."
+
+### ex23-david-natroalex-coin-reshare.jpg
+- **Display:** Exhibit 23
+- **Captured:** 28 May 2026 (re-archived; original Story posted pre-launch, 20–21 May 2026)
+- **Source:** Instagram Story showing both @natroalex and @davidnatro1 (verified) credited at the top — i.e. a reshare where both accounts amplified the same coin render.
+- **What it shows:** Branded "NATRO COIN" 3D render (silver N on a black coin with copper inner ring) centred on the screen — the project's hero coin asset.
+- **Why it matters:** Confirms both verified accounts shared the **same** branded coin asset. Useful as a visual handshake exhibit between David's solicitation Stories and the launch itself.
+- **Timeline event:** Pre-launch presale solicitation (20–21 May)
+- **Caption used in file:** "Instagram Story · NATRO COIN render reshared by @natroalex and @davidnatro1."
+
+### ex24-david-story-presale-ferrari.jpg
+- **Display:** Exhibit 24
+- **Captured:** 28 May 2026 (re-archived; original Story posted pre-launch, 20–21 May 2026)
+- **Source:** Instagram Story from @davidnatro1 (verified), @natroalex tagged, image: a Ferrari on a Monaco street at night (Monaco geolocation context).
+- **What it shows:** Caption over the Ferrari: *"We're opening private access to our crypto project presale with me & @natroalex / Telegram by DM - 1.5k min entry / Limited access available"* (@natroalex rendered as tappable mention).
+- **Why it matters:** Second confirming Story with the same first-person solicitation framing — "private access," "limited access," "1.5k min entry," contact via founder's Telegram. The Monaco-night Ferrari context reinforces the family-status leverage the website pitched in writing. Two independent Stories with the same solicitation text rule out a one-off reshare misread.
+- **Timeline event:** Pre-launch presale solicitation (20–21 May)
+- **Caption used in file:** "@davidnatro1 opens 'private access' to NATRO presale, 1.5k min entry, Telegram DM — pre-launch, Monaco."
+
+### ex25-alex-story-pumpfun-tomorrow.jpg
+- **Display:** Exhibit 25
+- **Captured:** 28 May 2026 (re-archived; original Story posted ~20 May 2026)
+- **Source:** Instagram Story from @natroalex (verified), French Instagram UI ("Voir la traduction" / "Suivre").
+- **What it shows:** Text Story over black: *"I saw all the dms of asking where to buy natrocoin, pumpfun download it 8 pm tommorow monaco time🔒"* — IG's auto-translation panel renders the French translation underneath ("J'ai vu tous les Dms de demander où acheter du natrocoin, pumpfun téléchargez-le 20h demain heure de Monaco").
+- **Why it matters:** This is the **Pump.fun launch announcement** in Alex's own voice — confirming the public launch was teed up to coincide with a fixed Monaco-local time, after the presale solicitation pattern was already running. Also documents that DM-based presale interest was being routed through @natroalex1 ("I saw all the dms").
+- **Timeline event:** Pre-launch presale solicitation (20–21 May) — sets up Launch (21 May 20:11 UTC)
+- **Caption used in file:** "@natroalex pre-launch Story: 'pumpfun download it 8 pm tomorrow monaco time' — the public launch announcement."
+
 ---
 
 ## Video exhibits
