@@ -148,6 +148,18 @@ header a:hover, nav a:hover { text-decoration: underline; text-underline-offset:
   .ceremonial [style*="natro-pulse"] { animation: none !important; opacity: 1; }
 }
 
+/* Ceremonial-masthead nav row: edge-fade mask so when the items don't
+   fit (mobile or narrow viewports), the cut-off edges fade gradually
+   instead of being sharply clipped. That fade is the visual signal
+   that there's more content to the right (or left) — the reader knows
+   to swipe / scroll. Hide the scrollbar itself; the fade is the cue. */
+.ceremonial-nav {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  scrollbar-width: none;
+}
+.ceremonial-nav::-webkit-scrollbar { display: none; }
+
 .pullquote {
   border-left: 2px solid var(--color-accent);
   padding: 0.5rem 0 0.5rem 1.5rem;

@@ -94,27 +94,29 @@ export function CeremonialMasthead({
         )}
       </div>
 
-      {/* 4 — Nav row */}
+      {/* 4 — Nav row. `ceremonial-nav` adds an edge-fade mask so on mobile
+          where the row scrolls horizontally, the cut-off edges fade
+          gradually, signalling "there's more content beyond the viewport". */}
       <nav
         aria-label="Sections"
-        className="border-t border-[var(--color-rule)] px-2 sm:px-4 py-2.5 overflow-x-auto whitespace-nowrap"
+        className="ceremonial-nav border-t border-[var(--color-rule)] py-2.5 overflow-x-auto whitespace-nowrap"
       >
-        <ul className="flex items-center justify-center gap-x-3 sm:gap-x-5 md:gap-x-7 sans uppercase tracking-[0.18em] text-[11px] sm:text-xs text-[var(--color-accent)] min-w-max mx-auto">
+        <ul className="flex items-center justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5 sans uppercase tracking-[0.16em] text-[11px] sm:text-xs text-[var(--color-accent)] min-w-max mx-auto px-3 sm:px-4">
           {nav.map((item) => (
             <li key={item.key}>
               <Link
                 href={{ pathname: '/', hash: item.hash }}
-                className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1.5 py-1"
+                className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
               >
                 {item.label}
               </Link>
             </li>
           ))}
-          <li className="opacity-50 select-none" aria-hidden="true">|</li>
+          <li className="opacity-50 select-none px-1" aria-hidden="true">|</li>
           <li>
             <Link
               href="/on-chain"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1.5 py-1"
+              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
             >
               {(uiStrings?.['nav.onchain'] || 'On-chain').toUpperCase()}
             </Link>
@@ -122,17 +124,9 @@ export function CeremonialMasthead({
           <li>
             <Link
               href="/press"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1.5 py-1"
+              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
             >
               {(uiStrings?.['nav.press'] || 'Press').toUpperCase()}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/faq"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1.5 py-1"
-            >
-              FAQ
             </Link>
           </li>
         </ul>
