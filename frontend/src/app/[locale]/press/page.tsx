@@ -34,7 +34,7 @@ export async function generateMetadata({
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       publishedTime: RELEASE_PUBLISHED_AT,
-      authors: ['Evgeniy Moykin (@btc3050)'],
+      authors: ['@btc3050'],
     },
     robots: { index: true, follow: true },
   };
@@ -70,10 +70,8 @@ export default async function PressPage({
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     author: {
       '@type': 'Person',
-      name: 'Evgeniy Moykin',
-      alternateName: '@btc3050',
+      name: '@btc3050',
       url: 'https://t.me/btc3050',
-      email: 'moykin.e@gmail.com',
     },
     publisher: {
       '@type': 'Organization',

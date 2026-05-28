@@ -24,7 +24,7 @@ const enFact: FactSheetContent = {
   kicker: 'Case fact sheet · v1.0 · 28 May 2026',
   headline: '$NATRO — Solana memecoin · 21 May 2026 launch · 98% collapse',
   filed: 'Compiled by',
-  filedValue: 'Evgeniy Moykin (@btc3050) · affected early holder',
+  filedValue: '@btc3050 (Telegram) · affected early holder',
   numbersHeading: 'In numbers',
   numbers: [
     { value: '~98%', label: 'Price collapse in 48h' },
@@ -92,7 +92,7 @@ const enFact: FactSheetContent = {
     'Spribe legal email paper-trail, 25 May 12:24 UTC',
     'Kutztown University Foundation public announcement (David Natroshvili SBDC Suite, Sep 2025)',
   ],
-  contactLine: 'Evgeniy Moykin · @btc3050 (Telegram) · moykin.e@gmail.com',
+  contactLine: '@btc3050 (Telegram)',
   fileLine: 'Full case file: natro.meme · Press release: natro.meme/press',
 };
 
@@ -100,7 +100,7 @@ const ruFact: FactSheetContent = {
   kicker: 'Кейс-сводка · v1.0 · 28 мая 2026',
   headline: '$NATRO — Solana-мемкоин · запуск 21 мая 2026 · обвал 98%',
   filed: 'Укладчик',
-  filedValue: 'Евгений Мойкин (@btc3050) · пострадавший ранний держатель',
+  filedValue: '@btc3050 (Telegram) · пострадавший ранний держатель',
   numbersHeading: 'В цифрах',
   numbers: [
     { value: '~98%', label: 'Обвал цены за 48 часов' },
@@ -168,7 +168,7 @@ const ruFact: FactSheetContent = {
     'Email-цепочка с юр. отделом Spribe, 25 мая 12:24 UTC',
     'Публичное объявление Kutztown University Foundation (David Natroshvili SBDC Suite, сент. 2025)',
   ],
-  contactLine: 'Евгений Мойкин · @btc3050 (Telegram) · moykin.e@gmail.com',
+  contactLine: '@btc3050 (Telegram)',
   fileLine: 'Полный кейс-файл: natro.meme · Пресс-релиз: natro.meme/press',
 };
 

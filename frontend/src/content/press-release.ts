@@ -75,7 +75,7 @@ export const pressContent: Record<string, PressContent> = {
       'The case file maintains an open right of reply. Any party named in the document may submit a verbatim response to be appended to the record. None has been received as of release.',
     contactHeading: 'Contact',
     contactBody:
-      '**Compiler:** Evgeniy Moykin / [@btc3050](https://t.me/btc3050) (Telegram)\n\n**Email:** [moykin.e@gmail.com](mailto:moykin.e@gmail.com)\n\n**File:** [natro.meme](https://natro.meme)\n\n**Wayback archive (single strongest source):** [web.archive.org/web/20260521213245/https://natrocoin.net/](https://web.archive.org/web/20260521213245/https://natrocoin.net/)',
+      '**Compiler:** [@btc3050](https://t.me/btc3050) (Telegram)\n\n**File:** [natro.meme](https://natro.meme)\n\n**Wayback archive (single strongest source):** [web.archive.org/web/20260521213245/https://natrocoin.net/](https://web.archive.org/web/20260521213245/https://natrocoin.net/)',
     downloadsHeading: 'Downloads & quick links',
     downloadsLabels: {
       txt: 'Press release (plain text)',
@@ -113,7 +113,7 @@ export const pressContent: Record<string, PressContent> = {
       'Кейс-файл сохраняет открытое право на ответ. Любая сторона, названная в документе, может прислать дословный ответ — он будет приложен к записи. На момент публикации релиза такого ответа не поступило.',
     contactHeading: 'Контакты',
     contactBody:
-      '**Укладчик:** Евгений Мойкин / [@btc3050](https://t.me/btc3050) (Telegram)\n\n**Email:** [moykin.e@gmail.com](mailto:moykin.e@gmail.com)\n\n**Файл:** [natro.meme](https://natro.meme)\n\n**Wayback архив (сильнейший единичный источник):** [web.archive.org/web/20260521213245/https://natrocoin.net/](https://web.archive.org/web/20260521213245/https://natrocoin.net/)',
+      '**Укладчик:** [@btc3050](https://t.me/btc3050) (Telegram)\n\n**Файл:** [natro.meme](https://natro.meme)\n\n**Wayback архив (сильнейший единичный источник):** [web.archive.org/web/20260521213245/https://natrocoin.net/](https://web.archive.org/web/20260521213245/https://natrocoin.net/)',
     downloadsHeading: 'Скачать и быстрые ссылки',
     downloadsLabels: {
       txt: 'Пресс-релиз (plain text)',

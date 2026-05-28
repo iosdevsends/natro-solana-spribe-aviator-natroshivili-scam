@@ -93,8 +93,7 @@ None has been received as of release.
 CONTACT
 --------------------------------------------------------------------------------
 
-Compiler:        Evgeniy Moykin / @btc3050 (Telegram)
-Email:           moykin.e@gmail.com
+Compiler:        @btc3050 (Telegram)
 File:            https://natro.meme
 Press page:      https://natro.meme/press
 Fact sheet:      https://natro.meme/press/fact-sheet

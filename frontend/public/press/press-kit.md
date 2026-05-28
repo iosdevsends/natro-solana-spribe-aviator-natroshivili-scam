@@ -161,7 +161,7 @@ appended to the record. As of release, none has been received.
 
 ## Contact
 
-- **Compiler:** Evgeniy Moykin — @btc3050 (Telegram) — moykin.e@gmail.com
+- **Compiler:** @btc3050 (Telegram)
 - **Full file:** https://natro.meme
 - **Press page:** https://natro.meme/press
 - **Fact sheet:** https://natro.meme/press/fact-sheet
