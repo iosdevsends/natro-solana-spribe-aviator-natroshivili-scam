@@ -43,6 +43,10 @@
     "registerCta": "إنشاء حساب",
     "loginCta": "تسجيل الدخول"
   },
+  "reading": {
+    "minLeft": "~{count} د متبقية",
+    "minRead": "~{count} د قراءة"
+  },
   "scamCta": {
     "kicker": "ملخّص الاحتيال · 30 ثانية",
     "headline": "كيف نصبوا على الناس — في صفحة واحدة.",

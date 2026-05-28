@@ -43,6 +43,10 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "reading": {
+    "minLeft": "~{count} min restantes",
+    "minRead": "~{count} min de lecture"
+  },
   "scamCta": {
     "kicker": "Brief arnaque · 30 secondes",
     "headline": "Comment ils ont arnaqué les gens, en une page.",

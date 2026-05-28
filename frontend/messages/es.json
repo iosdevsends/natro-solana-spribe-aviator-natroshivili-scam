@@ -43,6 +43,10 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "reading": {
+    "minLeft": "~{count} min restantes",
+    "minRead": "~{count} min de lectura"
+  },
   "scamCta": {
     "kicker": "Resumen del scam · 30 segundos",
     "headline": "Cómo estafaron a la gente, en una página.",

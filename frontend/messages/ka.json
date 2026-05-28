@@ -43,6 +43,10 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "reading": {
+    "minLeft": "~{count} წთ დარჩა",
+    "minRead": "~{count} წთ წასაკითხი"
+  },
   "scamCta": {
     "kicker": "სკამის ბრიფი · 30 წამი",
     "headline": "როგორ მოატყუეს ხალხი — ერთ გვერდზე.",

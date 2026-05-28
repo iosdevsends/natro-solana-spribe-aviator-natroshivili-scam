@@ -43,6 +43,10 @@
     "registerCta": "Create account",
     "loginCta": "Sign in"
   },
+  "reading": {
+    "minLeft": "~{count} Min. übrig",
+    "minRead": "~{count} Min. Lesezeit"
+  },
   "scamCta": {
     "kicker": "Scam-Kurzfassung · 30 Sekunden",
     "headline": "Wie sie Leute abgezockt haben — auf einer Seite.",
