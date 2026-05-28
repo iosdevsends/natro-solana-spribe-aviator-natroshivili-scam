@@ -28,6 +28,12 @@ export default async function OgImage({
 
   const headline = bundle.config.headline || bundle.config.siteTitle;
   const kicker = bundle.config.kicker || bundle.config.tagline || '';
+  // Localized straplines — use existing per-locale config strings so we don't
+  // need a separate translation surface. mastheadMeta already reads e.g.
+  // "Case study · Compiled from primary sources" / "Кейс · По первичным
+  // источникам" / "Étude de cas · ..." in each locale.
+  const topRightStrap = bundle.config.mastheadMeta || 'Case study · Primary sources';
+  const bottomStrap = bundle.config.tagline || '$NATRO · Solana token launch · 21 May 2026';
 
   return new ImageResponse(
     (
@@ -60,7 +66,7 @@ export default async function OgImage({
           }}
         >
           <span style={{ color: '#8b2c1e', fontWeight: 600 }}>The NATRO File</span>
-          <span>Case study · Primary sources</span>
+          <span>{topRightStrap}</span>
         </div>
 
         {/* Headline */}
@@ -101,7 +107,7 @@ export default async function OgImage({
             paddingTop: 16,
           }}
         >
-          <span>$NATRO · Solana token launch · 21 May 2026</span>
+          <span>{bottomStrap}</span>
           <span style={{ color: '#6b6452' }}>{resolvedLocale.toUpperCase()}</span>
         </div>
       </div>

@@ -16,7 +16,83 @@ import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } f
 import type { ExhibitDTO } from '@/lib/types';
 
 const PUBLICATION_DATE = '2026-05-26T00:00:00Z';
-const MODIFIED_DATE = '2026-05-27T00:00:00Z';
+const MODIFIED_DATE = '2026-05-28T00:00:00Z';
+
+/**
+ * Canonical Person / Organization entities. Surfaced as `about:` on the
+ * NewsArticle and also as standalone @id-anchored Persons in the @graph so
+ * a search engine can build a "this URL is the authoritative document about
+ * Alex/David Natroshvili" association. alternateName covers common
+ * transliterations Russian / Georgian / general crypto-Twitter readers use.
+ */
+const ALEX_NATROSHVILI = {
+  '@type': 'Person',
+  '@id': 'https://natro.meme/#alex-natroshvili',
+  name: 'Alex Natroshvili',
+  alternateName: [
+    'Aleksandre Natroshvili',
+    'Aleko Natroshvili',
+    'Алекс Натрошвили',
+    'Алекс Натрошвілі',
+    'ალექს ნატროშვილი',
+    '@natroalex',
+    '@natroalex1',
+  ],
+  description:
+    'Founder of the $NATRO Solana memecoin (launched 21 May 2026). Son of David Natroshvili. Verified Instagram @natroalex (54.1K followers), verified Telegram @natroalex1.',
+  jobTitle: 'Founder, $NATRO (Solana memecoin)',
+  nationality: 'GE',
+  url: 'https://natro.meme/#people',
+  sameAs: [
+    'https://instagram.com/natroalex',
+    'https://t.me/natroalex1',
+  ],
+};
+
+const DAVID_NATROSHVILI = {
+  '@type': 'Person',
+  '@id': 'https://natro.meme/#david-natroshvili',
+  name: 'David Natroshvili',
+  alternateName: [
+    'Davit Natroshvili',
+    'Давид Натрошвили',
+    'Давид Натрошвілі',
+    'დავით ნატროშვილი',
+    'ديفيد ناتروشفيلي',
+    '@davidnatro1',
+    '@davi.natroshvili',
+  ],
+  description:
+    'Founder and CEO of Spribe, the iGaming studio behind the global crash-style gambling product Aviator. Father of Alex Natroshvili. Kutztown University MBA (class of 2001); the Pennsylvania SBDC lead office at Kutztown bears his name following a Spring 2025 philanthropic gift.',
+  jobTitle: 'Founder & CEO, Spribe',
+  affiliation: {
+    '@type': 'Organization',
+    '@id': 'https://natro.meme/#spribe',
+    name: 'Spribe',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Kutztown University of Pennsylvania',
+    url: 'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
+  },
+  url: 'https://natro.meme/#people',
+  sameAs: [
+    'https://instagram.com/davidnatro1',
+    'https://instagram.com/davi.natroshvili',
+    'https://www.linkedin.com/company/spribe/',
+    'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
+  ],
+};
+
+const SPRIBE_ORG = {
+  '@type': 'Organization',
+  '@id': 'https://natro.meme/#spribe',
+  name: 'Spribe',
+  description:
+    'iGaming studio; developer of Aviator (a global crash-style gambling product licensed in multiple jurisdictions). Mentioned in this case file because the $NATRO marketing leaned on the Spribe / Aviator association as a trust signal; not affiliated with $NATRO as an entity.',
+  url: 'https://www.linkedin.com/company/spribe/',
+  founder: { '@id': 'https://natro.meme/#david-natroshvili' },
+};
 
 export async function generateMetadata({
   params,
@@ -101,41 +177,69 @@ export default async function CaseFilePage({
       isAccessibleForFree: true,
     }));
 
+  // Use schema.org @graph so the named Persons get @id-anchored as standalone
+  // entities (stronger Knowledge-Graph signal for "alex natroshvili" /
+  // "david natroshvili" queries) and the NewsArticle references them by @id.
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'NewsArticle',
-    headline: bundle.config.headline || bundle.config.siteTitle,
-    name: bundle.config.siteTitle,
-    description:
-      bundle.config.seoDescription || bundle.config.deck?.slice(0, 200),
-    inLanguage: loc,
-    isAccessibleForFree: true,
-    datePublished: PUBLICATION_DATE,
-    dateModified: MODIFIED_DATE,
-    url: pageUrl,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-    image: exhibitImageObjects.length ? exhibitImageObjects : undefined,
-    author: {
-      '@type': 'Person',
-      name: 'An affected early holder',
-      alternateName: '@btc3050',
-      url: 'https://t.me/btc3050',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'The NATRO File',
-      url: absoluteUrl(loc, ''),
-    },
-    about: [
-      { '@type': 'Thing', name: '$NATRO Solana token launch' },
-      { '@type': 'Person', name: 'Alex Natroshvili' },
-      { '@type': 'Person', name: 'David Natroshvili' },
-      { '@type': 'Organization', name: 'Spribe' },
-    ],
-    citation: [
-      'https://web.archive.org/web/20260521213245/https://natrocoin.net/',
-      'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
-      'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
+    '@graph': [
+      ALEX_NATROSHVILI,
+      DAVID_NATROSHVILI,
+      SPRIBE_ORG,
+      {
+        '@type': 'NewsArticle',
+        '@id': `${pageUrl}#article`,
+        headline: bundle.config.headline || bundle.config.siteTitle,
+        name: bundle.config.siteTitle,
+        description:
+          bundle.config.seoDescription || bundle.config.deck?.slice(0, 200),
+        inLanguage: loc,
+        isAccessibleForFree: true,
+        datePublished: PUBLICATION_DATE,
+        dateModified: MODIFIED_DATE,
+        url: pageUrl,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+        image: exhibitImageObjects.length ? exhibitImageObjects : undefined,
+        author: {
+          '@type': 'Person',
+          name: 'An affected early holder',
+          alternateName: '@btc3050',
+          url: 'https://t.me/btc3050',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'The NATRO File',
+          url: absoluteUrl(loc, ''),
+        },
+        about: [
+          { '@type': 'Thing', name: '$NATRO Solana token launch' },
+          { '@id': 'https://natro.meme/#alex-natroshvili' },
+          { '@id': 'https://natro.meme/#david-natroshvili' },
+          { '@id': 'https://natro.meme/#spribe' },
+        ],
+        mentions: [
+          { '@id': 'https://natro.meme/#alex-natroshvili' },
+          { '@id': 'https://natro.meme/#david-natroshvili' },
+          { '@id': 'https://natro.meme/#spribe' },
+        ],
+        keywords: [
+          'Alex Natroshvili',
+          'David Natroshvili',
+          'NATRO',
+          '$NATRO',
+          'Spribe',
+          'Aviator',
+          'Solana memecoin scam',
+          'Pump.fun',
+          'rug pull',
+          'reputation pricing',
+        ].join(', '),
+        citation: [
+          'https://web.archive.org/web/20260521213245/https://natrocoin.net/',
+          'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
+          'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
+        ],
+      },
     ],
   };
 
