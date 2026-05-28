@@ -155,7 +155,7 @@ export default async function FaqEntryPage({
                     className="sans text-sm"
                   >
                     {c.label}{' '}
-                    <span className="opacity-60 mono text-[10px] break-all">
+                    <span className="text-[var(--color-ink-faint)] mono text-[10px] break-all">
                       ({c.url})
                     </span>
                   </a>
