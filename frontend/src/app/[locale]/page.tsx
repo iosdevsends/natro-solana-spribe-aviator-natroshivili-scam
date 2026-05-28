@@ -274,7 +274,7 @@ export default async function CaseFilePage({
           </h1>
           {bundle.config.deck && (
             <p className="serif italic text-lg md:text-2xl text-[var(--color-ink-soft)] mt-5 md:mt-6 leading-snug">
-              {bundle.config.deck}
+              <HighlightedLede text={bundle.config.deck} />
             </p>
           )}
           <BylineStrip byline={bundle.config.byline} />
@@ -387,6 +387,72 @@ export default async function CaseFilePage({
         publicStrapiUrl={strapiPublicUrl}
         uiStrings={ui}
       />
+    </>
+  );
+}
+
+/**
+ * Lede-accent highlighter. The deck paragraph carries the journalistic
+ * "who/what/where" — a third-party reader scanning the page should be
+ * able to pick out the named parties and the affiliated brands in one
+ * pass. We pull them out of the italic flow visually (upright, medium,
+ * accent oxblood) rather than rewriting the prose to bold them in CMS,
+ * because the same paragraph ships in 8 locales and per-locale bolding
+ * would drift. The keyword list covers the major name transliterations
+ * (Latin, Cyrillic — Russian + Ukrainian, Georgian, Arabic) plus the
+ * brand identifiers that recur across all language versions.
+ */
+const LEDE_HIGHLIGHTS = [
+  // Token + platform
+  '$NATRO',
+  'NATRO',
+  'Pump.fun',
+  // Brand
+  'Spribe',
+  'Aviator',
+  // Names (Latin)
+  'Alex Natroshvili',
+  'David Natroshvili',
+  'Natroshvili',
+  // Names (Russian Cyrillic)
+  'Алекс Натрошвили',
+  'Давид Натрошвили',
+  'Натрошвили',
+  // Names (Ukrainian Cyrillic)
+  'Алекс Натрошвілі',
+  'Давид Натрошвілі',
+  'Натрошвілі',
+  // Names (Georgian)
+  'ალექს ნატროშვილი',
+  'დავით ნატროშვილი',
+  'ნატროშვილი',
+  // Names (Arabic)
+  'أليكس ناتروشفيلي',
+  'ديفيد ناتروشفيلي',
+  'ناتروشفيلي',
+];
+
+function HighlightedLede({ text }: { text: string }) {
+  // Longest-first so "Alex Natroshvili" wins over a bare "Natroshvili" match.
+  const sorted = [...LEDE_HIGHLIGHTS].sort((a, b) => b.length - a.length);
+  const escaped = sorted.map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const pattern = new RegExp(`(${escaped.join('|')})`, 'g');
+  const parts = text.split(pattern);
+  const matchSet = new Set(LEDE_HIGHLIGHTS);
+  return (
+    <>
+      {parts.map((part, i) =>
+        matchSet.has(part) ? (
+          <span
+            key={i}
+            className="not-italic font-medium text-[var(--color-accent)]"
+          >
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
     </>
   );
 }
