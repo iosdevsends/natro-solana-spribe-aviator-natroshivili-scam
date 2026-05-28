@@ -24,6 +24,15 @@ const externalHosts = [strapiUrl, strapiInternal].map(extractHost);
 const nextConfig: NextConfig = {
   output: 'standalone',
   reactStrictMode: true,
+  // Inline the CSS payload directly into the HTML response so the
+  // initial render isn't blocked by the chained-chunk CSS waterfall
+  // that PageSpeed flagged (LCP -> ~410 ms saving). `inlineCss` is
+  // Next.js 16's replacement for the old `optimizeCss` flow and does
+  // the inlining inside the App Router stream, no third-party
+  // critters/beasties dependency required.
+  experimental: {
+    inlineCss: true,
+  },
   images: {
     remotePatterns: externalHosts.map((h) => ({
       protocol: h.protocol,

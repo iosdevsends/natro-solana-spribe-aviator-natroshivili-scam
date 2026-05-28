@@ -51,6 +51,25 @@ export default async function LocaleLayout({
       dir={dir}
       className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}
     >
+      <head>
+        {/* Preconnect to GTM only when GA is actually configured —
+            saves DNS+TCP+TLS time when Analytics later lazyOnload-s
+            the gtag.js bundle. Skipped on builds without GA_ID so we
+            don't open a TLS connection that nothing uses. */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <link
+              rel="preconnect"
+              href="https://www.googletagmanager.com"
+              crossOrigin=""
+            />
+            <link
+              rel="dns-prefetch"
+              href="https://www.googletagmanager.com"
+            />
+          </>
+        )}
+      </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SkipToContent />
