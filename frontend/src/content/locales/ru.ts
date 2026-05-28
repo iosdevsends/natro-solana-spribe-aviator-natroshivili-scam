@@ -52,6 +52,7 @@ export const ru = () =>
         'nav.faq': '§ VIII · FAQ',
         'nav.onchain': 'On-chain',
         'nav.stories': 'Истории читателей',
+        'masthead.sincePublication': 'С момента публикации ·',
         'onchain.title': 'On-chain состояние · live',
         'onchain.subtitle': 'Авто-обновление раз в 60 минут с публичных API без авторизации. Нажми на любой адрес — Solscan или Pump.fun откроется в новой вкладке.',
         'onchain.tokenMint': 'Mint токена',

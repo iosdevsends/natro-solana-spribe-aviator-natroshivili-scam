@@ -89,6 +89,7 @@ export const ar = () =>
         'ui.right_of_reply': 'حقّ الردّ',
         'ui.contact': 'للتواصل',
         'ui.translation_pending': 'الترجمة قيد مراجعة متحدّث أصلي',
+        'masthead.sincePublication': 'منذ النشر ·',
         'stories.title': 'روايات أرسلها القرّاء',
         'stories.lead': 'إذا تأثّرت بإطلاق توكن مماثل قائم على السمعة، يمكنك تقديم شهادتك الموثَّقة. تخضع الإسهامات لمراجعة تحريرية قبل النشر.',
         'stories.submit': 'أرسل شهادتك',

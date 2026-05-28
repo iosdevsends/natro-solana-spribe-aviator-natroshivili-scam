@@ -66,6 +66,7 @@ export const es = () =>
         'ui.right_of_reply': 'Derecho de réplica',
         'ui.contact': 'Contacto',
         'ui.translation_pending': 'Traducción pendiente de revisión por hablante nativo',
+        'masthead.sincePublication': 'En vivo desde la publicación ·',
         'stories.title': 'Relatos enviados por lectores',
         'stories.lead': 'Si te has visto afectado por un lanzamiento similar de token basado en la reputación, puedes enviar tu propio relato documentado. Los envíos pasan por revisión editorial antes de la publicación.',
         'stories.submit': 'Enviar tu relato',

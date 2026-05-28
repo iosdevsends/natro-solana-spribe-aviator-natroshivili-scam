@@ -52,6 +52,7 @@ export const en = (): CaseFileBundle => ({
       'nav.faq': '§ VIII · FAQ',
       'nav.onchain': 'On-chain',
       'nav.stories': 'Reader stories',
+      'masthead.sincePublication': 'Live since publication ·',
       'onchain.title': 'On-chain state · live',
       'onchain.subtitle': 'Auto-refreshed every 60 min from public, no-auth APIs. Click any address to verify on Solscan or Pump.fun directly.',
       'onchain.tokenMint': 'Token mint',

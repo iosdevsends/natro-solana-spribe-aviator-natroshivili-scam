@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { PublicationTimer } from './PublicationTimer';
 import type { Locale } from '@/i18n/routing';
 
 type Props = {
@@ -80,7 +81,14 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
           <LanguageSwitcher current={locale} />
         </div>
       </div>
-      {meta ? <div className="label-strap pb-2 text-[10px]">{meta}</div> : null}
+      {(meta || uiStrings?.['masthead.sincePublication']) && (
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 pb-2 label-strap text-[10px]">
+          {meta ? <span>{meta}</span> : <span />}
+          {uiStrings?.['masthead.sincePublication'] && (
+            <PublicationTimer label={uiStrings['masthead.sincePublication']} />
+          )}
+        </div>
+      )}
     </header>
   );
 }
