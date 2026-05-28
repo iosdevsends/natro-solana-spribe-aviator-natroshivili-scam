@@ -272,6 +272,12 @@ export default async function CaseFilePage({
           <h1 className="serif text-[28px] sm:text-3xl md:text-5xl leading-[1.1] md:leading-[1.08] font-medium tracking-tight">
             {bundle.config.headline}
           </h1>
+          <Link
+            href="/one-pager"
+            className="mt-4 inline-flex items-center gap-1.5 border border-[var(--color-accent)] px-3 py-1.5 sans text-[11px] uppercase tracking-widest text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] no-underline transition-colors"
+          >
+            Scam one-pager · 30-second brief →
+          </Link>
           {bundle.config.deck && (
             <p className="serif italic text-lg md:text-2xl text-[var(--color-ink-soft)] mt-5 md:mt-6 leading-snug">
               <HighlightedLede text={bundle.config.deck} />
