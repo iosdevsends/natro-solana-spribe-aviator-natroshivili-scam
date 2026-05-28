@@ -755,7 +755,7 @@ function Evidence({ rows }: { rows: import('@/lib/types').EvidenceRowDTO[] }) {
         <div key={row.id} className="grid grid-cols-1 md:grid-cols-[140px_1fr_140px] gap-3 md:gap-4 py-5 items-start">
           <div className="label-strap">{row.type}</div>
           <div className="min-w-0">
-            <h4 className="serif text-lg font-medium mb-1 break-words">{row.title}</h4>
+            <h3 className="serif text-lg font-medium mb-1 break-words">{row.title}</h3>
             <Prose text={row.description} className="text-sm" />
           </div>
           <div className="md:text-right">

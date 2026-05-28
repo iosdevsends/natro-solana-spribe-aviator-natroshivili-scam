@@ -10,7 +10,11 @@
   --color-accent-soft: #b04937;
   --color-gold: #806012;
   --color-ink-soft: #3a342a;
-  --color-ink-faint: #6b6452;
+  /* ink-faint nudged from #6b6452 → #5e574a so contrast against paper
+     (#f5f1e8) is ~6.4:1 and against paper-warm (#ede7d8) is ~5.9:1 —
+     comfortably above WCAG AA (4.5:1) for the 10–12px label-strap text
+     where Lighthouse was flagging borderline contrast. */
+  --color-ink-faint: #5e574a;
   --color-damning: #5a1e10;
   --color-highlight: #e8d896;
 
@@ -57,8 +61,14 @@ body::before {
   mix-blend-mode: multiply;
 }
 
-a { color: var(--color-accent); text-underline-offset: 3px; }
+/* Body links: underline by default so colour alone isn't the only cue
+   (WCAG 2.4.4 / 1.4.1). Navigation, masthead title, lightbox controls
+   and any `.no-underline` container opt out — those elements have other
+   visual affordances (uppercase tracking, position, focus rings). */
+a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { color: var(--color-accent-soft); }
+header a, nav a, a.no-underline, .no-underline a { text-decoration: none; }
+header a:hover, nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 .serif { font-family: var(--font-serif); }
 .sans { font-family: var(--font-sans); }
