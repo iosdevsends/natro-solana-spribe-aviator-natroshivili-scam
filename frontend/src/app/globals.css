@@ -137,6 +137,17 @@ header a:hover, nav a:hover { text-decoration: underline; text-underline-offset:
   overflow: hidden;
 }
 
+/* Slow pulse on the live indicator dot in the ceremonial masthead's
+   black status strap. Kept here (not inline style) so prefers-reduced-
+   motion users can pause it via media query. */
+@keyframes natro-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ceremonial [style*="natro-pulse"] { animation: none !important; opacity: 1; }
+}
+
 .pullquote {
   border-left: 2px solid var(--color-accent);
   padding: 0.5rem 0 0.5rem 1.5rem;

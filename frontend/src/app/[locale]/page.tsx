@@ -7,7 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { loadCaseFile } from '@/lib/case-file';
 import { strapiPublicUrl, mediaUrl } from '@/lib/strapi';
-import { Masthead } from '@/components/Masthead';
+import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
 import { Lightbox } from '@/components/Lightbox';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
@@ -258,11 +258,12 @@ export default async function CaseFilePage({
         Skip to content
       </a>
 
-      <Masthead
+      <CeremonialMasthead
         locale={loc}
-        title={bundle.config.siteTitle}
-        meta={bundle.config.mastheadMeta}
+        tagline={bundle.config.tagline}
         uiStrings={ui}
+        exhibitCount={bundle.exhibits.length}
+        languageCount={locales.length}
       />
 
       <main id="main" className="relative z-[2] mx-auto" style={{ maxWidth: '900px', padding: 'clamp(20px, 4vw, 60px) clamp(16px, 5vw, 56px) 120px' }}>
