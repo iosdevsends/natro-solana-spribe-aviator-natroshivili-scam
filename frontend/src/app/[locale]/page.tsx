@@ -860,30 +860,176 @@ function Quotes({ quotes }: { quotes: import('@/lib/types').QuoteDTO[] }) {
   );
 }
 
-function People({ people }: { people: import('@/lib/types').PersonDTO[] }) {
+/**
+ * Engagement scale — a 4-axis at-a-glance summary of how each named
+ * party handled the launch and its aftermath. Keyed by person slug so
+ * Strapi-driven content stays the canonical source for prose, and the
+ * scale lives next to it as a journalist-readable visual index.
+ *
+ *   Reached     — did affected holders manage to contact them at all
+ *   Replied     — did they respond substantively (not silent / not emoji)
+ *   Refunded    — did they offer or facilitate any remedy
+ *   Preserved   — did the evidence under their control stay up
+ *
+ * States:
+ *   engaged  — the constructive thing happened (ink-soft)
+ *   partial  — happened, but non-substantively (gold)
+ *   refused  — refused outright OR scrubbed (damning oxblood)
+ *   silent   — no signal / not applicable (rule grey)
+ */
+type EngagementState = 'engaged' | 'partial' | 'refused' | 'silent';
+
+const ENGAGEMENT_DATA: Record<
+  string,
+  {
+    contacted: EngagementState;
+    responded: EngagementState;
+    refunded: EngagementState;
+    preserved: EngagementState;
+  }
+> = {
+  'alex-natroshvili': {
+    contacted: 'engaged',
+    responded: 'refused', // "stfu" — dismissive, not substantive
+    refunded: 'refused', // no refund, structured proposal rejected
+    preserved: 'refused', // NATRO link removed from Instagram bio
+  },
+  'david-natroshvili': {
+    contacted: 'engaged',
+    responded: 'partial', // 🙌 emoji endorsing dismissal — non-substantive
+    refunded: 'silent', // never addressed the refund question publicly
+    preserved: 'partial', // re-shared promo and pre-sale stories before launch; not personally tied to takedowns
+  },
+  'jr-cryptex': {
+    contacted: 'silent',
+    responded: 'silent',
+    refunded: 'silent', // KOL, not a principal — no remedy responsibility
+    preserved: 'refused', // promo video deleted from feed within 72h
+  },
+  'eric-connola': {
+    contacted: 'engaged', // holders engaged him in comment threads
+    responded: 'refused', // "Cry more" — actively dismissive
+    refunded: 'silent', // not a principal — no remedy responsibility
+    preserved: 'engaged', // comments still posted, not deleted
+  },
+};
+
+function engagementColor(state: EngagementState): string {
+  switch (state) {
+    case 'engaged':
+      return 'var(--color-ink-soft)';
+    case 'partial':
+      return 'var(--color-gold)';
+    case 'refused':
+      return 'var(--color-damning)';
+    case 'silent':
+      return 'var(--color-rule)';
+  }
+}
+
+function engagementStateLabel(state: EngagementState): string {
+  switch (state) {
+    case 'engaged':
+      return 'Engaged';
+    case 'partial':
+      return 'Partial / non-substantive';
+    case 'refused':
+      return 'Refused / scrubbed';
+    case 'silent':
+      return 'Silent / N/A';
+  }
+}
+
+function EngagementScale({ slug }: { slug: string }) {
+  const data = ENGAGEMENT_DATA[slug];
+  if (!data) return null;
+  const axes: Array<{
+    key: keyof typeof data;
+    label: string;
+    desc: string;
+  }> = [
+    { key: 'contacted', label: 'Reached', desc: 'Affected holders reached them' },
+    { key: 'responded', label: 'Replied', desc: 'They replied substantively' },
+    { key: 'refunded', label: 'Refunded', desc: 'They offered or facilitated remedy' },
+    { key: 'preserved', label: 'Preserved', desc: 'Evidence under their control stayed up' },
+  ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {people.map((p) => (
-        <article key={p.id} className="border border-[var(--color-rule)] p-5 bg-[var(--color-paper-warm)]/50">
-          <div className="kicker mb-2">{p.role}</div>
-          <h3 className="serif text-xl mb-2 font-medium">{p.displayName || p.fullName}</h3>
-          {p.handles?.map((h, i) => (
-            <div key={i} className="sans text-xs text-[var(--color-ink-faint)]">
-              {h.platform}: <span className="text-[var(--color-ink-soft)]">{h.handle}</span>
-              {h.followers && ` · ${h.followers}`}
+    <div className="mt-4 pt-4 border-t border-dashed border-[var(--color-rule)]">
+      <div className="label-strap mb-3">Engagement</div>
+      <div className="grid grid-cols-4 gap-1.5">
+        {axes.map(({ key, label, desc }) => {
+          const state = data[key];
+          return (
+            <div key={key} className="flex flex-col gap-1.5">
+              <span
+                className="block w-full h-1.5 rounded-sm"
+                style={{ background: engagementColor(state) }}
+                aria-label={`${label}: ${engagementStateLabel(state)} — ${desc}`}
+                title={`${label}: ${engagementStateLabel(state)}`}
+              />
+              <span className="sans text-[9px] uppercase tracking-widest text-[var(--color-ink-faint)] leading-tight">
+                {label}
+              </span>
             </div>
-          ))}
-          <hr className="rule-divider" />
-          <Prose text={p.description} className="text-sm" />
-          {p.statement && (
-            <div className="mt-4 pt-4 border-t border-dashed border-[var(--color-rule)]">
-              <div className="label-strap mb-1">{p.statementLabel}</div>
-              <div className="serif italic text-sm">{p.statement}</div>
-            </div>
-          )}
-        </article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function EngagementLegend() {
+  const items: Array<{ state: EngagementState; label: string }> = [
+    { state: 'engaged', label: 'Engaged' },
+    { state: 'partial', label: 'Partial' },
+    { state: 'refused', label: 'Refused / scrubbed' },
+    { state: 'silent', label: 'Silent / N/A' },
+  ];
+  return (
+    <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-1 sans text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)]">
+      <span className="font-medium">Engagement scale:</span>
+      {items.map((it) => (
+        <span key={it.state} className="inline-flex items-center gap-1.5">
+          <span
+            className="inline-block w-2.5 h-2.5 rounded-sm"
+            style={{ background: engagementColor(it.state) }}
+            aria-hidden="true"
+          />
+          {it.label}
+        </span>
       ))}
     </div>
+  );
+}
+
+function People({ people }: { people: import('@/lib/types').PersonDTO[] }) {
+  return (
+    <>
+      <EngagementLegend />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {people.map((p) => (
+          <article key={p.id} className="border border-[var(--color-rule)] p-5 bg-[var(--color-paper-warm)]/50">
+            <div className="kicker mb-2">{p.role}</div>
+            <h3 className="serif text-xl mb-2 font-medium">{p.displayName || p.fullName}</h3>
+            {p.handles?.map((h, i) => (
+              <div key={i} className="sans text-xs text-[var(--color-ink-faint)]">
+                {h.platform}: <span className="text-[var(--color-ink-soft)]">{h.handle}</span>
+                {h.followers && ` · ${h.followers}`}
+              </div>
+            ))}
+            <EngagementScale slug={p.slug} />
+            <hr className="rule-divider" />
+            <Prose text={p.description} className="text-sm" />
+            {p.statement && (
+              <div className="mt-4 pt-4 border-t border-dashed border-[var(--color-rule)]">
+                <div className="label-strap mb-1">{p.statementLabel}</div>
+                <div className="serif italic text-sm">{p.statement}</div>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </>
   );
 }
 
