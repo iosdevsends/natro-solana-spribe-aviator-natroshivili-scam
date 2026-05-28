@@ -19,23 +19,19 @@ import {
 } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
 
-const ONE_PAGER_PATH = '/one-pager';
+const SCAM_ONE_PAGER_PATH = '/scam-one-pager';
 
 /**
- * "Scam one-pager" — a single-screen, share-optimised brief.
+ * "Scam one-pager" — single-screen, share-optimised brief.
  *
- * The full case file lives at `/`. This route exists because journalists,
- * regulators, and prospective holders googling "NATRO scam" land best on
- * something they can scan in 30 seconds: headline, two-paragraph summary,
- * four key exhibits, and one Wayback link. The body content (headline,
- * deck, executive summary, exhibit titles) all comes from the same
- * localised case-file bundle the main route uses, so this page is
- * automatically multilingual without separate translation work.
- *
- * Visible label is "Scam one-pager" per the user's explicit naming —
- * matches the search term a reader investigating the launch would
- * actually type. URL slug is the neutral `/one-pager` so the canonical
- * URL stays journalistic.
+ * Lives at /scam-one-pager because journalists, regulators, and
+ * prospective holders googling "NATRO scam" land best on a URL whose
+ * slug matches the search intent. Body content (deck, executive
+ * summary, exhibit titles) all comes from the same localised case-file
+ * bundle the main route uses, so this page is automatically
+ * multilingual without separate translation work. The H1 is hardcoded
+ * in English with "scam" in it to maximise share/embed legibility on
+ * social cards and search snippets.
  */
 export async function generateMetadata({
   params,
@@ -46,7 +42,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
-  const title = `Scam one-pager — ${bundle.config.siteTitle}`;
+  const title = `The $NATRO scam — one-pager · ${bundle.config.siteTitle}`;
   const description =
     bundle.config.deck?.slice(0, 200) ||
     bundle.config.seoDescription ||
@@ -54,12 +50,12 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: buildAlternates(loc, ONE_PAGER_PATH),
+    alternates: buildAlternates(loc, SCAM_ONE_PAGER_PATH),
     openGraph: {
       title,
       description,
       type: 'article',
-      url: absoluteUrl(loc, ONE_PAGER_PATH),
+      url: absoluteUrl(loc, SCAM_ONE_PAGER_PATH),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
@@ -68,7 +64,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function OnePagerPage({
+export default async function ScamOnePagerPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -81,9 +77,6 @@ export default async function OnePagerPage({
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
 
-  // Pick up to four highlighted exhibits (already curated in the bundle
-  // as the "key" ones — Foyer screenshot, "Nothing to say", "stfu", the
-  // Wayback-archived FAQ). Fall back to first four if fewer are flagged.
   const keyExhibits: ExhibitDTO[] = bundle.exhibits
     .filter((ex) => ex.highlighted)
     .slice(0, 4);
@@ -109,18 +102,19 @@ export default async function OnePagerPage({
             'clamp(20px, 4vw, 56px) clamp(16px, 5vw, 56px) 100px',
         }}
       >
-        <div className="kicker mb-3">Scam one-pager · Quick brief</div>
-        <h1 className="serif text-[30px] sm:text-4xl md:text-5xl leading-[1.08] font-medium tracking-tight">
-          {bundle.config.headline}
+        <div className="kicker mb-3">Scam one-pager · 30-second brief</div>
+        <h1 className="serif text-[30px] sm:text-4xl md:text-5xl leading-[1.05] font-medium tracking-tight">
+          The $NATRO scam, in one page.
         </h1>
+        <p className="mt-3 sans text-sm text-[var(--color-ink-faint)] uppercase tracking-widest">
+          {bundle.config.headline}
+        </p>
         {bundle.config.deck && (
           <p className="serif italic text-lg md:text-xl text-[var(--color-ink-soft)] mt-5 md:mt-6 leading-snug">
             {bundle.config.deck}
           </p>
         )}
 
-        {/* What happened — short executive summary, pulled from the
-            already-localised bundle. */}
         {bundle.config.executiveSummary && (
           <section className="mt-10 border-y border-[var(--color-ink)] py-6">
             <div className="kicker mb-3">What happened</div>
@@ -131,11 +125,9 @@ export default async function OnePagerPage({
           </section>
         )}
 
-        {/* Key exhibits — 2×2 grid, click-through to the gallery on
-            the main case file. */}
         {exhibitsForGrid.length > 0 && (
           <section className="mt-12">
-            <div className="kicker mb-4">Key exhibits</div>
+            <div className="kicker mb-4">Key scam exhibits</div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {exhibitsForGrid.map((ex) => (
                 <OnePagerExhibit key={ex.slug} exhibit={ex} />
@@ -145,17 +137,15 @@ export default async function OnePagerPage({
               href={{ pathname: '/', hash: 'gallery' }}
               className="mt-4 inline-block sans text-xs uppercase tracking-widest"
             >
-              See all {bundle.exhibits.length} exhibits →
+              See all {bundle.exhibits.length} scam exhibits →
             </Link>
           </section>
         )}
 
-        {/* Wayback archive — the single strongest source. */}
         {bundle.config.archiveCallout && (
           <ArchiveCallout {...bundle.config.archiveCallout} />
         )}
 
-        {/* Deep links into the full case file. */}
         <Lightbox
           exhibits={bundle.exhibits}
           publicStrapiUrl={strapiPublicUrl}
@@ -170,7 +160,7 @@ export default async function OnePagerPage({
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-3 sans text-sm">
             <li>
               <Link href="/" className="block">
-                Full case file →
+                Full scam case file →
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
                   Promise · Reality · Scrub · Voices · People · Sources
                 </span>
@@ -178,7 +168,7 @@ export default async function OnePagerPage({
             </li>
             <li>
               <Link href="/on-chain" className="block">
-                On-chain verification →
+                On-chain scam verification →
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
                   Live token state, creator wallet activity
                 </span>
@@ -186,7 +176,7 @@ export default async function OnePagerPage({
             </li>
             <li>
               <Link href="/press" className="block">
-                Press kit →
+                Scam press kit →
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
                   Fact sheet, contacts, right of reply
                 </span>
