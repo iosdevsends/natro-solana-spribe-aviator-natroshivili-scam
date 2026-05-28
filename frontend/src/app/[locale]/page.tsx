@@ -46,6 +46,7 @@ const ALEX_NATROSHVILI = {
   sameAs: [
     'https://instagram.com/natroalex',
     'https://t.me/natroalex1',
+    'https://tapology.com/fightcenter/fighters/540307-alex-natroshvili',
   ],
 };
 
@@ -79,7 +80,10 @@ const DAVID_NATROSHVILI = {
   sameAs: [
     'https://instagram.com/davidnatro1',
     'https://instagram.com/davi.natroshvili',
+    'https://www.linkedin.com/in/david-natroshvili-98338038/',
     'https://www.linkedin.com/company/spribe/',
+    'https://handwiki.org/wiki/Biography:David_Natroshvili',
+    'https://www.imdb.com/name/nm17224363/',
     'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
   ],
 };
