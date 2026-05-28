@@ -50,4 +50,13 @@ export const de = () =>
         'ui.translation_pending': 'Übersetzung in Prüfung durch Muttersprachler',
       },
     },
+    timeline: [
+      {
+        slug: 'presale-solicitation',
+        displayDate: '20.–21. MAI · VOR LAUNCH',
+        title: 'David Natroshvili wirbt persönlich Pre-Sale-Investitionen von seinem verifizierten Konto ein',
+        body: 'In den 24 Stunden vor dem öffentlichen Pump.fun-Launch veröffentlicht **@davidnatro1** — das verifizierte Instagram-Konto des Spribe-Gründers und CEO David Natroshvili — eine Serie von Stories, die **@natroalex** taggen und persönlich kostenpflichtigen Pre-Sale-Zugang zum NATRO-Token anbieten.\n\nDie vor ihrem Ablauf gesicherten Stories enthalten (wortwörtlich):\n\n- *„I have many celebs on the line to post about natro this will be crazy🔥"*\n- *„If you want to get involved in the crypto project presale **with me & @natroalex** — DM **@natroalex1** on telegram. Minimum investment size for presale is 1.5k"* (über einem Bentley-Innenraum)\n- *„We\'re opening private access to our crypto project presale **with me & @natroalex** — Telegram by DM · 1.5k min entry · Limited access available"* (über einem Ferrari auf einer Straße in Monaco)\n\nParallel postet Alex Natroshvili (@natroalex, verifiziert): *„I saw all the dms of asking where to buy natrocoin, pumpfun download it 8 pm tommorow monaco time🔒"* — die Pump.fun-Launch-Ankündigung.\n\nDiese Sequenz unterscheidet sich materiell von einem passiven Reshare. David ist **als Teilnehmer benannt** („with me & @natroalex"), die Einstiegsschwelle wird **von ihm festgelegt** (1.500 $) und der Kontakt wird **auf das persönliche Telegram des Gründers geleitet**. Die Bezeichnung „Verstärker" für David in §V unterschätzt die Rolle, die diese Beweise dokumentieren.',
+        tags: ['Instagram-Stories', 'Pre-Sale vor Launch', 'verifiziertes Konto'],
+      },
+    ],
   });
