@@ -66,6 +66,7 @@ export const de = () =>
         'ui.right_of_reply': 'Recht auf Erwiderung',
         'ui.contact': 'Kontakt',
         'ui.translation_pending': 'Übersetzung in Prüfung durch Muttersprachler',
+        'nav.press': 'Presse',
         'masthead.sincePublication': 'Seit Veröffentlichung ·',
         'stories.title': 'Von Lesern eingereichte Berichte',
         'stories.lead': 'Wenn Sie von einem ähnlichen reputationsbasierten Token-Launch betroffen waren, können Sie Ihren eigenen dokumentierten Bericht einreichen. Einreichungen durchlaufen eine redaktionelle Prüfung vor der Veröffentlichung.',

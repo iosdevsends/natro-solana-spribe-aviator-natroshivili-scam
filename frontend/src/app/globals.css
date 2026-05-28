@@ -168,3 +168,25 @@ a:hover { color: var(--color-accent-soft); }
 [dir="rtl"] .pl-6 { padding-left: 0; padding-right: 1.5rem; }
 [dir="rtl"] .pl-4 { padding-left: 0; padding-right: 1rem; }
 [dir="rtl"] .pr-3 { padding-right: 0; padding-left: 0.75rem; }
+
+/* ---------- Press release & fact sheet — print-ready ---------- */
+/* Goal: a journalist hits Cmd+P on /press or /press/fact-sheet and gets
+   a clean PDF without UI chrome (masthead, language switcher, consent
+   banner, download links). The .no-print marker class is applied to
+   elements that should disappear in the printed copy; everything else
+   prints with the on-screen styling. */
+@media print {
+  body::before { display: none; }
+  .no-print, header[class*="sticky"], nav, .label-strap.no-print {
+    display: none !important;
+  }
+  body { font-size: 11pt; color: #000; background: #fff; }
+  a { color: inherit; text-decoration: underline; }
+  .press-release h1 { font-size: 22pt; line-height: 1.2; }
+  .press-release h2.kicker { color: #8b2c1e; }
+  .fact-sheet { padding: 0 !important; max-width: none !important; }
+  .fact-sheet h1 { font-size: 16pt; }
+  /* Keep timeline / parties / sources together as much as possible */
+  .fact-sheet section { break-inside: avoid; }
+  .fact-sheet li { break-inside: avoid; }
+}

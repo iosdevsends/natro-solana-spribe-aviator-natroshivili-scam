@@ -68,6 +68,7 @@ export const fr = () =>
         'ui.right_of_reply': 'Droit de réponse',
         'ui.contact': 'Contact',
         'ui.translation_pending': 'Traduction en cours de relecture par un locuteur natif',
+        'nav.press': 'Presse',
         'masthead.sincePublication': 'En ligne depuis la publication ·',
         'stories.title': 'Récits soumis par les lecteurs',
         'stories.lead': 'Si vous avez été affecté par un lancement de token similaire fondé sur la réputation, soumettez votre propre récit documenté. Les soumissions passent par une relecture éditoriale avant publication.',

@@ -51,6 +51,7 @@ export const en = (): CaseFileBundle => ({
       'nav.gallery': '§ VII · Gallery',
       'nav.faq': '§ VIII · FAQ',
       'nav.onchain': 'On-chain',
+      'nav.press': 'Press',
       'nav.stories': 'Reader stories',
       'masthead.sincePublication': 'Live since publication ·',
       'onchain.title': 'On-chain state · live',

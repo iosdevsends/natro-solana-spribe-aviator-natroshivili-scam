@@ -51,6 +51,7 @@ export const ru = () =>
         'nav.gallery': '§ VII · Галерея',
         'nav.faq': '§ VIII · FAQ',
         'nav.onchain': 'On-chain',
+        'nav.press': 'Пресса',
         'nav.stories': 'Истории читателей',
         'masthead.sincePublication': 'С момента публикации ·',
         'onchain.title': 'On-chain состояние · live',

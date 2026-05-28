@@ -1,0 +1,115 @@
+================================================================================
+FOR IMMEDIATE RELEASE
+28 May 2026 · Kyiv / Monaco
+================================================================================
+
+A SOLANA MEMECOIN, A FAMILY NAME, A 98% COLLAPSE:
+A DOCUMENTED CASE FILE ON $NATRO
+
+--------------------------------------------------------------------------------
+
+Spribe founder and CEO David Natroshvili personally solicited presale
+investments in the $NATRO Solana memecoin launched 21 May 2026 by his
+15-year-old son Alex Natroshvili. Token collapsed 98% within 48 hours;
+refunds refused; team evidence-removal pattern documented in primary
+sources.
+
+================================================================================
+
+KYIV / MONACO — A documented case file released today at https://natro.meme
+presents primary-source evidence on the launch and 98% collapse of $NATRO,
+a Solana memecoin marketed on the basis of the Natroshvili family name and
+the Spribe / Aviator gambling-product association.
+
+
+KEY FACTS (all primary-source verified)
+--------------------------------------------------------------------------------
+
+— On 21 May 2026, 20:11 UTC, the $NATRO Solana token launched on Pump.fun.
+  Contract address: 9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF
+
+— In the 24 hours before the launch, David Natroshvili — founder and CEO
+  of Spribe (the iGaming studio behind the global crash-style gambling
+  product Aviator) — published a sequence of Instagram Stories from his
+  verified account (@davidnatro1) personally soliciting paid presale
+  investment, naming himself as a co-participant ("with me & @natroalex"),
+  setting a $1,500 minimum entry threshold, and directing contact to his
+  minor son's personal Telegram (@natroalex1). Five Stories preserved
+  before expiry; full transcripts at natro.meme/#promise.
+
+— The token's price collapsed approximately 98% within 48 hours. Market
+  capitalization fell from a stated $200K+ at launch to approximately $36
+  (per Pump.fun API at filing).
+
+— Refund requests from affected early holders were refused. The team
+  admin's response to a structured proposal: "Nothing to say." The
+  founder's personal Telegram reply when contacted directly: "stfu."
+
+— Within 72 hours of the refund refusal: natrocoin.net was taken offline
+  (Wayback Machine preserved the complete pre-takedown snapshot at
+  https://web.archive.org/web/20260521213245/https://natrocoin.net/), the
+  NATRO link was removed from the founder's Instagram bio, and the paid
+  promotional video by KOL @jrcryptex (114K followers) was deleted from
+  Instagram.
+
+— A formal letter was delivered to Spribe legal channels (info@spribe.co,
+  legal@spribe.co, and two named executive addresses) on 25 May 2026 at
+  12:24 UTC. As of release: no public response.
+
+
+CASE FILE
+--------------------------------------------------------------------------------
+
+The full file — 25 documented exhibits (Telegram chat logs, on-chain trail,
+before/after screenshots, KOL deletion records, the complete Wayback-
+preserved website), §V Named Parties section, §VI Primary Sources index,
+§VIII FAQ — is at https://natro.meme. Available in 8 languages: EN, RU, UK,
+KA, FR, DE, ES, AR.
+
+The file is structured as an investigative document, not a personal
+grievance. Editorial framing follows third-person factual reporting; no
+scam / fraud conclusions are drawn in the file's voice — readers are
+presented primary sources and draw their own.
+
+
+NOTE ON THE FOUNDER'S AGE
+--------------------------------------------------------------------------------
+
+Alex Natroshvili was 15 years old at the time of the launch (DOB
+14 September 2010; corroborated via Tapology amateur boxing profile at
+https://tapology.com/fightcenter/fighters/540307-alex-natroshvili).
+David Natroshvili directed presale contact to his minor son's personal
+Telegram from his own verified Spribe-CEO account.
+
+
+RIGHT OF REPLY
+--------------------------------------------------------------------------------
+
+The case file maintains an open right of reply. Any party named in the
+document may submit a verbatim response to be appended to the record.
+None has been received as of release.
+
+
+CONTACT
+--------------------------------------------------------------------------------
+
+Compiler:        Evgeniy Moykin / @btc3050 (Telegram)
+Email:           moykin.e@gmail.com
+File:            https://natro.meme
+Press page:      https://natro.meme/press
+Fact sheet:      https://natro.meme/press/fact-sheet
+Wayback archive: https://web.archive.org/web/20260521213245/https://natrocoin.net/
+
+
+KEY ENTITIES (@id-anchored in the file's schema)
+--------------------------------------------------------------------------------
+
+Alex Natroshvili (15)            — natro.meme/#alex-natroshvili
+David Natroshvili                — natro.meme/#david-natroshvili
+Spribe (iGaming studio)          — natro.meme/#spribe
+$NATRO Solana token              — Pump.fun graduated, no contract-level rug;
+                                   collapse driven by open-AMM holder selling
+
+================================================================================
+                                  ### END ###
+================================================================================

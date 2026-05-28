@@ -72,6 +72,12 @@ export function Masthead({ locale, title, meta, uiStrings }: Props) {
               {uiStrings?.['nav.onchain'] || 'On-chain'}
             </Link>
             <Link
+              href="/press"
+              className="hover:text-[var(--color-accent)] transition-colors whitespace-nowrap"
+            >
+              {uiStrings?.['nav.press'] || 'Press'}
+            </Link>
+            <Link
               href="/stories"
               className="text-[var(--color-accent)] hover:underline whitespace-nowrap"
             >
