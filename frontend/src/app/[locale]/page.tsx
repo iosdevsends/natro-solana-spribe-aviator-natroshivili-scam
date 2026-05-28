@@ -782,12 +782,32 @@ function Evidence({ rows }: { rows: import('@/lib/types').EvidenceRowDTO[] }) {
 
 function Gallery({ exhibits }: { exhibits: ExhibitDTO[] }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-7">
       {exhibits.map((ex, idx) => (
-        <ExhibitThumb key={ex.slug} exhibit={ex} eager={idx < 5} />
+        <ExhibitThumb key={ex.slug} exhibit={ex} eager={idx < 4} />
       ))}
     </div>
   );
+}
+
+/**
+ * Heuristic to pick a short, scannable "type" badge for the thumbnail —
+ * derived from the `source` string the exhibit ships with. Matches the
+ * provenance categories the reader actually cares about (where did this
+ * come from? Telegram chat? Founder's verified Instagram? Wayback?).
+ * Falls back to mediaType when source doesn't match a known shape.
+ */
+function exhibitTypeBadge(exhibit: ExhibitDTO): string | null {
+  const src = (exhibit.source || '').toLowerCase();
+  if (exhibit.mediaType === 'video') return 'Video';
+  if (src.includes('instagram story')) return 'IG Story';
+  if (src.includes('instagram') && src.includes('bio')) return 'IG profile';
+  if (src.includes('instagram')) return 'Instagram';
+  if (src.includes('telegram') || src.includes('foyer') || src.includes('lounge') || src.includes('floor')) return 'Telegram';
+  if (src.includes('natrocoin.net') || src.includes('wayback')) return 'Website';
+  if (src.includes('linkedin')) return 'LinkedIn';
+  if (exhibit.mediaType === 'image') return 'Screenshot';
+  return null;
 }
 
 function ExhibitThumb({ exhibit, small = false, eager = false }: { exhibit: ExhibitDTO; small?: boolean; eager?: boolean }) {
@@ -798,35 +818,99 @@ function ExhibitThumb({ exhibit, small = false, eager = false }: { exhibit: Exhi
     exhibit.legacySrc ||
     '';
   const altText = composeAlt(exhibit);
+  // Tall portraits (phone screenshots, IG Stories) lose all relevant info
+  // when cropped to a 4:3 frame with object-position: center. Detect via
+  // the legacyWidth/Height we ship in exhibits.ts and anchor the crop to
+  // the top of the image so the meaningful content (the message text,
+  // the Story caption) stays visible.
+  const isTallPortrait =
+    !!exhibit.legacyWidth &&
+    !!exhibit.legacyHeight &&
+    exhibit.legacyHeight / exhibit.legacyWidth > 1.4;
+  const typeBadge = exhibitTypeBadge(exhibit);
+
+  if (small) {
+    // Inline thumb (used inside timeline events). Compact, no caption.
+    return (
+      <button
+        type="button"
+        data-exhibit={exhibit.slug}
+        aria-label={`${exhibit.exhibitNumber} — ${exhibit.title}`}
+        className={`exhibit-thumb ${exhibit.highlighted ? 'highlighted' : ''} w-[120px] h-[80px] relative overflow-hidden`}
+      >
+        {exhibit.mediaType === 'video' ? (
+          <span className="absolute inset-0 grid place-items-center bg-black/50 text-white">▶</span>
+        ) : src ? (
+          <Image
+            src={src}
+            alt={altText}
+            fill
+            sizes="120px"
+            className="object-cover"
+            style={{ objectPosition: isTallPortrait ? 'top' : 'center' }}
+            loading="lazy"
+          />
+        ) : (
+          <span className="absolute inset-0 grid place-items-center text-[var(--color-ink-faint)] sans text-xs">
+            {exhibit.exhibitNumber}
+          </span>
+        )}
+      </button>
+    );
+  }
+
   return (
-    <button
-      type="button"
-      data-exhibit={exhibit.slug}
-      aria-label={`${exhibit.exhibitNumber} — ${exhibit.title}`}
-      className={`exhibit-thumb ${exhibit.highlighted ? 'highlighted' : ''} ${
-        small ? 'w-[120px] h-[80px]' : 'aspect-[4/3] w-full'
-      } relative flex items-end overflow-hidden text-left`}
-    >
-      {exhibit.mediaType === 'video' ? (
-        <span className="absolute inset-0 grid place-items-center bg-black/50 text-white">▶</span>
-      ) : src ? (
-        <Image
-          src={src}
-          alt={altText}
-          fill
-          sizes={small ? '120px' : '(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 180px'}
-          className="object-cover"
-          loading={eager ? 'eager' : 'lazy'}
-          priority={eager}
-        />
-      ) : (
-        <span className="absolute inset-0 grid place-items-center text-[var(--color-ink-faint)] sans text-xs">{exhibit.exhibitNumber}</span>
-      )}
-      {!small && (
-        <span className="relative z-10 m-1 px-1.5 py-0.5 bg-[var(--color-paper)]/90 sans text-[10px] tracking-widest uppercase">
-          {exhibit.exhibitNumber}
+    <figure className="flex flex-col">
+      <button
+        type="button"
+        data-exhibit={exhibit.slug}
+        aria-label={`${exhibit.exhibitNumber} — ${exhibit.title}`}
+        className={`exhibit-thumb ${exhibit.highlighted ? 'highlighted' : ''} aspect-[4/3] w-full relative flex items-start justify-between overflow-hidden text-left`}
+      >
+        {exhibit.mediaType === 'video' ? (
+          <span className="absolute inset-0 grid place-items-center bg-black/55 text-white text-3xl">▶</span>
+        ) : src ? (
+          <Image
+            src={src}
+            alt={altText}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px"
+            className="object-cover"
+            style={{ objectPosition: isTallPortrait ? 'top' : 'center' }}
+            loading={eager ? 'eager' : 'lazy'}
+            priority={eager}
+          />
+        ) : (
+          <span className="absolute inset-0 grid place-items-center text-[var(--color-ink-faint)] sans text-xs">
+            {exhibit.exhibitNumber}
+          </span>
+        )}
+        {/* Top-left: type badge */}
+        {typeBadge && (
+          <span className="relative z-10 m-1.5 px-1.5 py-0.5 bg-[var(--color-paper)]/95 sans text-[9px] tracking-widest uppercase">
+            {typeBadge}
+          </span>
+        )}
+        {/* Top-right: highlighted star (for the strongest exhibits) */}
+        {exhibit.highlighted && (
+          <span
+            className="relative z-10 m-1.5 px-1.5 py-0.5 bg-[var(--color-accent)] text-[var(--color-paper)] sans text-[9px] tracking-widest uppercase font-medium"
+            aria-label="Key exhibit"
+          >
+            ★ Key
+          </span>
+        )}
+      </button>
+      {/* Caption below — exhibit number + title (2-line clamp) */}
+      <figcaption className="mt-2 flex flex-col gap-0.5">
+        <span className="label-strap text-[10px]">{exhibit.exhibitNumber}</span>
+        <span
+          className="serif text-[13px] leading-snug text-[var(--color-ink-soft)] line-clamp-2"
+          title={exhibit.title}
+        >
+          {exhibit.title}
         </span>
-      )}
-    </button>
+      </figcaption>
+    </figure>
   );
 }
