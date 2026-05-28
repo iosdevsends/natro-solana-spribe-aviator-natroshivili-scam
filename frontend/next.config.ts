@@ -37,6 +37,23 @@ const nextConfig: NextConfig = {
   // an error (including ones we know are valid). Re-enable once next-intl
   // generates a compatible RouteImpl.
   typedRoutes: false,
+  async redirects() {
+    // Keep the short-lived /one-pager URL alive as a 308 to the renamed
+    // /scam-one-pager. The locale-constrained pattern stops the wildcard
+    // from matching unrelated `/{anything}/one-pager` paths.
+    return [
+      {
+        source: '/one-pager',
+        destination: '/scam-one-pager',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ru|uk|ka|fr|de|es|ar)/one-pager',
+        destination: '/:locale/scam-one-pager',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
