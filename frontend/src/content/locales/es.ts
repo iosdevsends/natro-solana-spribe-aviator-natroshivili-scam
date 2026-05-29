@@ -12,6 +12,8 @@ export const es = () =>
       seoDescription: 'Un expediente documentado: el lanzamiento del token $NATRO en Solana (21 mayo 2026), su caída del 98% y el borrado de pruebas. Solo fuentes primarias.',
       kicker: 'Un caso documentado de fijación de precios sobre la reputación',
       headline: 'Un token vendido sobre un apellido. Una caída del 98 %. Un borrado.',
+      scamBriefTldr:
+        'El padre dirige **Aviator** — el producto global de apuestas de **Spribe**. Su hijo **Alex Natroshvili** lanzó en Pump.fun un memecoin de Solana llamado **$NATRO** y lo vendió sobre el apellido y la reputación de Spribe / Aviator. La gente invirtió. **En 72 horas**, el precio se desplomó un **~98 %**. Se negaron los reembolsos. La respuesta del admin del equipo: *«Nada que decir.»* La respuesta personal del fundador por Telegram, contactado directamente: *«stfu.»* En la misma ventana, el sitio se retiró, el enlace de NATRO se eliminó de la bio de Instagram del fundador y el vídeo pagado del KOL (@jrcryptex, 114K seguidores) fue eliminado. El rastro en blockchain, el sitio archivado y los registros de chat — no.',
       deck: 'El 21 de mayo de 2026, un memecoin de Solana llamado $NATRO fue lanzado en Pump.fun por Alex Natroshvili — hijo de David Natroshvili, fundador y CEO de Spribe, el estudio detrás del producto global de apuestas Aviator. La propuesta era el apellido. Setenta y dos horas después de negar los reembolsos, el sitio web, el vídeo promocional y los enlaces en biografías habían sido borrados. El rastro en blockchain, el sitio archivado y los registros de chat — no.',
       dateline: [
         { label: 'FECHA', value: '26 de mayo de 2026' },

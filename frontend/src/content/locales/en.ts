@@ -11,6 +11,8 @@ export const en = (): CaseFileBundle => ({
     seoDescription: 'A documented case file: the $NATRO Solana token launch (21 May 2026), its 98% collapse, and the post-refund evidence-removal pattern. Primary sources only.',
     kicker: 'A documented case in reputation pricing',
     headline: 'A token sold on a family name. A 98% collapse. A scrub.',
+    scamBriefTldr:
+      'Father runs **Aviator** — the global slot-style gambling product made by **Spribe**. Son **Alex Natroshvili** launched a Solana memecoin called **$NATRO** on Pump.fun and pitched it on the family name and the Spribe / Aviator reputation. People bought in. **Within 72 hours** the price collapsed **~98%**. Refund requests were refused. The team admin\'s reply: *"Nothing to say."* The founder\'s personal Telegram reply when contacted directly: *"stfu."* Within the same window the website was taken offline, the NATRO link was removed from the founder\'s Instagram bio, and the paid KOL video (@jrcryptex, 114K followers) was deleted. The blockchain trail, the archived website, and the chat logs were not.',
     deck: 'On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex Natroshvili — son of David Natroshvili, founder and CEO of Spribe, the studio behind the global gambling product Aviator. The pitch was the family name. Within seventy-two hours of refunds being refused, the website, the promotional video, and the social-bio links had all been scrubbed. The blockchain trail, the archived website, and the chat logs were not.',
     dateline: [
       { label: 'FILED', value: '26 May 2026' },

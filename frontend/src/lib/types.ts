@@ -152,6 +152,12 @@ export interface SiteConfigDTO {
   kicker?: string;
   headline?: string;
   deck?: string;
+  /**
+   * Plain-talk TL;DR shown as the bordered lede on /scam-one-pager. Localised
+   * like the rest of the bundle; supports inline markdown (**bold**, *italic*)
+   * via <Prose>. Falls back to the EN baseline when a locale omits it.
+   */
+  scamBriefTldr?: string;
   dateline?: DatelineEntry[];
   byline?: DatelineEntry[];
   executiveSummary?: string;
