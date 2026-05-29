@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { usePathname } from '@/i18n/navigation';
 
 /**
  * Editorial reading-progress indicator.
@@ -23,20 +24,38 @@ import { useTranslations } from 'next-intl';
  */
 export function ReadingProgress() {
   const t = useTranslations('reading');
+  const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const [totalMin, setTotalMin] = useState(0);
 
+  // Re-run on every route change: this component lives in the persistent
+  // layout, so without `pathname` in the deps the word count would be frozen
+  // at whatever page first mounted — e.g. the full case file's ~21 min would
+  // stick to the short /scam-one-pager after a client-side navigation.
   useEffect(() => {
-    const main =
-      document.getElementById('main') || document.querySelector('main');
-    if (!main) return;
-
-    const words = (main.textContent || '').trim().split(/\s+/).filter(Boolean)
-      .length;
-    const total = Math.max(1, Math.round(words / 220));
-    setTotalMin(total);
-
+    // The new route's <main> may not be committed on the same tick as the
+    // pathname change, so measure on the next frame.
     let raf = 0;
+    let setupRaf = 0;
+
+    const init = () => {
+      const main =
+        document.getElementById('main') || document.querySelector('main');
+      if (!main) {
+        setupRaf = requestAnimationFrame(init);
+        return;
+      }
+
+      const words = ((main as HTMLElement).innerText || main.textContent || '')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean).length;
+      const total = Math.max(1, Math.round(words / 220));
+      setTotalMin(total);
+      setProgress(0);
+      measure();
+    };
+
     const measure = () => {
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -48,15 +67,16 @@ export function ReadingProgress() {
       if (!raf) raf = requestAnimationFrame(measure);
     };
 
-    measure();
+    init();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       if (raf) cancelAnimationFrame(raf);
+      if (setupRaf) cancelAnimationFrame(setupRaf);
     };
-  }, []);
+  }, [pathname]);
 
   const minutesLeft = Math.max(0, Math.round(totalMin * (1 - progress)));
   const showChip = totalMin >= 2 && progress < 0.98;
