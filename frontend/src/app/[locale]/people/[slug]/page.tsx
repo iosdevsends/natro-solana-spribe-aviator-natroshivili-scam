@@ -261,6 +261,16 @@ export default async function PersonProfilePage({
         >
           <div className="kicker mb-4">Where to next</div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sans text-sm">
+            {slug === 'david-natroshvili' && (
+              <li>
+                <Link href="/david-natroshvili-scam" className="block">
+                  #1 Most Influential in iGaming →
+                  <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                    The &ldquo;Game Changers 2026&rdquo; award, against the $NATRO record
+                  </span>
+                </Link>
+              </li>
+            )}
             {other.map((p) => (
               <li key={p.slug}>
                 <Link href={`/people/${p.slug}` as `/people/${string}`} className="block">

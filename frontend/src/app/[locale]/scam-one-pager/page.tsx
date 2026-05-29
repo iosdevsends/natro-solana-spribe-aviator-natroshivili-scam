@@ -182,6 +182,14 @@ export default async function ScamOnePagerPage({
               </Link>
             </li>
             <li>
+              <Link href="/david-natroshvili-scam" className="block">
+                David Natroshvili — #1 in iGaming →
+                <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                  The award, against the $NATRO record
+                </span>
+              </Link>
+            </li>
+            <li>
               <Link href="/on-chain" className="block">
                 On-chain scam verification →
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
