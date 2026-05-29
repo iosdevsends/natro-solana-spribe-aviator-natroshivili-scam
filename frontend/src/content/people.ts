@@ -47,6 +47,9 @@ export interface PersonProfile {
   metaDescription: string;
   handles: PersonProfileHandle[];
   sections: PersonProfileSection[];
+  /** Exhibit slugs (from content/exhibits) to display as a figure grid — the
+   *  primary-source screenshots backing the profile. Rendered in given order. */
+  exhibitSlugs?: string[];
   sources: PersonProfileSource[];
   /** schema.org Person object (the same one published in the homepage @graph). */
   jsonLdPerson: Record<string, unknown>;
@@ -204,7 +207,7 @@ export const PEOPLE_PROFILES: PersonProfile[] = [
       {
         heading: 'Who he is',
         body:
-          'David Natroshvili is the founder and CEO of **Spribe**, the iGaming studio behind the global crash-style gambling product Aviator. He holds an MBA from Kutztown University of Pennsylvania (class of 2001); the Pennsylvania Small Business Development Center lead office at Kutztown [bears his name](https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/) following a Spring 2025 philanthropic gift. He is the father of **[Alex Natroshvili](/people/alex-natroshvili)**, founder of the $NATRO Solana memecoin.',
+          'David Natroshvili is the founder and CEO of **Spribe**, the iGaming studio behind the global crash-style gambling product Aviator. He holds an MBA from Kutztown University of Pennsylvania (class of 2001); the Pennsylvania Small Business Development Center lead office at Kutztown [bears his name](https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/) following a Spring 2025 philanthropic gift. He is the father of [Alex Natroshvili](/people/alex-natroshvili), founder of the $NATRO Solana memecoin.',
       },
       {
         heading: 'He personally promoted the presale',
@@ -226,6 +229,13 @@ export const PEOPLE_PROFILES: PersonProfile[] = [
         body:
           'David Natroshvili and Spribe are invited to respond. A formal notice was sent to Spribe’s published legal and corporate addresses on 25 May 2026. Documented factual corrections will be published alongside the record. Contact details are on the [press page](/press).',
       },
+    ],
+    exhibitSlugs: [
+      'david-story-presale-bentley',
+      'david-story-presale-ferrari',
+      'david-story-celebs-on-line',
+      'david-natroalex-coin-reshare',
+      'david-reshare',
     ],
     sources: [
       { label: 'Pre-launch Instagram Stories, @davidnatro1 (verified) — Exhibits 21, 22, 24 (presale solicitation) and Exhibit 2 (promo reshare), in the case-file gallery', url: 'https://natro.meme/#gallery' },

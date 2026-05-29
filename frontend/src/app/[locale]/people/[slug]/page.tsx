@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
@@ -14,6 +15,8 @@ import {
   ogLocaleAlternates,
 } from '@/lib/seo';
 import { PEOPLE_PROFILES, getPersonProfile, SPRIBE_ORG } from '@/content/people';
+import { exhibits } from '@/content/exhibits';
+import type { ExhibitDTO } from '@/lib/types';
 
 export function generateStaticParams() {
   // Pre-render every (locale, slug) so each entity profile ships as static HTML
@@ -71,6 +74,29 @@ export default async function PersonProfilePage({
   const ui = bundle.config.uiStrings || {};
   const pageUrl = absoluteUrl(loc, `/people/${slug}`);
 
+  const other = PEOPLE_PROFILES.filter((p) => p.slug !== slug);
+
+  // Primary-source screenshots backing the profile, resolved from the shared
+  // exhibit set and kept in the profile's declared order.
+  const profileExhibits: ExhibitDTO[] = (profile.exhibitSlugs || [])
+    .map((s) => exhibits.find((ex) => ex.slug === s))
+    .filter((ex): ex is ExhibitDTO => Boolean(ex));
+
+  const exhibitImageObjects = profileExhibits
+    .filter((ex) => ex.mediaType === 'image' && ex.legacySrc)
+    .map((ex) => ({
+      '@type': 'ImageObject',
+      contentUrl: absoluteUrl(loc, '') + ex.legacySrc,
+      url: absoluteUrl(loc, '') + ex.legacySrc,
+      name: ex.title,
+      caption: ex.title,
+      creditText: ex.source || undefined,
+      ...(ex.legacyWidth && ex.legacyHeight
+        ? { width: ex.legacyWidth, height: ex.legacyHeight }
+        : {}),
+      isAccessibleForFree: true,
+    }));
+
   // ProfilePage wrapping the @id-anchored Person (matched to the homepage
   // @graph) so search engines reconcile both surfaces to the same entity and
   // treat this URL as the authoritative document about the person. Spribe is
@@ -92,11 +118,10 @@ export default async function PersonProfilePage({
         isPartOf: { '@type': 'WebSite', name: 'The NATRO File', url: absoluteUrl(loc, '') },
         mainEntity: { '@id': profile.schemaId },
         about: { '@id': profile.schemaId },
+        image: exhibitImageObjects.length ? exhibitImageObjects : undefined,
       },
     ],
   };
-
-  const other = PEOPLE_PROFILES.filter((p) => p.slug !== slug);
 
   return (
     <>
@@ -159,6 +184,51 @@ export default async function PersonProfilePage({
             <Prose text={s.body} className="text-base leading-relaxed" />
           </section>
         ))}
+
+        {/* Primary-source screenshots — the exhibits backing the profile */}
+        {profileExhibits.length > 0 && (
+          <section className="mt-10">
+            <h2 className="kicker mb-3">The stories · primary sources</h2>
+            <p className="sans text-sm text-[var(--color-ink-faint)] mb-4">
+              Captured from his verified Instagram before the stories expired.
+              Tap any screenshot to open the full-resolution exhibit.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6">
+              {profileExhibits.map((ex) => (
+                <figure key={ex.slug} className="flex flex-col">
+                  <a
+                    href={ex.legacySrc || '#'}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="block relative w-full aspect-[9/16] overflow-hidden border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 cursor-zoom-in"
+                    aria-label={`${ex.exhibitNumber || ''} — ${ex.title}`}
+                  >
+                    {ex.legacySrc && (
+                      <Image
+                        src={ex.legacySrc}
+                        alt={ex.title}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 240px"
+                        className="object-cover object-top"
+                        loading="lazy"
+                      />
+                    )}
+                  </a>
+                  <figcaption className="mt-2 flex flex-col gap-0.5">
+                    {ex.exhibitNumber && (
+                      <span className="label-strap text-[10px]">
+                        {ex.exhibitNumber}
+                      </span>
+                    )}
+                    <span className="sans text-[11px] leading-snug text-[var(--color-ink-faint)]">
+                      {ex.source}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Sources */}
         {profile.sources.length > 0 && (
