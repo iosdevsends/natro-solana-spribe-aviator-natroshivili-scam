@@ -14,6 +14,7 @@ const STATIC_PATHS = [
   '/press/fact-sheet',
   '/faq',
   '/on-chain',
+  '/most-influential',
   '/people',
   '/people/alex-natroshvili',
   '/people/david-natroshvili',
