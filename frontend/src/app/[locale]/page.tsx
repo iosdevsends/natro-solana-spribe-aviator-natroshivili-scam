@@ -16,7 +16,11 @@ import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } f
 import type { ExhibitDTO } from '@/lib/types';
 // Canonical @id-anchored entities live in one place so the homepage @graph and
 // the dedicated /people/<slug> profile pages never drift apart.
-import { ALEX_NATROSHVILI, DAVID_NATROSHVILI, SPRIBE_ORG } from '@/content/people';
+import { ALEX_NATROSHVILI, DAVID_NATROSHVILI, SPRIBE_ORG, PEOPLE_PROFILES } from '@/content/people';
+
+// Slugs that have a dedicated /people/<slug> profile page. People cards for
+// these show only a lede paragraph and route the full dossier to that page.
+const PROFILE_SLUGS = new Set(PEOPLE_PROFILES.map((p) => p.slug));
 
 const PUBLICATION_DATE = '2026-05-26T00:00:00Z';
 const MODIFIED_DATE = '2026-05-28T00:00:00Z';
@@ -339,29 +343,6 @@ export default async function CaseFilePage({
         {/* § V People */}
         <SectionBlock section={sectionsBySlug.people}>
           <People people={bundle.people} />
-          {/* Dedicated, @id-anchored entity profiles — the authoritative URL for
-              each named party, with the person's name as the anchor text. */}
-          <div className="mt-8 border-t border-[var(--color-rule)] pt-6">
-            <div className="kicker mb-3">Full profiles</div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sans text-sm">
-              <li>
-                <Link href="/people/alex-natroshvili" className="block">
-                  Alex Natroshvili →
-                  <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                    Founder, $NATRO
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/people/david-natroshvili" className="block">
-                  David Natroshvili →
-                  <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                    Founder &amp; CEO, Spribe
-                  </span>
-                </Link>
-              </li>
-            </ul>
-          </div>
         </SectionBlock>
 
         {/* § VI Sources */}
@@ -811,27 +792,48 @@ function Quotes({ quotes }: { quotes: import('@/lib/types').QuoteDTO[] }) {
 
 function People({ people }: { people: import('@/lib/types').PersonDTO[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {people.map((p) => (
-        <article key={p.id} className="border border-[var(--color-rule)] p-5 bg-[var(--color-paper-warm)]/50">
-          <div className="kicker mb-2">{p.role}</div>
-          <h3 className="serif text-xl mb-2 font-medium">{p.displayName || p.fullName}</h3>
-          {p.handles?.map((h, i) => (
-            <div key={i} className="sans text-xs text-[var(--color-ink-faint)]">
-              {h.platform}: <span className="text-[var(--color-ink-soft)]">{h.handle}</span>
-              {h.followers && ` · ${h.followers}`}
-            </div>
-          ))}
-          <hr className="rule-divider" />
-          <Prose text={p.description} className="text-sm" />
-          {p.statement && (
-            <div className="mt-4 pt-4 border-t border-dashed border-[var(--color-rule)]">
-              <div className="label-strap mb-1">{p.statementLabel}</div>
-              <div className="serif italic text-sm">{p.statement}</div>
-            </div>
-          )}
-        </article>
-      ))}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+      {people.map((p) => {
+        const hasProfile = PROFILE_SLUGS.has(p.slug);
+        // People with a dedicated profile page show only the lede paragraph on
+        // the card; the full dossier (and the verbatim evidence) lives at
+        // /people/<slug> and in the §III timeline, so the card stays compact
+        // and uniform instead of ballooning into a wall of text.
+        const cardText = hasProfile
+          ? (p.description || '').split(/\n\n+/)[0]
+          : p.description;
+        return (
+          <article
+            key={p.id}
+            className="border border-[var(--color-rule)] p-5 bg-[var(--color-paper-warm)]/50 flex flex-col h-full"
+          >
+            <div className="kicker mb-2">{p.role}</div>
+            <h3 className="serif text-xl mb-2 font-medium">{p.displayName || p.fullName}</h3>
+            {p.handles?.map((h, i) => (
+              <div key={i} className="sans text-xs text-[var(--color-ink-faint)]">
+                {h.platform}: <span className="text-[var(--color-ink-soft)]">{h.handle}</span>
+                {h.followers && ` · ${h.followers}`}
+              </div>
+            ))}
+            <hr className="rule-divider" />
+            <Prose text={cardText} className="text-sm" />
+            {p.statement && (
+              <div className="mt-4 pt-4 border-t border-dashed border-[var(--color-rule)]">
+                <div className="label-strap mb-1">{p.statementLabel}</div>
+                <div className="serif italic text-sm">{p.statement}</div>
+              </div>
+            )}
+            {hasProfile && (
+              <Link
+                href={`/people/${p.slug}` as `/people/${string}`}
+                className="mt-auto pt-4 inline-block sans text-xs uppercase tracking-widest"
+              >
+                Full profile →
+              </Link>
+            )}
+          </article>
+        );
+      })}
     </div>
   );
 }
