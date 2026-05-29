@@ -122,11 +122,11 @@ export default async function DavidNatroshviliScamPage({
       >
         <div className="kicker mb-3">Reputation pricing · the accolade</div>
         <h1 className="serif text-[30px] sm:text-4xl md:text-5xl leading-[1.05] font-medium tracking-tight">
-          The most influential man in iGaming.
+          How the most influential man in iGaming sold his reputation.
         </h1>
         <p className="mt-4 serif italic text-lg md:text-xl text-[var(--color-ink-soft)] leading-snug">
           Ranked #1 of the &ldquo;Top 100 Most Influential People in
-          iGaming.&rdquo; This file is the record of what a slice of that
+          iGaming&rdquo; &mdash; and the record of the $NATRO scam that
           reputation was spent on.
         </p>
 
