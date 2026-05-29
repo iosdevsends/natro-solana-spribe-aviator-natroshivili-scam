@@ -123,6 +123,14 @@ export function CeremonialMasthead({
           <li className="opacity-50 select-none px-1" aria-hidden="true">|</li>
           <li>
             <Link
+              href="/scam-one-pager"
+              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
+            >
+              {(uiStrings?.['nav.summary'] || 'Summary').toUpperCase()}
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/on-chain"
               className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
             >

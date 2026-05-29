@@ -4,6 +4,8 @@ import { exhibits } from '../exhibits';
 export const en = (): CaseFileBundle => ({
   config: {
     siteTitle: 'The NATRO File — A Case Study in Reputation Pricing',
+    seoTitle:
+      'Alex Natroshvili, Spribe & the $NATRO Solana token — a documented case file',
     tagline: 'A documented case in reputation pricing',
     mastheadMeta: 'Case study · Compiled from primary sources',
     seoDescription: 'A documented case file: the $NATRO Solana token launch (21 May 2026), its 98% collapse, and the post-refund evidence-removal pattern. Primary sources only.',

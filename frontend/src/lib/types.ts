@@ -139,6 +139,13 @@ export interface DatelineEntry {
 
 export interface SiteConfigDTO {
   siteTitle: string;
+  /**
+   * Optional SEO-only <title>. When set, used for the document <title> and
+   * OG/Twitter titles on the homepage while siteTitle stays the displayed
+   * masthead brand. Lets the title tag carry the named entities
+   * (Natroshvili / Spribe / NATRO) that searchers actually type.
+   */
+  seoTitle?: string;
   tagline?: string;
   mastheadMeta?: string;
   seoDescription?: string;

@@ -14,89 +14,12 @@ import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
+// Canonical @id-anchored entities live in one place so the homepage @graph and
+// the dedicated /people/<slug> profile pages never drift apart.
+import { ALEX_NATROSHVILI, DAVID_NATROSHVILI, SPRIBE_ORG } from '@/content/people';
 
 const PUBLICATION_DATE = '2026-05-26T00:00:00Z';
 const MODIFIED_DATE = '2026-05-28T00:00:00Z';
-
-/**
- * Canonical Person / Organization entities. Surfaced as `about:` on the
- * NewsArticle and also as standalone @id-anchored Persons in the @graph so
- * a search engine can build a "this URL is the authoritative document about
- * Alex/David Natroshvili" association. alternateName covers common
- * transliterations Russian / Georgian / general crypto-Twitter readers use.
- */
-const ALEX_NATROSHVILI = {
-  '@type': 'Person',
-  '@id': 'https://natro.meme/#alex-natroshvili',
-  name: 'Alex Natroshvili',
-  alternateName: [
-    'Aleksandre Natroshvili',
-    'Aleko Natroshvili',
-    'Алекс Натрошвили',
-    'Алекс Натрошвілі',
-    'ალექს ნატროშვილი',
-    '@natroalex',
-    '@natroalex1',
-  ],
-  description:
-    'Founder of the $NATRO Solana memecoin (launched 21 May 2026). Son of David Natroshvili. Verified Instagram @natroalex (54.1K followers), verified Telegram @natroalex1.',
-  jobTitle: 'Founder, $NATRO (Solana memecoin)',
-  nationality: 'GE',
-  url: 'https://natro.meme/#people',
-  sameAs: [
-    'https://instagram.com/natroalex',
-    'https://t.me/natroalex1',
-    'https://tapology.com/fightcenter/fighters/540307-alex-natroshvili',
-  ],
-};
-
-const DAVID_NATROSHVILI = {
-  '@type': 'Person',
-  '@id': 'https://natro.meme/#david-natroshvili',
-  name: 'David Natroshvili',
-  alternateName: [
-    'Davit Natroshvili',
-    'Давид Натрошвили',
-    'Давид Натрошвілі',
-    'დავით ნატროშვილი',
-    'ديفيد ناتروشفيلي',
-    '@davidnatro1',
-    '@davi.natroshvili',
-  ],
-  description:
-    'Founder and CEO of Spribe, the iGaming studio behind the global crash-style gambling product Aviator. Father of Alex Natroshvili. Kutztown University MBA (class of 2001); the Pennsylvania SBDC lead office at Kutztown bears his name following a Spring 2025 philanthropic gift.',
-  jobTitle: 'Founder & CEO, Spribe',
-  affiliation: {
-    '@type': 'Organization',
-    '@id': 'https://natro.meme/#spribe',
-    name: 'Spribe',
-  },
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'Kutztown University of Pennsylvania',
-    url: 'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
-  },
-  url: 'https://natro.meme/#people',
-  sameAs: [
-    'https://instagram.com/davidnatro1',
-    'https://instagram.com/davi.natroshvili',
-    'https://www.linkedin.com/in/david-natroshvili-98338038/',
-    'https://www.linkedin.com/company/spribe/',
-    'https://handwiki.org/wiki/Biography:David_Natroshvili',
-    'https://www.imdb.com/name/nm17224363/',
-    'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/',
-  ],
-};
-
-const SPRIBE_ORG = {
-  '@type': 'Organization',
-  '@id': 'https://natro.meme/#spribe',
-  name: 'Spribe',
-  description:
-    'iGaming studio; developer of Aviator (a global crash-style gambling product licensed in multiple jurisdictions). Mentioned in this case file because the $NATRO marketing leaned on the Spribe / Aviator association as a trust signal; not affiliated with $NATRO as an entity.',
-  url: 'https://www.linkedin.com/company/spribe/',
-  founder: { '@id': 'https://natro.meme/#david-natroshvili' },
-};
 
 export async function generateMetadata({
   params,
@@ -113,13 +36,16 @@ export async function generateMetadata({
     bundle.config.tagline ||
     bundle.config.siteTitle;
   const url = absoluteUrl(loc);
+  // SEO <title> carries the named entities searchers type (Natroshvili /
+  // Spribe / NATRO); siteTitle stays the displayed masthead brand.
+  const metaTitle = bundle.config.seoTitle || bundle.config.siteTitle;
 
   return {
-    title: bundle.config.siteTitle,
+    title: metaTitle,
     description,
     alternates: buildAlternates(loc),
     openGraph: {
-      title: bundle.config.siteTitle,
+      title: metaTitle,
       description,
       type: 'article',
       url,
@@ -132,7 +58,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: bundle.config.siteTitle,
+      title: metaTitle,
       description,
     },
     robots: {
@@ -413,6 +339,29 @@ export default async function CaseFilePage({
         {/* § V People */}
         <SectionBlock section={sectionsBySlug.people}>
           <People people={bundle.people} />
+          {/* Dedicated, @id-anchored entity profiles — the authoritative URL for
+              each named party, with the person's name as the anchor text. */}
+          <div className="mt-8 border-t border-[var(--color-rule)] pt-6">
+            <div className="kicker mb-3">Full profiles</div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sans text-sm">
+              <li>
+                <Link href="/people/alex-natroshvili" className="block">
+                  Alex Natroshvili →
+                  <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                    Founder, $NATRO
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/people/david-natroshvili" className="block">
+                  David Natroshvili →
+                  <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                    Founder &amp; CEO, Spribe
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </SectionBlock>
 
         {/* § VI Sources */}
