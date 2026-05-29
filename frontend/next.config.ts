@@ -61,6 +61,18 @@ const nextConfig: NextConfig = {
         destination: '/:locale/scam-one-pager',
         permanent: true,
       },
+      // /most-influential was briefly live before the slug was renamed to
+      // capture the "david natroshvili scam" search intent.
+      {
+        source: '/most-influential',
+        destination: '/david-natroshvili-scam',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ru|uk|ka|fr|de|es|ar)/most-influential',
+        destination: '/:locale/david-natroshvili-scam',
+        permanent: true,
+      },
     ];
   },
 };

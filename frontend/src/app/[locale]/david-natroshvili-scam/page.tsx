@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
@@ -13,19 +14,17 @@ import {
   ogLocaleAlternates,
 } from '@/lib/seo';
 
-const PATH = '/most-influential';
+const PATH = '/david-natroshvili-scam';
+const AWARD_IMG = '/exhibits/ex26-david-game-changers-no1.jpg';
 
 /**
- * "The most influential man in iGaming" — a single-subject page built around
+ * "David Natroshvili & the $NATRO scam" — a single-subject page built around
  * one artifact: the iGamingExpress "Game Changers 2026" graphic ranking David
- * Natroshvili #1 of the Top 100 Most Influential People in iGaming, celebrated
- * across Spribe-affiliated Instagram while the $NATRO fallout was live.
- *
- * The page is the file's "reputation pricing" thesis made literal: it sets the
- * accolade (the reputation at its quoted peak) against the documented NATRO
- * record (what a slice of that reputation was put behind). Deadpan; the
- * contrast carries it. Every line is sourced. Body is English-canonical (the
- * accolade text is English); hreflang resolves the locale-prefixed routes.
+ * Natroshvili #1 of the Top 100 Most Influential People in iGaming, posted by
+ * the official @spribe.co account ("Cheers to our leader!") while the $NATRO
+ * fallout was live. Sets the accolade — the reputation at its quoted peak —
+ * against the documented NATRO record. Deadpan; sourced; the contrast carries
+ * it. Slug targets the "david natroshvili scam" search intent.
  */
 export async function generateMetadata({
   params,
@@ -36,9 +35,9 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const title =
-    'David Natroshvili — #1 Most Influential in iGaming, and the $NATRO record';
+    'David Natroshvili & the $NATRO scam — #1 Most Influential in iGaming';
   const description =
-    'iGamingExpress ranked David Natroshvili (Founder & CEO of Spribe) #1 of the Top 100 Most Influential People in iGaming, "Game Changers 2026." A documented case in reputation pricing — what a slice of that reputation was spent on.';
+    'David Natroshvili (Founder & CEO of Spribe) was named #1 of the Top 100 Most Influential People in iGaming, "Game Changers 2026." The same reputation was the collateral on the $NATRO Solana token, which collapsed ~98% — refunds refused, the evidence scrubbed. A documented case in reputation pricing.';
   return {
     title,
     description,
@@ -57,7 +56,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function MostInfluentialPage({
+export default async function DavidNatroshviliScamPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -76,7 +75,7 @@ export default async function MostInfluentialPage({
     '@type': 'NewsArticle',
     '@id': `${pageUrl}#article`,
     headline:
-      'The most influential man in iGaming — and the $NATRO record',
+      'David Natroshvili & the $NATRO scam — #1 Most Influential in iGaming',
     inLanguage: loc,
     isAccessibleForFree: true,
     datePublished: '2026-05-30T00:00:00Z',
@@ -131,26 +130,42 @@ export default async function MostInfluentialPage({
           reputation was spent on.
         </p>
 
-        {/* The accolade, quoted from the graphic */}
-        <figure className="mt-8 border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/50 p-5 md:p-6">
-          <div className="label-strap mb-3 text-[10px]">
-            The award · as published
+        {/* The artifact — the official @spribe.co post */}
+        <figure className="mt-8">
+          <div className="relative w-full max-w-[420px] mx-auto border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden">
+            <Image
+              src={AWARD_IMG}
+              alt={
+                'Game Changers 2026 — #1 Place: David Natroshvili, Founder & CEO of SPRIBE. "Top 100 Most Influential People in iGaming," iGamingExpress, posted by @spribe.co.'
+              }
+              width={1206}
+              height={2622}
+              sizes="(max-width: 640px) 90vw, 420px"
+              className="w-full h-auto"
+              priority
+            />
           </div>
-          <blockquote className="serif text-xl md:text-2xl leading-snug font-medium">
-            &ldquo;Top 100 Most Influential People in iGaming.&rdquo;
-            <span className="block mt-2 text-[var(--color-accent)]">
-              Game Changers 2026 · #1 Place — David Natroshvili, Founder &amp;
-              CEO of Spribe.
-            </span>
-          </blockquote>
-          <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug">
-            iGamingExpress &middot; &ldquo;Game Changers 2026.&rdquo; Celebrated
-            on Instagram by <span className="mono">@nika.sprb</span> (verified),
-            tagging <span className="mono">@davidnatro1</span> and{' '}
-            <span className="mono">@spribe.co</span> — 30 May 2026, while the
-            $NATRO fallout was live.
+          <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug max-w-[520px] mx-auto text-center">
+            iGamingExpress &middot; &ldquo;Game Changers 2026.&rdquo; Posted by
+            the official <span className="mono">@spribe.co</span> Instagram
+            account, 30 May 2026 (393 likes), while the $NATRO fallout was live.
           </figcaption>
         </figure>
+
+        {/* Spribe's own caption, verbatim */}
+        <section className="mt-8">
+          <div className="kicker mb-3">In Spribe&rsquo;s own words</div>
+          <blockquote className="serif italic text-lg md:text-xl leading-snug border-l-4 border-[var(--color-accent)] pl-5">
+            &ldquo;SPRIBE CEO David Natroshvili takes the #1 spot on the Top 100
+            Most Influential People in iGaming 2026 🏆 &hellip; David is
+            redefining player engagement &hellip; turned SPRIBE into a global
+            category leader. <span className="not-italic font-medium">Cheers to our leader! 🙌</span>&rdquo;
+          </blockquote>
+          <p className="mt-2 sans text-[11px] text-[var(--color-ink-faint)]">
+            — @spribe.co, Instagram, 30 May 2026 · #SPRIBE #iGaming #Aviator
+            #TechLeadership
+          </p>
+        </section>
 
         {/* The thesis, made literal */}
         <section className="mt-10">
@@ -168,9 +183,9 @@ export default async function MostInfluentialPage({
           <div className="kicker mb-3">What it was collateral for</div>
           <p className="sans text-base md:text-lg leading-relaxed">
             In the same May 2026 window, that same name was the collateral on a
-            Solana memecoin, <b>$NATRO</b>. From his{' '}
-            <b>verified</b> Instagram account, David Natroshvili personally
-            solicited presale investment — captioned over a Bentley interior:{' '}
+            Solana memecoin, <b>$NATRO</b>. From his <b>verified</b> Instagram
+            account, David Natroshvili personally solicited presale investment —
+            captioned over a Bentley interior:{' '}
             <i>
               &ldquo;If you want to get involved in the crypto project presale
               with me &amp; @natroalex — DM @natroalex1 on telegram. Minimum
@@ -191,7 +206,7 @@ export default async function MostInfluentialPage({
             offline, the NATRO link was removed from the founder&rsquo;s Instagram
             bio, and the paid promotional video was deleted. While that was
             happening, the <i>#1 most influential</i> ranking was being shared
-            and celebrated.
+            and celebrated &mdash; <i>&ldquo;Cheers to our leader.&rdquo;</i>
           </p>
         </section>
 

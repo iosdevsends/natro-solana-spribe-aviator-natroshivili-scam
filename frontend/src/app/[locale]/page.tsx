@@ -795,13 +795,11 @@ function People({ people }: { people: import('@/lib/types').PersonDTO[] }) {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
       {people.map((p) => {
         const hasProfile = PROFILE_SLUGS.has(p.slug);
-        // People with a dedicated profile page show only the lede paragraph on
-        // the card; the full dossier (and the verbatim evidence) lives at
-        // /people/<slug> and in the §III timeline, so the card stays compact
-        // and uniform instead of ballooning into a wall of text.
-        const cardText = hasProfile
-          ? (p.description || '').split(/\n\n+/)[0]
-          : p.description;
+        // Every card shows only the lede paragraph so the grid stays compact
+        // and uniform instead of ballooning into a wall of text. The full
+        // dossier and verbatim evidence live on the /people/<slug> profile
+        // (when one exists) and in the §III–IV timeline / voices sections.
+        const cardText = (p.description || '').split(/\n\n+/)[0];
         return (
           <article
             key={p.id}
