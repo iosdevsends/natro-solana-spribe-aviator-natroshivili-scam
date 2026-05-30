@@ -11,6 +11,9 @@ import {
   absoluteUrl,
   ogLocale,
   ogLocaleAlternates,
+  clampTitle,
+  clampDescription,
+  OG_IMAGE,
 } from '@/lib/seo';
 import {
   PEOPLE_PROFILES,
@@ -29,8 +32,8 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const chrome = getPeopleChrome(loc);
-  const title = chrome.indexMetaTitle;
-  const description = chrome.indexMetaDescription;
+  const title = clampTitle(chrome.indexMetaTitle);
+  const description = clampDescription(chrome.indexMetaDescription);
   return {
     title,
     description,
@@ -38,13 +41,14 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [OG_IMAGE],
       type: 'website',
       url: absoluteUrl(loc, PEOPLE_PATH),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
     robots: { index: true, follow: true },
   };
 }

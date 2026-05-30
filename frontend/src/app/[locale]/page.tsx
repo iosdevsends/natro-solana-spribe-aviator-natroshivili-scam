@@ -12,7 +12,7 @@ import { Prose } from '@/components/Prose';
 import { LightboxLazy } from '@/components/LightboxLazy';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
 // Canonical @id-anchored entities live in one place so the homepage @graph and
 // the dedicated /people/<slug> profile pages never drift apart.
@@ -34,15 +34,16 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
-  const description =
+  const description = clampDescription(
     bundle.config.seoDescription ||
     bundle.config.deck?.slice(0, 160) ||
     bundle.config.tagline ||
-    bundle.config.siteTitle;
+    bundle.config.siteTitle,
+  );
   const url = absoluteUrl(loc);
   // SEO <title> carries the named entities searchers type (Natroshvili /
   // Spribe / NATRO); siteTitle stays the displayed masthead brand.
-  const metaTitle = bundle.config.seoTitle || bundle.config.siteTitle;
+  const metaTitle = clampTitle(bundle.config.seoTitle || bundle.config.siteTitle);
 
   return {
     title: metaTitle,
@@ -51,6 +52,7 @@ export async function generateMetadata({
     openGraph: {
       title: metaTitle,
       description,
+      images: [OG_IMAGE],
       type: 'article',
       url,
       siteName: 'The NATRO File',
@@ -64,6 +66,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: metaTitle,
       description,
+      images: [OG_IMAGE.url],
     },
     robots: {
       index: true,
@@ -378,6 +381,13 @@ export default async function CaseFilePage({
                   rel="noreferrer noopener"
                 >
                   Source · GitHub ↗
+                </a>
+                <a
+                  href="https://x.com/moykin_e/status/2059431395173568828"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Post · X ↗
                 </a>
                 <Link href="/privacy">
                   Privacy &amp; cookies

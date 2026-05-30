@@ -7,7 +7,7 @@ import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -18,8 +18,8 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
-  const title = `FAQ — ${bundle.config.siteTitle}`;
-  const description = bundle.config.tagline || bundle.config.seoDescription || '';
+  const title = clampTitle(`FAQ — ${bundle.config.siteTitle}`);
+  const description = clampDescription(bundle.config.tagline || bundle.config.seoDescription || '');
   return {
     title,
     description,
@@ -27,13 +27,14 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [OG_IMAGE],
       type: 'website',
       url: absoluteUrl(loc, '/faq'),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
   };
 }
 

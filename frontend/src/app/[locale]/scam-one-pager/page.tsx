@@ -16,6 +16,9 @@ import {
   absoluteUrl,
   ogLocale,
   ogLocaleAlternates,
+  clampTitle,
+  clampDescription,
+  OG_IMAGE,
 } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
 
@@ -42,11 +45,12 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
-  const title = `The $NATRO scam — one-pager · ${bundle.config.siteTitle}`;
-  const description =
+  const title = clampTitle(`The $NATRO scam — one-pager · ${bundle.config.siteTitle}`);
+  const description = clampDescription(
     bundle.config.deck?.slice(0, 200) ||
     bundle.config.seoDescription ||
-    bundle.config.tagline;
+    bundle.config.tagline,
+  );
   return {
     title,
     description,
@@ -54,13 +58,14 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [OG_IMAGE],
       type: 'article',
       url: absoluteUrl(loc, SCAM_ONE_PAGER_PATH),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
   };
 }
 

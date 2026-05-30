@@ -9,7 +9,7 @@ import { HoldersTable } from '@/components/HoldersTable';
 import { CreatorActivityLog } from '@/components/CreatorActivityLog';
 import { DexScreenerEmbed } from '@/components/DexScreenerEmbed';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import { fetchTopHolders, fetchCreatorActivity, ONCHAIN_CONSTANTS } from '@/lib/onchain';
 
 // Refresh the page in the edge cache every hour so on-chain values stay fresh.
@@ -53,21 +53,22 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const copy = COPY[loc as keyof typeof COPY] || COPY.en;
-  const title = `${copy.h1} — The NATRO File`;
+  const title = clampTitle(`${copy.h1} — The NATRO File`);
   return {
     title,
-    description: copy.lead.slice(0, 200),
+    description: clampDescription(copy.lead.slice(0, 200)),
     alternates: buildAlternates(loc, '/on-chain'),
     openGraph: {
       title,
       description: copy.lead.slice(0, 200),
+      images: [OG_IMAGE],
       type: 'article',
       url: absoluteUrl(loc, '/on-chain'),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
     },
-    twitter: { card: 'summary_large_image', title },
+    twitter: { card: 'summary_large_image', title, images: [OG_IMAGE.url] },
   };
 }
 

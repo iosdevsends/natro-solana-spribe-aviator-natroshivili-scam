@@ -7,7 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import { getPressContent } from '@/content/press-release';
 
 const RELEASE_PUBLISHED_AT = '2026-05-28T12:24:00Z';
@@ -23,12 +23,13 @@ export async function generateMetadata({
   const press = getPressContent(loc);
 
   return {
-    title: `${press.headline} — Press`,
-    description: press.dek,
+    title: clampTitle(`${press.headline} — Press`),
+    description: clampDescription(press.dek),
     alternates: buildAlternates(loc, '/press'),
     openGraph: {
       title: press.headline,
       description: press.dek,
+      images: [OG_IMAGE],
       type: 'article',
       url: absoluteUrl(loc, '/press'),
       siteName: 'The NATRO File',

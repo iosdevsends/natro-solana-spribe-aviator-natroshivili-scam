@@ -7,7 +7,7 @@ import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import { getFaq } from '@/content/faq';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 
@@ -30,8 +30,8 @@ export async function generateMetadata({
   const entry = getFaq(loc).find((e) => e.slug === slug);
   if (!entry) return {};
 
-  const title = `${entry.question} — The NATRO File`;
-  const description = entry.shortAnswer;
+  const title = clampTitle(`${entry.question} — The NATRO File`);
+  const description = clampDescription(entry.shortAnswer);
   return {
     title,
     description,
@@ -39,6 +39,7 @@ export async function generateMetadata({
     openGraph: {
       title: entry.question,
       description,
+      images: [OG_IMAGE],
       type: 'article',
       url: absoluteUrl(loc, `/faq/${slug}`),
       siteName: 'The NATRO File',
@@ -47,7 +48,7 @@ export async function generateMetadata({
       publishedTime: entry.lastReviewedAt,
       modifiedTime: entry.lastReviewedAt,
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
   };
 }
 

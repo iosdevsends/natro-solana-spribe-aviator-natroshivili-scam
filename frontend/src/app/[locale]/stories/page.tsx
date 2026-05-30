@@ -7,7 +7,7 @@ import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { strapiFetch, type StrapiCollection } from '@/lib/strapi';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import type { UserStoryDTO } from '@/lib/types';
 
 export async function generateMetadata({
@@ -19,8 +19,8 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const t = await getTranslations({ locale, namespace: 'stories' });
-  const title = `${t('pageTitle')} — The NATRO File`;
-  const description = t('pageLead');
+  const title = clampTitle(`${t('pageTitle')} — The NATRO File`);
+  const description = clampDescription(t('pageLead'));
   return {
     title,
     description,
@@ -28,13 +28,14 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [OG_IMAGE],
       type: 'website',
       url: absoluteUrl(loc, '/stories'),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
   };
 }
 

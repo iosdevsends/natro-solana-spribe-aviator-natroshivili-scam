@@ -13,6 +13,9 @@ import {
   absoluteUrl,
   ogLocale,
   ogLocaleAlternates,
+  clampTitle,
+  clampDescription,
+  OG_IMAGE,
 } from '@/lib/seo';
 import {
   getDavidScam,
@@ -43,19 +46,20 @@ export async function generateMetadata({
   const loc = locale as Locale;
   const c = getDavidScam(loc);
   return {
-    title: c.metaTitle,
-    description: c.metaDescription,
+    title: clampTitle(c.metaTitle),
+    description: clampDescription(c.metaDescription),
     alternates: buildAlternates(loc, PATH),
     openGraph: {
       title: c.metaTitle,
       description: c.metaDescription,
+      images: [OG_IMAGE],
       type: 'article',
       url: absoluteUrl(loc, PATH),
       siteName: 'The NATRO File',
       locale: ogLocale(loc),
       alternateLocale: ogLocaleAlternates(loc),
     },
-    twitter: { card: 'summary_large_image', title: c.metaTitle, description: c.metaDescription },
+    twitter: { card: 'summary_large_image', title: c.metaTitle, description: c.metaDescription, images: [OG_IMAGE.url] },
     robots: { index: true, follow: true },
   };
 }

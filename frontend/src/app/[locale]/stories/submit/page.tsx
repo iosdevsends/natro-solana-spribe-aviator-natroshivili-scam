@@ -8,7 +8,7 @@ import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { loadCaseFile } from '@/lib/case-file';
 import { getCurrentUser } from '@/lib/auth';
 import { SubmitStoryForm } from '@/components/SubmitStoryForm';
-import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -20,13 +20,14 @@ export async function generateMetadata({
   const loc = locale as Locale;
   const t = await getTranslations({ locale, namespace: 'stories' });
   return {
-    title: `${t('submitTitle')} — The NATRO File`,
-    description: t('moderation'),
+    title: clampTitle(`${t('submitTitle')} — The NATRO File`),
+    description: clampDescription(t('moderation')),
     alternates: buildAlternates(loc, '/stories/submit'),
     // Submission form is not for indexing — keep noindex
     robots: { index: false, follow: false },
     openGraph: {
       title: t('submitTitle'),
+      images: [OG_IMAGE],
       type: 'website',
       url: absoluteUrl(loc, '/stories/submit'),
       siteName: 'The NATRO File',

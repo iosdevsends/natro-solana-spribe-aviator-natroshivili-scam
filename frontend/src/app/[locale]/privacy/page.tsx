@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -17,12 +17,13 @@ export async function generateMetadata({
   const loc = locale as Locale;
   const t = await getTranslations({ locale, namespace: 'privacy' });
   return {
-    title: `${t('title')} — The NATRO File`,
-    description: t('lead'),
+    title: clampTitle(`${t('title')} — The NATRO File`),
+    description: clampDescription(t('lead')),
     alternates: buildAlternates(loc, '/privacy'),
     openGraph: {
       title: t('title'),
       description: t('lead'),
+      images: [OG_IMAGE],
       type: 'website',
       url: absoluteUrl(loc, '/privacy'),
       siteName: 'The NATRO File',

@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
-import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import { getFactSheet } from '@/content/fact-sheet';
 import { getPeopleChrome } from '@/content/people';
 
@@ -19,12 +19,13 @@ export async function generateMetadata({
   const fact = getFactSheet(loc);
 
   return {
-    title: `${fact.headline} — Fact sheet`,
-    description: `Press fact sheet: ${fact.headline}. Scannable numbers, timeline, named parties, sources.`,
+    title: clampTitle(`${fact.headline} — Fact sheet`),
+    description: clampDescription(`Press fact sheet: ${fact.headline}. Scannable numbers, timeline, named parties, sources.`),
     alternates: buildAlternates(loc, '/press/fact-sheet'),
     openGraph: {
       title: fact.headline,
       description: `Press fact sheet for journalists. Numbers, timeline, named parties, sources.`,
+      images: [OG_IMAGE],
       type: 'article',
       url: absoluteUrl(loc, '/press/fact-sheet'),
       siteName: 'The NATRO File',
