@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
@@ -166,6 +167,63 @@ export default async function PressPage({
           <h2 className="kicker mb-3">{press.caseFileHeading}</h2>
           <Prose text={press.caseFileBody} className="text-[15px] leading-relaxed" />
         </section>
+
+        {/* In the press — external coverage */}
+        {press.coverage.length > 0 && (
+          <section className="mt-10">
+            <h2 className="kicker mb-3">{press.coverageHeading}</h2>
+            <p className="sans text-sm text-[var(--color-ink-faint)] mb-5">
+              {press.coverageIntro}
+            </p>
+            <div className="space-y-8">
+              {press.coverage.map((c, i) => (
+                <article
+                  key={i}
+                  className="border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 p-5"
+                >
+                  <div className="label-strap text-[10px] text-[var(--color-ink-faint)]">
+                    {c.meta}
+                  </div>
+                  <div className="serif font-medium text-lg mt-1">{c.source}</div>
+                  <p className="serif italic text-[var(--color-ink-soft)] mt-2 leading-snug">
+                    {c.title}
+                  </p>
+                  <Prose
+                    text={c.body}
+                    className="text-[15px] leading-relaxed mt-3"
+                  />
+                  {c.url && (
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="sans text-xs uppercase tracking-widest inline-block mt-3"
+                    >
+                      {c.urlLabel || c.url} ↗
+                    </a>
+                  )}
+                  <a
+                    href={c.image}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="block mt-4 w-full max-w-[340px] border border-[var(--color-rule)] cursor-zoom-in no-print"
+                    aria-label={c.imageAlt}
+                  >
+                    <Image
+                      src={c.image}
+                      alt={c.imageAlt}
+                      width={c.imageWidth}
+                      height={c.imageHeight}
+                      sizes="(max-width: 640px) 90vw, 340px"
+                      className="w-full h-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Age note */}
         <section className="mt-10 bg-[var(--color-paper-warm)]/60 border border-[var(--color-rule)] p-5">
