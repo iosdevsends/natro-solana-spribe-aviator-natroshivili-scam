@@ -16,6 +16,16 @@
  * resolves, matching the existing /scam-one-pager pattern.
  */
 
+import type { Locale } from '@/i18n/routing';
+import { defaultLocale } from '@/i18n/routing';
+import { ru } from './people-i18n/ru';
+import { uk } from './people-i18n/uk';
+import { ka } from './people-i18n/ka';
+import { fr } from './people-i18n/fr';
+import { de } from './people-i18n/de';
+import { es } from './people-i18n/es';
+import { ar } from './people-i18n/ar';
+
 export interface PersonProfileSection {
   heading: string;
   /** Inline-markdown understood by <Prose>: **bold**, *italic*, `code`, [label](url), blank-line paragraphs. */
@@ -249,4 +259,137 @@ export const PEOPLE_PROFILES: PersonProfile[] = [
 
 export function getPersonProfile(slug: string): PersonProfile | undefined {
   return PEOPLE_PROFILES.find((p) => p.slug === slug);
+}
+
+/* -------------------------------------------------------------------------- *
+ *  Localization layer
+ *
+ *  The English PersonProfile objects above are the canonical source. For every
+ *  other locale we overlay a `LocalizedPersonProfile` whose fields are aligned
+ *  *by index* with the English original (sections[i], handles[i], sources[i]),
+ *  so a translator only ever supplies prose — never structure, URLs, or schema.
+ *  Any field a translator omits falls back to English, so a partial translation
+ *  still renders. Verbatim source quotes (e.g. "stfu", the presale Stories) are
+ *  kept in their original English inside the translated prose, matching the
+ *  convention already used across content/locales/*.ts — quotes are sacred.
+ * -------------------------------------------------------------------------- */
+
+/** Per-locale translation of a single profile. All fields optional → English fallback. */
+export interface LocalizedPersonProfile {
+  role?: string;
+  tagline?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  /** Aligned by index with the English profile.handles[].note (localizes the note only). */
+  handleNotes?: (string | undefined)[];
+  /** Aligned by index with the English profile.sections. */
+  sections?: PersonProfileSection[];
+  /** Aligned by index with the English profile.sources[].label (URLs are kept as-is). */
+  sourceLabels?: string[];
+}
+
+/** Localized chrome shared by the /people index and the /people/<slug> profile pages. */
+export interface PeoplePageChrome {
+  /** Profile page: back link + the index page's own H1 / kicker. */
+  namedParties: string;
+  indexKicker: string;
+  indexH1: string;
+  indexStandfirst: string;
+  indexMetaTitle: string;
+  indexMetaDescription: string;
+  readFullProfile: string;
+  /** Profile page: exhibit grid. */
+  storiesHeading: string;
+  storiesNote: string;
+  sources: string;
+  /** Profile page: "Where to next" internal-link block. */
+  whereToNext: string;
+  davidAwardTitle: string;
+  davidAwardSub: string;
+  fullFile: string;
+  fullFileSub: string;
+  onchain: string;
+  onchainSub: string;
+  press: string;
+  pressSub: string;
+}
+
+export const EN_PEOPLE_CHROME: PeoplePageChrome = {
+  namedParties: 'Named parties',
+  indexKicker: '§ Named parties',
+  indexH1: 'The people named in this file',
+  indexStandfirst:
+    'Each was self-identified by the $NATRO launch marketing — not doxxed by this file. Each profile is factual, sourced, and carries a standing right of reply.',
+  indexMetaTitle: 'Named parties — Alex & David Natroshvili | The NATRO File',
+  indexMetaDescription:
+    'The people named in the $NATRO case file, each self-identified by the launch marketing: Alex Natroshvili (founder) and David Natroshvili (Spribe CEO). Dedicated, sourced profiles.',
+  readFullProfile: 'Read the full profile →',
+  storiesHeading: 'The stories · primary sources',
+  storiesNote:
+    'Captured from his verified Instagram before the stories expired. Tap any screenshot to open the full-resolution exhibit.',
+  sources: 'Sources',
+  whereToNext: 'Where to next',
+  davidAwardTitle: '#1 Most Influential in iGaming →',
+  davidAwardSub: 'The “Game Changers 2026” award, against the $NATRO record',
+  fullFile: 'Full case file →',
+  fullFileSub: 'Promise · Reality · Scrub · Voices · People · Sources',
+  onchain: 'On-chain verification →',
+  onchainSub: 'Live token state, creator wallet activity',
+  press: 'Press kit & right of reply →',
+  pressSub: 'Fact sheet, contacts, formal notice',
+};
+
+export interface PeopleLocaleBundle {
+  profiles: Record<string, LocalizedPersonProfile>;
+  chrome: PeoplePageChrome;
+}
+
+/** Non-default locales only; `en` is served directly from the canonical data above. */
+const PEOPLE_I18N: Partial<Record<Locale, PeopleLocaleBundle>> = {
+  ru,
+  uk,
+  ka,
+  fr,
+  de,
+  es,
+  ar,
+};
+
+/** Localized chrome for a locale, falling back to English for any missing string. */
+export function getPeopleChrome(locale: string): PeoplePageChrome {
+  const bundle = PEOPLE_I18N[locale as Locale];
+  if (!bundle || locale === defaultLocale) return EN_PEOPLE_CHROME;
+  return { ...EN_PEOPLE_CHROME, ...bundle.chrome };
+}
+
+/**
+ * Resolve a profile in the requested locale. Returns the canonical English
+ * profile with every translated field overlaid in place (index-aligned), so
+ * the renderer is locale-agnostic. Unknown slug → undefined; missing locale or
+ * missing field → English.
+ */
+export function getLocalizedPersonProfile(
+  slug: string,
+  locale: string,
+): PersonProfile | undefined {
+  const base = getPersonProfile(slug);
+  if (!base) return undefined;
+  const loc = PEOPLE_I18N[locale as Locale]?.profiles[slug];
+  if (!loc || locale === defaultLocale) return base;
+  return {
+    ...base,
+    role: loc.role ?? base.role,
+    tagline: loc.tagline ?? base.tagline,
+    metaTitle: loc.metaTitle ?? base.metaTitle,
+    metaDescription: loc.metaDescription ?? base.metaDescription,
+    handles: base.handles.map((h, i) => ({
+      ...h,
+      note: loc.handleNotes?.[i] ?? h.note,
+    })),
+    sections: base.sections.map((s, i) => loc.sections?.[i] ?? s),
+    sources: base.sources.map((c, i) => ({
+      ...c,
+      label: loc.sourceLabels?.[i] ?? c.label,
+    })),
+  };
 }

@@ -14,7 +14,12 @@ import {
   ogLocale,
   ogLocaleAlternates,
 } from '@/lib/seo';
-import { PEOPLE_PROFILES, getPersonProfile, SPRIBE_ORG } from '@/content/people';
+import {
+  PEOPLE_PROFILES,
+  getLocalizedPersonProfile,
+  getPeopleChrome,
+  SPRIBE_ORG,
+} from '@/content/people';
 import { exhibits } from '@/content/exhibits';
 import type { ExhibitDTO } from '@/lib/types';
 
@@ -34,7 +39,7 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
-  const profile = getPersonProfile(slug);
+  const profile = getLocalizedPersonProfile(slug, loc);
   if (!profile) return {};
 
   const title = profile.metaTitle;
@@ -67,14 +72,18 @@ export default async function PersonProfilePage({
   setRequestLocale(locale);
   const loc = locale as Locale;
 
-  const profile = getPersonProfile(slug);
+  const profile = getLocalizedPersonProfile(slug, loc);
   if (!profile) notFound();
 
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
+  const chrome = getPeopleChrome(loc);
   const pageUrl = absoluteUrl(loc, `/people/${slug}`);
 
-  const other = PEOPLE_PROFILES.filter((p) => p.slug !== slug);
+  // Other profiles, localized, for the "Where to next" cross-links.
+  const other = PEOPLE_PROFILES.filter((p) => p.slug !== slug).map(
+    (p) => getLocalizedPersonProfile(p.slug, loc) ?? p,
+  );
 
   // Primary-source screenshots backing the profile, resolved from the shared
   // exhibit set and kept in the profile's declared order.
@@ -143,7 +152,7 @@ export default async function PersonProfilePage({
         style={{ maxWidth: '760px', padding: 'clamp(20px, 4vw, 60px) clamp(16px, 5vw, 56px) 120px' }}
       >
         <Link href="/people" className="sans text-xs uppercase tracking-widest">
-          ← {ui['people.pageTitle'] || 'Named parties'}
+          ← {ui['people.pageTitle'] || chrome.namedParties}
         </Link>
 
         <div className="kicker mt-4 mb-2">{profile.role}</div>
@@ -188,10 +197,9 @@ export default async function PersonProfilePage({
         {/* Primary-source screenshots — the exhibits backing the profile */}
         {profileExhibits.length > 0 && (
           <section className="mt-10">
-            <h2 className="kicker mb-3">The stories · primary sources</h2>
+            <h2 className="kicker mb-3">{chrome.storiesHeading}</h2>
             <p className="sans text-sm text-[var(--color-ink-faint)] mb-4">
-              Captured from his verified Instagram before the stories expired.
-              Tap any screenshot to open the full-resolution exhibit.
+              {chrome.storiesNote}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6">
               {profileExhibits.map((ex) => (
@@ -233,7 +241,7 @@ export default async function PersonProfilePage({
         {/* Sources */}
         {profile.sources.length > 0 && (
           <section className="mt-12 border-t border-[var(--color-rule)] pt-6">
-            <h2 className="kicker mb-3">{ui['faq.citations'] || 'Sources'}</h2>
+            <h2 className="kicker mb-3">{ui['faq.citations'] || chrome.sources}</h2>
             <ul className="space-y-2">
               {profile.sources.map((c, i) => (
                 <li key={i}>
@@ -259,14 +267,14 @@ export default async function PersonProfilePage({
           aria-label="Where to next"
           className="mt-12 pt-8 border-t-2 border-[var(--color-ink)]"
         >
-          <div className="kicker mb-4">Where to next</div>
+          <div className="kicker mb-4">{chrome.whereToNext}</div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sans text-sm">
             {slug === 'david-natroshvili' && (
               <li>
                 <Link href="/david-natroshvili-scam" className="block">
-                  #1 Most Influential in iGaming →
+                  {chrome.davidAwardTitle}
                   <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                    The &ldquo;Game Changers 2026&rdquo; award, against the $NATRO record
+                    {chrome.davidAwardSub}
                   </span>
                 </Link>
               </li>
@@ -283,25 +291,25 @@ export default async function PersonProfilePage({
             ))}
             <li>
               <Link href="/" className="block">
-                Full case file →
+                {chrome.fullFile}
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                  Promise · Reality · Scrub · Voices · People · Sources
+                  {chrome.fullFileSub}
                 </span>
               </Link>
             </li>
             <li>
               <Link href="/on-chain" className="block">
-                On-chain verification →
+                {chrome.onchain}
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                  Live token state, creator wallet activity
+                  {chrome.onchainSub}
                 </span>
               </Link>
             </li>
             <li>
               <Link href="/press" className="block">
-                Press kit & right of reply →
+                {chrome.press}
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                  Fact sheet, contacts, formal notice
+                  {chrome.pressSub}
                 </span>
               </Link>
             </li>

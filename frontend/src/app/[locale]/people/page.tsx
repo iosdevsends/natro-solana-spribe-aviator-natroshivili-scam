@@ -12,7 +12,11 @@ import {
   ogLocale,
   ogLocaleAlternates,
 } from '@/lib/seo';
-import { PEOPLE_PROFILES } from '@/content/people';
+import {
+  PEOPLE_PROFILES,
+  getLocalizedPersonProfile,
+  getPeopleChrome,
+} from '@/content/people';
 
 const PEOPLE_PATH = '/people';
 
@@ -24,9 +28,9 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
-  const title = 'Named parties — Alex & David Natroshvili | The NATRO File';
-  const description =
-    'The people named in the $NATRO case file, each self-identified by the launch marketing: Alex Natroshvili (founder) and David Natroshvili (Spribe CEO). Dedicated, sourced profiles.';
+  const chrome = getPeopleChrome(loc);
+  const title = chrome.indexMetaTitle;
+  const description = chrome.indexMetaDescription;
   return {
     title,
     description,
@@ -57,6 +61,10 @@ export default async function PeopleIndexPage({
 
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
+  const chrome = getPeopleChrome(loc);
+  const profiles = PEOPLE_PROFILES.map(
+    (p) => getLocalizedPersonProfile(p.slug, loc) ?? p,
+  );
 
   return (
     <>
@@ -72,20 +80,18 @@ export default async function PeopleIndexPage({
         className="relative z-[2] mx-auto"
         style={{ maxWidth: '760px', padding: 'clamp(20px, 4vw, 60px) clamp(16px, 5vw, 56px) 120px' }}
       >
-        <div className="kicker mb-2">§ Named parties</div>
+        <div className="kicker mb-2">{chrome.indexKicker}</div>
         <h1 className="serif text-[26px] sm:text-3xl md:text-4xl leading-tight font-medium tracking-tight">
-          The people named in this file
+          {chrome.indexH1}
         </h1>
         <p className="mt-4 serif italic text-lg text-[var(--color-ink-soft)]">
-          Each was self-identified by the $NATRO launch marketing — not doxxed
-          by this file. Each profile is factual, sourced, and carries a standing
-          right of reply.
+          {chrome.indexStandfirst}
         </p>
 
         <hr className="rule-divider-strong" />
 
         <ul className="space-y-6">
-          {PEOPLE_PROFILES.map((p) => (
+          {profiles.map((p) => (
             <li key={p.slug}>
               <article className="border border-[var(--color-rule)] p-5 bg-[var(--color-paper-warm)]/50">
                 <div className="kicker mb-2">{p.role}</div>
@@ -101,7 +107,7 @@ export default async function PeopleIndexPage({
                   href={`/people/${p.slug}` as `/people/${string}`}
                   className="mt-4 inline-block sans text-xs uppercase tracking-widest"
                 >
-                  Read the full profile →
+                  {chrome.readFullProfile}
                 </Link>
               </article>
             </li>
@@ -112,21 +118,21 @@ export default async function PeopleIndexPage({
           aria-label="Where to next"
           className="mt-12 pt-8 border-t-2 border-[var(--color-ink)]"
         >
-          <div className="kicker mb-4">Where to next</div>
+          <div className="kicker mb-4">{chrome.whereToNext}</div>
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-3 sans text-sm">
             <li>
               <Link href="/" className="block">
-                Full case file →
+                {chrome.fullFile}
               </Link>
             </li>
             <li>
               <Link href="/on-chain" className="block">
-                On-chain verification →
+                {chrome.onchain}
               </Link>
             </li>
             <li>
               <Link href="/press" className="block">
-                Press kit & right of reply →
+                {chrome.press}
               </Link>
             </li>
           </ul>
