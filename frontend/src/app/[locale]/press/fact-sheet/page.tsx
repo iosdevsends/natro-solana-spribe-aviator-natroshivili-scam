@@ -2,9 +2,11 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
+import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { buildAlternates, absoluteUrl, ogLocale } from '@/lib/seo';
 import { getFactSheet } from '@/content/fact-sheet';
+import { getPeopleChrome } from '@/content/people';
 
 export async function generateMetadata({
   params,
@@ -42,6 +44,7 @@ export default async function FactSheetPage({
   setRequestLocale(locale);
   const loc = locale as Locale;
   const f = getFactSheet(loc);
+  const chrome = getPeopleChrome(loc);
 
   return (
     <main
@@ -133,6 +136,18 @@ export default async function FactSheetPage({
           ))}
         </ul>
       </section>
+
+      {/* Navigation — keeps the one-pager from being a crawl dead-end and
+          gives readers a way back into the file. Hidden in print. */}
+      <nav
+        aria-label={chrome.whereToNext}
+        className="mt-8 border-t border-[var(--color-rule)] pt-4 flex flex-wrap gap-x-5 gap-y-2 sans text-[11px] uppercase tracking-widest print:hidden"
+      >
+        <Link href="/">{chrome.fullFile}</Link>
+        <Link href="/people">{chrome.namedParties} →</Link>
+        <Link href="/on-chain">{chrome.onchain}</Link>
+        <Link href="/press">{chrome.press}</Link>
+      </nav>
 
       {/* Footer strap */}
       <footer className="mt-8 border-t-2 border-[var(--color-ink)] pt-3 text-[11px] flex flex-col gap-1">
