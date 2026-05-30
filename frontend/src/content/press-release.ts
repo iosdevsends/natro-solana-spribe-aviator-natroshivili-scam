@@ -8,6 +8,13 @@
  * English-speaking journalists primarily.
  */
 
+import { uk } from './press-i18n/uk';
+import { ka } from './press-i18n/ka';
+import { fr } from './press-i18n/fr';
+import { de } from './press-i18n/de';
+import { es } from './press-i18n/es';
+import { ar } from './press-i18n/ar';
+
 /** A single external-coverage item shown in the "In the press" section. */
 export interface PressCoverageItem {
   /** Outlet / author name. */
@@ -189,6 +196,10 @@ export const pressContent: Record<string, PressContent> = {
     },
   },
 };
+
+// Non-first-class locales translated in ./press-i18n/*.ts (full press surface
+// in every project language; falls back to EN only for unknown locales).
+Object.assign(pressContent, { uk, ka, fr, de, es, ar });
 
 export function getPressContent(locale: string): PressContent {
   return pressContent[locale] || pressContent.en;
