@@ -37,7 +37,12 @@ export function Analytics() {
           id="ahrefs-analytics"
           src="https://analytics.ahrefs.com/analytics.js"
           data-key={AHREFS_KEY}
-          strategy="afterInteractive"
+          // lazyOnload (not afterInteractive): the only third-party script
+          // left in the render-adjacent window. analytics.js reads layout
+          // geometry on load, which PageSpeed attributed to an 81 ms forced
+          // reflow; deferring it to browser-idle keeps it off the FCP/LCP
+          // path. A page-view that fires a few seconds late is fine here.
+          strategy="lazyOnload"
         />
       )}
 
