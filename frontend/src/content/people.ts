@@ -180,6 +180,16 @@ export const PEOPLE_PROFILES: PersonProfile[] = [
           'Within roughly 48 hours the price fell about 98%. When affected early holders requested refunds, the team declined; the team admin’s reply was *"Nothing to say."* On 25 May 2026 at 10:11 UTC, in response to a structured refund-or-publication proposal sent to his verified Telegram account, Alex Natroshvili replied with two letters: *"stfu."* That message is preserved in the file’s exhibit set.\n\nIn the same window the natrocoin.net website was taken offline, the NATRO link was removed from his verified Instagram bio, and the paid promotional video by KOL @jrcryptex (114K followers) was deleted. The blockchain record, the archived website, and the chat logs were not.',
       },
       {
+        heading: 'Direct contact, then a block',
+        body:
+          'Forty-two minutes after a formal letter was delivered to Spribe’s legal and corporate addresses on 25 May 2026, Alex Natroshvili opened direct contact with an affected holder through Instagram DM. Over roughly the next two hours the tone shifted repeatedly — from invitation, to co-victim framing, to instruction, to dismissal — before the holder was blocked.\n\nVerbatim from that thread: *"Delete this comments your just making a fool out of yourself."* and *"Spribe legal is not responding to you 😅 / Who do u think u are."* The sequence, and the block that ended it, are preserved in the file’s exhibit set.',
+      },
+      {
+        heading: 'In the holders’ words',
+        body:
+          'Inside the project’s own "NATRO Foyer" Telegram room — created at 13 members, against a promised "few thousand" — affected holders documented their losses in real time and reached their own verdict. Reproduced verbatim from the chat logs, captured before the messages were removed: *"I lost 2K," "I lost 6K," "It’s over,"* and, plainly, *"Natro scam"* and *"Fucking scam."*\n\nThese are the words of affected holders, not of this file. They are recorded here because the room in which they were written was the very access tier the token was sold on.',
+      },
+      {
         heading: 'On his stated losses',
         body:
           'In direct messages, Alex Natroshvili stated that he had himself lost money on the launch — *"I lost 38k"* and, separately, *"I swear to god i lost 30k plus."* These figures are recorded here as his claims, not as established facts: the stated figure shifts within the same message thread, and the project’s own tokenomics described the 30M founder allocation as publicly committed never to move. An unrealized paper loss on a non-moving allocation is not equivalent to a realized cash loss by retail holders.\n\nA separate on-chain audit is in progress. The creator wallet shows continuing swap and liquidity activity post-launch; whether that corresponds to the named 30M founder bag, or to a separate team allocation, requires further on-chain forensics and is not asserted here.',
@@ -190,8 +200,16 @@ export const PEOPLE_PROFILES: PersonProfile[] = [
           'Alex Natroshvili is invited to respond. Documented factual corrections will be published alongside the record. Contact details are on the [press page](/press).',
       },
     ],
+    exhibitSlugs: [
+      'stfu-from-alex',
+      'alex-story-pumpfun-tomorrow',
+      'natroalex-bio-before',
+      'natroalex-profile-after',
+      'natrocoin-source-html',
+    ],
     sources: [
       { label: 'Wayback archive of natrocoin.net (pre-takedown, founder section)', url: WAYBACK },
+      { label: 'Telegram DMs (@natroalex1, verified) and NATRO Foyer logs — Exhibit 20 ("stfu") and the Voices set, in the case-file gallery', url: 'https://natro.meme/#gallery' },
       { label: 'Solscan — $NATRO token contract', url: 'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
       { label: 'Kutztown University Foundation — context on the Natroshvili family', url: 'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/' },
     ],
@@ -324,9 +342,9 @@ export const EN_PEOPLE_CHROME: PeoplePageChrome = {
   indexMetaDescription:
     'The people named in the $NATRO case file, each self-identified by the launch marketing: Alex Natroshvili (founder) and David Natroshvili (Spribe CEO). Dedicated, sourced profiles.',
   readFullProfile: 'Read the full profile →',
-  storiesHeading: 'The stories · primary sources',
+  storiesHeading: 'Primary-source screenshots',
   storiesNote:
-    'Captured from his verified Instagram before the stories expired. Tap any screenshot to open the full-resolution exhibit.',
+    'Captured before each deletion, takedown, expiry, or block. Tap any screenshot to open the full-resolution exhibit.',
   sources: 'Sources',
   whereToNext: 'Where to next',
   davidAwardTitle: '#1 Most Influential in iGaming →',

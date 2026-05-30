@@ -44,6 +44,18 @@ Une échelle d'accès à quatre paliers était promise — Foyer (1M), Floor (5M
 Dans la même fenêtre, le site natrocoin.net a été mis hors ligne, le lien NATRO a été retiré de sa biographie Instagram vérifiée, et la vidéo promotionnelle payante du KOL @jrcryptex (114K abonnés) a été supprimée. L'enregistrement blockchain, le site archivé et les journaux de chat, eux, ne l'ont pas été.`,
         },
         {
+          heading: 'Contact direct, puis un blocage',
+          body: `Quarante-deux minutes après qu'une lettre officielle eut été remise aux adresses juridiques et corporatives de Spribe le 25 mai 2026, Alex Natroshvili a engagé un contact direct avec un détenteur lésé via message privé Instagram. Au cours des deux heures suivantes environ, le ton a changé à plusieurs reprises — de l'invitation, à un cadrage de co-victime, à l'injonction, au dédain — avant que le détenteur ne soit bloqué.
+
+Mot pour mot, extrait de cette conversation : *« Delete this comments your just making a fool out of yourself. »* et *« Spribe legal is not responding to you 😅 / Who do u think u are. »* La séquence, et le blocage qui l'a clôturée, sont conservés dans l'ensemble des pièces du dossier.`,
+        },
+        {
+          heading: 'Dans les mots des détenteurs',
+          body: `À l'intérieur du salon Telegram « NATRO Foyer » du projet lui-même — créé avec 13 membres, contre les « few thousand » promis — les détenteurs lésés ont documenté leurs pertes en temps réel et sont parvenus à leur propre verdict. Reproduits mot pour mot depuis les journaux de chat, captés avant que les messages ne soient supprimés : *« I lost 2K », « I lost 6K », « It's over »* et, sans détour, *« Natro scam »* et *« Fucking scam. »*
+
+Ce sont les mots de détenteurs lésés, et non la voix de ce dossier. Ils sont consignés ici parce que le salon dans lequel ils ont été écrits était précisément le palier d'accès sur lequel le token était vendu.`,
+        },
+        {
           heading: 'À propos des pertes qu\'il a déclarées',
           body: `Dans des messages privés, Alex Natroshvili a affirmé avoir lui-même perdu de l'argent sur le lancement — *« I lost 38k »* et, séparément, *« I swear to god i lost 30k plus. »* Ces chiffres sont consignés ici comme ses affirmations, non comme des faits établis : le montant déclaré change au sein d'une même conversation, et la tokenomique du projet elle-même décrivait l'allocation du fondateur de 30M comme publiquement engagée à ne jamais bouger. Une perte « sur papier » non réalisée sur une allocation qui ne bouge pas n'est pas équivalente à une perte en argent réalisée par les détenteurs particuliers.
 
@@ -56,6 +68,7 @@ Un audit on-chain distinct est en cours. Le portefeuille du créateur montre une
       ],
       sourceLabels: [
         'Archive Wayback de natrocoin.net (avant le retrait, section consacrée au fondateur)',
+        'Messages privés Telegram (@natroalex1, vérifié) et journaux NATRO Foyer — Pièce 20 (« stfu ») et l\'ensemble « Voix », dans la galerie du dossier',
         'Solscan — contrat du token $NATRO',
         'Kutztown University Foundation — contexte sur la famille Natroshvili',
       ],
@@ -119,9 +132,9 @@ Il a également repartagé dans ses Stories la vidéo promotionnelle payante du 
     indexMetaDescription:
       'Les personnes nommées dans le dossier $NATRO, chacune identifiée par le marketing du lancement lui-même : Alex Natroshvili (fondateur) et David Natroshvili (CEO de Spribe). Profils distincts avec sources.',
     readFullProfile: 'Lire le profil complet →',
-    storiesHeading: 'Stories · sources primaires',
+    storiesHeading: 'Captures de sources primaires',
     storiesNote:
-      'Captées depuis son Instagram vérifié avant l\'expiration des Stories. Cliquez sur n\'importe quelle capture pour ouvrir la pièce en pleine résolution.',
+      'Captées avant chaque suppression, retrait, expiration ou blocage. Cliquez sur n\'importe quelle capture pour ouvrir la pièce en pleine résolution.',
     sources: 'Sources',
     whereToNext: 'Où aller ensuite',
     davidAwardTitle: 'N°1 des plus influents de l\'iGaming →',

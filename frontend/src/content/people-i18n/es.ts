@@ -44,6 +44,18 @@ Se prometió una escalera de acceso de cuatro niveles — Foyer (1M), Floor (5M)
 En esa misma ventana, el sitio web natrocoin.net se desconectó, el enlace de NATRO se eliminó de su biografía de Instagram verificada y el vídeo promocional pagado del KOL @jrcryptex (114K seguidores) fue borrado. El registro de la blockchain, el archivo del sitio web y los logs de los chats, no.`,
         },
         {
+          heading: 'Contacto directo, y luego un bloqueo',
+          body: `Cuarenta y dos minutos después de que el 25 de mayo de 2026 se entregara una carta formal a las direcciones legales y corporativas de Spribe, Alex Natroshvili inició contacto directo con un holder afectado a través de un DM de Instagram. A lo largo de aproximadamente las dos horas siguientes el tono cambió repetidamente — de la invitación, al encuadre de co-víctima, a la instrucción, al desdén — antes de que el holder fuera bloqueado.
+
+Textualmente de esa conversación: *«Delete this comments your just making a fool out of yourself.»* y *«Spribe legal is not responding to you 😅 / Who do u think u are.»* La secuencia, y el bloqueo que la cerró, se conservan en el conjunto de pruebas del expediente.`,
+        },
+        {
+          heading: 'En palabras de los holders',
+          body: `Dentro de la propia sala de Telegram del proyecto, «NATRO Foyer» — creada con 13 miembros, frente a los «few thousand» prometidos — los holders afectados documentaron sus pérdidas en tiempo real y llegaron a su propio veredicto. Reproducido textualmente de los logs del chat, capturados antes de que los mensajes fueran eliminados: *«I lost 2K», «I lost 6K», «It's over»* y, sin rodeos, *«Natro scam»* y *«Fucking scam.»*
+
+Estas son las palabras de los holders afectados, no de este expediente. Se registran aquí porque la sala en la que se escribieron era precisamente el nivel de acceso con el que se vendió el token.`,
+        },
+        {
           heading: 'Sobre las pérdidas que él declaró',
           body: `En mensajes directos, Alex Natroshvili afirmó que él mismo había perdido dinero en el lanzamiento — *«I lost 38k»* y, por separado, *«I swear to god i lost 30k plus.»* Estas cifras se registran aquí como sus afirmaciones, no como hechos establecidos: la suma declarada varía dentro de la misma cadena de mensajes, y la propia tokenómica del proyecto describía la asignación del fundador de 30M como públicamente comprometida a no moverse nunca. Una pérdida «de papel» no realizada sobre una asignación que no se mueve no equivale a una pérdida de dinero realizada por los holders minoristas.
 
@@ -56,6 +68,7 @@ Una auditoría on-chain independiente está en curso. La cartera del creador mue
       ],
       sourceLabels: [
         'Archivo Wayback de natrocoin.net (antes de la retirada, sección sobre el fundador)',
+        'DMs de Telegram (@natroalex1, verificado) y logs de NATRO Foyer — Prueba 20 («stfu») y el conjunto «Voces», en la galería del expediente',
         'Solscan — contrato del token $NATRO',
         'Kutztown University Foundation — contexto sobre la familia Natroshvili',
       ],
@@ -119,9 +132,9 @@ También repostó en sus Stories el vídeo promocional pagado del KOL @jrcryptex
     indexMetaDescription:
       'Las personas nombradas en el expediente de $NATRO, cada una autoidentificada por el marketing del lanzamiento: Alex Natroshvili (fundador) y David Natroshvili (CEO de Spribe). Perfiles individuales con enlaces a las fuentes.',
     readFullProfile: 'Leer el perfil completo →',
-    storiesHeading: 'Stories · fuentes primarias',
+    storiesHeading: 'Capturas · fuentes primarias',
     storiesNote:
-      'Capturadas de su Instagram verificado antes de que las Stories expiraran. Haz clic en cualquier captura para abrir la prueba a resolución completa.',
+      'Capturadas antes de cada eliminación, retirada, expiración o bloqueo. Toca cualquier captura para abrir la prueba a resolución completa.',
     sources: 'Fuentes',
     whereToNext: 'Adónde ir después',
     davidAwardTitle: 'N.º 1 más influyente en iGaming →',

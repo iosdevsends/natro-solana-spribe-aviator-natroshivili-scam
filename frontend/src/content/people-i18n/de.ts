@@ -44,6 +44,18 @@ Eine vierstufige Zugangsleiter wurde versprochen — Foyer (1M), Floor (5M), Lou
 Im selben Zeitfenster wurde die Website natrocoin.net offline genommen, der NATRO-Link aus seiner verifizierten Instagram-Bio entfernt und das bezahlte Promo-Video des KOL @jrcryptex (114K Follower) gelöscht. Die Blockchain-Aufzeichnung, das Website-Archiv und die Chat-Logs nicht.`,
         },
         {
+          heading: 'Direkter Kontakt, dann eine Blockierung',
+          body: `Zweiundvierzig Minuten nachdem am 25. Mai 2026 ein formelles Schreiben an die rechtlichen und korporativen Adressen von Spribe zugestellt worden war, nahm Alex Natroshvili über Instagram-DM direkten Kontakt mit einem betroffenen Halter auf. Im Verlauf der folgenden rund zwei Stunden wechselte der Ton wiederholt — von der Einladung über eine Mitopfer-Rahmung hin zu Anweisung und Geringschätzung — bevor der Halter blockiert wurde.
+
+Wörtlich aus diesem Verlauf: *„Delete this comments your just making a fool out of yourself."* und *„Spribe legal is not responding to you 😅 / Who do u think u are."* Die Abfolge und die sie beendende Blockierung sind im Beweisstück-Bestand des Dossiers erhalten.`,
+        },
+        {
+          heading: 'In den Worten der Halter',
+          body: `Innerhalb des projekteigenen Telegram-Raums „NATRO Foyer" — erstellt mit 13 Mitgliedern, gegenüber versprochenen „einigen Tausend" — dokumentierten betroffene Halter ihre Verluste in Echtzeit und kamen zu ihrem eigenen Urteil. Wörtlich aus den Chat-Logs wiedergegeben, festgehalten bevor die Nachrichten entfernt wurden: *„I lost 2K", „I lost 6K", „It's over"* und, unverblümt, *„Natro scam"* und *„Fucking scam."*
+
+Dies sind die Worte betroffener Halter, nicht die Stimme dieses Dossiers. Sie werden hier festgehalten, weil der Raum, in dem sie geschrieben wurden, genau die Zugangsstufe war, auf der der Token verkauft wurde.`,
+        },
+        {
           heading: 'Zu seinen angegebenen Verlusten',
           body: `In Direktnachrichten gab Alex Natroshvili an, selbst beim Launch Geld verloren zu haben — *„I lost 38k"* und, separat, *„I swear to god i lost 30k plus."* Diese Zahlen werden hier als seine Behauptungen festgehalten, nicht als belegte Fakten: Die angegebene Summe verändert sich innerhalb desselben Nachrichtenverlaufs, und die eigene Tokenomics des Projekts beschrieb die Gründer-Allokation von 30M als öffentlich verpflichtet, sich nie zu bewegen. Ein nicht realisierter Buchverlust auf einer sich nicht bewegenden Allokation ist nicht gleichbedeutend mit einem realisierten Geldverlust durch Privatanleger.
 
@@ -56,6 +68,7 @@ Eine separate On-Chain-Prüfung läuft. Die Wallet des Erstellers zeigt nach dem
       ],
       sourceLabels: [
         'Wayback-Archiv von natrocoin.net (vor der Abschaltung, Gründer-Abschnitt)',
+        'Telegram-DMs (@natroalex1, verifiziert) und NATRO-Foyer-Logs — Beweisstück 20 („stfu") und das Stimmen-Set, in der Galerie des Dossiers',
         'Solscan — $NATRO-Token-Contract',
         'Kutztown University Foundation — Kontext zur Familie Natroshvili',
       ],
@@ -119,9 +132,9 @@ Er teilte außerdem das bezahlte Promo-Video des KOL @jrcryptex (114K Follower) 
     indexMetaDescription:
       'Die im $NATRO-Dossier genannten Personen, jede durch das Launch-Marketing selbst identifiziert: Alex Natroshvili (Gründer) und David Natroshvili (Spribe-CEO). Einzelne Profile mit Quellenangaben.',
     readFullProfile: 'Vollständiges Profil lesen →',
-    storiesHeading: 'Stories · Primärquellen',
+    storiesHeading: 'Screenshots aus Primärquellen',
     storiesNote:
-      'Von seinem verifizierten Instagram festgehalten, bevor die Stories abliefen. Klicken Sie auf einen Screenshot, um das Beweisstück in voller Auflösung zu öffnen.',
+      'Festgehalten vor jeder Löschung, Abschaltung, jedem Ablauf oder jeder Blockierung. Klicken Sie auf einen beliebigen Screenshot, um das Beweisstück in voller Auflösung zu öffnen.',
     sources: 'Quellen',
     whereToNext: 'Wohin als Nächstes',
     davidAwardTitle: 'Nr. 1 der einflussreichsten Personen im iGaming →',
