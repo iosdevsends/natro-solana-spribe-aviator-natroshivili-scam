@@ -1,6 +1,16 @@
 import Script from 'next/script';
 
 /**
+ * Ahrefs Web Analytics — cookieless, privacy-friendly first-party traffic.
+ * No cookies / no personal data, so it needs no consent gate (unlike GA below)
+ * and loads independently of NEXT_PUBLIC_GA_ID. The data-key is public by
+ * design (it ships in the page source), so a default is fine; override per
+ * environment with NEXT_PUBLIC_AHREFS_ANALYTICS_KEY.
+ */
+const AHREFS_KEY =
+  process.env.NEXT_PUBLIC_AHREFS_ANALYTICS_KEY || 'wDb7Taa+kqjvJxtrVl4uQQ';
+
+/**
  * Google Analytics 4 + Consent Mode v2.
  *
  * Order matters:
@@ -19,10 +29,20 @@ import Script from 'next/script';
  */
 export function Analytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-  if (!gaId) return null;
 
   return (
     <>
+      {AHREFS_KEY && (
+        <Script
+          id="ahrefs-analytics"
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key={AHREFS_KEY}
+          strategy="afterInteractive"
+        />
+      )}
+
+      {gaId && (
+        <>
       <Script id="gtag-consent-default" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -58,6 +78,8 @@ export function Analytics() {
           gtag('config', '${gaId}', { anonymize_ip: true });
         `}
       </Script>
+        </>
+      )}
     </>
   );
 }
