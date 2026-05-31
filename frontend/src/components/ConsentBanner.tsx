@@ -12,6 +12,7 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    clarity?: (...args: unknown[]) => void;
   }
 }
 
@@ -35,6 +36,12 @@ function applyChoice(choice: Choice) {
       analytics_storage: choice === 'granted' ? 'granted' : 'denied',
     });
   }
+  // Mirror the choice to Clarity: it stays cookieless until granted consent.
+  // There is no documented "revoke" call, so we only signal on grant; a
+  // declining visitor simply never receives the consent signal.
+  if (choice === 'granted' && typeof window !== 'undefined' && typeof window.clarity === 'function') {
+    window.clarity('consent');
+  }
 }
 
 export function ConsentBanner() {
@@ -42,6 +49,9 @@ export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Banner visibility is derived from localStorage, which is only readable
+    // on the client — so the one-shot read necessarily happens in an effect.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (readChoice() === null) setVisible(true);
   }, []);
 

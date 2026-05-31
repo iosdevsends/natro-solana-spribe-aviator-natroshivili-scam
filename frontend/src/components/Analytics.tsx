@@ -11,6 +11,20 @@ const AHREFS_KEY =
   process.env.NEXT_PUBLIC_AHREFS_ANALYTICS_KEY || 'wDb7Taa+kqjvJxtrVl4uQQ';
 
 /**
+ * Microsoft Clarity — heatmaps + session replay. The project ID is public by
+ * design (it ships in the page source), so the value below is a safe default;
+ * override per environment with NEXT_PUBLIC_CLARITY_ID.
+ *
+ * Clarity v2 starts in cookieless mode and does NOT write its cookies or stitch
+ * sessions until it receives an explicit `clarity('consent')` signal. We mirror
+ * the GA consent choice: the tag loads on every page (cookieless), and only if
+ * the visitor previously accepted analytics cookies do we grant Clarity consent
+ * too. Returning "denied" visitors get anonymous, cookieless behaviour. This
+ * keeps Clarity on the same footing as GA below w.r.t. the ConsentBanner.
+ */
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || 'wzxrhmhm8t';
+
+/**
  * Google Analytics 4 + Consent Mode v2.
  *
  * Order matters:
@@ -44,6 +58,25 @@ export function Analytics() {
           // path. A page-view that fires a few seconds late is fine here.
           strategy="lazyOnload"
         />
+      )}
+
+      {CLARITY_ID && (
+        <Script id="ms-clarity" strategy="lazyOnload">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");
+            // Cookieless by default; grant consent only if the visitor already
+            // accepted analytics cookies (mirrors the GA consent choice).
+            try {
+              if (localStorage.getItem('natro_consent_v1') === 'granted') {
+                window.clarity && window.clarity('consent');
+              }
+            } catch (e) {}
+          `}
+        </Script>
       )}
 
       {gaId && (
