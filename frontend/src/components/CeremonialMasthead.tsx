@@ -155,7 +155,11 @@ export async function CeremonialMasthead({
           <li>
             <Link
               href="/reputation"
-              className="no-underline bg-[var(--color-accent)] text-[var(--color-paper)] px-2.5 py-1 rounded-[3px] font-medium hover:bg-[var(--color-accent-soft)] transition-colors"
+              className="no-underline bg-[var(--color-accent)] px-2.5 py-1 rounded-[3px] font-medium hover:bg-[var(--color-accent-soft)] transition-colors"
+              // Inline color: the global `a { color: var(--color-accent) }` rule in
+              // globals.css is unlayered and overrides Tailwind's text-[…] utility on
+              // anchors, which made this filled pill render oxblood-on-oxblood (invisible).
+              style={{ color: 'var(--color-paper)' }}
             >
               {reputationLabel.toUpperCase()}
             </Link>
