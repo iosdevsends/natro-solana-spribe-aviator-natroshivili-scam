@@ -1,0 +1,54 @@
+name: Set API token
+
+# Manual-only. Writes the STRAPI_API_TOKEN repository secret into the server's
+# .env (replacing any existing line), recreates the frontend container so it
+# picks up the new value, and runs a direct create test against Strapi.
+#
+# Prereq: add a repo secret named STRAPI_API_TOKEN holding a Strapi *Full access*
+# token value (Settings → Secrets and variables → Actions).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  set-token:
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 10
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          echo "${{ secrets.DEPLOY_HOST_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Write token to .env, restart frontend, verify
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "ERROR: repo secret STRAPI_API_TOKEN is empty — add it first."; exit 1
+          fi
+          ssh -i ~/.ssh/id_deploy \
+            -o StrictHostKeyChecking=accept-new \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=20 \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            "set -e
+             cd $DEPLOY_PATH
+             cp .env .env.bak.\$(date +%s)
+             grep -v '^STRAPI_API_TOKEN=' .env > .env.tmp || true
+             echo 'STRAPI_API_TOKEN=$TOKEN' >> .env.tmp
+             mv .env.tmp .env
+             echo 'token written; recreating frontend...'
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up -d frontend
+             sleep 8
+             printf 'direct Strapi create test => '
+             curl -s -o /dev/null -w '%{http_code}\n' -X POST http://127.0.0.1:1338/api/case-comments -H \"Authorization: Bearer $TOKEN\" -H 'Content-Type: application/json' -d '{\"data\":{\"body\":\"ci token set test\"}}'"
