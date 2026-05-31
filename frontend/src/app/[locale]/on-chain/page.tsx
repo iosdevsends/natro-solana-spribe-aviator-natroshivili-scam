@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 
 import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
+import { AskAI } from '@/components/AskAI';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
 import { HoldersTable } from '@/components/HoldersTable';
 import { CreatorActivityLog } from '@/components/CreatorActivityLog';
@@ -297,6 +298,8 @@ export default async function OnChainPage({
         </h1>
         <p className="mt-4 serif italic text-lg text-[var(--color-ink-soft)] max-w-[720px]">{copy.lead}</p>
         <hr className="rule-divider-strong" />
+
+        <AskAI />
 
         <section className="mb-10">
           <h2 className="kicker mb-3">§ {copy.sectionState}</h2>
