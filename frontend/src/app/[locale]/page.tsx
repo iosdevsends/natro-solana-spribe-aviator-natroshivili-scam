@@ -132,6 +132,9 @@ export default async function CaseFilePage({
         name: bundle.config.siteTitle,
         description:
           bundle.config.seoDescription || bundle.config.deck?.slice(0, 200),
+        // Machine-readable TL;DR for answer engines — fixed, factual, citable.
+        abstract:
+          'On 21 May 2026 the $NATRO Solana memecoin was launched on the Natroshvili family name and its association with Spribe (the studio behind Aviator). Within ~48 hours the price fell about 98%, refund requests were refused, and within ~72 hours the website, the founder’s Instagram bio link and a paid promotional video were removed. Documented from on-chain records (Solscan), the Wayback Machine and timestamped screenshots; unproven points are marked pending forensics.',
         inLanguage: loc,
         isAccessibleForFree: true,
         datePublished: PUBLICATION_DATE,

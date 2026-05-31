@@ -31,6 +31,8 @@ On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex
 - [Full case file](https://natro.meme/) — §I Promise · §II Reality · §III Scrub · §IV Voices · §V People · §VI Sources · §VII Gallery · §VIII FAQ
 - [Scam one-pager](https://natro.meme/scam-one-pager) — 30-second brief: what was sold, what collapsed, what was scrubbed, four strongest exhibits, Wayback link
 - [On-chain verification](https://natro.meme/on-chain) — live token state from public no-auth APIs, creator wallet activity, last verified timestamp
+- [People / named parties](https://natro.meme/people) — profiles of the named, self-doxxed parties (Alex Natroshvili, David Natroshvili, Spribe)
+- [Reputation wall](https://natro.meme/reputation) — "Can a reputation be sold this cheaply?" — moderated, reader-submitted accounts from people affected by the launch
 - [Press kit](https://natro.meme/press) — fact sheet, contacts, right-of-reply statement
 - [FAQ](https://natro.meme/faq) — short, sourced answers to recurring questions
 
