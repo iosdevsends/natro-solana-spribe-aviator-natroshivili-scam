@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { isModerator } from '@/lib/moderation';
 import { strapiTokenFetch } from '@/lib/strapi';
@@ -49,8 +50,15 @@ export async function PUT(
     );
   }
 
-  // The public /reputation feed is fetched with `revalidate: 60`, so an
-  // approved comment surfaces within a minute of this decision — no explicit
-  // tag invalidation needed (matches the rest of the codebase's time-based ISR).
+  // Bust the cached /reputation feed immediately for every locale so an
+  // approved (or un-approved) comment appears/disappears without waiting for
+  // the 60s ISR window. Passing the dynamic route + 'page' revalidates all
+  // locale variants (/reputation, /ru/reputation, …).
+  try {
+    revalidatePath('/[locale]/reputation', 'page');
+  } catch {
+    // Non-fatal: falls back to the 60s time-based revalidation.
+  }
+
   return NextResponse.json({ ok: true, data: data?.data });
 }
