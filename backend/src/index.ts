@@ -51,6 +51,10 @@ const PUBLIC_READ_CONTENT_TYPES = [
   'api::evidence-row.evidence-row',
   'api::site-config.site-config',
   'api::user-story.user-story',
+  // Public find returns approved-only (forced in the controller). Comment
+  // create + moderation go through the full-access STRAPI_API_TOKEN, not the
+  // public role, so those actions are intentionally NOT granted here.
+  'api::case-comment.case-comment',
 ];
 
 const PUBLIC_FIND_ACTIONS = ['find', 'findOne'];

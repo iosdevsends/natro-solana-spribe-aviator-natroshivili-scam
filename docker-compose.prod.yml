@@ -50,6 +50,12 @@ services:
       NEXT_PUBLIC_SITE_URL: ${PUBLIC_FRONTEND_URL}
       NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
       NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION:-}
+      # Comment wall (/reputation): editor passphrase for /admin/comments, salt
+      # for the one-way commenter-IP hash, and the server-side Turnstile secret
+      # so CAPTCHA is actually verified (the public sitekey is already a build arg).
+      MODERATION_SECRET: ${MODERATION_SECRET:-}
+      IP_HASH_SALT: ${IP_HASH_SALT:-}
+      TURNSTILE_SECRET: ${TURNSTILE_SECRET:-}
     ports: !override
       - "127.0.0.1:3001:3000"
     restart: always
