@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_comments",
+  "info": {
+    "singularName": "case-comment",
+    "pluralName": "case-comments",
+    "displayName": "Case Comment",
+    "description": "A short, reader-submitted comment for the public comment wall (\"Can reputation be sold?\"). Lower-friction than a full User Story — no account required — and every comment is held in moderation before it appears."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "body": {
+      "type": "text",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 1500
+    },
+    "authorDisplayName": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Optional public name/handle. Ignored when isAnonymous is true."
+    },
+    "isAnonymous": {
+      "type": "boolean",
+      "default": false
+    },
+    "localeSubmitted": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "UI locale the comment was written from (en, ru, ka, ...). Display only — comments are not translated."
+    },
+    "country": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Optional self-reported country/region of the affected reader."
+    },
+    "moderationStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "approved", "rejected"],
+      "default": "pending",
+      "required": true
+    },
+    "moderationNotes": {
+      "type": "text",
+      "private": true,
+      "description": "Internal editor notes — never shown to readers."
+    },
+    "submittedAt": {
+      "type": "datetime"
+    },
+    "approvedAt": {
+      "type": "datetime"
+    },
+    "ipHash": {
+      "type": "string",
+      "private": true,
+      "description": "Salted hash of submitter IP — abuse/rate-limit forensics only, never displayed."
+    }
+  }
+}

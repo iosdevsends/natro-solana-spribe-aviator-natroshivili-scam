@@ -53,6 +53,16 @@ This repository is the **platform** that powers the file:
 | `legacy/` | Single-file HTML v2 (archived) | The original artefact (`natro-file-v2.html`) preserved verbatim for reference. |
 | `docs/EVIDENCE.md` | Markdown | Authoritative inventory of every exhibit (image / video) with capture provenance. |
 
+## Reputation wall & comment moderation
+
+`/[locale]/reputation` is a public, multilingual page that opens with the question _"Can a reputation be sold this cheaply?"_ and invites affected readers to leave a short comment describing how the `$NATRO` launch — and the family name used to sell it — affected them.
+
+- **Content type:** `case-comment` (Strapi). Lower-friction than the full `user-story` — no account is required — but every comment is created with `moderationStatus: pending` and is invisible to the public until an editor approves it. The public `find` controller hard-forces an `approved`-only filter, so a pending or rejected comment can never leak into the feed.
+- **Submission:** `POST /api/comments` (Next.js) runs Cloudflare Turnstile, sanitises the body, and applies a per-IP rate limit (a salted one-way hash of the IP, never the raw address) before writing to Strapi with the server-side full-access token.
+- **Moderation admin:** `/admin/comments` — a dedicated editor UI with pending / approved / rejected tabs and approve / reject / reset actions. Gated by a single shared passphrase (`MODERATION_SECRET`); when that env var is unset the admin stays closed. Set `MODERATION_SECRET` and `IP_HASH_SALT` (see `.env.example`).
+
+Approved comments surface on the public feed within ~60 s (time-based ISR).
+
 ## Languages
 
 EN · RU · UK · KA · FR · DE · ES · AR

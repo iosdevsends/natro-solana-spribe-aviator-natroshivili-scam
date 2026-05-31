@@ -9,6 +9,7 @@ import { getFaq } from '@/content/faq';
 const STATIC_PATHS = [
   '',
   '/scam-one-pager',
+  '/reputation',
   '/stories',
   '/press',
   '/press/fact-sheet',

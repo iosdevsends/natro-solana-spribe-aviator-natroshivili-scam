@@ -124,3 +124,23 @@ export async function strapiFetch<T>(
 }
 
 export const strapiPublicUrl = PUBLIC_URL;
+
+/**
+ * Server-side Strapi call authenticated with the full-access API token.
+ * Use for writes and for privileged reads (e.g. the moderation queue) from
+ * Next.js route handlers — never expose the token to the browser. Returns the
+ * raw Response so callers can branch on status.
+ */
+export async function strapiTokenFetch(
+  path: string,
+  init: RequestInit = {},
+): Promise<Response> {
+  const headers = new Headers(init.headers);
+  headers.set('Content-Type', 'application/json');
+  if (API_TOKEN) headers.set('Authorization', `Bearer ${API_TOKEN}`);
+  return fetch(`${INTERNAL_URL}/api${path}`, {
+    ...init,
+    headers,
+    cache: init.cache ?? 'no-store',
+  });
+}

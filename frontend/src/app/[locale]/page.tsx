@@ -95,6 +95,7 @@ export default async function CaseFilePage({
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
   const tCta = await getTranslations('scamCta');
+  const tWall = await getTranslations('wall');
 
   const sectionsBySlug = Object.fromEntries(
     bundle.sections.map((s) => [s.slug, s]),
@@ -342,6 +343,21 @@ export default async function CaseFilePage({
         <SectionBlock section={sectionsBySlug.voices}>
           <Quotes quotes={bundle.quotes} />
         </SectionBlock>
+
+        {/* Reputation wall — reader comment feed (moderated) */}
+        <div className="my-16 border-l-4 border-[var(--color-accent)] bg-[var(--color-paper-warm)]/40 p-6 md:p-8">
+          <div className="kicker mb-3">§ {tWall('kicker')}</div>
+          <p className="serif text-2xl md:text-3xl font-medium leading-tight">{tWall('pageTitle')}</p>
+          <p className="mt-3 sans text-sm text-[var(--color-ink-soft)] leading-relaxed max-w-2xl">
+            {tWall('inviteLead')}
+          </p>
+          <Link
+            href="/reputation"
+            className="mt-5 sans inline-block border-2 border-[var(--color-accent)] text-[var(--color-accent)] px-5 py-2 uppercase tracking-widest text-xs hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition"
+          >
+            {tWall('inviteTitle')} →
+          </Link>
+        </div>
 
         {/* § V People */}
         <SectionBlock section={sectionsBySlug.people}>

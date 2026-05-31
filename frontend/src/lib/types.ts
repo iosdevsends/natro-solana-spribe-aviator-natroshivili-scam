@@ -205,6 +205,20 @@ export interface UserStoryDTO {
   publishedAt?: string;
 }
 
+export interface CaseCommentDTO {
+  id: number;
+  documentId?: string;
+  body: string;
+  authorDisplayName?: string;
+  isAnonymous?: boolean;
+  localeSubmitted?: string;
+  country?: string;
+  moderationStatus?: 'pending' | 'approved' | 'rejected';
+  moderationNotes?: string;
+  submittedAt?: string;
+  approvedAt?: string;
+}
+
 export interface FaqEntryDTO {
   id: number;
   slug: string;
