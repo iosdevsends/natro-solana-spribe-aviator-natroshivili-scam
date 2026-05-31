@@ -42,7 +42,7 @@ export function PostCommentForm({ locale }: { locale: Locale }) {
     };
 
     try {
-      const res = await fetch('/api/comments', {
+      const res = await fetch('/bff/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

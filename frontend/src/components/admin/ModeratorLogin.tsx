@@ -14,7 +14,7 @@ export function ModeratorLogin() {
     setError(null);
     const fd = new FormData(e.currentTarget);
     try {
-      const res = await fetch('/api/admin/login', {
+      const res = await fetch('/bff/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ passphrase: fd.get('passphrase') }),

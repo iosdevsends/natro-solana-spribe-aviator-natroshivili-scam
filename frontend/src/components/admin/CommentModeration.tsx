@@ -22,7 +22,7 @@ export function CommentModeration() {
   // legitimate data-fetch effect clear of react-hooks/set-state-in-effect.
   const load = useCallback(async (status: Status) => {
     try {
-      const res = await fetch(`/api/admin/comments?status=${status}&pageSize=100`, {
+      const res = await fetch(`/bff/admin/comments?status=${status}&pageSize=100`, {
         cache: 'no-store',
       });
       const data = await res.json();
@@ -55,7 +55,7 @@ export function CommentModeration() {
   async function decide(id: number, moderationStatus: Status, moderationNotes?: string) {
     setBusyId(id);
     try {
-      const res = await fetch(`/api/admin/comments/${id}`, {
+      const res = await fetch(`/bff/admin/comments/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ moderationStatus, moderationNotes }),
@@ -72,7 +72,7 @@ export function CommentModeration() {
   }
 
   async function logout() {
-    await fetch('/api/admin/login', { method: 'DELETE' });
+    await fetch('/bff/admin/login', { method: 'DELETE' });
     router.refresh();
   }
 
