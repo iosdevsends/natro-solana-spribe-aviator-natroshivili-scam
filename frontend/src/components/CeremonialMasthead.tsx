@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { PublicationTimer } from './PublicationTimer';
@@ -38,13 +39,19 @@ function shortLabel(raw: string | undefined, fallback: string): string {
   return raw.slice(sepIdx + 1).trim() || raw;
 }
 
-export function CeremonialMasthead({
+export async function CeremonialMasthead({
   locale,
   tagline,
   uiStrings,
   exhibitCount,
   languageCount,
 }: Props) {
+  // Localized label for the comment-wall link. Lives in the next-intl message
+  // files (nav.reputation, all 8 locales) rather than Strapi uiStrings, so the
+  // link reads correctly in every language without a CMS edit.
+  const tNav = await getTranslations('nav');
+  const reputationLabel = tNav('reputation');
+
   const nav: Array<{ key: string; hash: string; label: string }> = [
     { key: 'promise', hash: 'promise', label: shortLabel(uiStrings?.['nav.promise'], 'Promise') },
     { key: 'reality', hash: 'reality', label: shortLabel(uiStrings?.['nav.reality'], 'Reality') },
@@ -143,6 +150,14 @@ export function CeremonialMasthead({
               className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
             >
               {(uiStrings?.['nav.press'] || 'Press').toUpperCase()}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/reputation"
+              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
+            >
+              {reputationLabel.toUpperCase()}
             </Link>
           </li>
         </ul>
