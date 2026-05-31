@@ -96,14 +96,22 @@
     "title": "Confidentialité et cookies",
     "lead": "Cette page décrit quelles données le dossier collecte, pourquoi, et comment refuser.",
     "section_what": "Ce que nous collectons",
-    "what_p1": "Si vous acceptez l'analyse, Google Analytics 4 enregistre des données d'utilisation agrégées et anonymisées : pages visitées, temps passé, pays approximatif, type d'appareil. Nous passons anonymize_ip=true à Google, votre IP est tronquée avant stockage.",
-    "what_p2": "Si vous refusez, aucun cookie d'analyse n'est écrit. Consent Mode v2 maintient les scripts de Google chargés mais en état refusé — rien n'est transmis aux serveurs de Google.",
+    "what_p1": "Si vous acceptez les statistiques, deux outils fonctionnent. Google Analytics 4 enregistre des données d’usage agrégées et anonymisées — pages visitées, temps passé, pays approximatif, type d’appareil ; nous transmettons anonymize_ip=true afin que votre IP soit tronquée avant stockage. Microsoft Clarity enregistre des statistiques d’interaction agrégées — clics, défilements et cartes de chaleur, ainsi que des relectures de session où la saisie de texte est masquée par défaut — pour comprendre comment le dossier est réellement lu.",
+    "what_p2": "Si vous refusez, aucun cookie de statistiques n’est écrit. Google Analytics reste chargé sous Consent Mode v2 dans un état « refusé », si bien que rien n’est transmis à Google. Microsoft Clarity reste en mode sans cookie et ne reçoit jamais de consentement : il n’écrit aucun cookie et ne relie pas vos visites entre elles.",
+    "what_p3": "Indépendamment de votre choix, le site utilise un compteur de visites sans cookie (Ahrefs Web Analytics) qui ne dépose aucun cookie et ne collecte aucune donnée personnelle ; il ne requiert donc pas de consentement.",
     "section_no": "Ce que nous ne collectons pas",
-    "no_p1": "Aucun cookie publicitaire, marketing ou de personnalisation. Aucun traceur tiers en dehors de Google Analytics. Aucun profilage inter-sites.",
+    "no_p1": "Aucun cookie publicitaire, marketing ou de personnalisation. Aucun réseau publicitaire, aucun profilage intersites et aucune vente de données — en dehors des outils de statistiques décrits ci-dessus, rien d’autre ne vous suit ici.",
     "section_user": "Récits soumis par les lecteurs",
     "user_p1": "Si vous créez un compte pour soumettre votre récit, nous stockons votre e-mail, votre nom d'utilisateur, votre nom d'affichage facultatif et votre soumission. Ces données sont dans notre propre base, jamais vendues ni partagées. Demandez la suppression à tout moment auprès de l'éditeur.",
     "section_change": "Changer d'avis ?",
     "change_p1": "Effacez les données de ce site dans votre navigateur pour revoir la bannière de consentement. Ou contactez l'éditeur.",
     "contact": "Contact"
+  },
+  "askAI": {
+    "kicker": "Contre-vérifier le dossier",
+    "title": "Interroger une IA sur cette affaire",
+    "lead": "Chaque bouton ouvre un assistant avec la question déjà saisie. Il lira natro.meme et résumera ce qu’il trouve — un moyen indépendant de vérifier les faits avec vos propres mots.",
+    "note": "Ouvre un nouvel onglet. La requête est neutre et demande à l’assistant de citer sa source. Les réponses sont générées par l’assistant, pas par ce site.",
+    "prompt": "Résume le dossier documenté $NATRO sur https://natro.meme — le token Solana lancé par Alex Natroshvili (fils de David Natroshvili, PDG de Spribe / Aviator), le marketing fondé sur le nom de famille, l’effondrement de ~98 % en 72 heures, les demandes de remboursement refusées et les preuves on-chain. Merci de citer la source."
   }
 }

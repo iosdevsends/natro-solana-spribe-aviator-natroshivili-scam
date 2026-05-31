@@ -96,14 +96,22 @@
     "title": "Datenschutz und Cookies",
     "lead": "Diese Seite beschreibt, welche Daten die Akte erfasst, warum und wie Sie widersprechen können.",
     "section_what": "Was wir erfassen",
-    "what_p1": "Wenn Sie der Analyse zustimmen, erfasst Google Analytics 4 aggregierte, anonymisierte Nutzungsdaten: besuchte Seiten, Verweildauer, ungefähres Land, Gerätetyp. Wir übergeben anonymize_ip=true an Google, sodass Ihre IP vor der Speicherung gekürzt wird.",
-    "what_p2": "Wenn Sie ablehnen, werden keine Analyse-Cookies geschrieben. Consent Mode v2 hält die Google-Skripte geladen, aber im Status „verweigert“ — an die Server von Google werden keine Daten gesendet.",
+    "what_p1": "Wenn Sie Analyse zulassen, laufen zwei Werkzeuge. Google Analytics 4 erfasst aggregierte, anonymisierte Nutzungsdaten — besuchte Seiten, Verweildauer, ungefähres Land, Geräteklasse; wir übergeben anonymize_ip=true, sodass Ihre IP vor der Speicherung gekürzt wird. Microsoft Clarity erfasst aggregierte Interaktionsanalysen — Klicks, Scrollen und Heatmaps sowie Sitzungswiedergaben, bei denen Texteingaben standardmäßig maskiert werden —, um zu verstehen, wie die Akte tatsächlich gelesen wird.",
+    "what_p2": "Wenn Sie ablehnen, werden keine Analyse-Cookies gesetzt. Google Analytics bleibt unter Consent Mode v2 im Status „abgelehnt“ geladen, sodass nichts an Google gemeldet wird. Microsoft Clarity bleibt im cookielosen Modus und erhält nie eine Einwilligung, schreibt also keine Cookies und verknüpft Ihre Besuche nicht miteinander.",
+    "what_p3": "Unabhängig von Ihrer Wahl nutzt die Website einen cookielosen Besuchszähler (Ahrefs Web Analytics), der keine Cookies setzt und keine personenbezogenen Daten erhebt und daher keine Einwilligung benötigt.",
     "section_no": "Was wir nicht erfassen",
-    "no_p1": "Keine Werbe-, Marketing- oder Personalisierungs-Cookies. Keine Drittanbieter-Tracker außer Google Analytics. Kein Cross-Site-Profiling.",
+    "no_p1": "Keine Werbe-, Marketing- oder Personalisierungs-Cookies. Keine Werbenetzwerke, kein seitenübergreifendes Profiling und kein Datenverkauf — außer den oben beschriebenen Analyse-Werkzeugen verfolgt Sie hier nichts.",
     "section_user": "Leser-Beiträge",
     "user_p1": "Wenn Sie ein Konto anlegen, um Ihre Geschichte einzureichen, speichern wir Ihre E-Mail, Ihren Benutzernamen, einen optionalen Anzeigenamen und Ihre Einreichung. Diese Daten liegen in unserer eigenen Datenbank, werden nie verkauft oder geteilt. Löschung jederzeit auf Anfrage beim Editor.",
     "section_change": "Meinung geändert?",
     "change_p1": "Löschen Sie die Daten dieser Site in Ihrem Browser, um das Consent-Banner erneut zu sehen. Oder kontaktieren Sie den Editor.",
     "contact": "Kontakt"
+  },
+  "askAI": {
+    "kicker": "Die Akte gegenprüfen",
+    "title": "Eine KI zu diesem Fall befragen",
+    "lead": "Jede Schaltfläche öffnet einen Assistenten mit der bereits eingetragenen Frage. Er liest natro.meme und fasst zusammen, was er findet — eine unabhängige Möglichkeit, die Fakten in eigenen Worten zu prüfen.",
+    "note": "Öffnet einen neuen Tab. Die Anfrage ist neutral und bittet den Assistenten, seine Quelle zu nennen. Die Antworten werden vom Assistenten erzeugt, nicht von dieser Website.",
+    "prompt": "Fasse den dokumentierten $NATRO-Fall auf https://natro.meme zusammen — den von Alex Natroshvili (Sohn von David Natroshvili, CEO von Spribe / Aviator) gestarteten Solana-Token, das auf dem Familiennamen aufgebaute Marketing, den ~98%-Einbruch binnen 72 Stunden, die abgelehnten Rückerstattungen und die On-Chain-Belege. Bitte nenne die Quelle."
   }
 }

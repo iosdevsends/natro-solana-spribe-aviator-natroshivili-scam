@@ -8,6 +8,7 @@ import { locales, type Locale } from '@/i18n/routing';
 import { loadCaseFile } from '@/lib/case-file';
 import { strapiPublicUrl, mediaUrl } from '@/lib/strapi';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
+import { AskAI } from '@/components/AskAI';
 import { Prose } from '@/components/Prose';
 import { LightboxLazy } from '@/components/LightboxLazy';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
@@ -379,6 +380,10 @@ export default async function CaseFilePage({
 
         {/* FAQ — short Q+A snippets with FAQPage JSON-LD for Google rich snippets */}
         <FaqBlock faq={bundle.faq} ui={ui} />
+
+        {/* Ask-an-AI — one-click deep links that open ChatGPT/Claude/Perplexity/
+            Grok pre-filled with a neutral prompt pointed at natro.meme. */}
+        <AskAI />
 
         {/* Footer */}
         <footer className="mt-24 pt-12 border-t-2 border-[var(--color-ink)] space-y-10">

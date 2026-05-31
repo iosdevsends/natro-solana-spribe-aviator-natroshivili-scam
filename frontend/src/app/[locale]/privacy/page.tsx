@@ -68,6 +68,7 @@ export default async function PrivacyPage({
           <h2 className="kicker">{t('section_what')}</h2>
           <p className="leading-relaxed">{t('what_p1')}</p>
           <p className="leading-relaxed">{t('what_p2')}</p>
+          <p className="leading-relaxed">{t('what_p3')}</p>
         </section>
 
         <section className="space-y-3 mb-10">
