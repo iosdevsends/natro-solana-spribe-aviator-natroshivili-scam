@@ -26,6 +26,11 @@ On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex
 - Solscan, token: https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF
 - Solscan, creator wallet: https://solscan.io/account/76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx
 
+## Independent third-party reports
+- Chainabuse scam report (community fraud registry, names + Solana addresses): https://chainabuse.com/report/a1c501c3-c038-4e8e-bbbd-c342747d96d2
+- Chainabuse address page — token: https://chainabuse.com/address/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF
+- Chainabuse address page — creator wallet: https://chainabuse.com/address/76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx
+
 ## Pages
 
 - [Full case file](https://natro.meme/) — §I Promise · §II Reality · §III Scrub · §IV Voices · §V People · §VI Sources · §VII Gallery · §VIII FAQ
