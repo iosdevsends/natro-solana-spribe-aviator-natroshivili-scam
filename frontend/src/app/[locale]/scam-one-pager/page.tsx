@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
+import { AskAI } from '@/components/AskAI';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { Prose } from '@/components/Prose';
 import { LightboxLazy } from '@/components/LightboxLazy';
@@ -212,6 +213,8 @@ export default async function ScamOnePagerPage({
             </li>
           </ul>
         </nav>
+
+        <AskAI />
       </main>
     </>
   );

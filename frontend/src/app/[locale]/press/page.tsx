@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { locales, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
+import { AskAI } from '@/components/AskAI';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
@@ -291,6 +292,8 @@ export default async function PressPage({
             </li>
           </ul>
         </section>
+
+        <AskAI />
 
         {/* Print marker */}
         <div className="mt-12 text-center label-strap text-[10px]">### END ###</div>
