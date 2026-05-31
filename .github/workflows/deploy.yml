@@ -13,7 +13,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: production
-    timeout-minutes: 25
+    # Full sequential Docker rebuild (backend then frontend) on the small
+    # shared host runs ~18 min cold but exceeds 25 min when the previous stack
+    # is already resident (less free RAM → slower build), so the job was being
+    # cancelled before `docker compose up -d` and new images never went live.
+    timeout-minutes: 45
     steps:
       - name: Configure SSH
         run: |
