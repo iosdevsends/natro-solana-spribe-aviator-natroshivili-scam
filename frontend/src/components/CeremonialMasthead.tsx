@@ -131,7 +131,7 @@ export async function CeremonialMasthead({
           <li>
             <Link
               href="/scam-one-pager"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
+              className="no-underline border border-[var(--color-accent)] px-2.5 py-1 rounded-[3px] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition-colors"
             >
               {(uiStrings?.['nav.summary'] || 'Summary').toUpperCase()}
             </Link>
@@ -139,7 +139,7 @@ export async function CeremonialMasthead({
           <li>
             <Link
               href="/on-chain"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
+              className="no-underline border border-[var(--color-accent)] px-2.5 py-1 rounded-[3px] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition-colors"
             >
               {(uiStrings?.['nav.onchain'] || 'On-chain').toUpperCase()}
             </Link>
@@ -147,7 +147,7 @@ export async function CeremonialMasthead({
           <li>
             <Link
               href="/press"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
+              className="no-underline border border-[var(--color-accent)] px-2.5 py-1 rounded-[3px] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition-colors"
             >
               {(uiStrings?.['nav.press'] || 'Press').toUpperCase()}
             </Link>
@@ -155,7 +155,7 @@ export async function CeremonialMasthead({
           <li>
             <Link
               href="/reputation"
-              className="hover:text-[var(--color-accent-soft)] transition-colors no-underline px-1 py-1"
+              className="no-underline bg-[var(--color-accent)] text-[var(--color-paper)] px-2.5 py-1 rounded-[3px] font-medium hover:bg-[var(--color-accent-soft)] transition-colors"
             >
               {reputationLabel.toUpperCase()}
             </Link>
