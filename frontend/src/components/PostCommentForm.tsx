@@ -36,7 +36,6 @@ export function PostCommentForm({ locale }: { locale: Locale }) {
       body: (fd.get('body') as string)?.trim(),
       authorDisplayName: anonymous ? undefined : (fd.get('authorDisplayName') as string)?.trim() || undefined,
       isAnonymous: anonymous,
-      country: (fd.get('country') as string)?.trim() || undefined,
       locale,
       turnstileToken,
     };
@@ -91,27 +90,16 @@ export function PostCommentForm({ locale }: { locale: Locale }) {
         />
       </label>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <label className="block">
-          <span className="block label-strap mb-2">{t('fieldName')}</span>
-          <input
-            name="authorDisplayName"
-            maxLength={80}
-            disabled={anonymous}
-            placeholder={t('fieldNamePlaceholder')}
-            className="w-full border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2 text-base focus:outline-none focus:border-[var(--color-ink)] disabled:opacity-40"
-          />
-        </label>
-        <label className="block">
-          <span className="block label-strap mb-2">{t('fieldCountry')}</span>
-          <input
-            name="country"
-            maxLength={64}
-            placeholder={t('fieldCountryPlaceholder')}
-            className="w-full border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2 text-base focus:outline-none focus:border-[var(--color-ink)]"
-          />
-        </label>
-      </div>
+      <label className="block">
+        <span className="block label-strap mb-2">{t('fieldName')}</span>
+        <input
+          name="authorDisplayName"
+          maxLength={80}
+          disabled={anonymous}
+          placeholder={t('fieldNamePlaceholder')}
+          className="w-full border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2 text-base focus:outline-none focus:border-[var(--color-ink)] disabled:opacity-40"
+        />
+      </label>
 
       <label className="flex items-start gap-2 cursor-pointer">
         <input
