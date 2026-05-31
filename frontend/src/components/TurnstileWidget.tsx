@@ -61,21 +61,39 @@ export function TurnstileWidget({ onToken, onExpired, onError }: Props) {
   const widgetIdRef = useRef<string | null>(null);
   const sitekey = process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY;
 
+  // Keep the latest callbacks in refs so the render effect can depend on
+  // `sitekey` alone. Parents pass inline callbacks (e.g. `() => setToken(null)`)
+  // whose identity changes every render; if those were effect dependencies the
+  // widget would be torn down and re-created on each parent re-render — and
+  // since solving the CAPTCHA calls back into the parent (state update →
+  // re-render), that produced an endless "Verifying…" flicker loop.
+  const onTokenRef = useRef(onToken);
+  const onExpiredRef = useRef(onExpired);
+  const onErrorRef = useRef(onError);
+  // Sync the latest callbacks into refs after each render (not during render).
+  useEffect(() => {
+    onTokenRef.current = onToken;
+    onExpiredRef.current = onExpired;
+    onErrorRef.current = onError;
+  });
+
   useEffect(() => {
     if (!sitekey || !containerRef.current) return;
     let cancelled = false;
     loadScript().then(() => {
       if (cancelled || !containerRef.current || !window.turnstile) return;
+      // Render exactly once — guards against React StrictMode double-invoke.
+      if (widgetIdRef.current) return;
       try {
         widgetIdRef.current = window.turnstile.render(containerRef.current, {
           sitekey,
           theme: 'light',
-          callback: (token: string) => onToken(token),
-          'error-callback': () => onError?.(),
-          'expired-callback': () => onExpired?.(),
+          callback: (token: string) => onTokenRef.current(token),
+          'error-callback': () => onErrorRef.current?.(),
+          'expired-callback': () => onExpiredRef.current?.(),
         });
       } catch {
-        onError?.();
+        onErrorRef.current?.();
       }
     });
     return () => {
@@ -86,9 +104,10 @@ export function TurnstileWidget({ onToken, onExpired, onError }: Props) {
         } catch {
           /* ignore */
         }
+        widgetIdRef.current = null;
       }
     };
-  }, [sitekey, onToken, onExpired, onError]);
+  }, [sitekey]);
 
   if (!sitekey) return null;
   return <div ref={containerRef} className="mt-2" />;
