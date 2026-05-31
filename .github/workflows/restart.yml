@@ -1,0 +1,46 @@
+name: Restart backend
+
+# Manual-only. Restarts the Strapi (backend) container so it re-reads API-token
+# permissions / .env, then prints a direct token diagnostic. Fast (no rebuild).
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 10
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          echo "${{ secrets.DEPLOY_HOST_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Restart Strapi + token diagnostic
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          ssh -i ~/.ssh/id_deploy \
+            -o StrictHostKeyChecking=accept-new \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=20 \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            "set -e
+             cd $DEPLOY_PATH
+             TOKEN=\$(grep -E '^STRAPI_API_TOKEN=' .env | cut -d= -f2- | tr -d '\"' | tr -d \"'\")
+             echo \"token length = \${#TOKEN}\"
+             printf 'create BEFORE restart => '
+             curl -s -o /dev/null -w '%{http_code}\n' -X POST http://127.0.0.1:1338/api/case-comments -H \"Authorization: Bearer \$TOKEN\" -H 'Content-Type: application/json' -d '{\"data\":{\"body\":\"ci token test\"}}'
+             docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml restart backend
+             echo 'waiting for Strapi to boot...'
+             sleep 40
+             printf 'create AFTER restart  => '
+             curl -s -o /dev/null -w '%{http_code}\n' -X POST http://127.0.0.1:1338/api/case-comments -H \"Authorization: Bearer \$TOKEN\" -H 'Content-Type: application/json' -d '{\"data\":{\"body\":\"ci token test 2\"}}'"
