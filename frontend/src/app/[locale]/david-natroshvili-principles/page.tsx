@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
@@ -26,6 +27,20 @@ import {
 } from '@/content/david-principles';
 
 const PATH = '/david-natroshvili-principles';
+
+// The carousel as posted, in slide order (@davi.natroshvili, 1 June 2026).
+// Screenshots resized to 900px wide; heights vary, declared per image to
+// avoid layout shift.
+const GALLERY: Array<{ src: string; w: number; h: number; alt: string }> = [
+  { src: '/exhibits/ex27-david-principles-1.jpg', w: 900, h: 1323, alt: 'Instagram slide: “My core principles & insights”' },
+  { src: '/exhibits/ex27-david-principles-2.jpg', w: 900, h: 1257, alt: 'Instagram slide: “People > Everything — connections and communication are the ultimate business currency”' },
+  { src: '/exhibits/ex27-david-principles-3.jpg', w: 900, h: 1341, alt: 'Instagram slide: “You don’t need to know it all to start”' },
+  { src: '/exhibits/ex27-david-principles-4.jpg', w: 900, h: 1246, alt: 'Instagram slide: “Play for the joy, not just the win”' },
+  { src: '/exhibits/ex27-david-principles-5.jpg', w: 900, h: 1349, alt: 'Instagram slide: “Family first — always no matter what”' },
+  { src: '/exhibits/ex27-david-principles-6.jpg', w: 900, h: 1278, alt: 'Instagram slide: “Rejection isn’t a loss”' },
+  { src: '/exhibits/ex27-david-principles-7.jpg', w: 900, h: 1324, alt: 'Instagram slide: “Love the grind”' },
+  { src: '/exhibits/ex27-david-principles-8.jpg', w: 900, h: 1395, alt: 'Instagram slide: “The best is yet to come”' },
+];
 
 /**
  * "Stated values, documented conduct" — a single-subject page built around
@@ -154,7 +169,29 @@ export default async function DavidNatroshviliPrinciplesPage({
               </li>
             ))}
           </ul>
-          <p className="mt-4 sans text-[11px] text-[var(--color-ink-faint)]">
+
+          {/* The carousel itself — screenshots in slide order */}
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {GALLERY.map((g) => (
+              <a
+                key={g.src}
+                href={g.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden"
+              >
+                <Image
+                  src={g.src}
+                  alt={g.alt}
+                  width={g.w}
+                  height={g.h}
+                  sizes="(max-width: 640px) 45vw, 180px"
+                  className="w-full h-auto"
+                />
+              </a>
+            ))}
+          </div>
+          <p className="mt-3 sans text-[11px] text-[var(--color-ink-faint)]">
             {c.postAttrib}
           </p>
         </section>
