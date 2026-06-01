@@ -17,7 +17,14 @@
     "gallery": "Gallery",
     "stories": "Reader stories",
     "submit": "Submit a story",
-    "reputation": "Mur de la réputation"
+    "reputation": "Mur de la réputation",
+    "more": "Plus",
+    "davidCase": "David Natroshvili et $NATRO",
+    "davidPrinciples": "« My core principles »",
+    "profileAlex": "Alex Natroshvili — profil",
+    "profileDavid": "David Natroshvili — profil",
+    "factSheet": "Fiche d’information",
+    "privacy": "Confidentialité"
   },
   "wall": {
     "kicker": "Le prix d’un nom",

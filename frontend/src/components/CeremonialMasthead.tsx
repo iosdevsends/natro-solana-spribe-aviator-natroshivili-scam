@@ -167,6 +167,39 @@ export async function CeremonialMasthead({
         </ul>
       </nav>
 
+      {/* 4b — "More" disclosure: every secondary page that isn't a nav pill,
+          so the orphan routes (the David pages, profiles, stories, fact sheet,
+          privacy) are reachable from the global menu on every page — good for
+          readers and for internal-linking / indexing. CSS-only <details> (no
+          JS); placed outside the overflow-x-auto nav above so the expanded
+          row is never clipped. */}
+      <details className="group border-t border-[var(--color-rule)] print:hidden">
+        <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer select-none py-2 text-center sans uppercase tracking-[0.16em] text-[11px] text-[var(--color-accent)] hover:text-[var(--color-accent-soft)] transition-colors">
+          {tNav('more')}{' '}
+          <span aria-hidden="true" className="inline-block transition-transform group-open:rotate-180">▾</span>
+        </summary>
+        <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 pb-3 sans text-xs text-[var(--color-accent)]">
+          {[
+            { href: '/david-natroshvili-scam', label: tNav('davidCase') },
+            { href: '/david-natroshvili-principles', label: tNav('davidPrinciples') },
+            { href: '/people/alex-natroshvili', label: tNav('profileAlex') },
+            { href: '/people/david-natroshvili', label: tNav('profileDavid') },
+            { href: '/stories', label: tNav('stories') },
+            { href: '/press/fact-sheet', label: tNav('factSheet') },
+            { href: '/privacy', label: tNav('privacy') },
+          ].map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="no-underline hover:text-[var(--color-accent-soft)] transition-colors"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </details>
+
       {/* 5 — Black status strap */}
       <div className="bg-[var(--color-ink)] text-[var(--color-paper)] px-4 sm:px-6 py-2 flex items-center justify-between gap-3 mono text-[10px] tracking-widest uppercase">
         <span className="flex items-center gap-2 min-w-0">

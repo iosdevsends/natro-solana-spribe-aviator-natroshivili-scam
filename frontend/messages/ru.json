@@ -17,7 +17,14 @@
     "gallery": "Галерея",
     "stories": "Истории читателей",
     "submit": "Прислать историю",
-    "reputation": "Стена репутации"
+    "reputation": "Стена репутации",
+    "more": "Ещё",
+    "davidCase": "David Natroshvili и $NATRO",
+    "davidPrinciples": "«My core principles»",
+    "profileAlex": "Alex Natroshvili — профиль",
+    "profileDavid": "David Natroshvili — профиль",
+    "factSheet": "Сводка фактов",
+    "privacy": "Приватность"
   },
   "wall": {
     "kicker": "Цена имени",
