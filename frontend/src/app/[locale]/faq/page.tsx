@@ -1,4 +1,4 @@
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -51,18 +51,6 @@ export default async function FaqIndexPage({
   const bundle = await loadCaseFile(loc);
   const faq = bundle.faq;
   const ui = bundle.config.uiStrings || {};
-  const tNav = await getTranslations('nav');
-
-  // Secondary pages not in the main nav, surfaced here as a collapsible list
-  // (reader stories omitted — superseded by the reputation wall).
-  const morePages: Array<{ href: string; label: string }> = [
-    { href: '/david-natroshvili-scam', label: tNav('davidCase') },
-    { href: '/david-natroshvili-principles', label: tNav('davidPrinciples') },
-    { href: '/people/alex-natroshvili', label: tNav('profileAlex') },
-    { href: '/people/david-natroshvili', label: tNav('profileDavid') },
-    { href: '/press/fact-sheet', label: tNav('factSheet') },
-    { href: '/privacy', label: tNav('privacy') },
-  ];
 
   const pageUrl = absoluteUrl(loc, '/faq');
   const jsonLd = {
@@ -129,25 +117,6 @@ export default async function FaqIndexPage({
             </li>
           ))}
         </ol>
-
-        {/* Secondary pages, collapsible. CSS-only <details> (no JS). */}
-        <section className="mt-12 border-t-2 border-[var(--color-ink)] pt-6">
-          <details className="group">
-            <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer select-none sans uppercase tracking-[0.16em] text-xs text-[var(--color-accent)] hover:text-[var(--color-accent-soft)] transition-colors">
-              {tNav('more')}{' '}
-              <span aria-hidden="true" className="inline-block transition-transform group-open:rotate-180">▾</span>
-            </summary>
-            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 sans text-sm">
-              {morePages.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="hover:text-[var(--color-accent)]">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </details>
-        </section>
       </main>
     </>
   );

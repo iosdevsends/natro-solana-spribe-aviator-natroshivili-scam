@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { NavMenuDropdown } from './NavMenuDropdown';
 import { PublicationTimer } from './PublicationTimer';
 import type { Locale } from '@/i18n/routing';
 
@@ -51,6 +52,21 @@ export async function CeremonialMasthead({
   // link reads correctly in every language without a CMS edit.
   const tNav = await getTranslations('nav');
   const reputationLabel = tNav('reputation');
+
+  // The "Summary" nav pill is a dropdown: the one-pager itself plus every
+  // secondary page that isn't otherwise in the menu (the David pages, the
+  // profiles, the fact sheet, privacy). Labels resolved server-side here and
+  // passed to the client dropdown component.
+  const summaryLabel = uiStrings?.['nav.summary'] || 'Summary';
+  const summaryMenuItems = [
+    { href: '/scam-one-pager', label: summaryLabel },
+    { href: '/david-natroshvili-scam', label: tNav('davidCase') },
+    { href: '/david-natroshvili-principles', label: tNav('davidPrinciples') },
+    { href: '/people/alex-natroshvili', label: tNav('profileAlex') },
+    { href: '/people/david-natroshvili', label: tNav('profileDavid') },
+    { href: '/press/fact-sheet', label: tNav('factSheet') },
+    { href: '/privacy', label: tNav('privacy') },
+  ];
 
   const nav: Array<{ key: string; hash: string; label: string }> = [
     { key: 'promise', hash: 'promise', label: shortLabel(uiStrings?.['nav.promise'], 'Promise') },
@@ -129,12 +145,7 @@ export async function CeremonialMasthead({
           ))}
           <li className="opacity-50 select-none px-1" aria-hidden="true">|</li>
           <li>
-            <Link
-              href="/scam-one-pager"
-              className="no-underline border border-[var(--color-accent)] px-2.5 py-1 rounded-[3px] hover:bg-[var(--color-accent)] hover:text-[var(--color-paper)] transition-colors"
-            >
-              {(uiStrings?.['nav.summary'] || 'Summary').toUpperCase()}
-            </Link>
+            <NavMenuDropdown label={summaryLabel.toUpperCase()} items={summaryMenuItems} />
           </li>
           <li>
             <Link
