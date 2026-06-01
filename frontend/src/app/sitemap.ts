@@ -16,6 +16,7 @@ const STATIC_PATHS = [
   '/faq',
   '/on-chain',
   '/david-natroshvili-scam',
+  '/david-natroshvili-principles',
   '/people',
   '/people/alex-natroshvili',
   '/people/david-natroshvili',
