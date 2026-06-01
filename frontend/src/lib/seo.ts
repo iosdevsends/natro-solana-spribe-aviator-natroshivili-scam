@@ -55,6 +55,8 @@ const OG_LOCALES: Record<Locale, string> = {
   de: 'de_DE',
   es: 'es_ES',
   ar: 'ar_AR',
+  ur: 'ur_PK',
+  hi: 'hi_IN',
 };
 
 export function ogLocale(locale: Locale): string {

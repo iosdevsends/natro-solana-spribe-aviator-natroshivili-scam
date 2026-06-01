@@ -1,6 +1,6 @@
 import { defineRouting } from 'next-intl/routing';
 
-export const locales = ['en', 'ru', 'uk', 'ka', 'fr', 'de', 'es', 'ar'] as const;
+export const locales = ['en', 'ru', 'uk', 'ka', 'fr', 'de', 'es', 'ar', 'ur', 'hi'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
@@ -10,7 +10,7 @@ export const defaultLocale: Locale = 'en';
  * `<html dir>` from this; `globals.css` has a small block of RTL-aware
  * overrides for the few directional Tailwind classes used in the layout.
  */
-export const rtlLocales: ReadonlyArray<Locale> = ['ar'];
+export const rtlLocales: ReadonlyArray<Locale> = ['ar', 'ur'];
 
 export function isRtlLocale(locale: string): boolean {
   return rtlLocales.includes(locale as Locale);
@@ -25,6 +25,8 @@ export const localeLabels: Record<Locale, string> = {
   de: 'DE',
   es: 'ES',
   ar: 'AR',
+  ur: 'UR',
+  hi: 'HI',
 };
 
 export const localeFullNames: Record<Locale, string> = {
@@ -36,6 +38,8 @@ export const localeFullNames: Record<Locale, string> = {
   de: 'Deutsch',
   es: 'Español',
   ar: 'العربية',
+  ur: 'اردو',
+  hi: 'हिन्दी',
 };
 
 /**
@@ -57,6 +61,8 @@ export const localeFlags: Record<Locale, string> = {
   de: '🇩🇪',
   es: '🇪🇸',
   ar: '🇸🇦',
+  ur: '🇵🇰',
+  hi: '🇮🇳',
 };
 
 export const routing = defineRouting({

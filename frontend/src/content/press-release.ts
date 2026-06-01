@@ -14,6 +14,8 @@ import { fr } from './press-i18n/fr';
 import { de } from './press-i18n/de';
 import { es } from './press-i18n/es';
 import { ar } from './press-i18n/ar';
+import { ur } from './press-i18n/ur';
+import { hi } from './press-i18n/hi';
 
 /** A single external-coverage item shown in the "In the press" section. */
 export interface PressCoverageItem {
@@ -199,7 +201,7 @@ export const pressContent: Record<string, PressContent> = {
 
 // Non-first-class locales translated in ./press-i18n/*.ts (full press surface
 // in every project language; falls back to EN only for unknown locales).
-Object.assign(pressContent, { uk, ka, fr, de, es, ar });
+Object.assign(pressContent, { uk, ka, fr, de, es, ar, ur, hi });
 
 export function getPressContent(locale: string): PressContent {
   return pressContent[locale] || pressContent.en;

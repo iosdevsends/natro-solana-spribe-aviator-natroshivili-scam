@@ -25,6 +25,8 @@ import { fr } from './people-i18n/fr';
 import { de } from './people-i18n/de';
 import { es } from './people-i18n/es';
 import { ar } from './people-i18n/ar';
+import { ur } from './people-i18n/ur';
+import { hi } from './people-i18n/hi';
 
 export interface PersonProfileSection {
   heading: string;
@@ -371,6 +373,8 @@ const PEOPLE_I18N: Partial<Record<Locale, PeopleLocaleBundle>> = {
   de,
   es,
   ar,
+  ur,
+  hi,
 };
 
 /** Localized chrome for a locale, falling back to English for any missing string. */

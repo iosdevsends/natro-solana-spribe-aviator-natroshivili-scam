@@ -504,6 +504,120 @@ export const faqAr: FaqEntryDTO[] = [
   },
 ];
 
+export const faqUr: FaqEntryDTO[] = [
+  {
+    id: 1, slug: 'is-natro-a-scam', order: 1,
+    question: 'کیا $NATRO ایک اسکیم ہے؟',
+    shortAnswer: 'Pump.fun کی bonding curve graduate ہو گئی، یعنی پروٹوکول کی سطح پر کنٹریکٹ کی سطح کا کوئی rug نہیں ہوا — ٹیم مائیگریٹ شدہ AMM pool کو خالی نہیں کر سکتی۔ جو ہوا وہ یہ: متاثرہ ابتدائی ہولڈرز کو رقم کی واپسی سے انکار کیا گیا، ویب سائٹ اور پروموشنل لنکس مٹا دیے گئے، اور بانی نے ایک منظم تجویز کے جواب میں "stfu" کہا۔ فائل اس طرزِ عمل کو مارکیٹنگ ریکارڈ کے مقابل دستاویز کرتی ہے۔ قارئین اپنا نتیجہ خود اخذ کرتے ہیں۔',
+    extendedBody: 'ایماندارانہ جواب کے لیے دو سوالوں میں فرق کرنا ضروری ہے۔\n\n**کیا کنٹریکٹ کی سطح کا rug-pull ہوا؟** نہیں۔ 21 مئی 2026 کو $NATRO Solana ٹوکن Pump.fun پر لانچ ہوا اور bonding-curve کے graduation threshold تک پہنچا (تقریباً 85 SOL جمع شدہ آمد، لانچ والے دن کے SOL ریٹ پر تقریباً $65–85K)۔ threshold تک پہنچنے پر، Pump.fun خودکار طور پر لیکویڈیٹی کو ایک کھلے AMM pool (`pump_swap_pool: 7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS`) میں مائیگریٹ کرتا ہے اور **اس pool کے LP tokens کو جلا دیتا ہے**۔ اس مقام پر ٹیم کے پاس خود pool کو خالی کرنے کی تکنیکی صلاحیت باقی نہیں رہتی۔ کنٹریکٹ کا Pump.fun mint state عوامی طور پر `complete: true` ریکارڈ کرتا ہے۔\n\n**کیا ٹیم نے اپنی ہی مارکیٹنگ کے مطابق رویہ اختیار کیا؟** نہیں، اور یہی وہ چیز ہے جو فائل دستاویز کرتی ہے۔ مارکیٹنگ پچ صراحتاً ناتروشویلی خاندانی نام اور Spribe / Aviator کے تعلق پر ٹِکی ہوئی تھی۔ natrocoin.net کا FAQ (ہٹائے جانے سے پہلے Wayback Machine پر محفوظ) نے rug-pull کے سوال کا براہِ راست جواب دیا تھا: *"The reputation hit lasts forever; the cash from a rug doesn\'t."* جب قیمت گری اور متاثرہ ابتدائی ہولڈرز نے رقم کی واپسی کا مطالبہ کیا، تو ٹیم ایڈمن نے جواب دیا **"Nothing to say"** اور بانی نے ذاتی طور پر تصدیق شدہ Telegram کے ذریعے **"stfu"** کہا۔ ویب سائٹ آف لائن کر دی گئی، بانی کی Instagram بائیو سے NATRO لنک ہٹا دیا گیا، اور KOL ‏@jrcryptex کا ادا شدہ پروموشنل ویڈیو مٹا دیا گیا — یہ سب رقم کی واپسی سے انکار کے 72 گھنٹوں کے اندر۔\n\nآیا یہ طرزِ عمل کسی مخصوص دائرہ اختیار میں دھوکہ دہی کی قانونی حد کو پہنچتا ہے، یہ ریگولیٹرز اور عدالتوں کا سوال ہے، اس فائل کا نہیں۔ فائل بنیادی مآخذ پیش کرتی ہے اور قارئین کو اپنی رائے قائم کرنے دیتی ہے۔',
+    citations: [
+      { label: 'natrocoin.net کا Wayback آرکائیو (ہٹائے جانے سے پہلے)', url: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/' },
+      { label: 'Pump.fun mint state', url: 'https://pump.fun/coin/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+      { label: 'Solscan: ٹوکن کنٹریکٹ', url: 'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 2, slug: 'who-is-alex-natroshvili', order: 2,
+    question: 'الیکس ناتروشویلی کون ہے؟',
+    shortAnswer: '$NATRO Solana میمکوائن کا بانی (21 مئی 2026 کو لانچ) اور ڈیوڈ ناتروشویلی کا بیٹا — جو Spribe کے بانی اور CEO ہیں، وہ اسٹوڈیو جس کے پیچھے عالمی crash-style جوئے کی پروڈکٹ Aviator ہے۔ تصدیق شدہ Instagram ‏@natroalex (54.1K فالوورز)، Telegram ‏@natroalex1۔ لانچ کی مارکیٹنگ صراحتاً اس کے خاندانی نام پر ٹِکی ہوئی تھی۔',
+    extendedBody: 'الیکس ناتروشویلی کو $NATRO پروجیکٹ کی اپنی ویب سائٹ نے عوامی طور پر بانی کے طور پر شناخت کیا۔ ویب سائٹ کا بانی سیکشن اس جملے سے شروع ہوتا تھا: *"Most coin founders are anonymous. Alex isn\'t. His name is on the project, his face is on TikTok and Instagram, and his family is well-known globally."* اس کا ذاتی پروفائل یوں بیان کیا گیا تھا: *"Boxer / Car Collector / Watch Collector."*\n\nلانچ کے وقت اس کے قابلِ تصدیق عوامی اکاؤنٹس:\n- Instagram: [@natroalex](https://instagram.com/natroalex) (تصدیق شدہ، 54.1K فالوورز)\n- Telegram: [@natroalex1](https://t.me/natroalex1) (تصدیق شدہ)\n\nوہ **ڈیوڈ ناتروشویلی** کا بیٹا ہے، جو Spribe کے بانی اور CEO ہیں — وہ iGaming اسٹوڈیو جس کے پیچھے عالمی crash-style جوئے کی پروڈکٹ Aviator ہے۔ $NATRO کی مارکیٹنگ نے اس خاندانی مقام کو مرکزی اعتماد کے اشارے کے طور پر حوالہ دیا۔\n\n25 مئی 2026 کو 10:11 UTC پر، ایک متاثرہ ابتدائی ہولڈر کی جانب سے اس کے تصدیق شدہ Telegram اکاؤنٹ پر بھیجی گئی ایک منظم "رقم واپسی یا اشاعت" تجویز کے جواب میں، اس نے دو حروف میں جواب دیا: *"stfu."* یہ پیغام فائل کے شواہد کے مجموعے کے حصے کے طور پر محفوظ ہے۔',
+    citations: [
+      { label: 'Wayback آرکائیو — بانی سیکشن', url: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/' },
+      { label: 'Kutztown University Foundation — ناتروشویلی خاندان پر سیاق و سباق', url: 'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 3, slug: 'what-happened-to-natrocoin-net', order: 3,
+    question: 'natrocoin.net ویب سائٹ کے ساتھ کیا ہوا؟',
+    shortAnswer: 'سائٹ 24 مئی 2026 کو، رقم کی واپسی سے انکار کے 72 گھنٹوں کے اندر، آف لائن کر دی گئی۔ ہٹائے جانے سے پہلے کا مکمل ورژن Wayback Machine نے محفوظ کر لیا — ہیرو پچ، چار درجاتی سیڑھی، بانی سیکشن، ٹوکینومکس، اور مکمل FAQ (بشمول "What stops you from rugging?" کا جواب) سب وہاں محفوظ ہیں۔',
+    extendedBody: '24 مئی 2026 کو، natrocoin.net پر موجود سائٹ Netlify کا "Site not found" صفحہ واپس دینے لگی۔ مارکیٹنگ کاپی، درجات کی تفصیلات، بانی سیکشن، اور FAQ — بشمول اب اہم *"What stops you from rugging?"* جواب — canonical URL پر مزید عوامی طور پر قابلِ رسائی نہ رہے۔\n\nہٹائے جانے سے پہلے، Wayback Machine نے 21 مئی 2026 کو 21:32 UTC پر سائٹ کا ایک **مکمل snapshot** محفوظ کیا۔ snapshot میں شامل ہیں:\n\n- ہیرو پچ ("It\'s not about what you make. It\'s who picks up when you call.")\n- چار درجاتی رسائی کی سیڑھی (Foyer / Floor / Lounge / Salon · Inner Circle)\n- بانی سیکشن جو الیکس ناتروشویلی اور خاندانی تعلق کی شناخت کرتا ہے\n- ٹوکینومکس صفحہ (عوامی طور پر طے شدہ 30M founder bag کے ساتھ)\n- مکمل FAQ — بشمول *"What stops you from rugging?"* کا جواب (*"The reputation hit lasts forever; the cash from a rug doesn\'t."*)\n\nWayback URL مستقل اور قابلِ حوالہ ہے۔ فائل اس پر لانچ کے وقت اصل میں جو وعدہ کیا گیا تھا اس کے سب سے مضبوط واحد ثبوت کے طور پر انحصار کرتی ہے۔\n\nہٹایا جانا اسی 72 گھنٹے کی کھڑکی میں ہوا جس میں: بانی کی تصدیق شدہ Instagram بائیو سے natrocoin.net لنک کا ہٹایا جانا، اور KOL ‏@jrcryptex (114K فالوورز) کے ادا شدہ پروموشنل ویڈیو کا حذف ہونا۔',
+    citations: [
+      { label: 'Wayback آرکائیو — natrocoin.net (21 مئی 2026 کیپچر)', url: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 4, slug: 'did-spribe-endorse-natro', order: 4,
+    question: 'کیا Spribe (جوئے کے اسٹوڈیو) نے $NATRO کی توثیق کی؟',
+    shortAnswer: 'Spribe corporate نے عوامی طور پر کوئی تبصرہ نہیں کیا۔ Spribe کے بانی اور CEO، ڈیوڈ ناتروشویلی ($NATRO کے بانی الیکس کے والد) نے اپنے ہی تصدیق شدہ Instagram اکاؤنٹ سے لانچ کو فروغ دیا — بشمول ادا شدہ پروموشنل ویڈیو کا reshare۔ 25 مئی 2026 کو Spribe کے قانونی چینلز کو ایک رسمی خط بھیجا گیا۔ فائل تیار کیے جانے کے وقت تک، کوئی عوامی جواب نہیں۔',
+    extendedBody: 'Spribe ایک علیحدہ لائسنس یافتہ iGaming اسٹوڈیو ہے جس کی متعدد دائرہ اختیار میں سرگرمیاں ہیں۔ **Spribe corporate نے $NATRO کے لانچ پر عوامی طور پر کوئی تبصرہ نہیں کیا**۔ فائل ایک ادارے کے طور پر Spribe کی جانب سے توثیق کا الزام نہیں لگاتی۔\n\nجو حقیقت کے طور پر دستاویز شدہ ہے:\n\n- **ڈیوڈ ناتروشویلی**، Spribe کے بانی اور CEO اور الیکس ناتروشویلی کے والد، نے اپنے تصدیق شدہ Instagram اکاؤنٹ ([@davidnatro1](https://instagram.com/davidnatro1)) سے **ذاتی طور پر لانچ کو فروغ دیا**، بشمول KOL ‏@jrcryptex کے تیار کردہ ادا شدہ پروموشنل ویڈیو کا reshare۔\n- $NATRO کے مارکیٹنگ مواد نے Spribe / Aviator کے تعلق کو اعتماد کے اشارے کے طور پر حوالہ دیا — مثال کے طور پر، ویب سائٹ کے بانی سیکشن نے خاندانی تعلق کی صراحتاً شناخت کی۔\n- 25 مئی 2026 کو 12:24 UTC پر، ایک متاثرہ ہولڈر نے Spribe کے کارپوریٹ اور قانونی ای میل چینلز (`info@spribe.co`، `legal@spribe.co`، اور دو نامزد ایگزیکٹو پتے) کو ایک رسمی خط بھیجا جس میں حقائق بیان کیے اور ایک صاف ستھرا نجی حل کا راستہ پیش کیا۔ **اس فائل کی تیاری کے وقت تک، ان چینلز کے ذریعے کوئی عوامی جواب** موصول نہیں ہوا۔\n\nاگر Spribe corporate کوئی عوامی بیان شائع کرتی ہے تو یہ FAQ اندراج اپ ڈیٹ کیا جائے گا۔ فائل کے فوٹر میں "Right of reply" سیکشن کسی بھی ایسے جواب کو من و عن شائع کرنے کے ادارتی عزم کو دستاویز کرتا ہے۔',
+    citations: [
+      { label: 'ڈیوڈ ناتروشویلی — Spribe LinkedIn / SPRIBE آفیشل چینل', url: 'https://www.linkedin.com/company/spribe/' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 5, slug: 'is-natro-token-still-trading', order: 5,
+    question: 'کیا $NATRO ٹوکن اب بھی ٹریڈ ہو رہا ہے؟',
+    shortAnswer: 'تکنیکی طور پر ہاں — Solana پر SPL ٹوکن موجود ہے (mint authority is None، freeze authority is None) اور pump_swap AMM pool فعال ہے۔ عملی طور پر مارکیٹ تقریباً مردہ ہے: فائل کی تیاری کے وقت مارکیٹ کیپ تقریباً $36 ہے، DexScreener صفر فعال جوڑے دکھاتا ہے (ان کی لیکویڈیٹی حد کے نیچے خودکار طور پر چھپے ہوئے)، اور آخری ٹریڈ تقریباً 25 مئی 2026 تھا۔',
+    extendedBody: 'یہاں تین مختلف تصورات آپس میں خلط ملط ہو جاتے ہیں۔ انہیں الگ کرتے ہیں:\n\n**1. کیا ٹوکن اب بھی Solana پر موجود ہے؟**\n\nہاں۔ بلاک چین کی حالت ناقابلِ تبدیل ہے — ایک ٹوکن، ایک بار mint ہو جائے، تو اسے کوئی حذف نہیں کر سکتا۔ ‏`9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF` پر موجود $NATRO mint initialize شدہ ہے، اس کی کل سپلائی 1,000,000,000 ہے، اور Pump.fun کی جانب سے **بین نہیں** کیا گیا (`is_banned: false`)۔ اہم بات:\n\n- **Mint authority: None** — کوئی نئے ٹوکن جاری نہیں کیے جا سکتے۔\n- **Freeze authority: None** — ہولڈرز کو منجمد نہیں کیا جا سکتا۔\n\nیہ ترتیبات fair-launch میمکوائنز کے لیے عام ہیں اور لانچ کے بعد تبدیل نہیں کی گئیں۔\n\n**2. کیا خریدنے/بیچنے کے لیے کوئی مارکیٹ ہے؟**\n\nعملی طور پر نہیں۔ Pump.fun bonding curve graduate ہو گئی، یعنی لیکویڈیٹی AMM pool ‏`7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS` میں مائیگریٹ ہو گئی۔ graduation کے بعد:\n\n- **Real SOL reserves: 0**\n- **Real token reserves: 0**\n- **مارکیٹ کیپ: ≈$36** (اس فائل کی تیاری کے وقت Pump.fun API کے مطابق — لانچ پر $200K سے زیادہ کی چوٹی سے گرا)\n- **آخری ٹریڈ**: ≈25 مئی 2026 — اس کے بعد کئی دن صفر والیوم۔\n\nDexScreener کا API ٹوکن کے لیے صفر جوڑے واپس کرتا ہے کیونکہ ان کا عوامی فیڈ لیکویڈیٹی حد سے نیچے کے pools کو خودکار طور پر چھپا دیتا ہے۔ pool تکنیکی طور پر اب بھی موجود ہے؛ aggregators نے اسے فہرست میں رکھنا بند کر دیا ہے کیونکہ عملاً کوئی فعال مارکیٹ نہیں۔\n\n**3. کیا ٹیم نے لیکویڈیٹی نکالی؟**\n\nنہیں — وہ نہیں کر سکتے۔ Pump.fun graduation پر، مائیگریٹ شدہ pool کے LP tokens پروٹوکول کے ذریعے خودکار طور پر جلا دیے جاتے ہیں، جس سے ٹیم کی pool کو خالی کرنے کی تکنیکی صلاحیت ختم ہو جاتی ہے۔ $200K سے زیادہ کی چوٹی سے ≈$36 تک کا انہدام **ایک کھلے AMM میں ہولڈرز کے بیچنے** سے ہوا، نہ کہ کنٹریکٹ کی سطح کے rug-pull سے۔\n\nیہ فرق ادارتی طور پر اہم ہے: ٹیم نے وہ مخصوص عمل نہیں کیا جس کا ان کا اپنا FAQ ("What stops you from rugging?") جواب دے رہا تھا۔ بلکہ، لانچ کے پروٹوکول کی نافذ کردہ جواز کی حد تک پہنچنے کے بعد، ٹیم نے ان ہولڈرز کے ساتھ بات چیت نہ کرنے کا انتخاب کیا جنہوں نے ان کی بات پر یقین کیا تھا۔',
+    citations: [
+      { label: 'Solscan — $NATRO ٹوکن', url: 'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+      { label: 'Pump.fun — coin state', url: 'https://pump.fun/coin/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+];
+
+export const faqHi: FaqEntryDTO[] = [
+  {
+    id: 1, slug: 'is-natro-a-scam', order: 1,
+    question: 'क्या $NATRO एक घोटाला है?',
+    shortAnswer: 'Pump.fun की bonding curve graduate हो गई, यानी प्रोटोकॉल स्तर पर कॉन्ट्रैक्ट-स्तरीय कोई rug नहीं हुआ — टीम माइग्रेट किए गए AMM pool को खाली नहीं कर सकती। जो हुआ वह यह: प्रभावित शुरुआती होल्डरों को रिफंड देने से इनकार किया गया, वेबसाइट और प्रोमो लिंक हटा दिए गए, और संस्थापक ने एक संरचित प्रस्ताव के जवाब में "stfu" कहा। फ़ाइल इस आचरण को मार्केटिंग रिकॉर्ड के मुकाबले दर्ज करती है। पाठक अपना निष्कर्ष स्वयं निकालते हैं।',
+    extendedBody: 'ईमानदार उत्तर के लिए दो प्रश्नों में अंतर करना ज़रूरी है।\n\n**क्या कॉन्ट्रैक्ट-स्तरीय rug-pull हुआ?** नहीं। 21 मई 2026 को $NATRO Solana टोकन Pump.fun पर लॉन्च हुआ और bonding-curve graduation threshold तक पहुँचा (लगभग 85 SOL संचित अंतर्वाह, लॉन्च वाले दिन के SOL रेट पर लगभग $65–85K)। threshold तक पहुँचने पर, Pump.fun स्वचालित रूप से लिक्विडिटी को एक खुले AMM pool (`pump_swap_pool: 7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS`) में माइग्रेट करता है और **उस pool के LP tokens को जला देता है**। इस बिंदु पर टीम के पास pool को स्वयं खाली करने की तकनीकी क्षमता नहीं रहती। कॉन्ट्रैक्ट का Pump.fun mint state सार्वजनिक रूप से `complete: true` दर्ज करता है।\n\n**क्या टीम ने अपनी ही मार्केटिंग के अनुरूप व्यवहार किया?** नहीं, और यही वह बात है जो फ़ाइल दर्ज करती है। मार्केटिंग पिच स्पष्ट रूप से नात्रोशविली परिवार के नाम और Spribe / Aviator के जुड़ाव पर टिकी थी। natrocoin.net पर FAQ (हटाए जाने से पहले Wayback Machine पर संग्रहीत) ने rug-pull के प्रश्न का सीधा उत्तर दिया था: *"The reputation hit lasts forever; the cash from a rug doesn\'t."* जब कीमत गिरी और प्रभावित शुरुआती होल्डरों ने रिफंड माँगा, तो टीम एडमिन ने जवाब दिया **"Nothing to say"** और संस्थापक ने व्यक्तिगत रूप से सत्यापित Telegram के ज़रिए **"stfu"** कहा। वेबसाइट ऑफ़लाइन कर दी गई, संस्थापक की Instagram बायो से NATRO लिंक हटा दिया गया, और KOL ‏@jrcryptex का सशुल्क प्रोमो वीडियो हटा दिया गया — यह सब रिफंड से इनकार के 72 घंटों के भीतर।\n\nक्या यह आचरण किसी विशिष्ट क्षेत्राधिकार में धोखाधड़ी की कानूनी सीमा तक पहुँचता है, यह नियामकों और अदालतों का प्रश्न है, इस फ़ाइल का नहीं। फ़ाइल प्राथमिक स्रोत प्रस्तुत करती है और पाठकों को अपनी राय बनाने देती है।',
+    citations: [
+      { label: 'natrocoin.net का Wayback आर्काइव (हटाए जाने से पहले)', url: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/' },
+      { label: 'Pump.fun mint state', url: 'https://pump.fun/coin/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+      { label: 'Solscan: टोकन कॉन्ट्रैक्ट', url: 'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 2, slug: 'who-is-alex-natroshvili', order: 2,
+    question: 'एलेक्स नात्रोशविली कौन है?',
+    shortAnswer: '$NATRO Solana मीमकॉइन का संस्थापक (21 मई 2026 को लॉन्च) और डेविड नात्रोशविली का बेटा, जो Spribe के संस्थापक और CEO हैं — वह स्टूडियो जिसके पीछे वैश्विक crash-style जुआ उत्पाद Aviator है। सत्यापित Instagram ‏@natroalex (54.1K फ़ॉलोअर्स), Telegram ‏@natroalex1। लॉन्च की मार्केटिंग स्पष्ट रूप से उसके परिवार के नाम पर टिकी थी।',
+    extendedBody: 'एलेक्स नात्रोशविली को $NATRO परियोजना की अपनी वेबसाइट ने सार्वजनिक रूप से संस्थापक के रूप में पहचाना। वेबसाइट का संस्थापक खंड इस पंक्ति से शुरू होता था: *"Most coin founders are anonymous. Alex isn\'t. His name is on the project, his face is on TikTok and Instagram, and his family is well-known globally."* उसकी व्यक्तिगत प्रोफ़ाइल इस प्रकार वर्णित थी: *"Boxer / Car Collector / Watch Collector."*\n\nलॉन्च के समय उसके सत्यापन-योग्य सार्वजनिक खाते:\n- Instagram: [@natroalex](https://instagram.com/natroalex) (सत्यापित, 54.1K फ़ॉलोअर्स)\n- Telegram: [@natroalex1](https://t.me/natroalex1) (सत्यापित)\n\nवह **डेविड नात्रोशविली** का बेटा है, जो Spribe के संस्थापक और CEO हैं — वह iGaming स्टूडियो जिसके पीछे वैश्विक crash-style जुआ उत्पाद Aviator है। $NATRO की मार्केटिंग ने इस पारिवारिक प्रतिष्ठा को केंद्रीय विश्वास संकेत के रूप में संदर्भित किया।\n\n25 मई 2026 को 10:11 UTC पर, एक प्रभावित शुरुआती होल्डर द्वारा उसके सत्यापित Telegram खाते पर भेजे गए एक संरचित "रिफंड-या-प्रकाशन" प्रस्ताव के जवाब में, उसने दो अक्षरों में उत्तर दिया: *"stfu."* यह संदेश फ़ाइल के साक्ष्य संग्रह के हिस्से के रूप में संरक्षित है।',
+    citations: [
+      { label: 'Wayback आर्काइव — संस्थापक खंड', url: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/' },
+      { label: 'Kutztown University Foundation — नात्रोशविली परिवार पर संदर्भ', url: 'https://kuf.org/alumnus-returns-to-campus-dedicate-small-business-development-suite/' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 3, slug: 'what-happened-to-natrocoin-net', order: 3,
+    question: 'natrocoin.net वेबसाइट का क्या हुआ?',
+    shortAnswer: 'साइट को 24 मई 2026 को, रिफंड से इनकार के 72 घंटों के भीतर, ऑफ़लाइन कर दिया गया। हटाए जाने से पहले का पूरा संस्करण Wayback Machine ने कैप्चर कर लिया — हीरो पिच, चार-स्तरीय सीढ़ी, संस्थापक खंड, टोकनॉमिक्स, और पूरा FAQ (जिसमें "What stops you from rugging?" का उत्तर भी शामिल है) सब वहाँ संरक्षित हैं।',
+    extendedBody: '24 मई 2026 को, natrocoin.net पर साइट एक Netlify "Site not found" पृष्ठ लौटाने लगी। मार्केटिंग कॉपी, स्तरों के विवरण, संस्थापक खंड, और FAQ — जिसमें अब महत्वपूर्ण *"What stops you from rugging?"* उत्तर भी शामिल है — canonical URL पर अब सार्वजनिक रूप से सुलभ नहीं रहे।\n\nहटाए जाने से पहले, Wayback Machine ने 21 मई 2026 को 21:32 UTC पर साइट का एक **पूर्ण snapshot** कैप्चर किया। snapshot में शामिल हैं:\n\n- हीरो पिच ("It\'s not about what you make. It\'s who picks up when you call.")\n- चार-स्तरीय एक्सेस सीढ़ी (Foyer / Floor / Lounge / Salon · Inner Circle)\n- संस्थापक खंड जो एलेक्स नात्रोशविली और पारिवारिक संबंध की पहचान करता है\n- टोकनॉमिक्स पृष्ठ (सार्वजनिक रूप से प्रतिबद्ध 30M founder bag के साथ)\n- पूरा FAQ — जिसमें *"What stops you from rugging?"* का उत्तर शामिल है (*"The reputation hit lasts forever; the cash from a rug doesn\'t."*)\n\nWayback URL स्थायी और उद्धरण-योग्य है। फ़ाइल इस पर लॉन्च के समय वास्तव में जो वादा किया गया था उसके सबसे मज़बूत एकल साक्ष्य के रूप में निर्भर करती है।\n\nहटाया जाना उसी 72-घंटे की खिड़की में हुआ जिसमें: संस्थापक की सत्यापित Instagram बायो से natrocoin.net लिंक का हटाया जाना, और KOL ‏@jrcryptex (114K फ़ॉलोअर्स) के सशुल्क प्रोमो वीडियो का हटाया जाना।',
+    citations: [
+      { label: 'Wayback आर्काइव — natrocoin.net (21 मई 2026 कैप्चर)', url: 'https://web.archive.org/web/20260521213245/https://natrocoin.net/' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 4, slug: 'did-spribe-endorse-natro', order: 4,
+    question: 'क्या Spribe (जुआ स्टूडियो) ने $NATRO का समर्थन किया?',
+    shortAnswer: 'Spribe corporate ने सार्वजनिक रूप से कोई टिप्पणी नहीं की। Spribe के संस्थापक और CEO, डेविड नात्रोशविली ($NATRO के संस्थापक एलेक्स के पिता) ने अपने ही सत्यापित Instagram खाते से लॉन्च को बढ़ावा दिया — जिसमें सशुल्क प्रोमो वीडियो का reshare भी शामिल है। 25 मई 2026 को Spribe के कानूनी चैनलों को एक औपचारिक पत्र भेजा गया। फ़ाइल तैयार होने के समय तक, कोई सार्वजनिक प्रतिक्रिया नहीं।',
+    extendedBody: 'Spribe एक अलग से लाइसेंस प्राप्त iGaming स्टूडियो है जिसकी कई क्षेत्राधिकारों में गतिविधियाँ हैं। **Spribe corporate ने $NATRO के लॉन्च पर सार्वजनिक रूप से कोई टिप्पणी नहीं की**। फ़ाइल एक इकाई के रूप में Spribe द्वारा समर्थन का आरोप नहीं लगाती।\n\nजो तथ्य के रूप में दर्ज है:\n\n- **डेविड नात्रोशविली**, Spribe के संस्थापक और CEO और एलेक्स नात्रोशविली के पिता ने अपने सत्यापित Instagram खाते ([@davidnatro1](https://instagram.com/davidnatro1)) से **व्यक्तिगत रूप से लॉन्च को बढ़ावा दिया**, जिसमें KOL ‏@jrcryptex द्वारा निर्मित सशुल्क प्रोमो वीडियो का reshare भी शामिल है।\n- $NATRO की मार्केटिंग सामग्री ने Spribe / Aviator के जुड़ाव को विश्वास संकेत के रूप में संदर्भित किया — उदाहरण के लिए, वेबसाइट के संस्थापक खंड ने पारिवारिक संबंध की स्पष्ट रूप से पहचान की।\n- 25 मई 2026 को 12:24 UTC पर, एक प्रभावित होल्डर ने Spribe के कॉर्पोरेट और कानूनी ईमेल चैनलों (`info@spribe.co`, `legal@spribe.co`, और दो नामित कार्यकारी पते) को एक औपचारिक पत्र भेजा जिसमें तथ्य प्रस्तुत किए और एक स्वच्छ निजी समाधान का मार्ग पेश किया। **इस फ़ाइल की तैयारी के समय तक, इन चैनलों के माध्यम से कोई सार्वजनिक प्रतिक्रिया** प्राप्त नहीं हुई।\n\nयदि Spribe corporate कोई सार्वजनिक वक्तव्य प्रकाशित करती है तो यह FAQ प्रविष्टि अद्यतन की जाएगी। फ़ाइल के फ़ुटर में "Right of reply" खंड किसी भी ऐसी प्रतिक्रिया को हू-ब-हू प्रकाशित करने की संपादकीय प्रतिबद्धता को दर्ज करता है।',
+    citations: [
+      { label: 'डेविड नात्रोशविली — Spribe LinkedIn / SPRIBE आधिकारिक चैनल', url: 'https://www.linkedin.com/company/spribe/' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+  {
+    id: 5, slug: 'is-natro-token-still-trading', order: 5,
+    question: 'क्या $NATRO टोकन अब भी ट्रेड हो रहा है?',
+    shortAnswer: 'तकनीकी रूप से हाँ — Solana पर SPL टोकन मौजूद है (mint authority is None, freeze authority is None) और pump_swap AMM pool सक्रिय है। व्यवहार में बाज़ार प्रभावी रूप से मृत है: फ़ाइल तैयार होने के समय मार्केट कैप लगभग $36 है, DexScreener शून्य सक्रिय जोड़े दिखाता है (उनकी लिक्विडिटी सीमा के नीचे स्वतः छिपे हुए), और अंतिम ट्रेड लगभग 25 मई 2026 था।',
+    extendedBody: 'यहाँ तीन अलग-अलग अवधारणाएँ आपस में मिल जाती हैं। उन्हें अलग करते हैं:\n\n**1. क्या टोकन अब भी Solana पर मौजूद है?**\n\nहाँ। ब्लॉकचेन की स्थिति अपरिवर्तनीय है — एक बार mint होने के बाद टोकन को कोई हटा नहीं सकता। ‏`9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF` पर $NATRO mint initialize किया गया है, इसकी कुल आपूर्ति 1,000,000,000 है, और Pump.fun द्वारा **प्रतिबंधित नहीं** है (`is_banned: false`)। महत्वपूर्ण रूप से:\n\n- **Mint authority: None** — कोई नए टोकन जारी नहीं किए जा सकते।\n- **Freeze authority: None** — होल्डरों को फ़्रीज़ नहीं किया जा सकता।\n\nये सेटिंग्स fair-launch मीमकॉइन के लिए सामान्य हैं और लॉन्च के बाद बदली नहीं गईं।\n\n**2. क्या खरीदने/बेचने के लिए कोई बाज़ार है?**\n\nकार्यात्मक रूप से नहीं। Pump.fun bonding curve graduate हो गई, यानी लिक्विडिटी AMM pool ‏`7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS` में माइग्रेट हो गई। graduation के बाद:\n\n- **Real SOL reserves: 0**\n- **Real token reserves: 0**\n- **मार्केट कैप: ≈$36** (इस फ़ाइल की तैयारी के समय Pump.fun API के अनुसार — लॉन्च पर $200K से अधिक के शिखर से गिरा)\n- **अंतिम ट्रेड**: ≈25 मई 2026 — इसके बाद कई दिन शून्य वॉल्यूम।\n\nDexScreener का API टोकन के लिए शून्य जोड़े लौटाता है क्योंकि उनका सार्वजनिक फ़ीड लिक्विडिटी सीमा से नीचे के pools को स्वतः छिपा देता है। pool तकनीकी रूप से अब भी मौजूद है; aggregators ने इसे सूचीबद्ध करना बंद कर दिया है क्योंकि अनिवार्य रूप से कोई सक्रिय बाज़ार नहीं है।\n\n**3. क्या टीम ने लिक्विडिटी निकाली?**\n\nनहीं — वे नहीं निकाल सकते। Pump.fun graduation पर, माइग्रेट किए गए pool के LP tokens प्रोटोकॉल द्वारा स्वतः जला दिए जाते हैं, जिससे टीम की pool को खाली करने की तकनीकी क्षमता समाप्त हो जाती है। $200K से अधिक के शिखर से ≈$36 तक का पतन **एक खुले AMM में होल्डरों द्वारा बेचने** से प्रेरित था, न कि कॉन्ट्रैक्ट-स्तरीय rug-pull से।\n\nयह अंतर संपादकीय रूप से महत्वपूर्ण है: टीम ने वह विशिष्ट कार्य नहीं किया जिसका उनका अपना FAQ ("What stops you from rugging?") उत्तर दे रहा था। बल्कि, लॉन्च के प्रोटोकॉल-प्रवर्तित वैधता सीमा तक पहुँचने के बाद, टीम ने उन होल्डरों के साथ बातचीत न करने का विकल्प चुना जिन्होंने उन पर भरोसा किया था।',
+    citations: [
+      { label: 'Solscan — $NATRO टोकन', url: 'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+      { label: 'Pump.fun — coin state', url: 'https://pump.fun/coin/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF' },
+    ],
+    lastReviewedAt: '2026-05-27T00:00:00Z',
+  },
+];
+
 /** Returns the FAQ for a locale, falling back to EN. */
 export function getFaq(locale: string): FaqEntryDTO[] {
   if (locale === 'ru') return faqRu;
@@ -513,5 +627,7 @@ export function getFaq(locale: string): FaqEntryDTO[] {
   if (locale === 'de') return faqDe;
   if (locale === 'es') return faqEs;
   if (locale === 'ar') return faqAr;
+  if (locale === 'ur') return faqUr;
+  if (locale === 'hi') return faqHi;
   return faqEn;
 }

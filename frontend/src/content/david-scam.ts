@@ -316,6 +316,74 @@ const ar: DavidScamContent = {
   replyAfter: '.',
 };
 
+const ur: DavidScamContent = {
+  metaTitle:
+    'David Natroshvili اور $NATRO اسکیم — iGaming کی سب سے بااثر شخصیت، نمبر 1',
+  metaDescription:
+    'David Natroshvili (Spribe کے بانی اور CEO) کو «Top 100 Most Influential People in iGaming»، «Game Changers 2026» میں نمبر 1 قرار دیا گیا۔ یہی ساکھ Solana کے ٹوکن $NATRO کے پیچھے ضمانت بنی، جو ~98% گر گیا — رقم کی واپسی سے انکار، شواہد مٹا دیے گئے۔ ساکھ کی قیمت گذاری کا ایک دستاویزی مقدمہ۔',
+  kicker: 'ساکھ کی قیمت گذاری · اعزاز',
+  h1: 'iGaming کے سب سے بااثر شخص نے اپنی ساکھ کیسے بیچی۔',
+  standfirst:
+    '“Top 100 Most Influential People in iGaming” میں نمبر 1 — اور $NATRO اسکیم کا وہ ریکارڈ جس پر یہ ساکھ خرچ کی گئی۔',
+  imgAlt:
+    'Game Changers 2026 — #1 Place: David Natroshvili، SPRIBE کے بانی اور CEO۔ «Top 100 Most Influential People in iGaming»، iGamingExpress، @spribe.co کی پوسٹ۔',
+  imgCaption:
+    'iGamingExpress · “Game Changers 2026.” سرکاری @spribe.co Instagram اکاؤنٹ سے 30 مئی 2026 کو شائع کیا گیا (393 لائکس)، جب $NATRO کے نتائج جاری تھے۔',
+  spribeKicker: 'خود Spribe کے الفاظ میں',
+  peakKicker: 'ساکھ، اپنی قیمت کے عروج پر',
+  peakBody:
+    'NATRO File ہر صفحے پر خود کو *ساکھ کی قیمت گذاری کا ایک دستاویزی مقدمہ* کہتا ہے۔ یہی وہ ساکھ ہے جس کی قیمت لگائی جا رہی ہے۔ صنعت میں اثر و رسوخ کے لحاظ سے نمبر ایک — سب سے قیمتی چیز جو کوئی بھی لانچ ادھار لے سکتا ہے۔',
+  collateralKicker: 'یہ کس چیز کی ضمانت تھی',
+  collateralBody:
+    'مئی 2026 کے اسی دورانیے میں یہی نام Solana کے ایک میم کوائن **$NATRO** کے پیچھے ضمانت بنا۔ اپنے **تصدیق شدہ** Instagram اکاؤنٹ سے David Natroshvili نے خود ذاتی طور پر پری سیل سرمایہ کاری کی دعوت دی — Bentley کے اندرونی منظر پر کیپشن: *“If you want to get involved in the crypto project presale with me & @natroalex — DM @natroalex1 on telegram. Minimum investment size for presale is 1.5k”* — اور موناکو کی ایک گلی میں Ferrari پر: *“We’re opening private access to our crypto project presale with me & @natroalex…”*\n\nلانچ کے بہتر گھنٹوں کے اندر ٹوکن **~98%** گر گیا۔ متاثرہ ہولڈرز کی رقم واپسی کی درخواستیں مسترد کر دی گئیں — ٹیم ایڈمن کی طرف سے *“Nothing to say”*، اور بانی کے ذاتی Telegram سے *“stfu”*۔ اسی دورانیے میں ویب سائٹ آف لائن کر دی گئی، NATRO کا لنک بانی کے Instagram بائیو سے ہٹا دیا گیا، اور ادائیگی شدہ تشہیری ویڈیو حذف کر دی گئی۔ جب یہ سب ہو رہا تھا، *#1 most influential* کی درجہ بندی شیئر اور منائی جا رہی تھی — *“Cheers to our leader.”*',
+  lineKicker: 'وہ جملہ جو انہوں نے خود لکھا',
+  lineIntro:
+    'پروجیکٹ کے اپنے FAQ نے — جو حذف ہونے سے پہلے مکمل طور پر محفوظ کر لیا گیا — رگ پل کے سوال کا جواب ایک جملے میں دیا:',
+  lineAfter:
+    'اس جملے کو نمبر 1 “most influential” درجہ بندی کے ساتھ رکھیں، اور فائل کا عنوان استعارہ نہیں رہتا۔ ساکھ حقیقی تھی۔ اور اتنا ہی حقیقی ہے اس بات کا ریکارڈ کہ اس کا ایک حصہ کس چیز پر خرچ ہوا۔ نتیجہ قاری خود اخذ کرتا ہے۔',
+  replyKicker: 'جواب کا حق',
+  replyBefore:
+    'David Natroshvili اور Spribe کو جواب دینے کی دعوت دی جاتی ہے؛ ایک رسمی نوٹس 25 مئی 2026 کو Spribe کے شائع شدہ قانونی اور کارپوریٹ پتوں پر بھیجا گیا۔ دستاویزی حقائق پر مبنی تصحیحات ریکارڈ کے ساتھ شائع کی جائیں گی۔ مکمل ذرائع اُن کے ',
+  replyProfileLabel: 'پروفائل',
+  replyMid: ' اور ',
+  replyPressLabel: 'پریس پیج',
+  replyAfter: ' پر موجود ہیں۔',
+};
+
+const hi: DavidScamContent = {
+  metaTitle:
+    'David Natroshvili और $NATRO स्कैम — iGaming में सबसे प्रभावशाली, नंबर 1',
+  metaDescription:
+    'David Natroshvili (Spribe के संस्थापक और CEO) को «Top 100 Most Influential People in iGaming», «Game Changers 2026» में नंबर 1 चुना गया। वही प्रतिष्ठा Solana के टोकन $NATRO के पीछे ज़मानत बनी, जो ~98% गिर गया — रिफंड से इनकार, सबूत मिटा दिए गए। प्रतिष्ठा की कीमत तय करने का एक प्रलेखित मामला।',
+  kicker: 'प्रतिष्ठा की कीमत · सम्मान',
+  h1: 'iGaming के सबसे प्रभावशाली व्यक्ति ने अपनी प्रतिष्ठा कैसे बेची।',
+  standfirst:
+    '“Top 100 Most Influential People in iGaming” में नंबर 1 — और $NATRO स्कैम का वह रिकॉर्ड जिस पर यह प्रतिष्ठा खर्च की गई।',
+  imgAlt:
+    'Game Changers 2026 — #1 Place: David Natroshvili, SPRIBE के संस्थापक और CEO। «Top 100 Most Influential People in iGaming», iGamingExpress, @spribe.co की पोस्ट।',
+  imgCaption:
+    'iGamingExpress · “Game Changers 2026.” आधिकारिक @spribe.co Instagram अकाउंट से 30 मई 2026 को पोस्ट किया गया (393 लाइक), जब $NATRO के परिणाम जारी थे।',
+  spribeKicker: 'खुद Spribe के शब्दों में',
+  peakKicker: 'प्रतिष्ठा, उसकी कीमत के शिखर पर',
+  peakBody:
+    'NATRO File हर पन्ने पर खुद को *प्रतिष्ठा की कीमत तय करने का एक प्रलेखित मामला* बताती है। यही वह प्रतिष्ठा है जिसकी कीमत यहाँ आँकी जा रही है। उद्योग में प्रभाव के लिहाज़ से नंबर एक — सबसे मूल्यवान चीज़ जो कोई भी लॉन्च उधार ले सकता है।',
+  collateralKicker: 'यह किस चीज़ की ज़मानत थी',
+  collateralBody:
+    'मई 2026 के उसी दौर में यही नाम Solana के एक मीमकॉइन **$NATRO** के पीछे ज़मानत बना। अपने **सत्यापित** Instagram अकाउंट से David Natroshvili ने खुद व्यक्तिगत रूप से प्रीसेल निवेश के लिए आमंत्रित किया — Bentley के अंदरूनी दृश्य पर कैप्शन: *“If you want to get involved in the crypto project presale with me & @natroalex — DM @natroalex1 on telegram. Minimum investment size for presale is 1.5k”* — और मोनाको की एक सड़क पर Ferrari पर: *“We’re opening private access to our crypto project presale with me & @natroalex…”*\n\nलॉन्च के बहत्तर घंटों के भीतर टोकन **~98%** गिर गया। प्रभावित होल्डरों के रिफंड अनुरोध अस्वीकार कर दिए गए — टीम एडमिन की ओर से *“Nothing to say”*, और संस्थापक के निजी Telegram से *“stfu”*। उसी दौर में वेबसाइट ऑफ़लाइन कर दी गई, NATRO का लिंक संस्थापक के Instagram बायो से हटा दिया गया, और भुगतान किया गया प्रचार वीडियो हटा दिया गया। जब यह सब हो रहा था, *#1 most influential* रैंकिंग शेयर की जा रही थी और मनाई जा रही थी — *“Cheers to our leader.”*',
+  lineKicker: 'वह पंक्ति जो उन्होंने खुद लिखी',
+  lineIntro:
+    'प्रोजेक्ट के अपने FAQ ने — जो हटाए जाने से पहले पूरी तरह संग्रहीत कर लिया गया — रग-पुल के सवाल का जवाब एक वाक्य में दिया:',
+  lineAfter:
+    'इस वाक्य को नंबर 1 “most influential” रैंकिंग के बगल में रखिए, और फ़ाइल का शीर्षक एक रूपक नहीं रह जाता। प्रतिष्ठा वास्तविक थी। और उतना ही वास्तविक है इस बात का रिकॉर्ड कि उसका एक हिस्सा किस पर खर्च हुआ। पाठक अपना निष्कर्ष खुद निकालते हैं।',
+  replyKicker: 'जवाब का अधिकार',
+  replyBefore:
+    'David Natroshvili और Spribe को जवाब देने के लिए आमंत्रित किया जाता है; एक औपचारिक सूचना 25 मई 2026 को Spribe के प्रकाशित कानूनी और कॉर्पोरेट पतों पर भेजी गई थी। प्रलेखित तथ्यात्मक सुधार रिकॉर्ड के साथ प्रकाशित किए जाएंगे। पूरे स्रोत उनके ',
+  replyProfileLabel: 'प्रोफ़ाइल',
+  replyMid: ' और ',
+  replyPressLabel: 'प्रेस पेज',
+  replyAfter: ' पर हैं।',
+};
+
 const CONTENT: Record<Locale, DavidScamContent> = {
   en,
   ru,
@@ -325,6 +393,8 @@ const CONTENT: Record<Locale, DavidScamContent> = {
   de,
   es,
   ar,
+  ur,
+  hi,
 };
 
 export function getDavidScam(locale: Locale): DavidScamContent {

@@ -172,7 +172,159 @@ const ruFact: FactSheetContent = {
   fileLine: 'Полный кейс-файл: natro.meme · Пресс-релиз: natro.meme/press',
 };
 
-const factSheets: Record<string, FactSheetContent> = { en: enFact, ru: ruFact };
+const urFact: FactSheetContent = {
+  kicker: 'کیس فیکٹ شیٹ · v1.0 · 28 مئی 2026',
+  headline: '$NATRO — Solana میم کوائن · 21 مئی 2026 لانچ · 98% زوال',
+  filed: 'مرتب کردہ',
+  filedValue: '@btc3050 (Telegram) · متاثرہ ابتدائی ہولڈر',
+  numbersHeading: 'اعداد میں',
+  numbers: [
+    { value: '~98%', label: '48 گھنٹوں میں قیمت کا زوال' },
+    { value: '$36', label: 'مارکیٹ کیپ (Pump.fun API کے مطابق، فائلنگ کے وقت)' },
+    { value: '$200K+', label: '"لانچ پر طے شدہ" (پروجیکٹ کا اپنا دعویٰ)' },
+    { value: '352', label: 'باقی بچے والیٹس' },
+    { value: '$1,500', label: 'پری سیل میں کم از کم داخلہ (D. Natroshvili کی جانب سے مقرر)' },
+    { value: '15', label: 'برائے نام بانی Alex Natroshvili کی عمر' },
+    { value: '72 h', label: 'ریفنڈ سے انکار سے ویب سائٹ ہٹائے جانے تک' },
+    { value: '25', label: 'کیس فائل میں دستاویزی شواہد' },
+  ],
+  timelineHeading: 'ٹائم لائن',
+  timeline: [
+    { date: '20–21 مئی', event: 'David Natroshvili پری سیل کی دعوت دیتے ہوئے 5 Instagram Stories شائع کرتے ہیں ($1.5k کم از کم داخلہ، "with me & @natroalex"، DM @natroalex1)' },
+    { date: '21 مئی · 20:11 UTC', event: 'ٹوکن Pump.fun پر لانچ ہوتا ہے (کنٹریکٹ 9TmTw3B…tdiF)' },
+    { date: '22–23 مئی', event: 'قیمت گر جاتی ہے؛ ہولڈرز پروجیکٹ کے Telegram میں نقصانات دستاویز کرتے ہیں' },
+    { date: '23 مئی · 13:50', event: 'ٹیم ایڈمن OC رضاکارانہ طور پر ٹائر چیٹس چھوڑ دیتا ہے' },
+    { date: '23 مئی', event: 'منظم ریفنڈ تجویز پیش کی گئی؛ ٹیم ایڈمن: "Nothing to say"' },
+    { date: '24 مئی', event: 'بانی کے تصدیق شدہ IG بائیو سے NATRO لنک ہٹا دیا گیا' },
+    { date: '24 مئی', event: 'natrocoin.net آف لائن کر دی گئی؛ Wayback آرکائیو محفوظ' },
+    { date: '24 مئی', event: 'KOL @jrcryptex (114K فالوورز) ادائیگی شدہ پرومو حذف کرتا ہے' },
+    { date: '24 مئی', event: 'سرکاری Telegram چینل نئے خریداروں کی بھرتی جاری رکھتا ہے' },
+    { date: '25 مئی · 10:11', event: 'بانی کا ذاتی Telegram جواب: "stfu."' },
+    { date: '25 مئی · 12:24', event: 'Spribe کے قانونی شعبے کو رسمی خط (info@, legal@spribe.co + 2 نامزد ایگزیکٹوز)' },
+    { date: '25 مئی · 13:06', event: 'بانی Spribe ای میل کے 42 منٹ بعد Instagram DM شروع کرتا ہے' },
+    { date: '28 مئی · 12:24', event: 'Spribe کی قانونی جواب کی مہلت بغیر جواب ختم ہو جاتی ہے؛ کیس فائل عوامی طور پر جاری' },
+  ],
+  partiesHeading: 'نامزد فریق',
+  parties: [
+    {
+      name: 'Alex Natroshvili',
+      role: 'برائے نام بانی؛ 15 سال (تاریخ پیدائش 14 ستمبر 2010)',
+      handles: 'IG @natroalex (54.1K ✓) · TG @natroalex1 (✓) · Tapology فائٹر پروفائل',
+    },
+    {
+      name: 'David Natroshvili',
+      role: 'والد؛ لانچ سے پہلے پری سیل کی دعوت دینے والے؛ بانی اور CEO، Spribe',
+      handles: 'IG @davidnatro1 (✓) · IG @davi.natroshvili · Spribe LinkedIn · HandWiki سوانح',
+    },
+    {
+      name: 'JR Cryptex',
+      role: 'ادائیگی شدہ KOL؛ 24 مئی 2026 کو پرومو حذف کیا',
+      handles: 'IG @jrcryptex (114K)',
+    },
+    {
+      name: '"A A" (Arif Azii)',
+      role: 'ٹیم ایڈمن؛ "Nothing to say" حرف بحرف',
+      handles: 'TG @arifazii',
+    },
+    {
+      name: 'Eric Connola',
+      role: 'لانچ کا عوامی محافظ (سوشل میڈیا)',
+      handles: 'IG @ericconnola (✓)',
+    },
+  ],
+  sourcesHeading: 'بنیادی ذرائع',
+  sources: [
+    'natrocoin.net کا Wayback آرکائیو (21 مئی 2026 21:32 UTC کیپچر) — فائل کا واحد مضبوط ترین ذریعہ',
+    'Solscan: ٹوکن مِنٹ 9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
+    'Solscan: کریئیٹر والیٹ 76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx',
+    'Solscan: مرتب کنندہ والیٹ GsCKRFsTYbU4CuTDYP9NLDDMvsVVWSnpdVDst3nKb6JJ (≈220M NATRO، قابلِ تصدیق پوزیشن)',
+    'Pump.fun mint state (complete: true) اور pump_swap_pool 7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS',
+    'NATRO Foyer، Floor، Lounge Telegram چینل کے اسکرین شاٹس (مکمل آرکائیو درخواست پر دستیاب)',
+    'بانی کا ذاتی Telegram DM (@natroalex1): "stfu" جواب، 25 مئی 10:11',
+    'Spribe قانونی ای میل پیپر ٹریل، 25 مئی 12:24 UTC',
+    'Kutztown University Foundation عوامی اعلان (David Natroshvili SBDC Suite، ستمبر 2025)',
+  ],
+  contactLine: '@btc3050 (Telegram)',
+  fileLine: 'مکمل کیس فائل: natro.meme · پریس ریلیز: natro.meme/press',
+};
+
+const hiFact: FactSheetContent = {
+  kicker: 'केस फैक्ट शीट · v1.0 · 28 मई 2026',
+  headline: '$NATRO — Solana मीमकॉइन · 21 मई 2026 लॉन्च · 98% गिरावट',
+  filed: 'संकलनकर्ता',
+  filedValue: '@btc3050 (Telegram) · प्रभावित प्रारंभिक होल्डर',
+  numbersHeading: 'आँकड़ों में',
+  numbers: [
+    { value: '~98%', label: '48 घंटों में कीमत में गिरावट' },
+    { value: '$36', label: 'मार्केट कैप (Pump.fun API के अनुसार, फाइलिंग के समय)' },
+    { value: '$200K+', label: '"लॉन्च पर प्रतिबद्ध" (प्रोजेक्ट का अपना दावा)' },
+    { value: '352', label: 'शेष वॉलेट' },
+    { value: '$1,500', label: 'न्यूनतम प्रीसेल प्रवेश (D. Natroshvili द्वारा निर्धारित)' },
+    { value: '15', label: 'नाममात्र संस्थापक Alex Natroshvili की उम्र' },
+    { value: '72 h', label: 'रिफंड से इनकार से वेबसाइट हटाए जाने तक' },
+    { value: '25', label: 'केस फाइल में दर्ज साक्ष्य' },
+  ],
+  timelineHeading: 'टाइमलाइन',
+  timeline: [
+    { date: '20–21 मई', event: 'David Natroshvili प्रीसेल के लिए आमंत्रित करते हुए 5 Instagram Stories प्रकाशित करते हैं ($1.5k न्यूनतम प्रवेश, "with me & @natroalex", DM @natroalex1)' },
+    { date: '21 मई · 20:11 UTC', event: 'टोकन Pump.fun पर लॉन्च होता है (कॉन्ट्रैक्ट 9TmTw3B…tdiF)' },
+    { date: '22–23 मई', event: 'कीमत गिरती है; होल्डर प्रोजेक्ट के Telegram में नुकसान दर्ज करते हैं' },
+    { date: '23 मई · 13:50', event: 'टीम एडमिन OC स्वेच्छा से टियर चैट छोड़ देता है' },
+    { date: '23 मई', event: 'संरचित रिफंड प्रस्ताव प्रस्तुत किया गया; टीम एडमिन: "Nothing to say"' },
+    { date: '24 मई', event: 'संस्थापक के सत्यापित IG बायो से NATRO लिंक हटा दिया गया' },
+    { date: '24 मई', event: 'natrocoin.net ऑफलाइन कर दी गई; Wayback आर्काइव संरक्षित' },
+    { date: '24 मई', event: 'KOL @jrcryptex (114K फॉलोअर्स) भुगतान किया गया प्रोमो हटाता है' },
+    { date: '24 मई', event: 'आधिकारिक Telegram चैनल नए खरीदारों की भर्ती जारी रखता है' },
+    { date: '25 मई · 10:11', event: 'संस्थापक का व्यक्तिगत Telegram उत्तर: "stfu."' },
+    { date: '25 मई · 12:24', event: 'Spribe की लीगल टीम को औपचारिक पत्र (info@, legal@spribe.co + 2 नामित अधिकारी)' },
+    { date: '25 मई · 13:06', event: 'संस्थापक Spribe ईमेल के 42 मिनट बाद Instagram DM शुरू करता है' },
+    { date: '28 मई · 12:24', event: 'Spribe की लीगल-प्रतिक्रिया अवधि बिना उत्तर समाप्त; केस फाइल सार्वजनिक रूप से जारी' },
+  ],
+  partiesHeading: 'नामित पक्ष',
+  parties: [
+    {
+      name: 'Alex Natroshvili',
+      role: 'नाममात्र संस्थापक; 15 वर्ष (जन्म तिथि 14 सितंबर 2010)',
+      handles: 'IG @natroalex (54.1K ✓) · TG @natroalex1 (✓) · Tapology फाइटर प्रोफाइल',
+    },
+    {
+      name: 'David Natroshvili',
+      role: 'पिता; लॉन्च-पूर्व प्रीसेल आमंत्रणकर्ता; संस्थापक एवं CEO, Spribe',
+      handles: 'IG @davidnatro1 (✓) · IG @davi.natroshvili · Spribe LinkedIn · HandWiki जीवनी',
+    },
+    {
+      name: 'JR Cryptex',
+      role: 'भुगतान किया गया KOL; 24 मई 2026 को प्रोमो हटाया',
+      handles: 'IG @jrcryptex (114K)',
+    },
+    {
+      name: '"A A" (Arif Azii)',
+      role: 'टीम एडमिन; "Nothing to say" शब्दशः',
+      handles: 'TG @arifazii',
+    },
+    {
+      name: 'Eric Connola',
+      role: 'लॉन्च का सार्वजनिक समर्थक (सोशल मीडिया)',
+      handles: 'IG @ericconnola (✓)',
+    },
+  ],
+  sourcesHeading: 'प्राथमिक स्रोत',
+  sources: [
+    'natrocoin.net का Wayback आर्काइव (21 मई 2026 21:32 UTC कैप्चर) — फाइल का एकमात्र सबसे मजबूत स्रोत',
+    'Solscan: टोकन मिंट 9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
+    'Solscan: क्रिएटर वॉलेट 76qavBCaqDzn6KP6q5Qzu5sXVUXSqXWQpCTTF6Tye7xx',
+    'Solscan: संकलनकर्ता वॉलेट GsCKRFsTYbU4CuTDYP9NLDDMvsVVWSnpdVDst3nKb6JJ (≈220M NATRO, सत्यापन योग्य स्थिति)',
+    'Pump.fun mint state (complete: true) और pump_swap_pool 7HkXPkKFJhiY9fqUNWbZ5YufKRVNAcWdisKR8FtTijaS',
+    'NATRO Foyer, Floor, Lounge Telegram चैनल के स्क्रीनशॉट (पूर्ण आर्काइव अनुरोध पर उपलब्ध)',
+    'संस्थापक का व्यक्तिगत Telegram DM (@natroalex1): "stfu" उत्तर, 25 मई 10:11',
+    'Spribe लीगल ईमेल पेपर-ट्रेल, 25 मई 12:24 UTC',
+    'Kutztown University Foundation सार्वजनिक घोषणा (David Natroshvili SBDC Suite, सितंबर 2025)',
+  ],
+  contactLine: '@btc3050 (Telegram)',
+  fileLine: 'पूर्ण केस फाइल: natro.meme · प्रेस रिलीज़: natro.meme/press',
+};
+
+const factSheets: Record<string, FactSheetContent> = { en: enFact, ru: ruFact, ur: urFact, hi: hiFact };
 
 export function getFactSheet(locale: string): FactSheetContent {
   return factSheets[locale] || factSheets.en;
