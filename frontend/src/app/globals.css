@@ -18,9 +18,14 @@
   --color-damning: #5a1e10;
   --color-highlight: #e8d896;
 
-  --font-serif: 'Fraunces', 'Times New Roman', Georgia, serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* Route through the next/font CSS variables (set on <html> in the locale
+     layout). Each one expands to e.g. `"Fraunces", "Fraunces Fallback"` —
+     the second is a size-adjusted metric fallback next/font generates so the
+     swap from system font → web font causes (near-)zero layout shift (CLS).
+     The OS fonts after it are a last resort if the variable is ever absent. */
+  --font-serif: var(--font-fraunces), 'Times New Roman', Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', 'Courier New', monospace;
 }
 
 :root {
