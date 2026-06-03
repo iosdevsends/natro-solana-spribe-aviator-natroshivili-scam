@@ -29,6 +29,7 @@ import {
   getStfuCaption,
   DAVID_STORIES,
   getDavidStoriesIntro,
+  getNatroMoneyPullQuote,
 } from '@/content/natro-money';
 
 const PATH = '/how-did-natroalex-make-his-money';
@@ -86,6 +87,7 @@ export default async function NatroMoneyPage({
   const c = getNatroMoney(loc);
   const stfu = getStfuCaption(loc);
   const stories = getDavidStoriesIntro(loc);
+  const pullQuote = getNatroMoneyPullQuote(loc);
   const pageUrl = absoluteUrl(loc, PATH);
 
   const jsonLd = {
@@ -144,6 +146,10 @@ export default async function NatroMoneyPage({
         <p className="mt-4 serif italic text-lg md:text-xl text-[var(--color-ink-soft)] leading-snug">
           {c.standfirst}
         </p>
+
+        <blockquote className="mt-6 serif text-2xl md:text-3xl leading-tight font-medium text-[var(--color-damning)] border-l-4 border-[var(--color-accent)] pl-5">
+          {pullQuote}
+        </blockquote>
 
         {/* The subject — the verified @natroalex profile */}
         <figure className="mt-8">

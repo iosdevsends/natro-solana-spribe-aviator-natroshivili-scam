@@ -676,3 +676,24 @@ const DAVID_STORIES_I18N: Record<Locale, DavidStoriesIntro> = {
 export function getDavidStoriesIntro(locale: Locale): DavidStoriesIntro {
   return DAVID_STORIES_I18N[locale] || DAVID_STORIES_I18N.en;
 }
+
+/**
+ * Pull-quote under the standfirst — author's voice, by editorial decision.
+ * Localised so the line is not orphaned in one language on a 10-locale page.
+ */
+const PULL_QUOTE: Record<Locale, string> = {
+  en: 'When your father pays, you can be a boxer and a car collector both.',
+  ru: 'Когда папа платит, можно быть и боксёром, и коллекционером машин.',
+  uk: 'Коли тато платить, можна бути і боксером, і колекціонером машин.',
+  ka: 'როცა მამა იხდის, შეიძლება იყო ბოქსიორიც და მანქანების კოლექციონერიც.',
+  fr: 'Quand c’est le père qui paie, on peut être à la fois boxeur et collectionneur de voitures.',
+  de: 'Wenn der Vater zahlt, kann man zugleich Boxer und Autosammler sein.',
+  es: 'Cuando paga el padre, se puede ser boxeador y coleccionista de coches a la vez.',
+  ar: 'عندما يدفع الأب، يمكنك أن تكون ملاكمًا وجامع سيارات في آنٍ واحد.',
+  ur: 'جب باپ ادائیگی کرے، تو آپ بیک وقت باکسر بھی ہو سکتے ہیں اور گاڑیوں کے کلیکٹر بھی۔',
+  hi: 'जब पिता भुगतान करते हैं, तो आप एक साथ बॉक्सर भी हो सकते हैं और कार कलेक्टर भी।',
+};
+
+export function getNatroMoneyPullQuote(locale: Locale): string {
+  return PULL_QUOTE[locale] || PULL_QUOTE.en;
+}
