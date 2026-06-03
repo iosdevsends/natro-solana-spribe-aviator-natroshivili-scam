@@ -7,7 +7,9 @@ import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
+import { LightboxLazy } from '@/components/LightboxLazy';
 import { loadCaseFile } from '@/lib/case-file';
+import { strapiPublicUrl } from '@/lib/strapi';
 import {
   buildAlternates,
   absoluteUrl,
@@ -23,6 +25,7 @@ import {
   PERSONA,
   FAQ_QUOTE,
   STFU_EXHIBIT,
+  HERO_EXHIBIT_SLUG,
   getStfuCaption,
   DAVID_STORIES,
   getDavidStoriesIntro,
@@ -144,17 +147,22 @@ export default async function NatroMoneyPage({
 
         {/* The subject — the verified @natroalex profile */}
         <figure className="mt-8">
-          <div className="relative w-full max-w-[560px] mx-auto border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden">
+          <button
+            type="button"
+            data-exhibit={HERO_EXHIBIT_SLUG}
+            aria-label={ui.openFullScreen || 'Open full screen'}
+            className="group relative block w-full max-w-[560px] mx-auto border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden cursor-zoom-in"
+          >
             <Image
               src={PROFILE_IMG}
               alt={c.imgAlt}
               width={1823}
               height={1100}
               sizes="(max-width: 640px) 90vw, 560px"
-              className="w-full h-auto"
+              className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
               priority
             />
-          </div>
+          </button>
           <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug max-w-[520px] mx-auto text-center">
             {c.imgCaption}
           </figcaption>
@@ -192,16 +200,21 @@ export default async function NatroMoneyPage({
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
             {DAVID_STORIES.map((s) => (
               <figure key={s.img}>
-                <div className="relative w-full border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden">
+                <button
+                  type="button"
+                  data-exhibit={s.slug}
+                  aria-label={ui.openFullScreen || 'Open full screen'}
+                  className="group relative block w-full border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden cursor-zoom-in"
+                >
                   <Image
                     src={s.img}
                     alt={s.caption}
                     width={s.width}
                     height={s.height}
                     sizes="(max-width: 640px) 45vw, 240px"
-                    className="w-full h-auto"
+                    className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                </div>
+                </button>
                 <figcaption className="mt-2 sans text-[10px] text-[var(--color-ink-faint)] leading-snug">
                   {s.caption}
                 </figcaption>
@@ -214,16 +227,21 @@ export default async function NatroMoneyPage({
         <section className="mt-10">
           <div className="kicker mb-3">{stfu.kicker}</div>
           <figure className="mt-2">
-            <div className="relative w-full max-w-[560px] mx-auto border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden">
+            <button
+              type="button"
+              data-exhibit={STFU_EXHIBIT.slug}
+              aria-label={ui.openFullScreen || 'Open full screen'}
+              className="group relative block w-full max-w-[560px] mx-auto border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden cursor-zoom-in"
+            >
               <Image
                 src={STFU_EXHIBIT.img}
                 alt={stfu.alt}
                 width={STFU_EXHIBIT.width}
                 height={STFU_EXHIBIT.height}
                 sizes="(max-width: 640px) 90vw, 560px"
-                className="w-full h-auto"
+                className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
               />
-            </div>
+            </button>
             <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug max-w-[520px] mx-auto text-center">
               <Prose text={stfu.caption} className="!gap-1" />
               <span className="block mt-1">{STFU_EXHIBIT.attrib}</span>
@@ -301,6 +319,14 @@ export default async function NatroMoneyPage({
           </ul>
         </nav>
       </main>
+
+      {/* Click any exhibit on this page to open it full-screen (with prev/next
+          across the whole case-file set, keyboard nav, and an "Original" link). */}
+      <LightboxLazy
+        exhibits={bundle.exhibits}
+        publicStrapiUrl={strapiPublicUrl}
+        uiStrings={ui}
+      />
     </>
   );
 }

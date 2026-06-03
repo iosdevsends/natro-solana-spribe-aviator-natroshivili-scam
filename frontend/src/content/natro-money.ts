@@ -475,11 +475,15 @@ export function getNatroMoney(locale: Locale): NatroMoneyContent {
  * "stfu" and the holder's quoted line stay English (sacred quotes / original).
  */
 export const STFU_EXHIBIT = {
+  slug: 'stfu-from-alex',
   img: '/exhibits/ex13-stfu-from-alex.png',
   width: 2364,
   height: 2224,
   attrib: 'Telegram DM · @natroalex1 (verified) · 25 May 2026, 10:11',
 };
+
+/** Slug of the hero portrait exhibit, for the lightbox trigger. */
+export const HERO_EXHIBIT_SLUG = 'natroalex-profile-after';
 
 export interface StfuCaption {
   kicker: string;
@@ -563,12 +567,14 @@ export function getStfuCaption(locale: Locale): StfuCaption {
  * localised via getDavidStoriesIntro().
  */
 export const DAVID_STORIES: {
+  slug: string;
   img: string;
   width: number;
   height: number;
   caption: string;
 }[] = [
   {
+    slug: 'david-story-presale-bentley',
     img: '/exhibits/ex22-david-story-presale-bentley.jpg',
     width: 591,
     height: 1280,
@@ -576,6 +582,7 @@ export const DAVID_STORIES: {
       '“Get involved in the crypto project presale with me & @natroalex — DM @natroalex1 — 1.5k min.” — @davidnatro1 (verified), Instagram Story, pre-launch',
   },
   {
+    slug: 'david-story-presale-ferrari',
     img: '/exhibits/ex24-david-story-presale-ferrari.jpg',
     width: 591,
     height: 1280,
@@ -583,6 +590,7 @@ export const DAVID_STORIES: {
       '“We’re opening private access to our crypto project presale with me & @natroalex … 1.5k min entry.” — @davidnatro1 (verified), Instagram Story, pre-launch',
   },
   {
+    slug: 'david-story-celebs-on-line',
     img: '/exhibits/ex21-david-story-celebs-on-line.jpg',
     width: 591,
     height: 1280,
@@ -590,6 +598,7 @@ export const DAVID_STORIES: {
       '“I have many celebs on the line to post about natro this will be crazy🔥” — @davidnatro1 (verified), Instagram Story, pre-launch',
   },
   {
+    slug: 'david-reshare',
     img: '/exhibits/ex01-jrcryptex-promo-reshared-by-david.jpg',
     width: 1177,
     height: 2560,
@@ -597,6 +606,7 @@ export const DAVID_STORIES: {
       'David Natroshvili reshares the paid @jrcryptex launch promo — @davidnatro1 (verified), Instagram Stories',
   },
   {
+    slug: 'david-natroalex-coin-reshare',
     img: '/exhibits/ex23-david-natroalex-coin-reshare.jpg',
     width: 591,
     height: 1280,
