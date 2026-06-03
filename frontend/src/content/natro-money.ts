@@ -465,3 +465,204 @@ const CONTENT: Record<Locale, NatroMoneyContent> = {
 export function getNatroMoney(locale: Locale): NatroMoneyContent {
   return CONTENT[locale] || en;
 }
+
+/**
+ * Exhibit 20 — the "stfu" Telegram DM (ex13-stfu-from-alex.png), already
+ * published in the case-file gallery. Embedded here because the same thread
+ * carries the page's thesis verbatim: the affected holder states the family
+ * name was the entire basis of trust, cites on-chain creator-fee activity, and
+ * the founder's reply is "stfu." The caption foregrounds that substance.
+ * "stfu" and the holder's quoted line stay English (sacred quotes / original).
+ */
+export const STFU_EXHIBIT = {
+  img: '/exhibits/ex13-stfu-from-alex.png',
+  width: 2364,
+  height: 2224,
+  attrib: 'Telegram DM · @natroalex1 (verified) · 25 May 2026, 10:11',
+};
+
+export interface StfuCaption {
+  kicker: string;
+  alt: string;
+  caption: string;
+}
+
+const STFU_CAPTIONS: Record<Locale, StfuCaption> = {
+  en: {
+    kicker: 'The reply, on the record',
+    alt: 'Telegram DM thread with Alex Natroshvili (@natroalex1, verified). The affected holder offers to close the matter if affected holders are refunded and states the family name was the entire basis of trust; the founder’s reply is “stfu.”',
+    caption:
+      'The full refusal exchange. The affected holder’s offer turns on one point — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* The reply, in full: *“stfu.”*',
+  },
+  ru: {
+    kicker: 'Ответ, под запись',
+    alt: 'Переписка в Telegram с Alex Natroshvili (@natroalex1, верифицирован). Пострадавший держатель предлагает закрыть вопрос при возврате средств пострадавшим и заявляет, что вся основа доверия — это фамилия; ответ основателя — «stfu».',
+    caption:
+      'Полный обмен с отказом. Предложение пострадавшего держателя держится на одном — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* Ответ целиком: *“stfu.”*',
+  },
+  uk: {
+    kicker: 'Відповідь, під запис',
+    alt: 'Листування в Telegram з Alex Natroshvili (@natroalex1, верифікований). Постраждалий тримач пропонує закрити питання за умови повернення коштів постраждалим і заявляє, що вся основа довіри — це прізвище; відповідь засновника — «stfu».',
+    caption:
+      'Повний обмін із відмовою. Пропозиція постраждалого тримача тримається на одному — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* Відповідь цілком: *“stfu.”*',
+  },
+  ka: {
+    kicker: 'პასუხი, ჩანაწერისთვის',
+    alt: 'Telegram მიმოწერა Alex Natroshvili-სთან (@natroalex1, ვერიფიცირებული). დაზარალებული მფლობელი გვთავაზობს საკითხის დახურვას დაზარალებულების თანხის დაბრუნების სანაცვლოდ და აცხადებს, რომ ნდობის მთელი საფუძველი გვარი იყო; დამფუძნებლის პასუხია „stfu“.',
+    caption:
+      'უარის სრული მიმოწერა. დაზარალებული მფლობელის შეთავაზება ერთ რამეზე დგას — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* პასუხი სრულად: *“stfu.”*',
+  },
+  fr: {
+    kicker: 'La réponse, pour mémoire',
+    alt: 'Fil de messages Telegram avec Alex Natroshvili (@natroalex1, vérifié). Le détenteur lésé propose de clore l’affaire si les détenteurs lésés sont remboursés et déclare que le nom de famille était toute la base de sa confiance ; la réponse du fondateur est « stfu ».',
+    caption:
+      'L’échange de refus complet. L’offre du détenteur lésé repose sur un seul point — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* La réponse, en entier : *“stfu.”*',
+  },
+  de: {
+    kicker: 'Die Antwort, fürs Protokoll',
+    alt: 'Telegram-Nachrichtenverlauf mit Alex Natroshvili (@natroalex1, verifiziert). Der betroffene Halter bietet an, die Sache zu schließen, wenn betroffene Halter erstattet werden, und erklärt, der Familienname sei die gesamte Grundlage seines Vertrauens gewesen; die Antwort des Gründers lautet „stfu“.',
+    caption:
+      'Der vollständige Ablehnungs-Austausch. Das Angebot des betroffenen Halters hängt an einem Punkt — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* Die Antwort, vollständig: *“stfu.”*',
+  },
+  es: {
+    kicker: 'La respuesta, para el registro',
+    alt: 'Hilo de mensajes de Telegram con Alex Natroshvili (@natroalex1, verificado). El tenedor afectado se ofrece a cerrar el asunto si se reembolsa a los tenedores afectados y afirma que el apellido era toda la base de su confianza; la respuesta del fundador es «stfu».',
+    caption:
+      'El intercambio completo de la negativa. La oferta del tenedor afectado gira en torno a un punto — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* La respuesta, completa: *“stfu.”*',
+  },
+  ar: {
+    kicker: 'الردّ، للسجلّ',
+    alt: 'سلسلة رسائل تيليغرام مع أليكس ناتروشفيلي (@natroalex1، موثَّق). يعرض المالك المتضرّر إغلاق المسألة مقابل ردّ الأموال للمتضرّرين ويقول إن اسم العائلة كان كامل أساس ثقته؛ ردّ المؤسّس هو «stfu».',
+    caption:
+      'تبادل الرفض كاملًا. عرض المالك المتضرّر يقوم على نقطة واحدة — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* الردّ كاملًا: *“stfu.”*',
+  },
+  ur: {
+    kicker: 'جواب، ریکارڈ کے لیے',
+    alt: 'الیکس ناتروشویلی (@natroalex1، تصدیق شدہ) کے ساتھ ٹیلیگرام پیغامات کا سلسلہ۔ متاثرہ ہولڈر متاثرہ ہولڈرز کو رقم واپسی کی شرط پر معاملہ ختم کرنے کی پیشکش کرتا ہے اور کہتا ہے کہ اعتماد کی پوری بنیاد خاندانی نام تھا؛ بانی کا جواب «stfu» ہے۔',
+    caption:
+      'انکار کا مکمل تبادلہ۔ متاثرہ ہولڈر کی پیشکش ایک نکتے پر ٹکی ہے — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* جواب، مکمل: *“stfu.”*',
+  },
+  hi: {
+    kicker: 'जवाब, रिकॉर्ड के लिए',
+    alt: 'Alex Natroshvili (@natroalex1, सत्यापित) के साथ Telegram संदेश-शृंखला। प्रभावित होल्डर प्रभावित होल्डरों को रिफंड की शर्त पर मामला बंद करने का प्रस्ताव देता है और कहता है कि भरोसे का पूरा आधार उपनाम था; संस्थापक का जवाब है “stfu”।',
+    caption:
+      'इनकार का पूरा आदान-प्रदान। प्रभावित होल्डर का प्रस्ताव एक बिंदु पर टिका है — *“I entered because of your father, David Natroshvili, and the reputation of Spribe and Aviator … Without that name, I would never have touched NATRO.”* जवाब, पूरा: *“stfu.”*',
+  },
+};
+
+export function getStfuCaption(locale: Locale): StfuCaption {
+  return STFU_CAPTIONS[locale] || STFU_CAPTIONS.en;
+}
+
+/**
+ * David Natroshvili's pre-launch Instagram Stories (@davidnatro1, verified),
+ * already published as Exhibits 2, 21, 22, 23, 24. Embedded here as direct
+ * proof of the page's thesis: the launch was pushed in the first person from
+ * the father's verified account. Captions are verbatim English quotes (sacred)
+ * plus attribution, identical across locales; the section's kicker/intro are
+ * localised via getDavidStoriesIntro().
+ */
+export const DAVID_STORIES: {
+  img: string;
+  width: number;
+  height: number;
+  caption: string;
+}[] = [
+  {
+    img: '/exhibits/ex22-david-story-presale-bentley.jpg',
+    width: 591,
+    height: 1280,
+    caption:
+      '“Get involved in the crypto project presale with me & @natroalex — DM @natroalex1 — 1.5k min.” — @davidnatro1 (verified), Instagram Story, pre-launch',
+  },
+  {
+    img: '/exhibits/ex24-david-story-presale-ferrari.jpg',
+    width: 591,
+    height: 1280,
+    caption:
+      '“We’re opening private access to our crypto project presale with me & @natroalex … 1.5k min entry.” — @davidnatro1 (verified), Instagram Story, pre-launch',
+  },
+  {
+    img: '/exhibits/ex21-david-story-celebs-on-line.jpg',
+    width: 591,
+    height: 1280,
+    caption:
+      '“I have many celebs on the line to post about natro this will be crazy🔥” — @davidnatro1 (verified), Instagram Story, pre-launch',
+  },
+  {
+    img: '/exhibits/ex01-jrcryptex-promo-reshared-by-david.jpg',
+    width: 1177,
+    height: 2560,
+    caption:
+      'David Natroshvili reshares the paid @jrcryptex launch promo — @davidnatro1 (verified), Instagram Stories',
+  },
+  {
+    img: '/exhibits/ex23-david-natroalex-coin-reshare.jpg',
+    width: 591,
+    height: 1280,
+    caption:
+      'The NATRO COIN render, reshared by @davidnatro1 and @natroalex — Instagram Story, both verified, pre-launch',
+  },
+];
+
+export interface DavidStoriesIntro {
+  kicker: string;
+  intro: string;
+}
+
+const DAVID_STORIES_I18N: Record<Locale, DavidStoriesIntro> = {
+  en: {
+    kicker: 'The launch, pushed from the father’s account',
+    intro:
+      'The solicitation did not come from an anonymous team. In the hours before launch, David Natroshvili — Spribe’s founder and CEO — promoted the presale in the first person and reshared the launch material from his own verified Instagram (@davidnatro1). The Stories, preserved in the file’s exhibit set:',
+  },
+  ru: {
+    kicker: 'Запуск, продвигавшийся с аккаунта отца',
+    intro:
+      'Сбор шёл не от анонимной команды. В часы перед запуском David Natroshvili — основатель и CEO Spribe — лично, от первого лица, продвигал пресейл и репостил материалы запуска со своего верифицированного Instagram (@davidnatro1). Сторис сохранены в наборе экспонатов файла:',
+  },
+  uk: {
+    kicker: 'Запуск, що просувався з акаунта батька',
+    intro:
+      'Збір ішов не від анонімної команди. У години перед запуском David Natroshvili — засновник і CEO Spribe — особисто, від першої особи, просував пресейл і репостив матеріали запуску зі свого верифікованого Instagram (@davidnatro1). Сторіс збережені в наборі експонатів файлу:',
+  },
+  ka: {
+    kicker: 'გაშვება, რომელსაც მამის ანგარიშიდან უწევდნენ პიარს',
+    intro:
+      'შეგროვება ანონიმური გუნდისგან არ მოდიოდა. გაშვებამდე საათებში David Natroshvili — Spribe-ის დამფუძნებელი და CEO — პირადად, პირველ პირში, არეკლამებდა პრესეილს და რეპოსტავდა გაშვების მასალას საკუთარი ვერიფიცირებული Instagram-იდან (@davidnatro1). სტორებია დაცული ფაილის ექსპონატებში:',
+  },
+  fr: {
+    kicker: 'Le lancement, poussé depuis le compte du père',
+    intro:
+      'La sollicitation ne venait pas d’une équipe anonyme. Dans les heures précédant le lancement, David Natroshvili — fondateur et PDG de Spribe — a fait la promotion de la prévente à la première personne et a repartagé le matériel de lancement depuis son propre Instagram vérifié (@davidnatro1). Les Stories, conservées dans le dossier :',
+  },
+  de: {
+    kicker: 'Der Launch, beworben vom Konto des Vaters',
+    intro:
+      'Die Aufforderung kam nicht von einem anonymen Team. In den Stunden vor dem Launch bewarb David Natroshvili — Gründer und CEO von Spribe — den Presale in der Ich-Form und teilte das Launch-Material von seinem eigenen verifizierten Instagram (@davidnatro1) erneut. Die Stories, im Aktenbestand gesichert:',
+  },
+  es: {
+    kicker: 'El lanzamiento, impulsado desde la cuenta del padre',
+    intro:
+      'La solicitud no vino de un equipo anónimo. En las horas previas al lanzamiento, David Natroshvili — fundador y CEO de Spribe — promovió la preventa en primera persona y recompartió el material de lanzamiento desde su propio Instagram verificado (@davidnatro1). Las Stories, conservadas en el expediente:',
+  },
+  ar: {
+    kicker: 'الإطلاق، مدفوعًا من حساب الأب',
+    intro:
+      'لم يأتِ الطلب من فريق مجهول. في الساعات التي سبقت الإطلاق، روّج David Natroshvili — مؤسّس Spribe ورئيسها التنفيذي — للبيع المسبق بصيغة المتكلّم وأعاد نشر مواد الإطلاق من حسابه الموثَّق على إنستغرام (@davidnatro1). القصص، محفوظة ضمن أدلّة الملف:',
+  },
+  ur: {
+    kicker: 'لانچ، جو والد کے اکاؤنٹ سے بڑھایا گیا',
+    intro:
+      'یہ مطالبہ کسی گمنام ٹیم کی طرف سے نہیں آیا۔ لانچ سے پہلے کے گھنٹوں میں David Natroshvili — Spribe کے بانی اور سی ای او — نے پہلے شخص میں پری سیل کی تشہیر کی اور اپنے تصدیق شدہ انسٹاگرام (@davidnatro1) سے لانچ کا مواد دوبارہ شیئر کیا۔ اسٹوریز فائل کے ثبوتوں میں محفوظ ہیں:',
+  },
+  hi: {
+    kicker: 'लॉन्च, जो पिता के अकाउंट से बढ़ाया गया',
+    intro:
+      'यह माँग किसी गुमनाम टीम की ओर से नहीं आई। लॉन्च से पहले के घंटों में David Natroshvili — Spribe के संस्थापक और CEO — ने पहले पुरुष में प्रीसेल का प्रचार किया और अपने सत्यापित Instagram (@davidnatro1) से लॉन्च सामग्री दोबारा शेयर की। ये Stories फ़ाइल के साक्ष्यों में संरक्षित हैं:',
+  },
+};
+
+export function getDavidStoriesIntro(locale: Locale): DavidStoriesIntro {
+  return DAVID_STORIES_I18N[locale] || DAVID_STORIES_I18N.en;
+}

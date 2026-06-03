@@ -22,6 +22,10 @@ import {
   SELFDOXX_QUOTE,
   PERSONA,
   FAQ_QUOTE,
+  STFU_EXHIBIT,
+  getStfuCaption,
+  DAVID_STORIES,
+  getDavidStoriesIntro,
 } from '@/content/natro-money';
 
 const PATH = '/how-did-natroalex-make-his-money';
@@ -77,6 +81,8 @@ export default async function NatroMoneyPage({
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
   const c = getNatroMoney(loc);
+  const stfu = getStfuCaption(loc);
+  const stories = getDavidStoriesIntro(loc);
   const pageUrl = absoluteUrl(loc, PATH);
 
   const jsonLd = {
@@ -177,6 +183,52 @@ export default async function NatroMoneyPage({
         <section className="mt-10">
           <div className="kicker mb-3">{c.moneyKicker}</div>
           <Prose text={c.moneyBody} className="text-base md:text-lg" />
+        </section>
+
+        {/* David's pre-launch Stories — the solicitation, from the father's account */}
+        <section className="mt-10">
+          <div className="kicker mb-3">{stories.kicker}</div>
+          <p className="sans text-base md:text-lg leading-relaxed">{stories.intro}</p>
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {DAVID_STORIES.map((s) => (
+              <figure key={s.img}>
+                <div className="relative w-full border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden">
+                  <Image
+                    src={s.img}
+                    alt={s.caption}
+                    width={s.width}
+                    height={s.height}
+                    sizes="(max-width: 640px) 45vw, 240px"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <figcaption className="mt-2 sans text-[10px] text-[var(--color-ink-faint)] leading-snug">
+                  {s.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* The refusal — Exhibit 20, the "stfu" DM */}
+        <section className="mt-10">
+          <div className="kicker mb-3">{stfu.kicker}</div>
+          <figure className="mt-2">
+            <div className="relative w-full max-w-[560px] mx-auto border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden">
+              <Image
+                src={STFU_EXHIBIT.img}
+                alt={stfu.alt}
+                width={STFU_EXHIBIT.width}
+                height={STFU_EXHIBIT.height}
+                sizes="(max-width: 640px) 90vw, 560px"
+                className="w-full h-auto"
+              />
+            </div>
+            <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug max-w-[520px] mx-auto text-center">
+              <Prose text={stfu.caption} className="!gap-1" />
+              <span className="block mt-1">{STFU_EXHIBIT.attrib}</span>
+            </figcaption>
+          </figure>
         </section>
 
         {/* His own figure — recorded as a claim, not a fact */}
