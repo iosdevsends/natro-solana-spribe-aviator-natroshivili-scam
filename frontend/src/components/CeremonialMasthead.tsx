@@ -62,6 +62,7 @@ export async function CeremonialMasthead({
     { href: '/scam-one-pager', label: summaryLabel },
     { href: '/david-natroshvili-scam', label: tNav('davidCase') },
     { href: '/david-natroshvili-principles', label: tNav('davidPrinciples') },
+    { href: '/how-did-natroalex-make-his-money', label: tNav('natroMoney') },
     { href: '/people/alex-natroshvili', label: tNav('profileAlex') },
     { href: '/people/david-natroshvili', label: tNav('profileDavid') },
     { href: '/press/fact-sheet', label: tNav('factSheet') },
