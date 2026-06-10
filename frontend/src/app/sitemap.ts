@@ -18,6 +18,7 @@ const STATIC_PATHS = [
   '/david-natroshvili-scam',
   '/david-natroshvili-principles',
   '/how-did-natroalex-make-his-money',
+  '/the-name-in-search',
   '/people',
   '/people/alex-natroshvili',
   '/people/david-natroshvili',
