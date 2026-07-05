@@ -413,6 +413,13 @@ export default async function CaseFilePage({
                 >
                   Post · X ↗
                 </a>
+                <a
+                  href="https://www.facebook.com/alexdavidnatroshviliscam"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Page · Facebook ↗
+                </a>
                 <Link href="/privacy">
                   Privacy &amp; cookies
                 </Link>

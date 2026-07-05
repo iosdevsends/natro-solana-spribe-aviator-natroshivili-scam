@@ -211,6 +211,19 @@ export default async function ScamOnePagerPage({
                 </span>
               </Link>
             </li>
+            <li>
+              <a
+                href="https://www.facebook.com/alexdavidnatroshviliscam"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="block"
+              >
+                Facebook page ↗
+                <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                  Updates and discussion
+                </span>
+              </a>
+            </li>
           </ul>
         </nav>
 
