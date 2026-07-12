@@ -64,6 +64,7 @@ export async function CeremonialMasthead({
     { href: '/david-natroshvili-principles', label: tNav('davidPrinciples') },
     { href: '/how-did-natroalex-make-his-money', label: tNav('natroMoney') },
     { href: '/the-name-in-search', label: tNav('searchRecord') },
+    { href: '/reddit-anticasino', label: tNav('redditThread') },
     { href: '/people/alex-natroshvili', label: tNav('profileAlex') },
     { href: '/people/david-natroshvili', label: tNav('profileDavid') },
     { href: '/press/fact-sheet', label: tNav('factSheet') },

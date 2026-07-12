@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
@@ -17,23 +18,24 @@ import {
   OG_IMAGE,
 } from '@/lib/seo';
 import {
-  getSearchRecord,
-  GSC_QUERIES,
-  BING_QUERIES,
-  SELFDOXX_QUOTE,
-  type QueryRow,
-} from '@/content/search-record';
+  getRedditProvenance,
+  REDDIT_THREAD_URL,
+  REDDIT_SHOT,
+  THREAD_TITLE,
+} from '@/content/reddit-provenance';
 
-const PATH = '/the-name-in-search';
+const PATH = '/reddit-anticasino';
 
 /**
- * "The name in the search box" — a single-subject page on one structural fact:
- * a launch built on a borrowed name wins the search result page by default, and
- * the demand it manufactured is visible in the file's own search consoles. The
- * thesis is carried by sourced query data (Google Search Console + Bing
- * Webmaster Tools, taken verbatim) and the project's own quotes, mirroring
- * /how-did-natroalex-make-his-money. Copy is localised via getSearchRecord();
- * the verbatim search strings and the founder line stay English.
+ * "Corroborated on Reddit — with no link home" — a single-subject page on one
+ * structural fact about how this story travels: secondary coverage can restate
+ * the documented $NATRO events accurately while carrying no link back to the
+ * primary record and no name for who compiled it. The example is a real
+ * r/anticasino thread (screenshot). The thesis is provenance, carried by the
+ * visible thread text and the subreddit's own posted rules — not by any claim
+ * that a specific link was removed by a specific party, and not by insult to
+ * the poster (who corroborates the record) or the platform. Copy is localised
+ * via getRedditProvenance(); the verbatim thread quotes stay English.
  */
 export async function generateMetadata({
   params,
@@ -43,7 +45,7 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
-  const c = getSearchRecord(loc);
+  const c = getRedditProvenance(loc);
   return {
     title: clampTitle(c.metaTitle),
     description: clampDescription(c.metaDescription),
@@ -63,66 +65,7 @@ export async function generateMetadata({
   };
 }
 
-/** One typeset query table — matches the cream-paper / mono-figures aesthetic. */
-function QueryTable({
-  rows,
-  showImpressions,
-  colQuery,
-  colImpr,
-  colClicks,
-}: {
-  rows: QueryRow[];
-  showImpressions: boolean;
-  colQuery: string;
-  colImpr: string;
-  colClicks: string;
-}) {
-  return (
-    <table className="w-full border-collapse text-left">
-      <thead>
-        <tr className="border-b border-[var(--color-ink)]">
-          <th className="sans text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)] font-medium py-2 pr-3">
-            {colQuery}
-          </th>
-          {showImpressions && (
-            <th className="sans text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)] font-medium py-2 px-3 text-right whitespace-nowrap">
-              {colImpr}
-            </th>
-          )}
-          <th className="sans text-[10px] uppercase tracking-widest text-[var(--color-ink-faint)] font-medium py-2 pl-3 text-right whitespace-nowrap">
-            {colClicks}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((r) => (
-          <tr
-            key={r.q}
-            className="border-b border-[var(--color-rule-soft)] last:border-b-0"
-          >
-            <td
-              className={`mono text-[13px] py-2 pr-3 break-words ${
-                r.wealth ? 'text-[var(--color-accent)] font-medium' : ''
-              }`}
-            >
-              {r.q}
-            </td>
-            {showImpressions && (
-              <td className="mono text-[13px] py-2 px-3 text-right tabular-nums text-[var(--color-ink-soft)]">
-                {r.impressions}
-              </td>
-            )}
-            <td className="mono text-[13px] py-2 pl-3 text-right tabular-nums text-[var(--color-ink-soft)]">
-              {r.clicks}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-export default async function SearchRecordPage({
+export default async function RedditAnticasinoPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -134,7 +77,7 @@ export default async function SearchRecordPage({
 
   const bundle = await loadCaseFile(loc);
   const ui = bundle.config.uiStrings || {};
-  const c = getSearchRecord(loc);
+  const c = getRedditProvenance(loc);
   const pageUrl = absoluteUrl(loc, PATH);
 
   const jsonLd = {
@@ -144,8 +87,8 @@ export default async function SearchRecordPage({
     headline: c.metaTitle,
     inLanguage: loc,
     isAccessibleForFree: true,
-    datePublished: '2026-06-10T00:00:00Z',
-    dateModified: '2026-06-10T00:00:00Z',
+    datePublished: '2026-07-12T00:00:00Z',
+    dateModified: '2026-07-12T00:00:00Z',
     url: pageUrl,
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     about: [
@@ -157,7 +100,9 @@ export default async function SearchRecordPage({
       { '@id': 'https://natro.meme/#david-natroshvili' },
       { '@id': 'https://natro.meme/#spribe' },
     ],
+    // The secondary coverage this page is about, cited as the discussed source.
     citation: [
+      REDDIT_THREAD_URL,
       'https://web.archive.org/web/20260521213245/https://natrocoin.net/',
       'https://solscan.io/token/9TmTw3B4WVzfZY15Cf28uK3vk32QUixCYcM9W1RrtdiF',
     ],
@@ -198,62 +143,52 @@ export default async function SearchRecordPage({
           {c.pullQuote}
         </blockquote>
 
-        {/* What people actually type — the real query data */}
-        <section className="mt-10">
-          <div className="kicker mb-3">{c.dataKicker}</div>
-          <p className="sans text-base md:text-lg leading-relaxed">{c.dataIntro}</p>
-
-          <figure className="mt-6 border-y border-[var(--color-ink)] py-5">
-            <QueryTable
-              rows={GSC_QUERIES}
-              showImpressions={false}
-              colQuery={c.colQuery}
-              colImpr={c.colImpr}
-              colClicks={c.colClicks}
+        {/* The thread itself — screenshot links out to the live discussion */}
+        <figure className="mt-8">
+          <a
+            href={REDDIT_THREAD_URL}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={THREAD_TITLE}
+            className="group relative block w-full border border-[var(--color-rule)] bg-[var(--color-paper-warm)]/40 overflow-hidden cursor-pointer"
+          >
+            <Image
+              src={REDDIT_SHOT.src}
+              alt={c.imgAlt}
+              width={REDDIT_SHOT.width}
+              height={REDDIT_SHOT.height}
+              sizes="(max-width: 800px) 100vw, 760px"
+              className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.01]"
+              priority
             />
-            <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug">
-              {c.gscCaption}
-            </figcaption>
-          </figure>
+          </a>
+          <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug">
+            {c.imgCaption}
+          </figcaption>
+        </figure>
 
-          <figure className="mt-6 border-y border-[var(--color-ink)] py-5">
-            <QueryTable
-              rows={BING_QUERIES}
-              showImpressions
-              colQuery={c.colQuery}
-              colImpr={c.colImpr}
-              colClicks={c.colClicks}
-            />
-            <figcaption className="mt-3 sans text-[11px] text-[var(--color-ink-faint)] leading-snug">
-              {c.bingCaption}
-            </figcaption>
-          </figure>
-
-          <p className="sans text-sm leading-relaxed text-[var(--color-ink-soft)] mt-4">
-            {c.countriesNote}
-          </p>
-        </section>
-
-        {/* The questions were planted — the self-doxx line, verbatim */}
+        {/* The same story, told secondhand */}
         <section className="mt-10">
-          <div className="kicker mb-3">{c.plantedKicker}</div>
-          <Prose text={c.plantedIntro} className="text-base md:text-lg" />
-          <blockquote className="serif italic text-lg md:text-xl leading-snug mt-4 border-l-4 border-[var(--color-accent)] pl-5">
-            &ldquo;{SELFDOXX_QUOTE}&rdquo;
-          </blockquote>
-          <Prose text={c.plantedAfter} className="text-base md:text-lg mt-4" />
+          <div className="kicker mb-3">{c.threadKicker}</div>
+          <Prose text={c.threadBody} className="text-base md:text-lg" />
         </section>
 
-        {/* The record that answers them */}
-        <section className="mt-10">
-          <div className="kicker mb-3">{c.answersKicker}</div>
-          <Prose text={c.answersBody} className="text-base md:text-lg" />
-        </section>
-
-        {/* Why the name owns the search box — the structural point */}
+        {/* The link that isn't there */}
         <section className="mt-10 border-y border-[var(--color-ink)] py-6">
-          <div className="kicker mb-3">{c.structureKicker}</div>
-          <Prose text={c.structureBody} className="text-base md:text-lg" />
+          <div className="kicker mb-3">{c.missingKicker}</div>
+          <Prose text={c.missingBody} className="text-base md:text-lg" />
+        </section>
+
+        {/* Why summaries travel without their source */}
+        <section className="mt-10">
+          <div className="kicker mb-3">{c.whyKicker}</div>
+          <Prose text={c.whyBody} className="text-base md:text-lg" />
+        </section>
+
+        {/* The primary record — the link the summary omitted */}
+        <section className="mt-10">
+          <div className="kicker mb-3">{c.recordKicker}</div>
+          <Prose text={c.recordBody} className="text-base md:text-lg" />
         </section>
 
         {/* Method & sources */}
@@ -285,10 +220,10 @@ export default async function SearchRecordPage({
           <div className="kicker mb-4">Where to next</div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sans text-sm">
             <li>
-              <Link href="/reddit-anticasino" className="block">
-                The story on Reddit — with no link home →
+              <Link href="/the-name-in-search" className="block">
+                The name in the search box →
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                  Secondary coverage corroborates the record but omits its source
+                  Where the search demand came from — the query record
                 </span>
               </Link>
             </li>
@@ -297,14 +232,6 @@ export default async function SearchRecordPage({
                 How did NatroAlex make his money? →
                 <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
                   The record’s answer to the most-searched question
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/people/alex-natroshvili" className="block">
-                Alex Natroshvili — full profile →
-                <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
-                  The founder, named by the project itself — with sources
                 </span>
               </Link>
             </li>

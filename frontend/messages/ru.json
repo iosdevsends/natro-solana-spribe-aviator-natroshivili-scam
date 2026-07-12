@@ -26,7 +26,8 @@
     "factSheet": "Сводка фактов",
     "privacy": "Приватность",
     "natroMoney": "Откуда у Алекса деньги",
-    "searchRecord": "Имя в поиске"
+    "searchRecord": "Имя в поиске",
+    "redditThread": "История на Reddit"
   },
   "wall": {
     "kicker": "Цена имени",

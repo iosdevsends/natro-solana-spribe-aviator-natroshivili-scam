@@ -19,6 +19,7 @@ const STATIC_PATHS = [
   '/david-natroshvili-principles',
   '/how-did-natroalex-make-his-money',
   '/the-name-in-search',
+  '/reddit-anticasino',
   '/people',
   '/people/alex-natroshvili',
   '/people/david-natroshvili',
