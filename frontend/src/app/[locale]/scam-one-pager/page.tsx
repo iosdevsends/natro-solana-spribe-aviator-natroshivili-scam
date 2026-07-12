@@ -224,6 +224,19 @@ export default async function ScamOnePagerPage({
                 </span>
               </a>
             </li>
+            <li>
+              <a
+                href="https://www.reddit.com/r/anticasino/comments/1u06s0t/son_of_aviator_ceo_allegedly_ran_a_memecoin_scam/"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="block"
+              >
+                Reddit thread ↗
+                <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                  r/anticasino discussion
+                </span>
+              </a>
+            </li>
           </ul>
         </nav>
 

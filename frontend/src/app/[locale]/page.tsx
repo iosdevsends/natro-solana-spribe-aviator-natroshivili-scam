@@ -420,6 +420,13 @@ export default async function CaseFilePage({
                 >
                   Page · Facebook ↗
                 </a>
+                <a
+                  href="https://www.reddit.com/r/anticasino/comments/1u06s0t/son_of_aviator_ceo_allegedly_ran_a_memecoin_scam/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Thread · Reddit ↗
+                </a>
                 <Link href="/privacy">
                   Privacy &amp; cookies
                 </Link>

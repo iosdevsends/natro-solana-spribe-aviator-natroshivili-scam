@@ -317,6 +317,32 @@ export default async function PersonProfilePage({
                 </span>
               </Link>
             </li>
+            <li>
+              <a
+                href="https://www.facebook.com/alexdavidnatroshviliscam"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="block"
+              >
+                Facebook page ↗
+                <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                  Updates and discussion
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.reddit.com/r/anticasino/comments/1u06s0t/son_of_aviator_ceo_allegedly_ran_a_memecoin_scam/"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="block"
+              >
+                Reddit thread ↗
+                <span className="block sans text-xs text-[var(--color-ink-faint)] mt-1">
+                  r/anticasino discussion
+                </span>
+              </a>
+            </li>
           </ul>
         </nav>
       </main>
