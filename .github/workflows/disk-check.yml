@@ -13,6 +13,9 @@ on:
 jobs:
   disk-check:
     runs-on: ubuntu-latest
+    # DEPLOY_* are environment-scoped secrets (same as the Deploy workflow),
+    # so this job must opt into the production environment to read them.
+    environment: production
     steps:
       - name: Configure SSH
         run: |
