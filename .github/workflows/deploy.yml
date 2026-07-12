@@ -42,6 +42,17 @@ jobs:
              cd $DEPLOY_PATH
              git fetch --all --prune
              git reset --hard origin/main
+             # Free disk BEFORE building — the 24G root fills up on Docker build
+             # cache + old image layers and dies with "no space left on device".
+             # photovideo has been moved off this host, so the only running
+             # stack is natro (frontend, backend, postgres). system prune -af
+             # (NO --volumes) drops stopped containers, unused/dangling images
+             # (incl. the stale photovideo leftovers) and all build cache, while
+             # keeping running natro containers, their in-use images, and every
+             # named volume (postgres data, uploads).
+             echo "Disk before cleanup:"; df -h /
+             docker system prune -af
+             echo "Disk after cleanup:"; df -h /
              # Build services SEQUENTIALLY to avoid OOM on t3.small.
              # Backend (Strapi admin) is the memory-heavy one — go first.
              docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml build --pull backend
