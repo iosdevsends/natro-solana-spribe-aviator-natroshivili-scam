@@ -16,6 +16,7 @@ import {
   clampTitle,
   clampDescription,
   OG_IMAGE,
+  imageLicenseFields,
 } from '@/lib/seo';
 import {
   PEOPLE_PROFILES,
@@ -103,10 +104,10 @@ export default async function PersonProfilePage({
       url: absoluteUrl(loc, '') + ex.legacySrc,
       name: ex.title,
       caption: ex.title,
-      creditText: ex.source || undefined,
       ...(ex.legacyWidth && ex.legacyHeight
         ? { width: ex.legacyWidth, height: ex.legacyHeight }
         : {}),
+      ...imageLicenseFields(ex.source),
       isAccessibleForFree: true,
     }));
 

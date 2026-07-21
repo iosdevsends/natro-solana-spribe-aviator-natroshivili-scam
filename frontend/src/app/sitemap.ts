@@ -24,6 +24,7 @@ const STATIC_PATHS = [
   '/people/alex-natroshvili',
   '/people/david-natroshvili',
   '/privacy',
+  '/image-license',
 ];
 
 async function listApprovedStories(): Promise<UserStoryDTO[]> {

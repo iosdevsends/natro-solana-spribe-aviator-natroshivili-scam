@@ -84,6 +84,50 @@ export const OG_IMAGE = {
 } as const;
 
 /**
+ * Image licensing — the author who holds copyright over the case-file imagery
+ * and the page describing reuse terms. Surfaced in every `ImageObject` so
+ * Google can show the "Licensable" badge in Google Images and satisfies the
+ * `creator` / `copyrightNotice` / `license` / `acquireLicensePage` fields the
+ * Search Console "Image metadata" report asks for.
+ */
+export const IMAGE_AUTHOR = 'Yevgeniy Moykin';
+export const IMAGE_LICENSE_PATH = '/image-license';
+export const IMAGE_COPYRIGHT_YEAR = 2026;
+
+/** Absolute URL of the human-readable license/usage-terms page. */
+export function imageLicenseUrl(): string {
+  return `${siteUrl}${IMAGE_LICENSE_PATH}`;
+}
+
+/**
+ * Attribution string a re-user must display. Combines the required author
+ * credit (Yevgeniy Moykin) with the primary source the image was captured
+ * from, so the license's "cite the source" requirement is machine-readable.
+ */
+export function imageCreditText(source?: string): string {
+  const base = `© ${IMAGE_COPYRIGHT_YEAR} ${IMAGE_AUTHOR} · natro.meme`;
+  return source ? `${base} — source: ${source}` : base;
+}
+
+/**
+ * The licensing block to spread into an `ImageObject`. Every field Google's
+ * image-metadata report flags as missing is filled here. Reuse is allowed
+ * only with visible credit to the author AND a link back to the source page.
+ */
+export function imageLicenseFields(source?: string) {
+  const license = imageLicenseUrl();
+  return {
+    creator: { '@type': 'Person', name: IMAGE_AUTHOR },
+    copyrightHolder: { '@type': 'Person', name: IMAGE_AUTHOR },
+    copyrightYear: IMAGE_COPYRIGHT_YEAR,
+    copyrightNotice: `© ${IMAGE_COPYRIGHT_YEAR} ${IMAGE_AUTHOR}. Reuse requires visible credit to ${IMAGE_AUTHOR} and a link back to the source page on natro.meme.`,
+    creditText: imageCreditText(source),
+    license,
+    acquireLicensePage: license,
+  } as const;
+}
+
+/**
  * Trim a `<meta name="description">` to a length search engines actually
  * render (~155 chars), cutting on a word boundary and appending an ellipsis.
  * No-op when already short, so it is safe to wrap every page's description.

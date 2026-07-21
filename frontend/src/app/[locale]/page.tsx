@@ -13,7 +13,7 @@ import { Prose } from '@/components/Prose';
 import { LightboxLazy } from '@/components/LightboxLazy';
 import { ArchiveCallout } from '@/components/ArchiveCallout';
 import { OnChainStateBlock } from '@/components/OnChainStateBlock';
-import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, siteUrl, clampTitle, clampDescription, OG_IMAGE, imageLicenseFields } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
 // Canonical @id-anchored entities live in one place so the homepage @graph and
 // the dedicated /people/<slug> profile pages never drift apart.
@@ -113,7 +113,7 @@ export default async function CaseFilePage({
       caption: ex.caption || ex.title,
       description: [ex.title, ex.source, ex.whyItMatters].filter(Boolean).join(' — '),
       ...(ex.legacyWidth && ex.legacyHeight ? { width: ex.legacyWidth, height: ex.legacyHeight } : {}),
-      creditText: ex.source || undefined,
+      ...imageLicenseFields(ex.source),
       isAccessibleForFree: true,
     }));
 
