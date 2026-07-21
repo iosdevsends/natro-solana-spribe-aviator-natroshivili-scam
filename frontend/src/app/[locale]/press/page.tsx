@@ -9,7 +9,7 @@ import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { AskAI } from '@/components/AskAI';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
-import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
+import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE, IMAGE_AUTHOR, IMAGE_COPYRIGHT_YEAR } from '@/lib/seo';
 import { getPressContent } from '@/content/press-release';
 
 const RELEASE_PUBLISHED_AT = '2026-05-28T12:24:00Z';
@@ -242,6 +242,23 @@ export default async function PressPage({
         <section className="mt-10 border-t border-[var(--color-rule)] pt-6">
           <h2 className="kicker mb-3">{press.contactHeading}</h2>
           <Prose text={press.contactBody} className="text-[15px] leading-relaxed" />
+        </section>
+
+        {/* Image use & licensing — journalists must credit the author + source */}
+        <section className="mt-10 bg-[var(--color-paper-warm)]/60 border-l-2 border-[var(--color-accent)] p-5">
+          <h2 className="kicker mb-3">Image use &amp; licensing</h2>
+          <p className="text-[15px] leading-relaxed">
+            All exhibits, screenshots and graphics in this case file are{' '}
+            © {IMAGE_COPYRIGHT_YEAR} {IMAGE_AUTHOR} and are licensed for reuse
+            <strong> only with a visible credit to the author and a link back to the source</strong>.
+            Any journalist, publication or outlet that reproduces the graphics
+            <strong> without citing the source is in breach of the image license</strong>.
+          </p>
+          <p className="text-[15px] leading-relaxed mt-3">
+            <Link href="/image-license" className="underline">
+              Read the full image license &amp; attribution terms →
+            </Link>
+          </p>
         </section>
 
         {/* Downloads — hidden in print */}
