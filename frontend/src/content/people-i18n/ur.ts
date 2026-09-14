@@ -21,7 +21,7 @@ export const ur: PeopleLocaleBundle = {
       tagline:
         'Solana نیٹ ورک پر $NATRO میم کوائن کا بانی (21 May 2026 کو لانچ ہوا)؛ Spribe کے سی ای او ڈیوڈ ناتروشویلی کا بیٹا۔ خود کو لانچ کی مارکیٹنگ کے ذریعے پہچنوایا۔',
       metaTitle:
-        'ایلکس ناتروشویلی — Solana نیٹ ورک پر $NATRO کا بانی | The NATRO File',
+        'Alex Natroshvili کون ہے؟ $NATRO کا بانی، Spribe CEO کا بیٹا',
       metaDescription:
         'ایلکس ناتروشویلی کون ہے؟ Solana نیٹ ورک پر $NATRO میم کوائن کا بانی (21 May 2026)، Spribe کے سی ای او ڈیوڈ ناتروشویلی کا بیٹا۔ تصدیق شدہ Instagram @natroalex، اور تصدیق شدہ Telegram @natroalex1۔ ایک مستند فائل۔',
       handleNotes: ['تصدیق شدہ · 54.1K فالوورز', 'تصدیق شدہ'],
@@ -78,7 +78,7 @@ export const ur: PeopleLocaleBundle = {
       role: 'نامزد فریق · Spribe کا سی ای او',
       tagline:
         'Spribe کا بانی اور سی ای او؛ $NATRO کے بانی ایلکس ناتروشویلی کا والد۔ اپنے تصدیق شدہ Instagram اکاؤنٹ پر اس نے ذاتی طور پر $NATRO کے پری سیل کی تشہیر کی اور لانچ سے پہلے سرمایہ کاری کی دعوت دی۔',
-      metaTitle: 'ڈیوڈ ناتروشویلی — Spribe کا بانی اور سی ای او | The NATRO File',
+      metaTitle: 'David Natroshvili: Spribe CEO اور Alex Natroshvili کے والد',
       metaDescription:
         'ڈیوڈ ناتروشویلی کون ہے؟ Spribe کا بانی اور سی ای او اور $NATRO کے بانی ایلکس ناتروشویلی کا والد۔ اپنے تصدیق شدہ Instagram پر اس نے 21 May 2026 کی لانچ سے پہلے ذاتی طور پر $NATRO کے پری سیل ("with me & @natroalex"، کم از کم 1.5k) کی تشہیر کی۔ ایک مستند فائل۔',
       handleNotes: [undefined, 'تصدیق شدہ', undefined],

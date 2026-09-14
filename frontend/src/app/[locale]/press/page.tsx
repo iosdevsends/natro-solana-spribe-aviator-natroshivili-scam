@@ -11,6 +11,7 @@ import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE, IMAGE_AUTHOR, IMAGE_COPYRIGHT_YEAR } from '@/lib/seo';
 import { getPressContent } from '@/content/press-release';
+import { getSeoTitle } from '@/content/seo-titles';
 
 const RELEASE_PUBLISHED_AT = '2026-05-28T12:24:00Z';
 
@@ -25,7 +26,7 @@ export async function generateMetadata({
   const press = getPressContent(loc);
 
   return {
-    title: clampTitle(`${press.headline} — Press`),
+    title: clampTitle(getSeoTitle('press', loc)),
     description: clampDescription(press.dek),
     alternates: buildAlternates(loc, '/press'),
     openGraph: {

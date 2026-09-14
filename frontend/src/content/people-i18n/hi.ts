@@ -20,7 +20,7 @@ export const hi: PeopleLocaleBundle = {
       tagline:
         'Solana नेटवर्क पर $NATRO मीमकॉइन के संस्थापक (21 May 2026 को लॉन्च); Spribe के सीईओ डेविड नात्रोश्विली के पुत्र। लॉन्च मार्केटिंग के ज़रिए स्वयं अपनी पहचान उजागर की।',
       metaTitle:
-        'एलेक्स नात्रोश्विली — Solana नेटवर्क पर $NATRO के संस्थापक | The NATRO File',
+        'Alex Natroshvili कौन है? $NATRO संस्थापक, Spribe CEO के बेटे',
       metaDescription:
         'एलेक्स नात्रोश्विली कौन हैं? Solana नेटवर्क पर $NATRO मीमकॉइन के संस्थापक (21 May 2026), Spribe के सीईओ डेविड नात्रोश्विली के पुत्र। सत्यापित Instagram @natroalex, Telegram @natroalex1। एक प्रलेखित केस फ़ाइल।',
       handleNotes: ['सत्यापित · 54.1K फ़ॉलोअर्स', 'सत्यापित'],
@@ -77,7 +77,7 @@ export const hi: PeopleLocaleBundle = {
       role: 'नामित पक्ष · Spribe के सीईओ',
       tagline:
         'Spribe के संस्थापक और सीईओ; $NATRO के संस्थापक एलेक्स नात्रोश्विली के पिता। अपने सत्यापित Instagram खाते पर उन्होंने व्यक्तिगत रूप से $NATRO प्रीसेल का प्रचार किया और लॉन्च से पहले निवेश के लिए आमंत्रित किया।',
-      metaTitle: 'डेविड नात्रोश्विली — Spribe के संस्थापक और सीईओ | The NATRO File',
+      metaTitle: 'David Natroshvili: Spribe CEO और Alex Natroshvili के पिता',
       metaDescription:
         'डेविड नात्रोश्विली कौन हैं? Spribe के संस्थापक और सीईओ और $NATRO के संस्थापक एलेक्स नात्रोश्विली के पिता। अपने सत्यापित Instagram पर उन्होंने 21 May 2026 की लॉन्च से पहले व्यक्तिगत रूप से $NATRO प्रीसेल ("with me & @natroalex", न्यूनतम 1.5k) का प्रचार किया। एक प्रलेखित केस फ़ाइल।',
       handleNotes: [undefined, 'सत्यापित', undefined],

@@ -8,6 +8,7 @@ import { CeremonialMasthead } from '@/components/CeremonialMasthead';
 import { Prose } from '@/components/Prose';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
+import { getSeoTitle } from '@/content/seo-titles';
 
 export async function generateMetadata({
   params,
@@ -18,7 +19,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
-  const title = clampTitle(`FAQ — ${bundle.config.siteTitle}`);
+  const title = clampTitle(getSeoTitle('faq', loc));
   const description = clampDescription(bundle.config.tagline || bundle.config.seoDescription || '');
   return {
     title,

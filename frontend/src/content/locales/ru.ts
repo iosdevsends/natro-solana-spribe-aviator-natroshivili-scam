@@ -5,7 +5,7 @@ export const ru = () =>
     config: {
       siteTitle: 'Дело NATRO — кейс по ценообразованию репутации',
       seoTitle:
-        'Alex Natroshvili, Spribe и токен $NATRO на Solana — документированный кейс',
+        'Alex Natroshvili, Spribe, $NATRO: документированное дело',
       tagline: 'Документированный кейс по ценообразованию репутации',
       mastheadMeta: 'Кейс · По первичным источникам',
       seoDescription: 'Документированный кейс: запуск токена $NATRO на Solana (21 мая 2026), обвал на 98% и удаление улик после отказа в возврате. Только первичные источники.',

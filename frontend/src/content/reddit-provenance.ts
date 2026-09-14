@@ -76,7 +76,7 @@ export const THREAD_TITLE =
   'Son of Aviator CEO allegedly ran a memecoin scam on Solana. Token dropped 98% in days.';
 
 const en: RedditProvenanceContent = {
-  metaTitle: 'The $NATRO story on Reddit — corroborated, but with no link home',
+  metaTitle: 'Alex Natroshvili & $NATRO on Reddit — corroborated, but with no link home',
   metaDescription:
     'An r/anticasino thread recounts the same $NATRO events this file documents — the Solana launch, the ~98% collapse, the “stfu” refusal, the takedowns — crediting only “multiple posts” and linking no source. A summary with no path back can’t be verified; this is the primary, sourced, archived record it draws on.',
   kicker: 'How the story travels · provenance',
@@ -114,7 +114,7 @@ const en: RedditProvenanceContent = {
 };
 
 const ru: RedditProvenanceContent = {
-  metaTitle: 'История $NATRO на Reddit — подтверждена, но без ссылки на первоисточник',
+  metaTitle: 'Alex Natroshvili и $NATRO на Reddit — подтверждено, но без ссылки на первоисточник',
   metaDescription:
     'Тред в r/anticasino пересказывает те же события $NATRO, что задокументированы здесь — запуск на Solana, обвал ~98%, отказ «stfu», удаление сайта — ссылаясь лишь на «multiple posts» и не давая ни одного источника. Пересказ без обратного пути нельзя проверить; вот первичная, подтверждённая, заархивированная хроника, из которой он взят.',
   kicker: 'Как путешествует история · происхождение',
@@ -152,7 +152,7 @@ const ru: RedditProvenanceContent = {
 };
 
 const uk: RedditProvenanceContent = {
-  metaTitle: 'Історія $NATRO на Reddit — підтверджена, але без джерела',
+  metaTitle: 'Alex Natroshvili і $NATRO на Reddit — підтверджено, але без джерела',
   metaDescription: 'Тред у r/anticasino переказує ті самі події $NATRO, що задокументовані тут — запуск на Solana, обвал ~98%, відмову «stfu», видалення сайту — посилаючись лише на «multiple posts» і не наводячи жодного джерела. Переказ без зворотного шляху неможливо перевірити; ось первинна, підтверджена, заархівована хроніка, з якої його взято.',
   kicker: 'Як подорожує історія · походження',
   h1: 'Підтверджено на Reddit — але без посилання на джерело',
@@ -179,7 +179,7 @@ const uk: RedditProvenanceContent = {
 };
 
 const ka: RedditProvenanceContent = {
-  metaTitle: '$NATRO-ის ისტორია Reddit-ზე — დადასტურებული, ოღონდ პირველწყაროს ბმულის გარეშე',
+  metaTitle: 'Alex Natroshvili და $NATRO Reddit-ზე — დადასტურებული, ოღონდ პირველწყაროს ბმულის გარეშე',
   metaDescription: 'r/anticasino-ს თრედი Reddit-ზე იმავე $NATRO-ის მოვლენებს გადმოსცემს, რომლებიც აქ არის დოკუმენტირებული — Alex Natroshvili, David Natroshvili-ს ვაჟი, Solana-ზე გაშვება, ~98%-იანი ვარდნა, უარი „stfu“, საიტის წაშლა — და მხოლოდ „multiple posts“-ს იშველიებს, ერთი წყაროს მითითების გარეშე. ეს არის ის პირველადი, წყაროებიანი, დაარქივებული ჩანაწერი, საიდანაც ის იღება.',
   kicker: 'როგორ მოგზაურობს ამბავი · წარმომავლობა',
   h1: 'დადასტურებული Reddit-ზე — პირველწყაროს ბმულის გარეშე',
@@ -206,7 +206,7 @@ const ka: RedditProvenanceContent = {
 };
 
 const fr: RedditProvenanceContent = {
-  metaTitle: 'Reddit corrobore l’histoire de $NATRO, sans lien vers la source',
+  metaTitle: 'Alex Natroshvili et $NATRO sur Reddit — corroboré, sans lien vers la source',
   metaDescription: 'Un thread Reddit (r/anticasino) relate les mêmes faits $NATRO que ce dossier documente — Alex Natroshvili, fils de David Natroshvili, le lancement sur Solana, l’effondrement de ~98 %, le refus « stfu », les retraits — en ne créditant que « multiple posts », sans aucun lien. Un résumé sans chemin de retour ne peut être vérifié ; voici la chronique primaire, sourcée et archivée dont il s’inspire.',
   kicker: 'Comment l’histoire circule · provenance',
   h1: 'Corroborée sur Reddit — sans lien vers la source',
@@ -233,7 +233,7 @@ const fr: RedditProvenanceContent = {
 };
 
 const de: RedditProvenanceContent = {
-  metaTitle: 'Die $NATRO-Story auf Reddit — bestätigt, aber ohne Quelle',
+  metaTitle: 'Alex Natroshvili & $NATRO auf Reddit — bestätigt, aber ohne Quelle',
   metaDescription: 'Ein Reddit-Thread in r/anticasino schildert dieselben $NATRO-Ereignisse um Alex Natroshvili und David Natroshvili — Solana-Start, Einbruch um ~98 %, die „stfu“-Weigerung, die Löschungen — nennt als Beleg aber nur „multiple posts“ und verlinkt keine Quelle. Eine Zusammenfassung ohne Rückweg ist nicht überprüfbar; hier ist die primäre, belegte, archivierte Chronik dahinter.',
   kicker: 'Wie die Geschichte wandert · Herkunft',
   h1: 'Auf Reddit bestätigt — ohne Link zur Quelle',
@@ -260,7 +260,7 @@ const de: RedditProvenanceContent = {
 };
 
 const es: RedditProvenanceContent = {
-  metaTitle: 'La historia de $NATRO en Reddit — corroborada, pero sin fuente',
+  metaTitle: 'Alex Natroshvili y $NATRO en Reddit — corroborado, pero sin fuente',
   metaDescription: 'Un hilo de r/anticasino relata los mismos hechos de $NATRO que documenta este archivo —el lanzamiento en Solana, el desplome del ~98 %, la negativa «stfu», las retiradas— atribuyéndolo solo a «multiple posts» y sin enlazar ninguna fuente. Un resumen sin camino de vuelta no puede verificarse; este es el registro primario, con fuentes y archivado, del que bebe.',
   kicker: 'Cómo viaja la historia · procedencia',
   h1: 'Corroborada en Reddit — sin enlace a la fuente',
@@ -287,7 +287,7 @@ const es: RedditProvenanceContent = {
 };
 
 const ar: RedditProvenanceContent = {
-  metaTitle: 'قصة $NATRO على Reddit — مؤكَّدة لكن بلا رابط إلى المصدر الأصلي',
+  metaTitle: 'Alex Natroshvili و$NATRO على Reddit — مؤكَّدة لكن بلا رابط إلى المصدر الأصلي',
   metaDescription: 'يروي نقاشٌ في r/anticasino الأحداثَ نفسها التي يوثّقها هذا الملف عن $NATRO — الإطلاق على Solana، والانهيار بنحو 98%، ورفض «stfu»، وعمليات الحذف — مكتفيًا بنسبة الرواية إلى «multiple posts» دون أن يورد أيّ مصدر. ملخّصٌ لا يترك طريقًا للعودة لا يمكن التحقق منه؛ وهذا هو السجلّ الأوّلي الموثّق المؤرشف الذي يستقي منه.',
   kicker: 'كيف تنتقل القصة · المَنشأ',
   h1: 'مؤكَّدة على Reddit — بلا رابطٍ يعود إلى المصدر',
@@ -314,7 +314,7 @@ const ar: RedditProvenanceContent = {
 };
 
 const ur: RedditProvenanceContent = {
-  metaTitle: 'Reddit پر $NATRO کی کہانی — تصدیق شدہ، مگر مآخذ تک کوئی کڑی نہیں',
+  metaTitle: 'Alex Natroshvili اور $NATRO، Reddit پر — تصدیق شدہ، مگر مآخذ تک کوئی کڑی نہیں',
   metaDescription: 'r/anticasino کا ایک تھریڈ انہی $NATRO واقعات کو بیان کرتا ہے جو اِس فائل میں درج ہیں — Solana پر اجرا، ~98% کا زوال، «stfu» والا انکار، اور سب کچھ ہٹا دیا جانا — مگر حوالہ صرف «multiple posts» کا دیتا ہے اور کوئی مآخذ نہیں جوڑتا۔ واپسی کے راستے کے بغیر کسی خلاصے کی تصدیق ممکن نہیں؛ یہ وہی بنیادی، بامآخذ اور محفوظ شدہ ریکارڈ ہے جس سے وہ اخذ کیا گیا ہے۔',
   kicker: 'کہانی کیسے سفر کرتی ہے · منبع',
   h1: 'Reddit پر تصدیق شدہ — مگر مآخذ تک کوئی کڑی نہیں',
@@ -341,7 +341,7 @@ const ur: RedditProvenanceContent = {
 };
 
 const hi: RedditProvenanceContent = {
-  metaTitle: 'Reddit पर $NATRO की कहानी — पुष्ट, पर स्रोत तक कोई लिंक नहीं',
+  metaTitle: 'Reddit पर Alex Natroshvili और $NATRO — पुष्ट, पर स्रोत तक कोई लिंक नहीं',
   metaDescription: 'Reddit के r/anticasino का एक थ्रेड Alex Natroshvili और David Natroshvili से जुड़ी $NATRO की उन्हीं घटनाओं को दोहराता है जो यहाँ दर्ज हैं — Solana पर लॉन्च, ~98% गिरावट, “stfu” इनकार, साइट का हटाया जाना — पर सिर्फ़ “multiple posts” का हवाला देता है, कोई स्रोत नहीं। बिना वापसी-पथ वाला सारांश जाँचा नहीं जा सकता; यह वही प्राथमिक, स्रोत-सहित, संग्रहित रिकॉर्ड है जिससे वह लिया गया है।',
   kicker: 'कहानी कैसे सफ़र करती है · उद्गम',
   h1: 'Reddit पर पुष्ट — पर स्रोत तक कोई लिंक नहीं',

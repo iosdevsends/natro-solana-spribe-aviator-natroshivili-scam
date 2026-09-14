@@ -9,6 +9,7 @@ export const fr = () =>
   extendEn({
     config: {
       siteTitle: 'Le Dossier NATRO — Une étude de cas sur le prix de la réputation',
+      seoTitle: 'Alex Natroshvili, Spribe, $NATRO : le dossier documenté',
       tagline: 'Un cas documenté de tarification de la réputation',
       mastheadMeta: 'Étude de cas · Compilée à partir de sources primaires',
       seoDescription: 'Un dossier documenté : le lancement du token $NATRO Solana (21 mai 2026), sa chute de 98 % et l\'effacement des preuves. Sources primaires uniquement.',

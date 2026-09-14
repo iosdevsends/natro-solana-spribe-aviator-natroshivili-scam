@@ -7,6 +7,7 @@ export const es = () =>
   extendEn({
     config: {
       siteTitle: 'El Expediente NATRO — Un estudio de caso sobre el precio de la reputación',
+      seoTitle: 'Alex Natroshvili, Spribe, $NATRO: expediente documentado',
       tagline: 'Un caso documentado de fijación de precios sobre la reputación',
       mastheadMeta: 'Estudio de caso · Compilado a partir de fuentes primarias',
       seoDescription: 'Un expediente documentado: el lanzamiento del token $NATRO en Solana (21 mayo 2026), su caída del 98% y el borrado de pruebas. Solo fuentes primarias.',

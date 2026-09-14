@@ -21,7 +21,7 @@ export const ar: PeopleLocaleBundle = {
       tagline:
         'مؤسِّس عملة الميم $NATRO على شبكة Solana (أُطلقت في 21 May 2026)؛ ابن الرئيس التنفيذي لـ Spribe ديفيد ناتروشفيلي. عرّف عن نفسه عبر تسويق الإطلاق.',
       metaTitle:
-        'ألكس ناتروشفيلي — مؤسِّس عملة $NATRO على شبكة Solana | The NATRO File',
+        'من هو Alex Natroshvili؟ مؤسِّس $NATRO وابن مدير Spribe',
       metaDescription:
         'من هو ألكس ناتروشفيلي؟ مؤسِّس عملة الميم $NATRO على شبكة Solana (21 May 2026)، ابن الرئيس التنفيذي لـ Spribe ديفيد ناتروشفيلي. حساب Instagram موثَّق @natroalex، وحساب Telegram @natroalex1. ملف موثَّق.',
       handleNotes: ['موثَّق · 54.1K متابع', 'موثَّق'],
@@ -78,7 +78,7 @@ export const ar: PeopleLocaleBundle = {
       role: 'طرف مُسمّى · الرئيس التنفيذي لـ Spribe',
       tagline:
         'مؤسِّس Spribe والرئيس التنفيذي لها؛ والد مؤسِّس $NATRO ألكس ناتروشفيلي. عبر حسابه الموثَّق على Instagram روّج شخصيًا للبيع المُسبق لـ $NATRO واستجلب الاستثمار قبل الإطلاق.',
-      metaTitle: 'ديفيد ناتروشفيلي — مؤسِّس Spribe والرئيس التنفيذي لها | The NATRO File',
+      metaTitle: 'David Natroshvili: مدير Spribe ووالد Alex Natroshvili',
       metaDescription:
         'من هو ديفيد ناتروشفيلي؟ مؤسِّس Spribe والرئيس التنفيذي لها ووالد مؤسِّس $NATRO ألكس ناتروشفيلي. عبر حسابه الموثَّق على Instagram روّج شخصيًا للبيع المُسبق لـ $NATRO («with me & @natroalex»، حد أدنى 1.5k) قبل إطلاق 21 May 2026. ملف موثَّق.',
       handleNotes: [undefined, 'موثَّق', undefined],

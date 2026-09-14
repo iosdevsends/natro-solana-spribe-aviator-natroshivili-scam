@@ -50,7 +50,7 @@ export const FAQ_QUOTE =
   'The reputation hit lasts forever; the cash from a rug doesn’t.';
 
 const en: NatroMoneyContent = {
-  metaTitle: 'How did NatroAlex make his money? — the $NATRO record',
+  metaTitle: 'How did Alex Natroshvili make his money? — the $NATRO record',
   metaDescription:
     'Alex Natroshvili (@natroalex) presented no independent business or financial track record. The trust on offer was the family name — son of Spribe CEO David Natroshvili. The one launch that name fronted, the $NATRO Solana token, took retail presale money in and collapsed ~98% in 72 hours. Refunds refused, the evidence scrubbed. A documented case in reputation pricing.',
   kicker: 'Reputation pricing · the question',
@@ -90,7 +90,7 @@ const en: NatroMoneyContent = {
 };
 
 const ru: NatroMoneyContent = {
-  metaTitle: 'Откуда у NatroAlex деньги? — хроника $NATRO',
+  metaTitle: 'Откуда у Alex Natroshvili деньги? — хроника $NATRO',
   metaDescription:
     'Alex Natroshvili (@natroalex) не предъявил никакого собственного бизнеса или финансового послужного списка. На продажу выставлялось доверие к фамилии — сын CEO Spribe David Natroshvili. Единственный запуск, который эта фамилия прикрывала, токен $NATRO на Solana, собрал деньги розничного пресейла и обвалился на ~98% за 72 часа. В возврате отказали, улики удалили.',
   kicker: 'Ценообразование репутации · вопрос',
@@ -130,7 +130,7 @@ const ru: NatroMoneyContent = {
 };
 
 const uk: NatroMoneyContent = {
-  metaTitle: 'Звідки в NatroAlex гроші? — хроніка $NATRO',
+  metaTitle: 'Звідки в Alex Natroshvili гроші? — хроніка $NATRO',
   metaDescription:
     'Alex Natroshvili (@natroalex) не пред’явив жодного власного бізнесу чи фінансового послужного списку. На продаж виставлялася довіра до прізвища — син CEO Spribe David Natroshvili. Єдиний запуск, який це прізвище прикривало, токен $NATRO на Solana, зібрав гроші роздрібного пресейлу й обвалився на ~98% за 72 години. У поверненні відмовили, докази видалили.',
   kicker: 'Ціноутворення репутації · питання',
@@ -170,7 +170,7 @@ const uk: NatroMoneyContent = {
 };
 
 const ka: NatroMoneyContent = {
-  metaTitle: 'როგორ გააკეთა NatroAlex-მა ფული? — $NATRO-ს ჩანაწერი',
+  metaTitle: 'როგორ გააკეთა Alex Natroshvili-მ ფული? — $NATRO-ს ჩანაწერი',
   metaDescription:
     'Alex Natroshvili-მ (@natroalex) არ წარმოადგინა საკუთარი ბიზნესი ან ფინანსური გამოცდილება. გასაყიდი იყო ნდობა გვარისადმი — Spribe-ის CEO David Natroshvili-ს შვილი. ერთადერთი გაშვება, რომელსაც ეს გვარი ფარავდა, Solana-ს ტოკენი $NATRO, შეაგროვა საცალო პრესეილის ფული და დაეცა ~98%-ით 72 საათში. დაბრუნებაზე უარი თქვეს, მტკიცებულებები წაშალეს.',
   kicker: 'რეპუტაციის ფასდადება · კითხვა',
@@ -210,7 +210,7 @@ const ka: NatroMoneyContent = {
 };
 
 const fr: NatroMoneyContent = {
-  metaTitle: 'Comment NatroAlex a-t-il gagné son argent ? — le dossier $NATRO',
+  metaTitle: 'Comment Alex Natroshvili a-t-il gagné son argent ? — le dossier $NATRO',
   metaDescription:
     'Alex Natroshvili (@natroalex) n’a présenté aucun parcours entrepreneurial ou financier propre. Ce qui était mis en vente, c’était la confiance liée au nom de famille — fils du PDG de Spribe, David Natroshvili. Le seul lancement que ce nom a couvert, le token $NATRO sur Solana, a encaissé l’argent de la prévente du grand public et s’est effondré de ~98 % en 72 heures. Remboursements refusés, preuves effacées.',
   kicker: 'La valorisation de la réputation · la question',
@@ -250,7 +250,7 @@ const fr: NatroMoneyContent = {
 };
 
 const de: NatroMoneyContent = {
-  metaTitle: 'Wie hat NatroAlex sein Geld verdient? — die $NATRO-Akte',
+  metaTitle: 'Wie hat Alex Natroshvili sein Geld verdient? — die $NATRO-Akte',
   metaDescription:
     'Alex Natroshvili (@natroalex) legte keine eigene unternehmerische oder finanzielle Erfolgsbilanz vor. Verkauft wurde das Vertrauen in den Familiennamen — Sohn von Spribe-CEO David Natroshvili. Der einzige Launch, den dieser Name deckte, der $NATRO-Token auf Solana, nahm Presale-Geld von Privatanlegern ein und brach in 72 Stunden um ~98 % ein. Rückerstattungen verweigert, Beweise gelöscht.',
   kicker: 'Reputationspreis · die Frage',
@@ -290,7 +290,7 @@ const de: NatroMoneyContent = {
 };
 
 const es: NatroMoneyContent = {
-  metaTitle: '¿Cómo ganó NatroAlex su dinero? — el expediente $NATRO',
+  metaTitle: '¿Cómo ganó Alex Natroshvili su dinero? — el expediente $NATRO',
   metaDescription:
     'Alex Natroshvili (@natroalex) no presentó ninguna trayectoria empresarial o financiera propia. Lo que se vendía era la confianza en el apellido — hijo del CEO de Spribe, David Natroshvili. El único lanzamiento que ese nombre respaldó, el token $NATRO en Solana, recaudó dinero de la preventa minorista y se desplomó ~98 % en 72 horas. Reembolsos denegados, pruebas borradas.',
   kicker: 'Precio de la reputación · la pregunta',
@@ -330,7 +330,7 @@ const es: NatroMoneyContent = {
 };
 
 const ar: NatroMoneyContent = {
-  metaTitle: 'كيف جنى NatroAlex أمواله؟ — ملف $NATRO',
+  metaTitle: 'كيف جنى Alex Natroshvili أمواله؟ — ملف $NATRO',
   metaDescription:
     'لم يقدّم أليكس ناتروشفيلي (@natroalex) أي سجلّ تجاري أو مالي مستقل. ما كان معروضًا للبيع هو الثقة باسم العائلة — ابن الرئيس التنفيذي لـ Spribe، David Natroshvili. الإطلاق الوحيد الذي غطّاه هذا الاسم، عملة $NATRO على Solana، جمع أموال البيع المسبق من جمهور التجزئة وانهار ~98% خلال 72 ساعة. رُفض ردّ الأموال، ومُحيت الأدلّة.',
   kicker: 'تسعير السمعة · السؤال',
@@ -370,7 +370,7 @@ const ar: NatroMoneyContent = {
 };
 
 const ur: NatroMoneyContent = {
-  metaTitle: 'NatroAlex نے اپنا پیسہ کیسے کمایا؟ — $NATRO کی فائل',
+  metaTitle: 'Alex Natroshvili نے اپنا پیسہ کیسے کمایا؟ — $NATRO کی فائل',
   metaDescription:
     'الیکس ناتروشویلی (@natroalex) نے اپنا کوئی آزاد کاروباری یا مالی ریکارڈ پیش نہیں کیا۔ جو چیز بیچی جا رہی تھی وہ خاندانی نام پر اعتماد تھا — Spribe کے سی ای او David Natroshvili کا بیٹا۔ جس واحد لانچ کو اس نام نے سہارا دیا، Solana پر $NATRO ٹوکن، اس نے ریٹیل پری سیل کا پیسہ لیا اور 72 گھنٹوں میں ~98% گر گیا۔ رقم کی واپسی سے انکار، ثبوت مٹا دیے گئے۔',
   kicker: 'ساکھ کی قیمت · سوال',
@@ -410,7 +410,7 @@ const ur: NatroMoneyContent = {
 };
 
 const hi: NatroMoneyContent = {
-  metaTitle: 'NatroAlex ने अपना पैसा कैसे कमाया? — $NATRO का रिकॉर्ड',
+  metaTitle: 'Alex Natroshvili ने अपना पैसा कैसे कमाया? — $NATRO का रिकॉर्ड',
   metaDescription:
     'Alex Natroshvili (@natroalex) ने अपना कोई स्वतंत्र व्यवसाय या वित्तीय ट्रैक रिकॉर्ड पेश नहीं किया। जो बेचा जा रहा था वह परिवार के नाम पर भरोसा था — Spribe के CEO David Natroshvili का बेटा। जिस इकलौते लॉन्च को इस नाम ने सहारा दिया, Solana पर $NATRO टोकन, उसने रिटेल प्रीसेल का पैसा लिया और 72 घंटों में ~98% गिर गया। रिफंड से इनकार, सबूत मिटा दिए गए।',
   kicker: 'प्रतिष्ठा की कीमत · सवाल',

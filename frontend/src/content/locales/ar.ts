@@ -9,6 +9,7 @@ export const ar = () =>
   extendEn({
     config: {
       siteTitle: 'ملفّ NATRO — دراسة حالة في تسعير السمعة',
+      seoTitle: 'Alex Natroshvili وSpribe و$NATRO: ملفّ قضية موثَّق',
       tagline: 'حالة موثَّقة في تسعير السمعة',
       mastheadMeta: 'دراسة حالة · مُجمَّعة من مصادر أوّلية',
       seoDescription: 'ملفّ حالة موثَّق: إطلاق توكن $NATRO على Solana بتاريخ 21 مايو 2026، انهياره بنسبة 98%، وإزالة الأدلة بعد رفض ردّ الأموال. مصادر أوّلية فقط.',

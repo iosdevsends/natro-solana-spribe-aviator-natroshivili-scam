@@ -20,7 +20,7 @@ export const fr: PeopleLocaleBundle = {
       tagline:
         'Fondateur du mémecoin Solana $NATRO (lancé le 21 mai 2026) ; fils du CEO de Spribe, David Natroshvili. Identifié par le marketing du lancement lui-même.',
       metaTitle:
-        'Alex Natroshvili — fondateur du token Solana $NATRO | The NATRO File',
+        'Qui est Alex Natroshvili ? $NATRO, fils du CEO de Spribe',
       metaDescription:
         'Qui est Alex Natroshvili ? Fondateur du mémecoin Solana $NATRO (21 mai 2026), fils du CEO de Spribe, David Natroshvili. Instagram vérifié @natroalex, Telegram @natroalex1. Un dossier documenté.',
       handleNotes: ['vérifié · 54,1K abonnés', 'vérifié'],
@@ -77,7 +77,7 @@ Un audit on-chain distinct est en cours. Le portefeuille du créateur montre une
       role: 'Partie nommée · CEO de Spribe',
       tagline:
         'Fondateur et CEO de Spribe ; père du fondateur de $NATRO, Alex Natroshvili. Depuis son propre Instagram vérifié, il a personnellement co-promu le présale de $NATRO et sollicité des investissements avant le lancement.',
-      metaTitle: 'David Natroshvili — fondateur et CEO de Spribe | The NATRO File',
+      metaTitle: 'David Natroshvili : CEO de Spribe, père d’Alex Natroshvili',
       metaDescription:
         'Qui est David Natroshvili ? Fondateur et CEO de Spribe et père du fondateur de $NATRO, Alex Natroshvili. Depuis son Instagram vérifié, il a personnellement promu le présale de $NATRO (« with me & @natroalex », minimum 1.5k) avant le lancement du 21 mai 2026. Un dossier documenté.',
       handleNotes: [undefined, 'vérifié', undefined],

@@ -20,7 +20,7 @@ export const uk: PeopleLocaleBundle = {
       tagline:
         'Засновник солана-мемкоїна $NATRO (запущений 21 травня 2026 року); син CEO Spribe Девіда Натрошвілі. Самостійно ідентифікований маркетингом запуску.',
       metaTitle:
-        'Алекс Натрошвілі — засновник солана-токена $NATRO | The NATRO File',
+        'Хто такий Alex Natroshvili: засновник $NATRO, син CEO Spribe',
       metaDescription:
         'Хто такий Алекс Натрошвілі? Засновник солана-мемкоїна $NATRO (21 травня 2026), син CEO Spribe Девіда Натрошвілі. Верифікований Instagram @natroalex, Telegram @natroalex1. Документоване досьє.',
       handleNotes: ['верифікований · 54,1K підписників', 'верифікований'],
@@ -77,7 +77,7 @@ export const uk: PeopleLocaleBundle = {
       role: 'Названа сторона · CEO Spribe',
       tagline:
         'Засновник і CEO Spribe; батько засновника $NATRO Алекса Натрошвілі. Зі свого верифікованого Instagram особисто спів-просував пресейл $NATRO і залучав інвестиції до запуску.',
-      metaTitle: 'Девід Натрошвілі — засновник і CEO Spribe | The NATRO File',
+      metaTitle: 'David Natroshvili: CEO Spribe і батько Alex Natroshvili',
       metaDescription:
         'Хто такий Девід Натрошвілі? Засновник і CEO Spribe та батько засновника $NATRO Алекса Натрошвілі. Зі свого верифікованого Instagram особисто просував пресейл $NATRO («with me & @natroalex», мінімум 1.5k) до запуску 21 травня 2026 року. Документоване досьє.',
       handleNotes: [undefined, 'верифікований', undefined],

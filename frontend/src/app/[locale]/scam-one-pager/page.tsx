@@ -22,6 +22,7 @@ import {
   OG_IMAGE,
 } from '@/lib/seo';
 import type { ExhibitDTO } from '@/lib/types';
+import { getSeoTitle } from '@/content/seo-titles';
 
 const SCAM_ONE_PAGER_PATH = '/scam-one-pager';
 
@@ -46,7 +47,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const bundle = await loadCaseFile(loc);
-  const title = clampTitle(`The $NATRO scam — one-pager · ${bundle.config.siteTitle}`);
+  const title = clampTitle(getSeoTitle('scamOnePager', loc));
   const description = clampDescription(
     bundle.config.deck?.slice(0, 200) ||
     bundle.config.seoDescription ||

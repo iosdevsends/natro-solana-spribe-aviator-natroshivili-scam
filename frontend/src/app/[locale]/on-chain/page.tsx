@@ -12,6 +12,7 @@ import { DexScreenerEmbed } from '@/components/DexScreenerEmbed';
 import { loadCaseFile } from '@/lib/case-file';
 import { buildAlternates, absoluteUrl, ogLocale, ogLocaleAlternates, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import { fetchTopHolders, fetchCreatorActivity, ONCHAIN_CONSTANTS } from '@/lib/onchain';
+import { getSeoTitle } from '@/content/seo-titles';
 
 // Refresh the page in the edge cache every hour so on-chain values stay fresh.
 export const revalidate = 3600;
@@ -238,7 +239,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as Locale)) return {};
   const loc = locale as Locale;
   const copy = COPY[loc as keyof typeof COPY] || COPY.en;
-  const title = clampTitle(`${copy.h1} — The NATRO File`);
+  const title = clampTitle(getSeoTitle('onChain', loc));
   return {
     title,
     description: clampDescription(copy.lead.slice(0, 200)),

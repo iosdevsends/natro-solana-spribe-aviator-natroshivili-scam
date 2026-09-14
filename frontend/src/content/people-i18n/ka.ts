@@ -20,7 +20,7 @@ export const ka: PeopleLocaleBundle = {
       tagline:
         'სოლანა-მემკოინ $NATRO-ს დამფუძნებელი (გაშვებულია 2026 წლის 21 მაისს); Spribe-ის CEO დავით ნატროშვილის ვაჟი. თვითიდენტიფიცირებული გაშვების მარკეტინგით.',
       metaTitle:
-        'ალექს ნატროშვილი — სოლანა-ტოკენ $NATRO-ს დამფუძნებელი | The NATRO File',
+        'ვინ არის Alex Natroshvili: $NATRO, Spribe-ის CEO-ს ვაჟი',
       metaDescription:
         'ვინ არის ალექს ნატროშვილი? სოლანა-მემკოინ $NATRO-ს დამფუძნებელი (2026 წლის 21 მაისი), Spribe-ის CEO დავით ნატროშვილის ვაჟი. ვერიფიცირებული Instagram @natroalex, Telegram @natroalex1. დოკუმენტირებული საქმის ფაილი.',
       handleNotes: ['ვერიფიცირებული · 54.1K გამომწერი', 'ვერიფიცირებული'],
@@ -77,7 +77,7 @@ export const ka: PeopleLocaleBundle = {
       role: 'დასახელებული მხარე · Spribe-ის CEO',
       tagline:
         'Spribe-ის დამფუძნებელი და CEO; $NATRO-ს დამფუძნებელ ალექს ნატროშვილის მამა. თავისი ვერიფიცირებული Instagram-იდან პირადად თანა-აპიარებდა $NATRO-ს პრესეილს და იზიდავდა ინვესტიციებს გაშვებამდე.',
-      metaTitle: 'დავით ნატროშვილი — Spribe-ის დამფუძნებელი და CEO | The NATRO File',
+      metaTitle: 'David Natroshvili: Spribe-ის CEO, Alex Natroshvili-ს მამა',
       metaDescription:
         'ვინ არის დავით ნატროშვილი? Spribe-ის დამფუძნებელი და CEO და $NATRO-ს დამფუძნებელ ალექს ნატროშვილის მამა. თავისი ვერიფიცირებული Instagram-იდან პირადად აპიარებდა $NATRO-ს პრესეილს («with me & @natroalex», მინიმუმ 1.5k) 2026 წლის 21 მაისის გაშვებამდე. დოკუმენტირებული საქმის ფაილი.',
       handleNotes: [undefined, 'ვერიფიცირებული', undefined],

@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { buildAlternates, absoluteUrl, ogLocale, clampTitle, clampDescription, OG_IMAGE } from '@/lib/seo';
 import { getFactSheet } from '@/content/fact-sheet';
+import { getSeoTitle } from '@/content/seo-titles';
 import { getPeopleChrome } from '@/content/people';
 
 export async function generateMetadata({
@@ -19,7 +20,7 @@ export async function generateMetadata({
   const fact = getFactSheet(loc);
 
   return {
-    title: clampTitle(`${fact.headline} — Fact sheet`),
+    title: clampTitle(getSeoTitle('factSheet', loc)),
     description: clampDescription(`Press fact sheet: ${fact.headline}. Scannable numbers, timeline, named parties, sources.`),
     alternates: buildAlternates(loc, '/press/fact-sheet'),
     openGraph: {

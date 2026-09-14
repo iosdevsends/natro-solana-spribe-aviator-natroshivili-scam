@@ -9,6 +9,7 @@ export const ur = () =>
   extendEn({
     config: {
       siteTitle: 'NATRO فائل — ساکھ کی قیمت کا ایک مطالعۂ کیس',
+      seoTitle: 'Alex Natroshvili، Spribe، $NATRO: دستاویزی کیس فائل',
       tagline: 'ساکھ کی قیمت کا ایک دستاویزی کیس',
       mastheadMeta: 'مطالعۂ کیس · بنیادی ذرائع سے مرتب',
       seoDescription: 'ایک دستاویزی کیس فائل: 21 مئی 2026 کو $NATRO کے Solana ٹوکن کا اجراء، اس کا 98% انہدام، اور رقم واپسی سے انکار کے بعد شواہد ہٹانے کا سلسلہ۔ صرف بنیادی ذرائع۔',

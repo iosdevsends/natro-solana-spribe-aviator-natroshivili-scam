@@ -7,6 +7,7 @@ export const de = () =>
   extendEn({
     config: {
       siteTitle: 'Die NATRO-Akte — Eine Fallstudie zur Preisbildung von Reputation',
+      seoTitle: 'Alex Natroshvili, Spribe, $NATRO: die dokumentierte Akte',
       tagline: 'Ein dokumentierter Fall zur Preisbildung von Reputation',
       mastheadMeta: 'Fallstudie · Aus Primärquellen zusammengestellt',
       seoDescription: 'Eine dokumentierte Fallstudie: der $NATRO-Solana-Token-Launch (21. Mai 2026), sein 98%-Absturz und das Löschen von Beweisen. Nur Primärquellen.',
