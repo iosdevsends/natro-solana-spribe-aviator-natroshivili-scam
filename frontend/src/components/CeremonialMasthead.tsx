@@ -65,6 +65,7 @@ export async function CeremonialMasthead({
     { href: '/how-did-natroalex-make-his-money', label: tNav('natroMoney') },
     { href: '/the-name-in-search', label: tNav('searchRecord') },
     { href: '/reddit-anticasino', label: tNav('redditThread') },
+    { href: '/natroshvili-spribe-alex-david-google-gemini', label: tNav('geminiRecord') },
     { href: '/people/alex-natroshvili', label: tNav('profileAlex') },
     { href: '/people/david-natroshvili', label: tNav('profileDavid') },
     { href: '/press/fact-sheet', label: tNav('factSheet') },

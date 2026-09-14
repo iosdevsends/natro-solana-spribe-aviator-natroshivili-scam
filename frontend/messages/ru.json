@@ -27,7 +27,8 @@
     "privacy": "Приватность",
     "natroMoney": "Откуда у Алекса деньги",
     "searchRecord": "Имя в поиске",
-    "redditThread": "История на Reddit"
+    "redditThread": "История на Reddit",
+    "geminiRecord": "Google Gemini подменил информацию"
   },
   "wall": {
     "kicker": "Цена имени",

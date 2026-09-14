@@ -20,6 +20,7 @@ const STATIC_PATHS = [
   '/how-did-natroalex-make-his-money',
   '/the-name-in-search',
   '/reddit-anticasino',
+  '/natroshvili-spribe-alex-david-google-gemini',
   '/people',
   '/people/alex-natroshvili',
   '/people/david-natroshvili',

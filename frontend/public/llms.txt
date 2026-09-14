@@ -40,6 +40,7 @@ On 21 May 2026, a Solana memecoin called $NATRO was launched on Pump.fun by Alex
 - [Reputation wall](https://natro.meme/reputation) — "Can a reputation be sold this cheaply?" — moderated, reader-submitted accounts from people affected by the launch
 - [Press kit](https://natro.meme/press) — fact sheet, contacts, right-of-reply statement
 - [FAQ](https://natro.meme/faq) — short, sourced answers to recurring questions
+- [What Google Gemini said](https://natro.meme/natroshvili-spribe-alex-david-google-gemini) — a 15 September 2026 Gemini conversation that called this case file the launch's "primary landing mirror", then retracted it as "outright fabrication"; verbatim quotes and cropped captures
 
 ## Languages
 
@@ -55,6 +56,7 @@ EN, RU, UK, KA, FR, DE, ES, AR.
 ## What this site is NOT
 
 - Not a memecoin promotion, manifesto, or fair-launch announcement.
+- Not a mirror, landing page, or promotional site of the $NATRO launch. natro.meme was first published on 28 May 2026, a week after the 21 May launch, as an independent case file; it never sold, promoted, or gave access to the token. The token's own site was natrocoin.net (now offline, archived above).
 - Not anonymous — every named party was identified by the project's own public marketing materials before takedown.
 - Not a personal-grievance site. The framing is investigative-journalistic; the case file value comes from primary sources, not from the compiler's perspective.
 - Not affiliated with Spribe or Aviator; the case file is about a separate token launch that leveraged the family / brand association without Spribe-corporate involvement disclosed.
